@@ -1,0 +1,105 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using CasaDespaDraft.ViewModels
+@model SignUpViewModel
+
+
+<section id="register">
+    <form asp-action="Register" asp-controller="Account">
+        <div id="registerform">
+            <div id="registertitle">
+                <h2 id="registerheading"> REGISTER </h2>
+            </div>
+            <div id="formcontent">
+                <div id="column1formcontent">
+
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success" role="alert">
+                            @TempData["SuccessMessage"]
+                        </div>
+                    }
+
+                    <table>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <tr>
+                            <td id="regtd"><h4 id="firstname">FIRST NAME:    </h4></td>
+                            <td id="regtdinput">
+                                <input asp-for="firstName" id="firstnameinput" placeholder="">
+                            </td>
+                            @Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger"})
+                        </tr>
+
+                        <tr>
+                            <td id="regtd"><h4 id="lastname">LAST NAME:    </h4></td>
+                            <td id="regtdinput">
+                                <input asp-for="lastName" id="lastnameinput" placeholder="">
+                            </td>
+                            @Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger"})
+                        </tr>
+
+                        <tr>
+                            <td id="addresstd"><h4 id="address">ADDRESS:    </h4></td>
+                            <td id="addresstddinput">
+                                <input asp-for="address" id="addressinput" placeholder="">
+                            </td>
+                            @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger"})
+                        </tr>
+
+                        <tr>
+                            <td id="regtd"><h4 id="gender">GENDER:</h4></td>
+                            <td id="regtdinput">
+                                <input type="radio" id="male" name="" value="">
+                                <label for=""><h6>MALE</h6></label>
+                                <input type="radio" id="female" name="" value="">
+                                <label for=""><h6>FEMALE</h6></label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="column2formcontent">
+                    <div id="securityquestionsdiv">
+
+                        <h4 id="securityquestion">SECURITY QUESTION: </h4>
+                        <input asp-for="question" id="securityquestioninput" placeholder="Provide Security Question">
+                        @Html.ValidationMessageFor(model => model.question, "", new { @class = "text-danger"})
+
+                        <input asp-for="answer" id="securityanswerinput" placeholder="Provide Answer">
+                        @Html.ValidationMessageFor(model => model.answer, "", new { @class = "text-danger"})
+
+                    </div>
+
+                    <table id="tabledivemailpass">
+
+                        <tr>
+                            <td id="emailtd"><h4 id="email">EMAIL:    </h4></td>
+                            <td id="emailregtdinput">
+                                <input asp-for="email" id="emailinput" placeholder="">
+                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger"})
+                        </tr>
+
+                        <tr>
+                            <td id="passwordtd"><h4 id="registerpassword">PASSWORD:    </h4></td>
+                            <td id="passregtdinput">
+                                <input asp-for="userPassword" id="registerpasswordinput" placeholder="" />
+                            </td>
+                            @Html.ValidationMessageFor(model => model.userPassword, "", new { @class = "text-danger"})
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div id="registerbuttonscontainer">
+                <button id="cancelbutton"> <a asp-area="" asp-controller="Account" asp-action="Login" class="getstarted"> CANCEL </a> </button>
+                <!-- Submit button -->
+                <button type="submit" id="registerbutton">REGISTER</button>
+            </div>
+        </div>
+    </form>
+
+</section>

@@ -1,0 +1,60 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using CasaDespaDraft.ViewModels;
+@model SignInViewModel
+
+
+<!-- Login Section -->
+<section id="login">
+
+    <div id="logincontainer">
+        <div id="logindiv1">
+            <img id="blkbigloginlogo" src="~/img/logo/blklogo.png" alt="casadespa">
+        </div>
+        <div id="logindiv2">
+            <h1 id="logintext">WELCOME TO CASA DESPA</h1>
+            <form asp-action="Login" asp-controller="Account">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <!-- Email input -->
+                    <div id="usernamediv">
+                    <span id="loginusername">USERNAME:    </span>
+                    <input asp-for="UserName" id="logiinuserinput" placeholder="Enter Username" />
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger"})
+                    </div>
+
+                    <!-- Password input -->
+                    <div id="passworddiv">
+                    <span id="loginpassword">PASSWORD:    </span> 
+                        <input asp-for="Password" id="logiinpassinput" placeholder="Enter Password" />
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger"})
+                    </div>
+
+
+                    <div class="col-sm-5">
+                        <div class="form-check">
+                        </div>
+                    </div>
+
+                <div id="buttondiv">
+                    <button type="submit" id="loginbutton"> LOGIN </button><br />
+                </div>
+                <div id="loginregdiv">
+                    <a id="register" asp-area="" asp-controller="Account" asp-action="Register" class="getstarted"> REGISTER NEW ACCOUNT </a>
+                </div>
+                <div id="loginfgdiv">
+                    <a id="forgotpassword" asp-area="" asp-controller="Account" asp-action="ForgotPassword" class="getstarted"> FORGOT PASSWORD </a>
+                </div>
+
+
+               
+
+         
+       <!-- Top Recipe Section -->
+    </form>
+    </div>
+    </div>
+</section><!-- End #main -->

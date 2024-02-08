@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "FAQs Page";
+}
+<!-- Welcome Section -->
+<section id="welcome">
+    <div id="welcomecontainer">
+        <div id="welcomediv1">
+            <h1 id="welcometext">FREQUENTLY ASKED QUESTIONS</h1>
+            <h3 id="welcomesubtext">FIND SOME OF YOUR QUESTION</h3>
+        </div>
+        <div id="welcomediv2">
+            <img id="blkbiglogo" src="~/img/logo/blklogo.png" alt="casadespa">
+        </div>
+    </div>
+</section>
+
+<!-- End Welcome Section -->
+<!-- Rates Section -->
+<center>
+    <section id="faqs">
+
+        <button class="accordion"><h2>What is the Capacity of the Resort for REGULAR ACCOMODATIONS?</h2></button>
+        <div class="panel">
+            <h3>
+                Rates are good for 15 persons. But can accomodate a maximum of 20 Persions for an overnight / 22-hr stay<br />
+                *ADDITIONAL of ₱300/head in excess of 15pax.*<br /><br />
+            </h3>
+        </div>
+
+        <button class="accordion"><h2>What is the Capacity of the Resort for ACCOMODATIONS with PARTY/EVENTS?</h2></button>
+        <div class="panel">
+            <h3>
+                *ADDITIONAL CHARGE OF ₱3,000*<br />
+                Maximum of 50 pax DURING THE EVENT ONLY.<br />
+                Party Hours: 2pm - 10pm<br />
+                STRICTLY AFTER 10PM, A MAXIMUM OF 20PAX CAN STAY IN THE VILLA<br />
+                ALL GATES SHALL BE CLOSED BY 10PM for security purposes
+            </h3>
+        </div>
+
+        <button class="accordion"><h2>What are the Sleeping Capacity?</h2></button>
+        <div class="panel">
+            <h3>
+                Whe have five(5) available bed; Each bed can accomodate about 2-3 person<br />
+                for a total of 15 persons. We also have ENTRA MATTRESSES FOR RENT
+            </h3>
+        </div>
+
+        <button class="accordion"><h2>When can we Check-in?</h2></button>
+        <div class="panel">
+            <h3>Standard check-in time for a 22-hr stay is at 2pm</h3>
+        </div>
+
+        <button class="accordion"><h2>Until when can we Check-out?</h2></button>
+        <div class="panel">
+            <h3>
+                You may check-out anytime before 12 noon. But, if you wish to extend your stay, <br />
+                kindly notify us 24-hrs prior.
+            </h3>
+        </div>
+
+        <button class="accordion"><h2>What is the purpose of the Security Deposit?</h2></button>
+        <div class="panel">
+            <h3>₱1,000 - A security deposit is required upon arrival for incidentals. This desposit <br />
+            is fully refundable upon check-out and subbject to a damage inspection of the resort.</h3>
+        </div>
+
+    </section>
+</center>
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function () {
+        this.classList.toggle("active_faqs");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+        } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+    });
+}
+</script>

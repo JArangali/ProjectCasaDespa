@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Casa Despa</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+
+    <!-- Favicons -->
+    <link href="~/img/favicon.png" rel="icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@200;400;600&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+        @if (User.Identity.IsAuthenticated && (!User.IsInRole("Admin")))
+        {
+            <div class="container d-flex align-items-center">
+
+                <a href="index.html" class="logo me-auto"><img id="navbarlogo" src="~/img/logo/navbarlogo.png" alt="" class="img-fluid"></a>
+
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Gallery">Gallery</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="FAQs">FAQs</a></li>
+                        <li><a href="pricing.html">Booking</a></li>
+
+                        <li><a asp-area="" asp-controller="Account" asp-action="Login" class="getstarted">Login/SignUp</a></li>
+                    </ul>
+
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav><!-- .navbar -->
+
+            </div>
+        }
+        else if (!User.IsInRole("Admin"))
+        {
+        
+    
+
+            <div class="container d-flex align-items-center">
+
+                <a href="index.html" class="logo me-auto"><img id="navbarlogo" src="~/img/logo/navbarlogo.png" alt="" class="img-fluid"></a>
+
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Gallery">Gallery</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="FAQs">FAQs</a></li>
+                        <li><a href="pricing.html">Booking</a></li>
+
+                        <li><a href="blog.html">Profile</a></li>
+
+
+
+                    </ul>
+
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav><!-- .navbar -->
+
+            </div>
+
+            <!-- .navbar -->
+
+            <a class="book-a-table-btn scrollto" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+        }
+        else if (User.IsInRole("Admin"))
+        {
+
+
+
+    <div class="container d-flex align-items-center">
+
+        <a href="index.html" class="logo me-auto"><img id="navbarlogo" src="~/img/logo/navbarlogo.png" alt="" class="img-fluid"></a>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Gallery">Gallery</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="FAQs">FAQs</a></li>
+                <li><a href="pricing.html">Booking</a></li>
+                <li><a href="contact.html">Dashboard</a></li>
+
+                
+            </ul>
+
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+    </div>
+            <a class="book-a-table-btn scrollto" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+        }
+        <!-- .navbar -->
+
+    </header><!-- End Header -->
+    
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Casa Despa</span></strong>. All Rights Reserved
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+    <!-- Vendor JS Files -->
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="~/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/js/main.js"></script>
+
+</body>
+
+</html>
