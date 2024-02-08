@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Forgot Password || Admin Code";
+}
+
+<!-- Admin Code Section -->
+<section id="ac">
+    <div id="backbuttondiv">
+        <button id="fpbackbutton"> <a id="fpabackbutton" asp-area="" asp-controller="Account" asp-action="ForgotPassword" class="getstarted"> <i class="material-icons">chevron_left</i> </a> </button>
+    </div>
+    <form>
+        <div id="acform">
+            <div id="actitle">
+                <div id="actitle1">
+                    <img id="sqlogoimg" src="~/img/sqlogo.png" alt="sqlogo"><h2 id="sqheading"> ADMIN CODE </h2>
+                </div>
+            </div>
+            <div id="acformcontent">
+                <div id="acinputfields">
+                    <h4 id="actext">Admin Code</h4>
+                    <input type="text" id="acanswerinput" placeholder="Please Provide Admin Code">
+                </div>
+            </div>
+            <div id="acbuttonscontainer">
+                <button id="acnextbutton"><a id="acnext" asp-area="" asp-controller="Account" asp-action=""> NEXT </a> </button>
+            </div>
+        </div>
+    </form>
+</section>
