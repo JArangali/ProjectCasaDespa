@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Forgot Password || Security Question";
+}
+
+<!-- Security Question Section -->
+<section id="sq">
+    <div id="backbuttondiv">
+        <button id="fpbackbutton"> <a id="fpabackbutton" asp-area="" asp-controller="Account" asp-action="ForgotPassword" class="getstarted"> <i class="material-icons">chevron_left</i> </a> </button>
+    </div>
+    <form>
+        <div id="sqform">
+            
+                <div id="sqtitle">
+                    <div id="sqtitle1">
+                    <img id="sqlogoimg" src="~/img/sqlogo.png" alt="sqlogo"><h2 id="sqheading"> SECURITY QUESTION </h2>
+                    </div>  
+                </div>
+            
+            
+            <div id="sqformcontent">
+                <div id="sqinputfields">
+                    <h4 id="sqtext">-- SECURITY QUESTION --</h4>
+                    <input type="text" id="sqanswerinput" placeholder="Please Provide Answer">
+                </div>
+            </div>
+            <div id="sqbuttonscontainer">
+                <button id="sqnextbutton"><a id="nexttext" asp-area="" asp-controller="Account" asp-action=""> NEXT </a> </button>
+            </div>
+        </div>
+    </form>
+</section>
+

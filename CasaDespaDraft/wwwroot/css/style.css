@@ -2780,6 +2780,9 @@ input[type=radio]:checked {
         color: #a89577;
     }
 
+#fpasswordnext {
+    color:#EBCDA8;
+}
 /*--------------------------------------------------------------
 # Divider Section
 --------------------------------------------------------------*/
@@ -3389,4 +3392,240 @@ feetitle {
 
 #warningcontent {
     margin: 20px 20px 20px 20px;
+}
+
+/*--------------------------------------------------------------
+# Security Question
+--------------------------------------------------------------*/
+#nexttext {
+    color:#EBCDA8;
+}
+
+#sqinputfields {
+    text-align: left;
+    padding: 40px;
+}
+
+#sq {
+    align-self: center;
+    align-items: center;
+    text-align: center;
+}
+
+#sqform {
+    margin: 30px;
+    margin-left: 250px;
+    padding: 0px;
+    width: 70%;
+    height: 350px;
+    border-radius: 20px;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    background-color: #EBCDA8;
+}
+
+#sqtitle {
+    color: #F0D9B7;
+    background-color: black;
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    display: flex;
+    align-self: center;
+    text-align: center;
+    width:100%;
+}
+
+#sqtitle1 {
+    align-self: center;
+    text-align: center;
+    display: flex;
+    width: 100%;
+    margin-left: 325px;
+}
+
+#sqformcontent {
+    display: block;
+}
+
+#sqtext {
+    font-weight: bold;
+}
+
+#sqanswerinput {
+    width: 100%;
+    padding: 12px;
+    border: solid;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 10px;
+    border-width: 1px;
+    box-sizing: border-box;
+    background-color: #F5D8B3;
+    height: 40px;
+}
+
+#sqnextbutton {
+    width: 200px;
+    height: auto;
+    padding: 10px;
+    color: #F0D9B7;
+    border-radius: 20px;
+    background-color: black;
+}
+
+#fpabackbutton {
+    text-decoration: none;
+    color: #F0D9B7;
+}
+
+    #fpabackbutton:hover {
+        text-decoration: none;
+        color: #a89577;
+    }
+
+#sqheading {
+    text-align: center;
+    margin-top: 10px;
+    margin-right:10px;
+}
+
+#fpasswordnext {
+    color: #EBCDA8;
+}
+
+    #fpasswordnext:hover {
+        text-decoration: none;
+        color: #a89577;
+    }
+
+#sqlogoimg {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    align-self:center;
+}
+
+/*--------------------------------------------------------------
+# Admin Code
+--------------------------------------------------------------*/
+#acnexttext {
+    color: #EBCDA8;
+}
+
+#acinputfields {
+    text-align: left;
+    padding: 40px;
+}
+
+#ac {
+    align-self: center;
+    align-items: center;
+    text-align: center;
+}
+
+#acform {
+    margin: 30px;
+    margin-left: 250px;
+    padding: 0px;
+    width: 70%;
+    height: 350px;
+    border-radius: 20px;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    background-color: #EBCDA8;
+}
+
+#actitle {
+    color: #F0D9B7;
+    background-color: black;
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    display: flex;
+    align-self: center;
+    text-align: center;
+    width: 100%;
+}
+
+#actitle1 {
+    align-self: center;
+    text-align: center;
+    display: flex;
+    width: 100%;
+    margin-left: 400px;
+}
+
+#acformcontent {
+    display: block;
+}
+
+#actext {
+    font-weight: bold;
+}
+
+#acanswerinput {
+    width: 100%;
+    padding: 12px;
+    border: solid;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 10px;
+    border-width: 1px;
+    box-sizing: border-box;
+    background-color: #F5D8B3;
+    height: 40px;
+}
+
+#acnextbutton {
+    width: 200px;
+    height: auto;
+    padding: 10px;
+    color: #F0D9B7;
+    border-radius: 20px;
+    background-color: black;
+}
+
+#fpabackbutton {
+    text-decoration: none;
+    color: #F0D9B7;
+}
+
+    #fpabackbutton:hover {
+        text-decoration: none;
+        color: #a89577;
+    }
+
+#acheading {
+    text-align: center;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#acnext {
+    color: #EBCDA8;
+}
+
+    #acnext:hover {
+        text-decoration: none;
+        color: #a89577;
+    }
+
+#sqlogoimg {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    align-self: center;
 }

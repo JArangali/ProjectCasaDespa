@@ -87,7 +87,20 @@ namespace CasaDespaDraft.Controllers
             }
             return View(userEnteredData);
         }
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
 
+        public IActionResult SecurityQuestion()
+        {
+            return View();
+        }
+
+        public IActionResult AdminCode()
+        {
+            return View();
+        }
 
     }
 }
