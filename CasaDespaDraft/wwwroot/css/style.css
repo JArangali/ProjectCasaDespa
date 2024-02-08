@@ -2629,6 +2629,16 @@ input[type=radio]:checked {
 /*--------------------------------------------------------------
 # FAQs CSS
 --------------------------------------------------------------*/
+FAQS_Edit{
+    margin-left: 25px;
+    margin-top: 20px;
+    border-radius: 40px;
+    width: 291px;
+    height: 50px;
+    background-color: black;
+    color: #F5D8B3;
+}
+
 .accordion {
     background-color: black;
     color: #F5D8B3;
@@ -3418,9 +3428,10 @@ feetitle {
 }
 
 #Dashboard_buttons {
-    padding-left: 60px;
+    margin-left: 25px;
+    margin-top:20px;
     border-radius: 40px;
-    width: 100px;
+    width: 291px;
     height: 50px;
     background-color: black;
     color: #F5D8B3;
