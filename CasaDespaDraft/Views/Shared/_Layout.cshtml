@@ -39,9 +39,47 @@
 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-center">
-        @if (User.Identity.IsAuthenticated && (!User.IsInRole("Admin")))
-        {
-            <div class="container d-flex align-items-center">
+
+        <div class="container d-flex align-items-center">
+
+            @if (!User.IsInRole("Admin"))
+            {
+                <div class="logo me-auto">
+                    <a asp-area="" asp-controller="Home" asp-action="Index"><img src="/img/logo.png" alt="" class="img-fluid"></a>
+                </div>
+            }
+            else
+            {
+                <div class="logo me-auto">
+                    <a asp-area="" asp-controller="Admin" asp-action="Dashboard"><img src="/img/logo.png" alt="" class="img-fluid"></a>
+                </div>
+            }
+
+
+            @if (User.Identity.IsAuthenticated && (!User.IsInRole("Admin")))
+            {
+                <a href="index.html" class="logo me-auto"><img id="navbarlogo" src="~/img/logo/navbarlogo.png" alt="" class="img-fluid"></a>
+
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Gallery">Gallery</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="FAQs">FAQs</a></li>
+                        <li><a href="pricing.html">Booking</a></li>
+
+                        <li><a href="blog.html">Profile</a></li>
+
+                    </ul>
+
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav>
+
+                <!-- .navbar -->
+
+                <a class="book-a-table-btn scrollto" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+            }
+            else if (!User.IsInRole("Admin"))
+            {
 
                 <a href="index.html" class="logo me-auto"><img id="navbarlogo" src="~/img/logo/navbarlogo.png" alt="" class="img-fluid"></a>
 
@@ -56,17 +94,10 @@
                     </ul>
 
                     <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav><!-- .navbar -->
-
-            </div>
-        }
-        else if (!User.IsInRole("Admin"))
-        {
-        
-    
-
-            <div class="container d-flex align-items-center">
-
+                </nav>
+            }
+            else if (User.IsInRole("Admin"))
+            {
                 <a href="index.html" class="logo me-auto"><img id="navbarlogo" src="~/img/logo/navbarlogo.png" alt="" class="img-fluid"></a>
 
                 <nav id="navbar" class="navbar">
@@ -76,48 +107,16 @@
                         <li><a asp-area="" asp-controller="Home" asp-action="FAQs">FAQs</a></li>
                         <li><a href="pricing.html">Booking</a></li>
 
-                        <li><a href="blog.html">Profile</a></li>
-
-
+                        <li><a href="contact.html">Dashboard</a></li>
 
                     </ul>
 
                     <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav><!-- .navbar -->
-
-            </div>
-
+                </nav>
+                <a class="book-a-table-btn scrollto" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+            }
             <!-- .navbar -->
-
-            <a class="book-a-table-btn scrollto" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
-        }
-        else if (User.IsInRole("Admin"))
-        {
-
-
-
-    <div class="container d-flex align-items-center">
-
-        <a href="index.html" class="logo me-auto"><img id="navbarlogo" src="~/img/logo/navbarlogo.png" alt="" class="img-fluid"></a>
-
-        <nav id="navbar" class="navbar">
-            <ul>
-                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="Gallery">Gallery</a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="FAQs">FAQs</a></li>
-                <li><a href="pricing.html">Booking</a></li>
-                <li><a href="contact.html">Dashboard</a></li>
-
-                
-            </ul>
-
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
-
-    </div>
-            <a class="book-a-table-btn scrollto" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
-        }
-        <!-- .navbar -->
+        </div>
 
     </header><!-- End Header -->
     
