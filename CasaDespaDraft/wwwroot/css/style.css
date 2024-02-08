@@ -37,6 +37,7 @@ h1 {
 h2 {
     font-family: 'Spectral', serif;
     font-weight: bold;
+    font-size: 34px;
 }
 
 h3,
@@ -44,6 +45,7 @@ h4,
 h5,
 h6 {
     font-family: 'Spectral', serif;
+    font-size: 20px;
 }
 
 /*--------------------------------------------------------------
@@ -2889,6 +2891,7 @@ td {
 
 #amenitiestitle {
     color: #EBCDA8;
+    font-size: 25px;
 }
 
 #columns {
@@ -3056,6 +3059,7 @@ feetitle {
     width: 80%;
     height: 20%;
     text-align: center;
+    font-size: 17px;
 }
 
 #sdcontent {
@@ -3070,6 +3074,7 @@ feetitle {
 #sdd {
     padding: 2px;
     text-align: center;
+    font-size: 17px;
 }
 
 #corkagetablecontent {
@@ -3098,9 +3103,12 @@ feetitle {
 #corkagep {
     padding: 2px;
     padding-bottom: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
     width: 60%;
     height: 20%;
     text-align: center;
+    font-size: 17px;
 }
 
 #ocontent {
@@ -3115,6 +3123,7 @@ feetitle {
 #oc {
     padding: 2px;
     text-align: center;
+    font-size: 17px;
 }
 
 #amenitiestablecontent {
@@ -3146,6 +3155,7 @@ feetitle {
     width: 70%;
     height: 20%;
     text-align: center;
+    font-size: 16px;
 }
 
 #vector {
@@ -3356,6 +3366,7 @@ feetitle {
 
 #listmc {
     text-align: left;
+    font-size: 15px;
 }
 
 #checkincontent {
@@ -3392,6 +3403,38 @@ feetitle {
 
 #warningcontent {
     margin: 20px 20px 20px 20px;
+}
+
+#cititle {
+    font-size: 25px;
+}
+
+#cotitle {
+    font-size: 25px;
+}
+
+#ptitle {
+    font-size: 25px;
+}
+
+#mctitle {
+    font-size: 25px;
+}
+
+#cleanlinesstitle {
+    font-size: 25px;
+}
+
+#sctitle {
+    font-size: 25px;
+}
+
+#ntitle {
+    font-size: 25px;
+}
+
+#wtitle {
+    font-size: 25px;
 }
 
 /*--------------------------------------------------------------
@@ -3628,4 +3671,142 @@ feetitle {
     height: 50px;
     text-align: center;
     align-self: center;
+}
+
+/*--------------------------------------------------------------
+# Reset Password
+--------------------------------------------------------------*/
+#rpnexttext {
+    color: #EBCDA8;
+}
+
+#rpinputfields {
+    text-align: left;
+    padding: 30px;
+    padding-left: 200px;
+    padding-right: 200px;
+    display: flex;
+}
+
+#rpinputfields1 {
+    text-align: left;
+    padding: 10px;
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-bottom: 30px;
+    display: flex;
+}
+
+#rp {
+    align-self: center;
+    align-items: center;
+    text-align: center;
+}
+
+#rpform {
+    margin: 30px;
+    margin-left: 250px;
+    padding: 0px;
+    width: 70%;
+    height: 350px;
+    border-radius: 20px;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    background-color: #EBCDA8;
+}
+
+#rptitle {
+    color: #F0D9B7;
+    background-color: black;
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    display: flex;
+    align-self: center;
+    text-align: center;
+    width: 100%;
+}
+
+#rptitle1 {
+    align-self: center;
+    text-align: center;
+    display: flex;
+    width: 100%;
+}
+
+#rpformcontent {
+    display: block;
+}
+
+#rptext {
+    font-weight: bold;
+}
+
+#rpanswerinput {
+    width: 100%;
+    padding: 12px;
+    border: solid;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 10px;
+    border-width: 1px;
+    box-sizing: border-box;
+    background-color: #F5D8B3;
+    height: 40px;
+}
+
+#rpnextbutton {
+    width: 200px;
+    height: auto;
+    padding: 10px;
+    color: #F0D9B7;
+    border-radius: 20px;
+    background-color: black;
+}
+
+#fpabackbutton {
+    text-decoration: none;
+    color: #F0D9B7;
+}
+
+    #fpabackbutton:hover {
+        text-decoration: none;
+        color: #a89577;
+    }
+
+#rpheading {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#rpnext {
+    color: #EBCDA8;
+}
+
+    #rpnext:hover {
+        text-decoration: none;
+        color: #a89577;
+    }
+
+#sqlogoimg {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    align-self: center;
+}
+
+#lockglyph {
+    font-size:20px;
+    padding:10px;
+}
+
+#okglyph {
+    font-size: 20px;
+    padding: 10px;
 }
