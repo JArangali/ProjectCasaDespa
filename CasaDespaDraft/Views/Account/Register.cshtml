@@ -26,7 +26,7 @@
                     <table>
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                        <tr>
+                        <tr id="regtr">
                             <td id="regtd"><h4 id="firstname">FIRST NAME:    </h4></td>
                             <td id="regtdinput">
                                 <input asp-for="firstName" id="firstnameinput" placeholder="">
@@ -34,7 +34,7 @@
                             @Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger"})
                         </tr>
 
-                        <tr>
+                        <tr id="regtr">
                             <td id="regtd"><h4 id="lastname">LAST NAME:    </h4></td>
                             <td id="regtdinput">
                                 <input asp-for="lastName" id="lastnameinput" placeholder="">
@@ -42,7 +42,7 @@
                             @Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger"})
                         </tr>
 
-                        <tr>
+                        <tr id="regtr">
                             <td id="addresstd"><h4 id="address">ADDRESS:    </h4></td>
                             <td id="addresstddinput">
                                 <input asp-for="address" id="addressinput" placeholder="">
@@ -50,7 +50,7 @@
                             @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger"})
                         </tr>
 
-                        <tr>
+                        <tr id="regtr">
                             <td id="regtd"><h4 id="gender">GENDER:</h4></td>
                             <td id="regtdinput">
                                 <input type="radio" id="male" name="" value="">

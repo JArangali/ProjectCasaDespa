@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Edit FAQs Page";
+}
+
+<section id="FAQS_Edit">
+       <center> <div id="FAQSEdit_form">
+        <div id="FAQSEdit_title">
+                <h2 id="FAQSEdit_heading"> EDIT FREQUENTLY ASKED QUESTIONS </h2>
+            </div>
+        <div id="FAQSEdit_content">
+            <div id="FAQSEdit_Container_Add">
+                    <input type="button" onclick="@("window.location.href='" + @Url.Action("FAQsADD", "Home") + "'");" id="FAQSEdit_Add" value="+ ADD"></input>
+            </div>
+            <center>
+            <table id="FAQSEdit_Table">
+                <tr>
+                        <td id="FAQSEdit_Table_Title">FAQS</td>
+                        <td id="FAQSEdit_Table_Title">ANSWERS</td>
+                        <td id="FAQSEdit_Table_Title"> </td>
+                </tr>
+                <tr>
+                        <td id="FAQSEdit_Table_Text">What is the Capacity of the Resort for REGULAR ACCOMODATIONS?</td>
+                        <td id="FAQSEdit_Table_Text">Rates are good for 15 persons. But can accomodate a maximum of 20 Persions for an overnight / 22-hr stay *ADDITIONAL of ₱300/head in excess of 15pax.*</td>
+                        <td id="FAQSEdit_Table_Icon"><button>O</button><button>O</button></td>
+                </tr>
+                    <tr>
+                        <td id="FAQSEdit_Table_Text">What is the Capacity of the Resort for ACCOMODATIONS with PARTY/EVENTS?</td>
+                        <td id="FAQSEdit_Table_Text">
+                            *ADDITIONAL CHARGE OF ₱3,000*
+                            Maximum of 50 pax DURING THE EVENT ONLY.
+                            Party Hours: 2pm - 10pm
+                            STRICTLY AFTER 10PM, A MAXIMUM OF 20PAX CAN STAY IN THE VILLA
+                            ALL GATES SHALL BE CLOSED BY 10PM for security purposes
+                        </td>
+                        <td id="FAQSEdit_Table_Icon"><button>O</button><button>O</button></td>
+                    </tr>
+                </table>
+            </center>
+        </div>
+        </div>
+    </center>
+</section>
