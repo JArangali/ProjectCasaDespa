@@ -3390,3 +3390,38 @@ feetitle {
 #warningcontent {
     margin: 20px 20px 20px 20px;
 }
+
+/*--------------------------------------------------------------
+# Dashboard
+--------------------------------------------------------------*/
+
+#welcometextDashboard{
+    font-size: 90px;
+}
+
+#Dashboard_BG {
+    background-color: #BFA588;
+    height:auto;
+    width:inherit;
+}
+
+#Dashboard_container {
+    width: 95%;
+    height: 100px;
+    background-color: #F5D8B3;
+}
+
+#Dashboard_container_buttons {
+    width: 100%;
+    height: 15%;
+    display: flex;
+}
+
+#Dashboard_buttons {
+    padding-left: 60px;
+    border-radius: 40px;
+    width: 100px;
+    height: 50px;
+    background-color: black;
+    color: #F5D8B3;
+}
