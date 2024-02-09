@@ -59,6 +59,15 @@
                                 <label for=""><h6>FEMALE</h6></label>
                             </td>
                         </tr>
+
+                        <tr>
+                            <td id="regtd"><h4 id="profilepic">UPLOAD PICTURE:</h4></td>
+                            <td id="picturetddinput">
+                                <input type="file" id="file" aria-label="File browser example">
+                                <span class="file-custom"></span>
+                            </td>
+                        </tr>
+
                     </table>
                 </div>
 
@@ -97,9 +106,63 @@
             <div id="registerbuttonscontainer">
                 <button id="cancelbutton"> <a asp-area="" asp-controller="Account" asp-action="Login" class="getstarted"> CANCEL </a> </button>
                 <!-- Submit button -->
-                <button type="submit" id="registerbutton">REGISTER</button>
+                <button type="button" id="registerbutton">REGISTER</button>
             </div>
         </div>
-    </form>
 
+        
+        
+        <div id="myModal" class="modal">
+
+            
+            <div id="popup">
+               
+                <div id="popuptitle">
+                    <h2 id="policyheading"> PRIVACY POLICIES </h2>
+                </div>
+                <div id="policycontent">
+                    <h4 id="ppcontent">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h4>
+                </div>
+                <div>
+                    <button id="declinebutton"><span class="close" id=""> DECLINED </span></button>
+                    <button type="submit" id="acceptbutton"><span class="submit"> ACCEPT </span></button>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
 </section>
+
+
+
+    
+
+
+    <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("registerbutton");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    </script>

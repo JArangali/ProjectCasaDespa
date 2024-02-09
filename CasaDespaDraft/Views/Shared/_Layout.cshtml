@@ -22,6 +22,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- Vendor CSS Files -->
     <link href="~/vendor/animate.css/animate.min.css" rel="stylesheet">
     <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -41,7 +44,7 @@
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-center">
 
-        <div class="container d-flex align-items-center">
+        <div id="navbarlist" @* class="container d-flex" *@>
 
             @if (!User.IsInRole("Admin"))
             {
