@@ -2693,6 +2693,19 @@ FAQS_Edit{
     margin-bottom: 30px;
 }
 
+#FAQS_Edit_Button {
+    background-color: black;
+    color: #F5D8B3;
+    width: 195px;
+    height: 35px;
+    border: 1px solid;
+    border-color: #F5D8B3;
+    border-radius: 40px;
+    padding-top: 10px;
+    padding-bottom: 32px;
+    margin-left: 30px;
+}
+
 /*--------------------------------------------------------------
 # FAQS EDIT
 --------------------------------------------------------------*/
@@ -2709,7 +2722,7 @@ FAQS_Edit{
     margin-left: 80px;
     padding: 0px;
     width: 70%;
-    height: 550px;
+    height: auto;
     border-radius: 20px;
     align-self: center;
     align-content: center;
@@ -2723,8 +2736,8 @@ FAQS_Edit{
 
 #FAQSEdit_Container_Add {
     width: inherit;
-    height: 70px;
-    margin: 50px 0 20px 0;
+    height: 54px;
+    margin: 23px 24px 20px 0;
 }
 
 #FAQSEdit_Add {
@@ -2770,7 +2783,139 @@ FAQS_Edit{
     width:162px;
 }
 
+#FAQSEdit_Icon {
+    border-radius: 30px;
+    background-color: black;
+    color: #F5D8B3;
+    font-size: 24px;
+    width:46px;
+    padding:3px;
+}
 
+#FAQSEdit_Container_Title {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: space-evenly;
+    width: 100%;
+}
+
+#FAQSEdit_Save {
+    background-color: black;
+    color: #F5D8B3;
+    width: 195px;
+    height: 35px;
+    border: 1px solid;
+    border-color: #F5D8B3;
+    border-radius: 40px;
+    padding-top: 10px;
+    padding-bottom: 32px;
+    margin-left: 30px;
+}
+
+#FAQSEdit_Cancel {
+    background-color: #F5D8B3;
+    color: black;
+    width: 195px;
+    height: 35px;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 40px;
+    padding-top: 10px;
+    padding-bottom: 32px;
+}
+
+/*--------------------------------------------------------------
+# FAQS ADD
+--------------------------------------------------------------*/
+#FAQS_ADD {
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#FAQSADD_form {
+    margin: 30px;
+    margin-top: 90px;
+    margin-left: 80px;
+    padding: 0px;
+    width: 70%;
+    height: auto;
+    border-radius: 20px;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    background-color: #EBCDA8;
+}
+
+#FAQSADD_title {
+    color: #F0D9B7;
+    background-color: black;
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+#FAQSADD_Container_Input {
+    width: 600px;
+    margin-top:40px;
+}
+
+#FAQSADD_Text_Input {
+    font-weight: bold;
+    text-align: left;
+    font-size: 20px;
+}
+
+#FAQSADD_Input {
+    width: 100%;
+    padding: 12px;
+    border: solid;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 10px;
+    border-width: 1px;
+    box-sizing: border-box;
+    background-color: #F5D8B3;
+    height: 70px;
+}
+
+#FAQSADD_Container_Title {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: space-evenly;
+    width: 100%;
+}
+
+#FAQSADD_Save {
+    background-color: black;
+    color: #F5D8B3;
+    width: 195px;
+    height: 35px;
+    border: 1px solid;
+    border-color: #F5D8B3;
+    border-radius: 40px;
+    padding-top: 10px;
+    padding-bottom: 32px;
+    margin-left: 30px;
+}
+
+#FAQSADD_Cancel {
+    background-color: #F5D8B3;
+    color: black;
+    width: 195px;
+    height: 35px;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 40px;
+    padding-top: 10px;
+    padding-bottom: 32px;
+}
 
 /*--------------------------------------------------------------
 # Forgot Password
