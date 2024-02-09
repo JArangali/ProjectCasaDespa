@@ -9,7 +9,7 @@
             </div>
         <div id="FAQSEdit_content">
             <div id="FAQSEdit_Container_Add">
-                    <input type="button" onclick="@("window.location.href='" + @Url.Action("FAQsADD", "Home") + "'");" id="FAQSEdit_Add" value="+ ADD">
+                    <input type="button" onclick="@("window.location.href='" + @Url.Action("FAQsADD_Page", "Home") + "'");" id="FAQSEdit_Add" value="+ ADD">
             </div>
             <center>
             <table id="FAQSEdit_Table">
@@ -22,13 +22,15 @@
                         <td id="FAQSEdit_Table_Text">What is the Capacity of the Resort for REGULAR ACCOMODATIONS?</td>
                         <td id="FAQSEdit_Table_Text">Rates are good for 15 persons. But can accomodate a maximum of 20 Persions for an overnight / 22-hr stay *ADDITIONAL of ₱300/head in excess of 15pax.*</td>
                         <td id="FAQSEdit_Table_Icon">
-                            <button  id="FAQSEdit_Icon">
+
+                            <a href="@Url.Action("FAQsEDIT_Page", "Home")" id="FAQSEdit_Icon">
                                 <i class="fa fa-pencil"></i>
-                            </button>
-                            <button  id="FAQSEdit_Icon">
+                            </a>
+                            <a href="@Url.Action("FAQsEDIT_Page", "Home")" id="FAQSEdit_Icon">
                                 <i class="fa fa-trash-o"></i>
-                            </button>
-                    </td>
+                            </a>
+
+                        </td>
                 </tr>
                 <tr>
                     <td id="FAQSEdit_Table_Text">What is the Capacity of the Resort for ACCOMODATIONS with PARTY/EVENTS?</td>
@@ -40,16 +42,18 @@
                         ALL GATES SHALL BE CLOSED BY 10PM for security purposes
                     </td>
                     <td id="FAQSEdit_Table_Icon">
-                        <input type="button" id="FAQSEdit_Icon" class="fa fa-pencil">
-                        <button id="FAQSEdit_Icon">
+                        <a href="@Url.Action("FAQsEDIT_Page", "Home")" id="FAQSEdit_Icon">
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                        <a href="@Url.Action("FAQsEDIT_Page", "Home")" id="FAQSEdit_Icon">
                             <i class="fa fa-trash-o"></i>
-                        </button>
+                        </a>
                     </td>
                 </tr>
                 </table>
                 <div id="FAQSEdit_Container_Title">
                     <center>
-                        <input type="button" id="FAQSEdit_Cancel" value="CANCEL" />
+                        <input type="button" onclick="@("window.location.href='" + @Url.Action("FAQs", "Home") + "'");" id="FAQSEdit_Cancel" value="CANCEL" />
                         <input type="button" id="FAQSEdit_Save" value="SAVE CHANGES" />
                     </center>
                 </div>

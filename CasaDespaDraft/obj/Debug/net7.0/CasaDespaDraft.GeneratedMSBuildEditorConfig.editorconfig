@@ -40,16 +40,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9GQVFzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/FAQsADD.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9GQVFzQURELmNzaHRtbA==
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/FAQsADD_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9GQVFzQUREX1BhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/FAQsEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9GQVFzRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/FAQsEDIT_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9GQVFzRURJVF9QYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/Gallery.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9HYWxsZXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/GalleryEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9HYWxsZXJ5RWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/Index.cshtml]

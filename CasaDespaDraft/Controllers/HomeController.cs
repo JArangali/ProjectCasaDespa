@@ -23,6 +23,11 @@ namespace CasaDespaDraft.Controllers
             return View();
         }
 
+        public IActionResult GalleryEdit()
+        {
+            return View();
+        }
+
         public IActionResult FAQs()
         {
             return View();
@@ -33,7 +38,12 @@ namespace CasaDespaDraft.Controllers
             return View();
         }
 
-        public IActionResult FAQsADD()
+        public IActionResult FAQsADD_Page()
+        {
+            return View();
+        }
+
+        public IActionResult FAQsEDIT_Page()
         {
             return View();
         }

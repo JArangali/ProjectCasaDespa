@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Edit Gallery Page";
+}
+
+<section id="GalleryEdit">
+    <center>
+        <div id="GalleryEdit_form">
+            <div id="GalleryEdit_title">
+                <h2 id="GalleryEdit_heading"> EDIT GALLERY PAGE </h2>
+            </div>
+            <div id="GalleryEdit_content">
+                <div id="GalleryEdit_Container_Content">
+                    <a href="@Url.Action("FAQsEDIT_Page", "Home")" id="GalleryAdd_Icon">
+                        <i class="fa-solid fa-folder-plus"></i>
+                    </a>
+
+                    <table id="GalleryEdit_Table">
+
+                        <tr id="GalleryEdit_tr">
+                            <td><p>IMG1.JPEG</p></td>
+                            <td id="GalleryEdit_td">
+                                <a href="@Url.Action("FAQsEDIT_Page", "Home")" id="GalleryEdit_Icon">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr id="GalleryEdit_tr">
+                            <td><p>IMG2.JPEG</p></td>
+                            <td id="GalleryEdit_td">
+                                <a href="@Url.Action("FAQsEDIT_Page", "Home")" id="GalleryEdit_Icon">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr id="GalleryEdit_tr">
+                            <td><p>IMG3.JPEG</p></td>
+                            <td id="GalleryEdit_td">
+                                <a href="@Url.Action("FAQsEDIT_Page", "Home")" id="GalleryEdit_Icon">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr id="GalleryEdit_tr">
+                            <td><p>IMG4.JPEG</p></td>
+                            <td id="GalleryEdit_td">
+                                <a href="@Url.Action("FAQsEDIT_Page", "Home")" id="GalleryEdit_Icon">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="GalleryEdit_Container_Title">
+                    <center>
+                        <input type="button" onclick="@("window.location.href='" + @Url.Action("Gallery", "Home") + "'");" id="GalleryEdit_Cancel" value="CANCEL" />
+                        <input type="button" id="GalleryEdit_Save" value="SAVE CHANGES" />
+                    </center>
+                </div>
+            </div>
+            </div>
+                </center>
+</section>

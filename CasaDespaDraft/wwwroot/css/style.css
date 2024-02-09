@@ -2784,12 +2784,11 @@ FAQS_Edit{
 }
 
 #FAQSEdit_Icon {
-    border-radius: 30px;
+    border-radius: 40px;
     background-color: black;
     color: #F5D8B3;
-    font-size: 24px;
-    width:46px;
-    padding:3px;
+    font-size: 20px;
+    padding: 5px 10px;
 }
 
 #FAQSEdit_Container_Title {
@@ -2916,6 +2915,142 @@ FAQS_Edit{
     padding-top: 10px;
     padding-bottom: 32px;
 }
+
+
+/*--------------------------------------------------------------
+# GALLERY EDIT
+--------------------------------------------------------------*/
+#GalleryEdit {
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#GalleryEdit_form {
+    margin: 30px;
+    margin-top: 90px;
+    margin-left: 80px;
+    padding: 0px;
+    width: 70%;
+    height: auto;
+    border-radius: 20px;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    background-color: #EBCDA8;
+}
+
+#GalleryEdit_title {
+    color: #F0D9B7;
+    background-color: black;
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+#GalleryEdit_Container_Input {
+    width: 600px;
+    margin-top: 40px;
+}
+
+#GalleryEdit_Container_Content {
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-evenly;
+}
+
+#GalleryAdd_Icon {
+    width: 150px;
+    height: 150px;
+    font-size:60px;
+    background-color: #F5D8B3;
+    color: black;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 10px;
+}
+
+#GalleryEdit_Table {
+    width: 750px;
+    height: 120px;
+}
+
+#GalleryEdit_tr{
+    border:2px solid;
+    border-color: black;
+    text-align:left;
+}
+
+#GalleryEdit_td{
+    width: 50px;
+    height: 20px;
+}
+
+#GalleryEdit_Icon {
+    border-radius: 40px;
+    background-color: black;
+    color: #F5D8B3;
+    font-size: 20px;
+    padding: 5px 10px;
+}
+
+#GalleryEdit_Text_Input {
+    font-weight: bold;
+    text-align: left;
+    font-size: 20px;
+}
+
+#GalleryEdit_Input {
+    width: 100%;
+    padding: 12px;
+    border: solid;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 10px;
+    border-width: 1px;
+    box-sizing: border-box;
+    background-color: #F5D8B3;
+    height: 70px;
+}
+
+#GalleryEdit_Container_Title {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: space-evenly;
+    width: 100%;
+}
+
+#GalleryEdit_Save {
+    background-color: black;
+    color: #F5D8B3;
+    width: 195px;
+    height: 35px;
+    border: 1px solid;
+    border-color: #F5D8B3;
+    border-radius: 40px;
+    padding-top: 10px;
+    padding-bottom: 32px;
+    margin-left: 30px;
+}
+
+#GalleryEdit_Cancel {
+    background-color: #F5D8B3;
+    color: black;
+    width: 195px;
+    height: 35px;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 40px;
+    padding-top: 10px;
+    padding-bottom: 32px;
+}
+
 
 /*--------------------------------------------------------------
 # Forgot Password

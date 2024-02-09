@@ -22,7 +22,7 @@
                 </center>
                 <div id="FAQSADD_Container_Title">
                     <center>
-                        <input type="button" id="FAQSADD_Cancel" value="CANCEL" />
+                        <input type="button" onclick="@("window.location.href='" + @Url.Action("FAQsEdit", "Home") + "'");" id="FAQSADD_Cancel" value="CANCEL" />
                         <input type="button" id="FAQSADD_Save" value="SAVE CHANGES" />
                     </center>
                 </div>
