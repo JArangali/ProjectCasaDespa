@@ -3961,3 +3961,16 @@ feetitle {
     font-size: 20px;
     padding: 10px;
 }
+
+/*--------------------------------------------------------------
+# Edit HomePage
+--------------------------------------------------------------*/
+#edithomebutton {
+    width: 200px;
+    height: auto;
+    padding: 10px;
+    color: #F0D9B7;
+    border-radius: 20px;
+    background-color: black;
+    margin-top:30px;
+}

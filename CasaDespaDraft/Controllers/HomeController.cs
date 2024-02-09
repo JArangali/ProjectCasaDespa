@@ -18,6 +18,10 @@ namespace CasaDespaDraft.Controllers
             return View();
         }
 
+        public IActionResult EditHome() { 
+            return View();
+        }
+
         public IActionResult Gallery()
         {
             return View();
