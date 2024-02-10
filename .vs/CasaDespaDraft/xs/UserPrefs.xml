@@ -1,0 +1,50 @@
+﻿<Properties StartupConfiguration="{19C71963-2CCD-4780-8252-748C0848264C}|Default">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.CasaDespaDraft PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CasaDespaDraft/appsettings.json">
+    <Files>
+      <File FileName="CasaDespaDraft/Views/Home/GalleryEdit.cshtml" Line="12" Column="57" />
+      <File FileName="CasaDespaDraft/wwwroot/css/style.css" Line="3058" Column="1" />
+      <File FileName="CasaDespaDraft/Views/Home/Gallery.cshtml" Line="35" Column="1" />
+      <File FileName="CasaDespaDraft/Views/Home/FAQsEdit.cshtml" Line="29" Column="1" />
+      <File FileName="CasaDespaDraft/Views/Shared/_Layout.cshtml" Line="17" Column="94" />
+      <File FileName="CasaDespaDraft/Views/Home/FAQsEDIT_Page.cshtml" Line="25" Column="105" />
+      <File FileName="CasaDespaDraft/Program.cs" Line="38" Column="1" />
+      <File FileName="CasaDespaDraft/appsettings.json" Line="14" Column="1" />
+      <File FileName="CasaDespaDraft/appsettings.Development.json" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CasaDespaDraft" expanded="True">
+            <Node name="CasaDespaDraft" expanded="True" selected="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" />
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="Data" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Account" expanded="True" />
+                <Node name="Home" expanded="True" />
+                <Node name="Shared" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+              </Node>
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>
