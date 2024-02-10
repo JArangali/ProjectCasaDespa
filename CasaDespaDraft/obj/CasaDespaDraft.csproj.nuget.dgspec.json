@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lourd\\Documents\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj": {}
+    "C:\\Users\\Goldie UST\\Documents\\GitHub\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lourd\\Documents\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj": {
+    "C:\\Users\\Goldie UST\\Documents\\GitHub\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lourd\\Documents\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj",
+        "projectUniqueName": "C:\\Users\\Goldie UST\\Documents\\GitHub\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj",
         "projectName": "CasaDespaDraft",
-        "projectPath": "C:\\Users\\lourd\\Documents\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj",
-        "packagesPath": "C:\\Users\\lourd\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lourd\\Documents\\ProjectCasaDespa\\CasaDespaDraft\\obj\\",
+        "projectPath": "C:\\Users\\Goldie UST\\Documents\\GitHub\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj",
+        "packagesPath": "C:\\Users\\Goldie UST\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Goldie UST\\Documents\\GitHub\\ProjectCasaDespa\\CasaDespaDraft\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lourd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Goldie UST\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

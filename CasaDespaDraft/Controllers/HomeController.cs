@@ -28,6 +28,29 @@ namespace CasaDespaDraft.Controllers
             return View();
         }
 
+        public IActionResult Profile()
+        {
+
+            return View();
+        }
+
+        public IActionResult ProfileP()
+        {
+            return View();
+        }
+
+        public IActionResult Receipt()
+        {
+            return View();
+        }
+
+        public IActionResult Booking()
+        {
+            return View();
+        }
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -1,0 +1,293 @@
+﻿@{
+    ViewData["Title"] = "Booking Page";
+}
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.js"></script>
+
+<style>
+    #booking {
+        min-height: 50vh !important;
+        display: flex !important;
+        flex-wrap: wrap;
+        background-color: #c4a585;
+        justify-content: space-around;
+        padding: 15px;
+    }
+
+    .bookcontainer {
+        background-color: #f1d9b6;
+        min-height: 50vh !important;
+        margin: .5rem;
+        width: 48% !important;
+        min-width: 350px;
+        padding: 20px;
+    }
+
+
+    #bookform form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+        #bookform form div {
+            display: flex;
+            justify-content: space-around;
+            padding: 25px;
+        }
+
+    #booking h1 {
+        background-color: black;
+        color: #f1d9b6;
+        text-align: center;
+        padding: 1rem;
+        margin: 1rem;
+        border-radius: 25px;
+    }
+
+    #booking input {
+        background-color: transparent;
+        border-radius: 25px;
+        padding: 5px;
+        width: 70%;
+        border: 1px solid black;
+        font-size: 25px;
+        min-height: 38px;
+    }
+
+        #booking input[type="submit"] {
+            background-color: black;
+            color: #f1d9b6;
+            text-transform: uppercase;
+            font-weight: 900;
+            width: 300px;
+            padding: 10px;
+        }
+
+    #booking .packagecontainer {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        justify-content: space-around;
+        padding: 0px;
+        border: 1px solid black;
+        border-radius: 12%;
+    }
+
+        #booking .packagecontainer input {
+            width: 99%;
+            margin: auto;
+            text-align: center;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            border-radius: unset;
+        }
+
+            #booking .packagecontainer input:focus {
+                border: none;
+            }
+
+            #booking .packagecontainer input:last-child {
+                border-bottom: none;
+                border-bottom-left-radius: 30px;
+                border-bottom-right-radius: 30px;
+                padding: 4px;
+                margin-bottom: 2px;
+            }
+
+    #booking input[type="submit"]:hover {
+        color: dimgray;
+    }
+
+
+    #booking #bookform form div label {
+        width: 30%;
+        font-size: 24px;
+        text-transform: uppercase;
+        font-weight: 900;
+        color: black;
+    }
+
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        background-color: #f1d9b6;
+        height: auto;
+    }
+
+    #calendar {
+        min-width: 350px;
+        text-align: center;
+    }
+
+        #calendar * {
+            border: none;
+            margin: auto;
+        }
+
+    .fc-day, .fc-day-number {
+        border-color: transparent !important;
+    }
+
+    .fc-left {
+        background-color: transparent;
+        color: #fff;
+    }
+
+    .fc-right {
+        background-color: transparent;
+        color: #fff;
+    }
+
+    #legendcontainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #legends {
+        margin: auto;
+        text-align: justify;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+        #legends h2::before {
+            content: "";
+            display: inline-block;
+            width: 50px; /* Adjust the size of the circle */
+            height: 50px; /* Adjust the size of the circle */
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        #legends h2:nth-child(1)::before {
+            background-color: #243719; /* Change the color for the first h2 */
+        }
+
+        #legends h2:nth-child(2)::before {
+            background-color: #6b2c0e; /* Change the color for the second h2 */
+        }
+
+        #legends h2:nth-child(3)::before {
+            background-color: #c3ab7d; /* Change the color for the third h2 */
+        }
+
+</style>
+
+<!-- Welcome Section -->
+<section id="welcome">
+    <div id="welcomecontainer">
+        <div id="welcomediv1">
+            <h1 id="welcometext">BOOK YOUR STAY WITH US!</h1>
+            <h3 id="welcomesubtext">CLICK THE AVAILABLE DATES!</h3>
+        </div>
+        <div id="welcomediv2">
+            <img id="blkbiglogo" src="~/img/logo/blklogo.png" alt="casadespa">
+        </div>
+    </div>
+</section>
+
+<!-- End Welcome Section -->
+<!--Booking Section-->
+
+<section id="booking">
+    <div id="bookform" class="bookcontainer">
+        <h1>BOOK NOW!</h1>
+
+        <form action="#" method="post">
+            <div>
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required><br>
+            </div>
+
+            <div>
+                <label for="contactNumber">Contact Number:</label>
+                <input type="tel" id="contactNumber" name="contactNumber" required><br>
+            </div>
+
+            <div>
+                <label for="messengerLink">Messenger Link:</label>
+                <input type="text" id="messengerLink" name="messengerLink" required><br>
+            </div>
+
+            <div>
+                <label for="package" style="margin-top:auto;margin-bottom:auto;">Package:</label>
+                <div class="packagecontainer">
+                    <input type="text" value="Select One:" disabled>
+                    <input type="text" value="Day Tour" readonly>
+                    <input type="text" value="Night Tour" readonly>
+                    <input type="text" value="22 hours" readonly>
+                </div>
+
+
+            </div>
+            <br>
+
+            <div>
+                <label for="numberOfPax">Number of PAX:</label>
+                <input type="number" id="numberOfPax" name="numberOfPax" required><br>
+            </div>
+
+            <div>
+                <input type="submit" value="Book">
+
+            </div>
+        </form>
+    </div>
+
+    <div class="bookcontainer">
+        <h1>AVAILABLE DATES</h1>
+
+        <div id="calendar">
+        </div>
+        <div id="legendcontainer">
+            <div id="legends">
+                <h2>22 HOURS BOOKED</h2>
+                <h2>DAY TOUR BOOKED</h2>
+
+                <h2>NIGHT TOUR BOOKED</h2>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Your FullCalendar initialization script -->
+<script>
+    $(document).ready(function () {
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev',
+                center: 'title',
+                right: 'next'
+            },
+            dayNamesShort: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'], // Use short abbreviations for days
+            eventAfterAllRender: function (view) {
+                // Apply styles after the calendar has rendered
+                $('.fc-day-header').css('font-size', '24px'); // Set your desired font size
+                $('.fc-day').css('font-size', '24px'); // Set your desired font size for the date cells
+                $('.fc-day-number').css({
+                    'font-size': '24px', // Set your desired font size for the day number
+                    'text-align': 'center', // Center the day number
+                    'float': 'none',
+                    // Set float to 'none' to make it not float
+                });
+                //$('.fc-day-top, .fc-day-content, .fc-day-bg, .fc-event, .fc-highlight').css('display', 'none'); // Hide other elements
+                $('.fc-today').css({
+                    'background-color': 'transparent',
+                    'border': 'none',
+                    'color': 'inherit'
+                }); // Remove today styles
+
+
+            },
+            // Your other calendar options and events will go here
+        });
+    });
+
+</script>
+
