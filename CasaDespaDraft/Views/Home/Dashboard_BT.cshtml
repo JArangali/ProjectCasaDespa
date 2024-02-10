@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<!-- Welcome Section -->
+<section id="welcome">
+    <div id="welcomecontainer">
+        <div id="welcomediv1">
+            <h1 id="welcometextDashboard">DASHBOARD</h1>
+        </div>
+        <div id="welcomediv2">
+            <img id="blkbiglogo" src="~/img/logo/blklogo.png" alt="casadespa">
+        </div>
+    </div>
+</section>
+<!-- End Welcome Section -->
+<!-- Dashboard Section-->
+<section id="Dashboard_BG">
+    <div class="main-container">
+        <div class="right-container">
+            <div class="button-container">
+                <a class="nav-button" asp-area="" asp-controller="Home" asp-action="Dashboard_BR">BOOKING REQUESTS</a>
+                <a style="background-color: #C5A485; color: black;" class="nav-button" asp-area="" asp-controller="Home" asp-action="Dashboard_BT">BOOKING TRANSACTIONS</a>
+                <a class="nav-button" asp-area="" asp-controller="Home" asp-action="Dashboard_AR">ACCEPTED REQUESTS</a>
+                <a class="nav-button" asp-area="" asp-controller="Home" asp-action="Dashboard_AB">ARCHIVED BOOKINGS</a>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <td><div class="table-container2">FULL NAME:</div></td>
+                            <th><div class="table-container2">CONTACT NUMBER:</br></div></th>
+                            <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
+                            <th><div class="table-container2">DATE</div></th>
+                            <th><div class="table-container2">PACKAGE</div></th>
+                            <th><div class="table-container2">PAYMENT</div></th>
+                            <th><div class="table-container2">REQUEST PAYMENT</div></th>
+                            <th><div class="table-container2">CONFIRM</div></th>
+                            <th><div class="table-container2">CANCEL</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><div class="table-container1">JOHN DOE REFFER</div></td>
+                            <td>09652439187</td>
+                            <td>8</td>
+                            <td>12/23/23</td>
+                            <td>22 HOURS</td>
+                            <td><a class="nav-button">CHECK</a></td>
+                            <td><a class="nav-button">REQUEST</a></td>
+                            <td><a class="nav-button">/</a></td>
+                            <td><a class="nav-button">X</a></td>
+                        </tr>
+                        <tr>
+                            <td><div class="table-container1">JOHN DOE REFFER</div></td>
+                            <td>09163826374</td>
+                            <td>2</td>
+                            <td>12/23/23</td>
+                            <td>DAY</td>
+                            <td><a class="nav-button">CHECK</a></td>
+                            <td><a class="nav-button">REQUEST</a></td>
+                            <td><a class="nav-button">/</a></td>
+                            <td><a class="nav-button">X</a></td>
+                        </tr>
+                        <tr>
+                            <td><div class="table-container1">HAROLD LIBRA</div></td>
+                            <td>09148574639</td>
+                            <td>6</td>
+                            <td>12/01/23</td>
+                            <td>NIGHT</td>
+                            <td><a class="nav-button">CHECK</a></td>
+                            <td><a class="nav-button">REQUEST</a></td>
+                            <td><a class="nav-button">/</a></td>
+                            <td><a class="nav-button">X</a></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
