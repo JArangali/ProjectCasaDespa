@@ -7,6 +7,9 @@
         <div id="welcomediv1">
             <h1 id="welcometext">FREQUENTLY ASKED QUESTIONS</h1>
             <h3 id="welcomesubtext">FIND SOME OF YOUR QUESTION</h3>
+            <center>
+                <a asp-area="" asp-controller="Home" asp-action="FAQsEdit"><div id="FAQS_Edit_Button"><p>EDIT</p></div></a>
+            </center>
         </div>
         <div id="welcomediv2">
             <img id="blkbiglogo" src="~/img/logo/blklogo.png" alt="casadespa">
@@ -61,8 +64,10 @@
 
         <button class="accordion"><h2>What is the purpose of the Security Deposit?</h2></button>
         <div class="panel">
-            <h3>₱1,000 - A security deposit is required upon arrival for incidentals. This desposit <br />
-            is fully refundable upon check-out and subbject to a damage inspection of the resort.</h3>
+            <h3>
+                ₱1,000 - A security deposit is required upon arrival for incidentals. This desposit <br />
+                is fully refundable upon check-out and subbject to a damage inspection of the resort.
+            </h3>
         </div>
 
     </section>
@@ -70,17 +75,17 @@
 
 <script>
     var acc = document.getElementsByClassName("accordion");
-var i;
+    var i;
 
-for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
-        this.classList.toggle("active_faqs");
-        var panel = this.nextElementSibling;
-        if (panel.style.maxHeight) {
-            panel.style.maxHeight = null;
-        } else {
-            panel.style.maxHeight = panel.scrollHeight + "px";
-        }
-    });
-}
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active_faqs");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
 </script>

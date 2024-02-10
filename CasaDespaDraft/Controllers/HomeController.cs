@@ -27,7 +27,32 @@ namespace CasaDespaDraft.Controllers
             return View();
         }
 
+        public IActionResult GalleryEdit()
+        {
+            return View();
+        }
+
         public IActionResult FAQs()
+        {
+            return View();
+        }
+
+        public IActionResult FAQsEdit()
+        {
+            return View();
+        }
+
+        public IActionResult FAQsADD_Page()
+        {
+            return View();
+        }
+
+        public IActionResult FAQsEDIT_Page()
+        {
+            return View();
+        }
+
+        public IActionResult Dashboard()
         {
             return View();
         }
