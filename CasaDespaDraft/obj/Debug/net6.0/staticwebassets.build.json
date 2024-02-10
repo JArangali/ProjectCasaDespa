@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RDinvIFnpuOdprro5h2au3+H2KX+pIpFBbUfrz6R8dg=",
+  "Hash": "ZpY9ltpfwtMhK09Pr/t42OVtrbYoS7/TQuJQBu9li7E=",
   "Source": "CasaDespaDraft",
   "BasePath": "_content/CasaDespaDraft",
   "Mode": "Default",
@@ -1868,6 +1868,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\park.png"
+    },
+    {
+      "Identity": "C:\\Users\\linde\\Documents\\School\\3rd year\\2nd Sem\\ProjectCasaDespa\\GITHUB\\ProjectCasaDespa\\CasaDespaDraft\\wwwroot\\img\\pic.png",
+      "SourceId": "CasaDespaDraft",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\linde\\Documents\\School\\3rd year\\2nd Sem\\ProjectCasaDespa\\GITHUB\\ProjectCasaDespa\\CasaDespaDraft\\wwwroot\\",
+      "BasePath": "_content/CasaDespaDraft",
+      "RelativePath": "img/pic.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\pic.png"
     },
     {
       "Identity": "C:\\Users\\linde\\Documents\\School\\3rd year\\2nd Sem\\ProjectCasaDespa\\GITHUB\\ProjectCasaDespa\\CasaDespaDraft\\wwwroot\\img\\pool.png",
