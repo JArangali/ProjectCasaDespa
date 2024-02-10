@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Add FAQs Page";
+}
+
+<section id="FAQS_ADD">
+    <center>
+        <div id="FAQSADD_form">
+            <div id="FAQSADD_title">
+                <h2 id="FAQSADD_heading"> ADD FREQUENTLY ASKED QUESTIONS </h2>
+            </div>
+            <div id="FAQSADD_content">
+                <center>
+                    <div id="FAQSADD_Container_Input">
+                        <h4 id="FAQSADD_Text_Input">FAQ    </h4>
+                        <input id="FAQSADD_Input" placeholder="ADD YOUR FAQs HERE!">
+                    </div>
+
+                    <div id="FAQSADD_Container_Input">
+                        <h4 id="FAQSADD_Text_Input">ANSWER    </h4>
+                        <input id="FAQSADD_Input" placeholder="ADD YOUR ANSWER HERE!">
+                    </div>
+                </center>
+                <div id="FAQSADD_Container_Title">
+                    <center>
+                        <input type="button" onclick="@("window.location.href='" + @Url.Action("FAQsEdit", "Home") + "'");" id="FAQSADD_Cancel" value="CANCEL" />
+                        <input type="button" id="FAQSADD_Save" value="SAVE CHANGES" />
+                    </center>
+                </div>
+            </div>
+        </div>
+    </center>
+</section>
