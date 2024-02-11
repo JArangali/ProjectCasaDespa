@@ -1,37 +1,23 @@
 ﻿@{
-    ViewData["Title"] = "Edit Home";
+    ViewData["Title"] = "Edit | Home Page";
 }
 
-<!-- Welcome Section -->
-<section id="welcome">
-    <div id="welcomecontainer">
-        <div id="welcomediv1">
-            <h1 id="welcometext">WELCOME TO CASA DESPA</h1>
-            <h3 id="welcomesubtext">A PLACE FOR YOU AND YOUR FAMILY TO <br /> REST AND RELAX</h3>
-            <button type="button" id="edithomebutton">EDIT</button>
-        </div>
-        <div id="welcomediv2">
-            <img id="blkbiglogo" src="~/img/logo/blklogo.png" alt="casadespa">
-        </div>
-    </div>
-</section>
-<!-- End Welcome Section -->
-<!-- Button Menu Section -->
-<section id="menu">
-    <div id="buttonmenucontainer">
-        <div id="btndiv">
-            <button id="remindersbtn" type="button" href="#importantreminders"><a href="#importantreminders" id="aimportantreminders"> IMPORTANT REMINDERS </a></button>
-            <button id="ratesbtn" type="button" href="#rates"><a href="#rates" id="arates">RATES</a></button>
-            <button id="otherbtn" type="button" href="#amenities"><a href="#amenities" id="aamenities">AMENITIES AND OTHER RULES</a></button>
-        </div>
-    </div>
-</section>
+<section id="welcome1"></section>
 
 <!-- Rates Section -->
 <section id="rates">
+    <div id="fsbuttondiv">
+        <table id="ratestable">
+                <tr>
+                    <td id="backtd"></td>
+                    <td id="savetd"><button id="saveindexbutton"><a id="" asp-area="saveindexbuttona" asp-controller="Home" asp-action="Index" class="getstarted"> SAVE </a></button></td>
+                </tr>
+
+        </table>
+    </div>
     <div id="ratesdiv">
         <div id="ratestitle">
-            <h2>RATES</h2>
+            <h2>EDIT RATES</h2>
         </div>
         <div id="divratestable">
             <table id="ratestable">
@@ -46,8 +32,8 @@
                         <h6>CHECK-IN: 2:00 PM</h6>
                         <h6>CHECK-OUT: 12:00 NN</h6>
                     </td>
-                    <td><h2>₱ 12,500</h2></td>
-                    <td><h2>₱ 15,000</h2></td>
+                    <td><h2><input id="wdratesuserinput1" placeholder="" /></h2></td>
+                    <td><h2><input id="weratesuserinput1" placeholder="" /></h2></td>
                 </tr>
                 <tr>
                     <td>
@@ -55,8 +41,8 @@
                         <h6>CHECK-IN: 8:00 AM</h6>
                         <h6>CHECK-OUT: 4:00 PM</h6>
                     </td>
-                    <td><h2>₱ 6,500</h2></td>
-                    <td><h2>₱ 7,000</h2></td>
+                    <td><h2><input id="wdratesuserinput2" placeholder="" /></h2></td>
+                    <td><h2><input id="weratesuserinput2" placeholder="" /></h2></td>
                 </tr>
                 <tr>
                     <td>
@@ -64,8 +50,8 @@
                         <h6>CHECK-IN: 6:00 PM</h6>
                         <h6>CHECK-OUT: 6:00 AM</h6>
                     </td>
-                    <td><h2>₱ 8,500</h2></td>
-                    <td><h2>₱ 9,000</h2></td>
+                    <td><h2><input id="wdratesuserinput3" placeholder="" /></h2></td>
+                    <td><h2><input id="weratesuserinput3" placeholder="" /></h2></td>
                 </tr>
             </table>
         </div>
@@ -82,7 +68,7 @@
 <section id="amenities">
     <div id="amenitiesdiv">
         <div id="amenitiestitle">
-            <h2>AMENITIES & OTHER RULES</h2>
+            <h2>EDIT AMENITIES FEES</h2>
         </div>
         <div id="amenitiescontent">
             <div id="columns">
@@ -94,23 +80,23 @@
                         <div id="aftablecontent">
                             <table id="aftable">
                                 <tr id="aftr">
-                                    <th id="afprice"> <h3 id="h3af">₱ 300</h3>  </th>
+                                    <th id="afprice"> <h3 id="h3af"><input id="amenitiesinput1" placeholder="" /></h3>  </th>
                                     <td id="af"> Additional Head in Excess of 15 pax </td>
                                 </tr>
                                 <tr id="aftr">
-                                    <th id="afprice"> <h3 id="h3af">₱ 300</h3> </th>
+                                    <th id="afprice"> <h3 id="h3af"><input id="amenitiesinput2" placeholder="" /></h3> </th>
                                     <td id="af"> Additional For Each Pet </td>
                                 </tr>
                                 <tr id="aftr">
-                                    <th id="afprice"><h3 id="h3af">₱ 400</h3></th>
+                                    <th id="afprice"><h3 id="h3af"><input id="amenitiesinput3" placeholder="" /></h3></th>
                                     <td id="af"> Extra Mattress (Single w/ Pillow) </td>
                                 </tr>
                                 <tr id="aftr">
-                                    <th id="afprice"><h3 id="h3af">₱ 100</h3></th>
+                                    <th id="afprice"><h3 id="h3af"><input id="amenitiesinput4" placeholder="" /></h3></th>
                                     <td id="af"> Extra Blanket </td>
                                 </tr>
                                 <tr id="aftr">
-                                    <th id="afprice"><h3 id="h3af">₱ 400</h3></th>
+                                    <th id="afprice"><h3 id="h3af"><input id="amenitiesinput5" placeholder="" /></h3></th>
                                     <td id="af"> Gas Stove </td>
                                 </tr>
                             </table>
@@ -122,7 +108,7 @@
                             <h3 id="feetitle">SECURITY DEPOSIT</h3>
                         </div>
                         <div id="sdcontent">
-                            <h3 id="h3sd">₱ 1,000</h3>  </th>
+                            <h3 id="h3sd"><input id="securityinput" placeholder="" /></h3>  </th>
                             <p id="sdd">A Security Deposit is Required Upon Arrival For Incidentals. This Deposit is Fully Refundable Upon Check-Out and Subject to A Damage Inspection Of The Resort.</p>
                         </div>
                     </div>
@@ -136,11 +122,11 @@
                         <div id="corkagetablecontent">
                             <table id="corkagetable">
                                 <tr id="corkagetr">
-                                    <th id="corkageprice"> <h3 id="h3c">₱ 1,000</h3>  </th>
+                                    <th id="corkageprice"> <h3 id="h3c"><input id="corkageinput1" placeholder="" /></h3>  </th>
                                     <td id="corkagep"> Lights and Sound System </td>
                                 </tr>
                                 <tr id="aftr">
-                                    <th id="corkageprice"> <h3 id="h3c">₱ 1,500</h3> </th>
+                                    <th id="corkageprice"> <h3 id="h3c"><input id="corkageinput2" placeholder="" /></h3> </th>
                                     <td id="corkagep"> Catering Services </td>
                                 </tr>
                             </table>
@@ -152,7 +138,7 @@
                             <h3 id="feetitle">OTHER CHARGES</h3>
                         </div>
                         <div id="ocontent">
-                            <h3 id="h3o">₱ 500</h3>
+                            <h3 id="h3o"><input id="ocinput" placeholder="" /></h3>
                             <p id="oc">Laundry Fee For Hard/Stubborn Stains on Sheets/Mattresses</p>
                             <p id="oc"><b>Note:</b> *MARKET VALUE PRICE* <br /> for Damaged/Missing Items</p>
                         </div>
@@ -229,7 +215,7 @@
 <section id="importantreminders">
     <div id="remindersdiv">
         <div id="reminderstitle">
-            <h2>IMPORTANT REMINDERS</h2>
+            <h2> EDIT IMPORTANT REMINDERS</h2>
         </div>
         <div id="reminderscontent">
             <div id="columns">
@@ -239,7 +225,7 @@
                             <h3 id="cititle">CHECK-IN</h3>
                         </div>
                         <div id="checkincontent">
-                            <h6 id="pcontent"> Standard check-in time for a 22-hr stay is at 2 pm </h6>
+                            <h6 id="pcontent"> <input id="ciinput" placeholder="" /> </h6>
                         </div>
                     </div>
 
@@ -248,7 +234,7 @@
                             <h3 id="cotitle">CHECK-OUT</h3>
                         </div>
                         <div id="checkoutcontent">
-                            <h6 id="pcontent"> You may check-out anytime before 12 noon. but if you wish to extend your stay, kindly notify us 24 hrs prior. </h6>
+                            <h6 id="pcontent"> <input id="coinput" placeholder="" /> </h6>
                         </div>
                     </div>
 
@@ -258,11 +244,7 @@
                         </div>
                         <div id="paymentcontent">
                             <h6 id="pcontent">
-                                30% downpayment is required to secure your booking.
-
-                                DOWNPAYMENT IS STRICTLY Non-Refundable.
-
-                                The Remaining Balance Shall be paid on-site or theough our payment channels.
+                                <input id="payinput" placeholder="" />
                             </h6>
                         </div>
                     </div>
@@ -274,21 +256,21 @@
                         </div>
                         <div id="maximumcapacitycontent">
                             <h5 id="ptitle"> REGULAR ACCOMODATION </h5>
-
-                            <ul id="listmc">
+                            <input id="rainput" placeholder="" />
+                            @* <ul id="listmc">
                                 <li>Rates are good for 15 persons. but we can accommodate a maximum of 20 persons for an overnight/22-hour stay.</li>
                                 <li>**Additional of 300/head in Excess of 15 pax.</li>
-                            </ul>
+                            </ul> *@
 
                             <h5 id="ptitle"> ACCOMODATION with PARTY/EVENTS </h5>
-
-                            <ul id="listmc">
+                            <input id="apeinput" placeholder="" />
+                            @* <ul id="listmc">
                                 <li>ADDITIONAL CHARGE OF P 3,000</li>
                                 <li>Maximum of 50 pax DURING THE EVENT ONLY.</li>
                                 <li>Party Hours: 2pm - 10 pm</li>
                                 <li>STRICTLY AFTER 10 PM, A Maximum of 20 pax can stay in the villa.</li>
                                 <li>All Gates shall be closed by 10 pm for Security Purposes.</li>
-                            </ul>
+                            </ul> *@
                         </div>
                     </div>
 
@@ -297,7 +279,7 @@
                             <h3 id="cleanlinesstitle">CLEANLINESS</h3>
                         </div>
                         <div id="cleanlinesscontent">
-                            <h6 id="pcontent"> Please Treat our house with the same respect as you would your own home. We’ve put a lot of effort in making this into a lovely space to be enjoyed by our guests. DAMAGED/MISSING ITEMS & STAINED MATTRESSES SHALL BE CHARGED TO GUESTS.</h6>
+                            <h6 id="pcontent"> <input id="cleanlinessinput" placeholder="" /></h6>
                         </div>
                     </div>
 
@@ -309,9 +291,7 @@
                         </div>
                         <div id="sleepingcapacitycontent">
                             <h6 id="pcontent">
-                                We have Five (5) available beds; Each bed can accommodate about 2-3 persons for a total of 15 persons.
-
-                                We also have Extra Mattresses for Rent
+                               <input id="sleepingcapinput" placeholder="" />
                             </h6>
                         </div>
                     </div>
@@ -322,7 +302,7 @@
                         </div>
                         <div id="noisecontent">
                             <h6 id="pcontent">
-                                We hope you have lots of laughter and fun times during your Stay! However, we’d appreciate it if you’re mindful and keep the noise to a minimum during night time.
+                               <input id="noiseinput" placeholder="" />
                             </h6>
                         </div>
                     </div>
@@ -330,7 +310,7 @@
                     <div id="smoking">
                         <div id="nosmokingcontent">
                             <h6 id="pcontent"> STRICTLY NO SMOKING INSIDE THE HOUSE! </h6>
-                            <h6 id="pcontent"> PENALTY: ₱ 3,000 </h6>
+                            <h6 id="pcontent"> PENALTY: <input id="ocinput" placeholder="" /> </h6>
                         </div>
                     </div>
 
@@ -339,7 +319,7 @@
                             <h3 id="wtitle">WARNING</h3>
                         </div>
                         <div id="warningcontent">
-                            <h6 id="pcontent"> If any of our rules and regulations are violated, we have the right to charge extra fees or terminate your stay in our resort. </h6>
+                            <h6 id="pcontent"> <input id="warninginput" placeholder="" /> </h6>
                         </div>
                     </div>
 
