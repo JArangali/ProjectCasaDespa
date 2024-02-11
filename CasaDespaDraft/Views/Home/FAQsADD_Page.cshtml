@@ -1,32 +1,38 @@
 ﻿@{
     ViewData["Title"] = "Add FAQs Page";
 }
+@model FAQs;
 
 <section id="FAQS_ADD">
+    <form asp-action="FAQsADD_Page" asp-controller="Home" method="post">
     <center>
         <div id="FAQSADD_form">
             <div id="FAQSADD_title">
                 <h2 id="FAQSADD_heading"> ADD FREQUENTLY ASKED QUESTIONS </h2>
             </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div id="FAQSADD_content">
                 <center>
                     <div id="FAQSADD_Container_Input">
-                        <h4 id="FAQSADD_Text_Input">FAQ    </h4>
-                        <input id="FAQSADD_Input" placeholder="ADD YOUR FAQs HERE!">
+                        <h4 id="FAQSADD_Text_Input">FAQ    </h4>                       
+                            <input id="FAQSADD_Input" asp-for="FAQuestion" placeholder="ADD YOUR FAQs HERE!">
+                            @Html.ValidationMessageFor(model => model.FAQuestion, "", new { @class = "text-danger"})
                     </div>
 
                     <div id="FAQSADD_Container_Input">
                         <h4 id="FAQSADD_Text_Input">ANSWER    </h4>
-                        <input id="FAQSADD_Input" placeholder="ADD YOUR ANSWER HERE!">
+                            <input id="FAQSADD_Input" asp-for="FAQAnswer" placeholder="ADD YOUR ANSWER HERE!">
+                            @Html.ValidationMessageFor(model => model.FAQAnswer, "", new { @class = "text-danger"})
                     </div>
                 </center>
                 <div id="FAQSADD_Container_Title">
                     <center>
                         <input type="button" onclick="@("window.location.href='" + @Url.Action("FAQsEdit", "Home") + "'");" id="FAQSADD_Cancel" value="CANCEL" />
-                        <input type="button" id="FAQSADD_Save" value="SAVE CHANGES" />
+                        <input type="submit" id="FAQSADD_Save" value="SAVE CHANGES" />
                     </center>
                 </div>
             </div>
         </div>
     </center>
+    </form>
 </section>
