@@ -10,9 +10,22 @@
             </div>
             <div id="GalleryEdit_content">
                 <div id="GalleryEdit_Container_Content">
-                    <a href="@Url.Action("FAQsEDIT_Page", "Home")" id="GalleryAdd_Icon">
-                        <i class="fa-solid fa-folder-plus"></i>
-                    </a>
+                    <div id="GalleryAdd_File">
+                        <div id="GalleryFilter_Container">
+                            <center>
+                        <input type="file" id="Galleryfile" aria-label="File browser example">
+                            </center>
+                            <div id="GalleryFilter_ContainerMain">
+                            <label for="filters" id="GalleryFilter">Choose a filter:</label>
+
+                            <select name="filters">
+                                <option value="web">Pool</option>
+                                <option value="app">Amenities</option>
+                                <option value="card">Entertainment Room</option>
+                            </select>
+                        </div>
+                        </div>
+                    </div>
 
                     <table id="GalleryEdit_Table">
 
