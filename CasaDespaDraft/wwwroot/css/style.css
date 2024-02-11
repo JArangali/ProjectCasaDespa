@@ -2852,7 +2852,9 @@ input[type=radio]:checked {
     color: #F0D9B7;
     border-radius: 20px;
     background-color: black;
+    margin-left:10px;
 }
+
 
 #fginputfields {
     text-align: left;
@@ -3973,4 +3975,688 @@ feetitle {
     border-radius: 20px;
     background-color: black;
     margin-top:30px;
+<<<<<<< Updated upstream
 }
+=======
+}
+
+
+/*--------------------------------------------------------------
+# Dashboard
+--------------------------------------------------------------*/
+
+#welcometextDashboard {
+    font-size: 90px;
+}
+
+#Dashboard_BG {
+    background-color: #BFA588;
+    height: auto;
+    width: inherit;
+}
+
+#Dashboard_container {
+    width: 95%;
+    height: 100px;
+    background-color: #F5D8B3;
+}
+
+#Dashboard_container_buttons {
+    width: 100%;
+    height: 15%;
+    display: flex;
+}
+
+#Dashboard_buttons {
+    margin-left: 25px;
+    margin-top: 20px;
+    border-radius: 40px;
+    width: 291px;
+    height: 50px;
+    background-color: black;
+    color: #F5D8B3;
+}
+
+
+/*--------------------------------------------------------------
+# PROFILE 
+--------------------------------------------------------------*/
+
+.main-container {
+    background-color: #C5A485;
+    padding: 40px;
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    align-self: center;
+    text-align: center;
+}
+
+
+.left-container {
+    flex: 1;
+    background-color: #F3D6B2;
+    padding: 20px;
+    margin-right: 30px;
+}
+
+.right-container {
+    flex: 3;
+    background-color: #F3D6B2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.profile-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+    .profile-picture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.info-section {
+    text-align: center;
+}
+
+.info-item {
+    margin-bottom: 10px;
+    color: #595959;
+}
+
+.info-item1 {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.update-button {
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    padding: 8px;
+    max-width: 200px;
+    border-radius: 20px;
+    background-color: black;
+    color: #F3D6B2;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+    .update-button:hover,
+    .update-button:active {
+        background-color: #C5A485;
+        color: black;
+    }
+
+.button-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 10px;
+}
+
+.nav-button {
+    padding: 8px;
+    max-width: 200px;
+    border-radius: 20px;
+    background-color: black;
+    color: #F3D6B2;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+    .nav-button:hover,
+    .nav-button:active {
+        background-color: #C5A485;
+        color: black;
+    }
+
+.table-container {
+    width: 97%;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.table-container1 {
+    text-align: left;
+}
+
+.table-container2 {
+    margin-bottom: 10px;
+}
+
+.table-container table {
+    width: 97%;
+    border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+    border-bottom: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.submit-button {
+    display: inline-block;
+    width: 75px;
+    padding: 5px;
+    background-color: black;
+    color: #F3D6B2;
+    border-radius: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+    .submit-button:hover,
+    .submit-button:active {
+        background-color: #C5A485;
+        color: black;
+    }
+
+/*--------------------------------------------------------------
+# Index Edit Section
+--------------------------------------------------------------*/
+#welcome1 {
+    margin-top: 30px;
+    width: 100%;
+    height: 90px;
+    position: relative;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    background: url("../img/bgimg.png") no-repeat center;
+    background-size: 100%;
+}
+
+#wdratesuserinput1 {
+    width: 400px;
+    padding: 12px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+}
+
+#wdratesuserinput2 {
+    width: 400px;
+    padding: 12px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+}
+
+#wdratesuserinput3 {
+    width: 400px;
+    padding: 12px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+}
+
+#weratesuserinput1 {
+    width: 400px;
+    padding: 12px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+}
+
+#weratesuserinput2 {
+    width: 400px;
+    padding: 12px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+}
+
+#weratesuserinput3 {
+    width: 400px;
+    padding: 12px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+}
+
+#amenitiesinput1 {
+    width: 80px;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 15px;
+    color: black;
+}
+
+#amenitiesinput2 {
+    width: 80px;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 15px;
+    color: black;
+}
+
+#amenitiesinput3 {
+    width: 80px;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 15px;
+    color: black;
+}
+
+#amenitiesinput4 {
+    width: 80px;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 15px;
+    color: black;
+}
+
+#amenitiesinput5 {
+    width: 80px;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 15px;
+    color: black;
+}
+
+#securityinput {
+    width: 150px;
+    height:auto;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+}
+
+#corkageinput1 {
+    width: 100px;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 15px;
+    color: black;
+    margin:0;
+}
+
+#corkageinput2 {
+    width: 100px;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 15px;
+    color: black;
+    margin: 0;
+}
+
+#ocinput {
+    width: 150px;
+    height: auto;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+}
+
+#ciinput {
+    width: 150px;
+    height: auto;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+}
+
+#coinput {
+    width: 150px;
+    height: auto;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+}
+
+#payinput {
+    width: 200px;
+    height: auto;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+}
+
+#rainput {
+    width: 250px;
+    height: auto;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+    margin-bottom:20px;
+}
+
+#apeinput {
+    width: 250px;
+    height: auto;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+#cleanlinessinput {
+    width: 250px;
+    height: auto;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+#sleepingcapinput {
+    width: 250px;
+    height: auto;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+#noiseinput {
+    width: 250px;
+    height: auto;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+#warninginput {
+    width: 250px;
+    height: auto;
+    padding: 5px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+fsbuttondiv {
+    display:inline-flex;
+}
+
+#saveindexbutton {
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    color: black;
+    border-radius: 20px;
+    background-color: #F0D9B7;
+    border-color: black;
+    margin-left: 10px;
+    position: fixed;
+}
+
+#fpabackbuttonrates {
+    width: 200px;
+    height: 50px;
+    color: black;
+    border-radius: 20px;
+    background-color: #F0D9B7;
+    border-color: black;
+    margin-left: 10px;
+    margin:0;
+}
+
+#backtd {
+    width: 91%;
+    margin-left:0;
+}
+
+#saveindexbuttona {
+    padding: 5px;
+    color: black;
+    font-weight: bold;
+}
+
+#fpabackbuttonratesa {
+    padding: 5px;
+    color: black;
+    font-weight: bold;
+}
+>>>>>>> Stashed changes

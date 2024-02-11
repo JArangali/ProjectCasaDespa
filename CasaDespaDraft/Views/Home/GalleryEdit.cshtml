@@ -1,0 +1,96 @@
+﻿<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+@{
+    ViewData["Title"] = "Edit Gallery Page";
+}
+@using CasaDespaDraft.ViewModels
+@using CasaDespaDraft.Data;
+@model GalleryViewModel
+
+<section id="GalleryEdit">
+    <center>
+        <div id="GalleryEdit_form">
+            <div id="GalleryEdit_title">
+                <h2 id="GalleryEdit_heading"> EDIT GALLERY PAGE </h2>
+            </div>
+            <div id="GalleryEdit_content">
+                <div id="GalleryEdit_Container_Content">
+                    <form asp-action="GalleryEdit" asp-controller="Home" method="post" enctype="multipart/form-data">
+                    <div id="GalleryAdd_File">
+                        <div id="GalleryFilter_Container">
+                            <center>
+                                    <input type="hidden" asp-for="imageId" />
+                                    <input id="FAQSADD_Input" asp-for="imageName" placeholder="Label your Image!">
+                                    <input type="file" asp-for="image" id="Galleryfile" aria-label="File browser example">
+                                    @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger"})
+                            </center>
+                            <div id="GalleryFilter_ContainerMain">
+                                <label for="filters" id="GalleryFilter">Choose a filter:</label>
+
+                                    <select asp-for="filter" asp-items="@Html.GetEnumSelectList(typeof(Filter))" class="form-control"></select>
+                            </div>
+                            <br />
+                            <center>
+                            <input type="submit" id="GalleryEdit_Save" value="UPLOAD" />
+                                </center>
+                        </div>
+                    </div>
+                    </form>
+
+                    <table id="GalleryEdit_Table">
+
+                        @foreach (var gallery in Model.Galleries)
+                        {
+
+                            <tr id="GalleryEdit_tr">
+                                <td>@gallery.imageName</td>
+                                <td id="GalleryEdit_td">
+                                    <form method="delete" asp-action="Gallery_Delete" asp-controller="Home">
+                                        <button type="submit" id="GalleryEdit_Icon" data-id="@gallery.imageId">
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            
+                        }
+
+                    </table>
+
+                </div>
+
+
+                <div id="GalleryEdit_Container_Title">
+                    <center>
+                        <input type="button" onclick="@("window.location.href='" + @Url.Action("Gallery", "Home") + "'");" id="GalleryEdit_Cancel" value="Go Back" />
+                        
+                    </center>
+                </div>
+            </div>
+        </div>
+    </center>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $('button[type="submit"]').click(function (e) {
+            e.preventDefault();
+
+            var row = $(this).closest('tr');
+            var id = $(this).data('id');
+
+            // Send a DELETE request to the server to delete the row
+            $.ajax({
+                url: '/Home/Gallery_Delete/' + id,
+                type: 'DELETE',
+                success: function () {
+                    // Remove the row from the table
+                    row.remove();
+                },
+                error: function () {
+                    // Handle errors
+                }
+            });
+        });
+    });
+</script>

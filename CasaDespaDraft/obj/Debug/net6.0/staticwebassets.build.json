@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< Updated upstream
   "Hash": "ZxAKcaz9Vpe/C3AugGl1MiBufDifE1M9wwatZwL7edE=",
+=======
+  "Hash": "0svAY97tV1Ppvw4jgXgFDRfKi6h9fRmxBsaTkh6wIFU=",
+>>>>>>> Stashed changes
   "Source": "CasaDespaDraft",
   "BasePath": "_content/CasaDespaDraft",
   "Mode": "Default",
@@ -2069,10 +2073,36 @@
       "OriginalItemSpec": "wwwroot\\img\\park.png"
     },
     {
+<<<<<<< Updated upstream
       "Identity": "C:\\Users\\lourd\\Documents\\ProjectCasaDespa\\CasaDespaDraft\\wwwroot\\img\\pool.png",
       "SourceId": "CasaDespaDraft",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\lourd\\Documents\\ProjectCasaDespa\\CasaDespaDraft\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\lourd\\Documents\\ProjectCasaDespa\\CasaDespaDraft\\wwwroot\\img\\pic.png",
+      "SourceId": "CasaDespaDraft",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lourd\\Documents\\ProjectCasaDespa\\CasaDespaDraft\\wwwroot\\",
+      "BasePath": "_content/CasaDespaDraft",
+      "RelativePath": "img/pic.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\pic.png"
+    },
+    {
+      "Identity": "C:\\Users\\lourd\\Documents\\ProjectCasaDespa\\CasaDespaDraft\\wwwroot\\img\\pool.png",
+      "SourceId": "CasaDespaDraft",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lourd\\Documents\\ProjectCasaDespa\\CasaDespaDraft\\wwwroot\\",
+>>>>>>> Stashed changes
       "BasePath": "_content/CasaDespaDraft",
       "RelativePath": "img/pool.png",
       "AssetKind": "All",

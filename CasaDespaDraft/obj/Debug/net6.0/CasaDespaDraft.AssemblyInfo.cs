@@ -15,7 +15,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CasaDespaDraft")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< Updated upstream
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6820cc2b616ef773dd3d52138022c4b7497d83e3")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a853d1b4d902f1d3d0a61cf8714d269cdc51823a")]
+>>>>>>> Stashed changes
 [assembly: System.Reflection.AssemblyProductAttribute("CasaDespaDraft")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CasaDespaDraft")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

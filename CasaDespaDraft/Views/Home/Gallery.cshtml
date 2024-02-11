@@ -39,12 +39,26 @@
 
         <div class="row portfolio-container">
 
+<<<<<<< Updated upstream
             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                 <div class="portfolio-wrap">
                     <img src="~/img/portfolio/Entertainment-1.jpg" class="img-fluid" alt="">
                     <div class="portfolio-info">
                         <div class="portfolio-links">
                             <a href="~/img/portfolio/Entertainment-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+=======
+            
+
+            @foreach (var Gallery in Model)
+            {
+                <div class="col-lg-4 col-md-6 portfolio-item @Gallery.filterChoice">
+                    <div class="portfolio-wrap">
+                        <img src="data:image/jpg;base64,@Convert.ToBase64String(@Gallery.image)" alt="@Gallery.imageName" class="img-fluid">
+                        <div class="portfolio-info">
+                            <div class="portfolio-links">
+                                <a href="data:image/jpg;base64,@Convert.ToBase64String(@Gallery.image)" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                            </div>
+>>>>>>> Stashed changes
                         </div>
                     </div>
                 </div>
