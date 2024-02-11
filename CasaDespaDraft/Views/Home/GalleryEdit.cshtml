@@ -19,26 +19,29 @@
                     <div id="GalleryAdd_File">
                         <div id="GalleryFilter_Container">
                             <center>
-                                    <input type="hidden" asp-for="imageId" />
-                                    <input id="FAQSADD_Input" asp-for="imageName" placeholder="Label your Image!">
+                                    <h2 id="GalleryEdit_heading"> UPLOAD IMAGE </h2>
                                     <input type="file" asp-for="image" id="Galleryfile" aria-label="File browser example">
                                     @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger"})
-                            </center>
+                                    <input id="GalleryEdit_Label" asp-for="imageName" placeholder="Label your Image!">
+                                    <input type="hidden" asp-for="imageId" />
+                            
                             <div id="GalleryFilter_ContainerMain">
                                 <label for="filters" id="GalleryFilter">Choose a filter:</label>
 
-                                    <select asp-for="filter" asp-items="@Html.GetEnumSelectList(typeof(Filter))" class="form-control"></select>
+                                    <select asp-for="filter" asp-items="@Html.GetEnumSelectList(typeof(Filter))" class="form-control" id="GalleryEditFilter_Label"></select>
                             </div>
-                            <br />
-                            <center>
-                            <input type="submit" id="GalleryEdit_Save" value="UPLOAD" />
                                 </center>
                         </div>
+                        <center>
+                                <input type="submit" id="GalleryEdit_Save" value="UPLOAD" />
+                        </center>
                     </div>
                     </form>
 
                     <table id="GalleryEdit_Table">
-
+                        <tr>
+                            <td><h2 id="GalleryEdit_heading"> UPLOADED IMAGES </h2></td>
+                        </tr>
                         @foreach (var gallery in Model.Galleries)
                         {
 

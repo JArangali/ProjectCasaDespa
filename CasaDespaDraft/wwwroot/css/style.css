@@ -2361,13 +2361,13 @@ section {
     margin-top: 20px;
     padding: 10px;
     font-size: 20px;
-    font-weight: 1000;
+    font-weight:900
     text-decoration: underline;
 }
 
 #loginfgdiv {
     font-size: 20px;
-    font-weight: 1000;
+    font-weight: 900
     text-decoration: underline;
 }
 
@@ -2932,6 +2932,10 @@ FAQS_Edit {
     padding: 10px 30px 10px 30px;
     text-align: center;
     width: 162px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 #FAQSEdit_Icon {
@@ -3104,6 +3108,14 @@ FAQS_Edit {
     font-weight: bold;
 }
 
+#GalleryEdit_heading {
+    font-family: 'Spectral', serif;
+    font-weight: bold;
+    font-size: 25px;
+    MARGIN-BOTTOM: 20PX;
+}
+
+
 #GalleryEdit_Container_Input {
     width: 600px;
     margin-top: 40px;
@@ -3117,12 +3129,24 @@ FAQS_Edit {
 
 #GalleryAdd_File {
     width: 250px;
-    height: 250px;
-    background-color: #F5D8B3;
-    color: black;
-    border: 1px solid;
-    border-color: black;
+    height: auto;
+}
+
+#GalleryEdit_Label {
+    width: 136px;
+    padding: 12px;
+    border: solid;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     border-radius: 10px;
+    border-width: 1px;
+    box-sizing: border-box;
+    background-color: #F5D8B3;
+    height: 30px;
+    margin-top:30px;
+margin-bottom:30px;
+}
 }
 
 #Galleryfile {
@@ -3136,7 +3160,13 @@ FAQS_Edit {
 }
 
 #GalleryFilter_Container {
-    margin-top: 66px;
+    margin-top: 10px;
+    padding: 20px;
+    background-color: #F5D8B3;
+    color: black;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 10px;
 }
 
 #GalleryFilter_ContainerMain {
@@ -3154,8 +3184,22 @@ FAQS_Edit {
     border-radius: 10px;
 }
 
+#GalleryEditFilter_Label {
+    width: 136px;
+    padding: 12px;
+    border: solid;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 10px;
+    border-width: 1px;
+    box-sizing: border-box;
+    background-color: #F5D8B3;
+    height: 39px;
+}
+
 #GalleryEdit_Table {
-    width: 750px;
+    width: 500px;
     height: 120px;
 }
 
@@ -3215,7 +3259,7 @@ FAQS_Edit {
     border-radius: 40px;
     padding-top: 10px;
     padding-bottom: 32px;
-    margin-left: 30px;
+    margin-top:30px
 }
 
 #GalleryEdit_Cancel {

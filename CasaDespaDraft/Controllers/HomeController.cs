@@ -193,7 +193,22 @@ namespace CasaDespaDraft.Controllers
             return Json(new { success = false });
         }
 
-        public IActionResult Dashboard()
+        public IActionResult Dashboard_BR()
+        {
+            return View();
+        }
+
+        public IActionResult Dashboard_BT()
+        {
+            return View();
+        }
+
+        public IActionResult Dashboard_AR()
+        {
+            return View();
+        }
+
+        public IActionResult Dashboard_AB()
         {
             return View();
         }

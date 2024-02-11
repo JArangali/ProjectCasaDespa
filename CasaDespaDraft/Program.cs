@@ -36,7 +36,7 @@ app.UseAuthentication();
 
 var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<AppDbContext>();
 context.Database.EnsureCreated();
-//context.Database.EnsureDeleted();
+/*context.Database.EnsureDeleted();*/
 
 app.UseRouting();
 
