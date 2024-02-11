@@ -22,7 +22,7 @@
                                     <input type="hidden" asp-for="imageId" />
                                     <input id="FAQSADD_Input" asp-for="imageName" placeholder="Label your Image!">
                                     <input type="file" asp-for="image" id="Galleryfile" aria-label="File browser example">
-                                    @Html.ValidationMessageFor(model => model.imageName, "", new { @class = "text-danger"})
+                                    @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger"})
                             </center>
                             <div id="GalleryFilter_ContainerMain">
                                 <label for="filters" id="GalleryFilter">Choose a filter:</label>
