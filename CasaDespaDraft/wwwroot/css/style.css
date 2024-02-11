@@ -3115,6 +3115,34 @@ FAQS_Edit {
     justify-content: space-evenly;
 }
 
+#GalleryAdd_File {
+    width: 250px;
+    height: 250px;
+    background-color: #F5D8B3;
+    color: black;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 10px;
+}
+
+#Galleryfile {
+    width: 150px;
+    margin-bottom: 31px;
+}
+
+#GalleryFilter {
+    width: 175px;
+    font-size: 20px;
+}
+
+#GalleryFilter_Container {
+    margin-top: 66px;
+}
+
+#GalleryFilter_ContainerMain {
+    align-content: center;
+}
+
 #GalleryAdd_Icon {
     width: 150px;
     height: 150px;

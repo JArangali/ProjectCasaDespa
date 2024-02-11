@@ -2,6 +2,9 @@
     ViewData["Title"] = "Gallery Page";
 }
 
+@using System.Security.Claims;
+@model IEnumerable<Gallery>
+
 <!-- Welcome Section -->
 <section id="welcome">
     <div id="welcomecontainer">
@@ -41,182 +44,23 @@
 
         <div class="row portfolio-container">
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="~/img/portfolio/Entertainment-1.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <div class="portfolio-links">
-                            <a href="~/img/portfolio/Entertainment-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="~/img/portfolio/Pool-1.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <div class="portfolio-links">
-                            <a href="~/img/portfolio/Pool-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+            @foreach (var Gallery in Model)
+            {
+                <div class="col-lg-4 col-md-6 portfolio-item @Gallery.filterChoice">
+                    <div class="portfolio-wrap">
+                        <img src="@Gallery.image;base64,@Convert.ToBase64String(@Gallery.image)" alt="@Gallery.imageName" class="img-fluid">
+                        <div class="portfolio-info">
+                            <div class="portfolio-links">
+                                <a href="data:@Gallery.image;base64,@Convert.ToBase64String(@Gallery.image)" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="~/img/portfolio/Entertainment-2.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <div class="portfolio-links">
-                            <a href="~/img/portfolio/Entertainment-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                    <img src="~/img/portfolio/Amenities-1.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <div class="portfolio-links">
-                            <a href="~/img/portfolio/Amenities-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="~/img/portfolio/Pool-2.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <div class="portfolio-links">
-                            <a href="~/img/portfolio/Pool-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="~/img/portfolio/Entertainment-3.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <div class="portfolio-links">
-                            <a href="~/img/portfolio/Entertainment-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                    <img src="~/img/portfolio/Amenities-2.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <div class="portfolio-links">
-                            <a href="~/img/portfolio/Amenities-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="~/img/portfolio/Pool-3.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <div class="portfolio-links">
-                            <a href="~/img/portfolio/Pool-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                    <img src="~/img/portfolio/Amenities-3.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <div class="portfolio-links">
-                            <a href="~/img/portfolio/Amenities-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="~/img/portfolio/Entertainment-4.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <div class="portfolio-links">
-                            <a href="~/img/portfolio/Entertainment-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="~/img/portfolio/Pool-4.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <div class="portfolio-links">
-                            <a href="~/img/portfolio/Pool-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                    <img src="~/img/portfolio/Amenities-4.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <div class="portfolio-links">
-                            <a href="~/img/portfolio/Amenities-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                    <img src="~/img/portfolio/Amenities-5.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <div class="portfolio-links">
-                            <a href="~/img/portfolio/Amenities-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="~/img/portfolio/Pool-5.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <div class="portfolio-links">
-                            <a href="~/img/portfolio/Pool-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                    <img src="~/img/portfolio/Amenities-6.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <div class="portfolio-links">
-                            <a href="~/img/portfolio/Amenities-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="~/img/portfolio/Entertainment-5.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <div class="portfolio-links">
-                            <a href="~/img/portfolio/Entertainment-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            fv
+            }
+            
+            
         </div>
     </div>
 </section><!-- End Portfolio Section -->
