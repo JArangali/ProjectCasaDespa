@@ -1,19 +1,22 @@
 ﻿@{
     ViewData["Title"] = "Edit | Home Page";
 }
+@model Homepage;
 
 <section id="welcome1"></section>
 
 <!-- Rates Section -->
+    <form asp-action="IndexEdit" asp-controller="Home">
+
 <section id="rates">
     <div id="fsbuttondiv">
-        <table id="ratestable">
+            <table id="ratestable">
                 <tr>
                     <td id="backtd"></td>
-                    <td id="savetd"><button id="saveindexbutton"><a id="" asp-area="saveindexbuttona" asp-controller="Home" asp-action="Index" class="getstarted"> SAVE </a></button></td>
+                    <td id="savetd"><button type="submit" id="saveindexbutton" class="getstarted">SAVE</button></td>
                 </tr>
 
-        </table>
+            </table>
     </div>
     <div id="ratesdiv">
         <div id="ratestitle">
@@ -21,6 +24,7 @@
         </div>
         <div id="divratestable">
             <table id="ratestable">
+                    <input type="hidden" asp-for="Id" />
                 <tr>
                     <th>  </th>
                     <th><h3>WEEKDAYS</h3></th>
@@ -32,8 +36,8 @@
                         <h6>CHECK-IN: 2:00 PM</h6>
                         <h6>CHECK-OUT: 12:00 NN</h6>
                     </td>
-                    <td><h2><input id="wdratesuserinput1" placeholder="" /></h2></td>
-                    <td><h2><input id="weratesuserinput1" placeholder="" /></h2></td>
+                    <td><h2><input asp-for="wd22hrs" id="wdratesuserinput1" placeholder="" /> </h2></td>
+                        <td><h2><input asp-for="we22hrs" id="weratesuserinput1" placeholder="" /></h2></td>
                 </tr>
                 <tr>
                     <td>
@@ -41,8 +45,8 @@
                         <h6>CHECK-IN: 8:00 AM</h6>
                         <h6>CHECK-OUT: 4:00 PM</h6>
                     </td>
-                    <td><h2><input id="wdratesuserinput2" placeholder="" /></h2></td>
-                    <td><h2><input id="weratesuserinput2" placeholder="" /></h2></td>
+                        <td><h2><input asp-for="wdMornhrs" id="wdratesuserinput2" placeholder="" /></h2></td>
+                        <td><h2><input asp-for="weMornhrs" id="weratesuserinput2" placeholder="" /></h2></td>
                 </tr>
                 <tr>
                     <td>
@@ -50,8 +54,8 @@
                         <h6>CHECK-IN: 6:00 PM</h6>
                         <h6>CHECK-OUT: 6:00 AM</h6>
                     </td>
-                    <td><h2><input id="wdratesuserinput3" placeholder="" /></h2></td>
-                    <td><h2><input id="weratesuserinput3" placeholder="" /></h2></td>
+                        <td><h2><input asp-for="wdNythrs" id="wdratesuserinput3" placeholder="" /></h2></td>
+                        <td><h2><input asp-for="weNythrs" id="weratesuserinput3" placeholder="" /></h2></td>
                 </tr>
             </table>
         </div>
@@ -80,23 +84,23 @@
                         <div id="aftablecontent">
                             <table id="aftable">
                                 <tr id="aftr">
-                                    <th id="afprice"> <h3 id="h3af"><input id="amenitiesinput1" placeholder="" /></h3>  </th>
+                                        <th id="afprice"> <h3 id="h3af"><input asp-for="af1" id="amenitiesinput1" placeholder="" /></h3>  </th>
                                     <td id="af"> Additional Head in Excess of 15 pax </td>
                                 </tr>
                                 <tr id="aftr">
-                                    <th id="afprice"> <h3 id="h3af"><input id="amenitiesinput2" placeholder="" /></h3> </th>
+                                        <th id="afprice"> <h3 id="h3af"><input asp-for="af2" id="amenitiesinput2" placeholder="" /></h3> </th>
                                     <td id="af"> Additional For Each Pet </td>
                                 </tr>
                                 <tr id="aftr">
-                                    <th id="afprice"><h3 id="h3af"><input id="amenitiesinput3" placeholder="" /></h3></th>
+                                        <th id="afprice"><h3 id="h3af"><input asp-for="af3" id="amenitiesinput3" placeholder="" /></h3></th>
                                     <td id="af"> Extra Mattress (Single w/ Pillow) </td>
                                 </tr>
                                 <tr id="aftr">
-                                    <th id="afprice"><h3 id="h3af"><input id="amenitiesinput4" placeholder="" /></h3></th>
+                                        <th id="afprice"><h3 id="h3af"><input asp-for="af4" id="amenitiesinput4" placeholder="" /></h3></th>
                                     <td id="af"> Extra Blanket </td>
                                 </tr>
                                 <tr id="aftr">
-                                    <th id="afprice"><h3 id="h3af"><input id="amenitiesinput5" placeholder="" /></h3></th>
+                                        <th id="afprice"><h3 id="h3af"><input asp-for="af5" id="amenitiesinput5" placeholder="" /></h3></th>
                                     <td id="af"> Gas Stove </td>
                                 </tr>
                             </table>
@@ -108,7 +112,7 @@
                             <h3 id="feetitle">SECURITY DEPOSIT</h3>
                         </div>
                         <div id="sdcontent">
-                            <h3 id="h3sd"><input id="securityinput" placeholder="" /></h3>  </th>
+                                <h3 id="h3sd"><input asp-for="sd1" id="securityinput" placeholder="" /></h3>  </th>
                             <p id="sdd">A Security Deposit is Required Upon Arrival For Incidentals. This Deposit is Fully Refundable Upon Check-Out and Subject to A Damage Inspection Of The Resort.</p>
                         </div>
                     </div>
@@ -122,11 +126,11 @@
                         <div id="corkagetablecontent">
                             <table id="corkagetable">
                                 <tr id="corkagetr">
-                                    <th id="corkageprice"> <h3 id="h3c"><input id="corkageinput1" placeholder="" /></h3>  </th>
+                                        <th id="corkageprice"> <h3 id="h3c"><input asp-for="c1" id="corkageinput1" placeholder="" /></h3>  </th>
                                     <td id="corkagep"> Lights and Sound System </td>
                                 </tr>
                                 <tr id="aftr">
-                                    <th id="corkageprice"> <h3 id="h3c"><input id="corkageinput2" placeholder="" /></h3> </th>
+                                        <th id="corkageprice"> <h3 id="h3c"><input asp-for="c2"  id="corkageinput2" placeholder="" /></h3> </th>
                                     <td id="corkagep"> Catering Services </td>
                                 </tr>
                             </table>
@@ -138,65 +142,15 @@
                             <h3 id="feetitle">OTHER CHARGES</h3>
                         </div>
                         <div id="ocontent">
-                            <h3 id="h3o"><input id="ocinput" placeholder="" /></h3>
+                                <h3 id="h3o"><input asp-for="oc1" id="ocinput" placeholder="" /></h3>
                             <p id="oc">Laundry Fee For Hard/Stubborn Stains on Sheets/Mattresses</p>
                             <p id="oc"><b>Note:</b> *MARKET VALUE PRICE* <br /> for Damaged/Missing Items</p>
                         </div>
                     </div>
                 </div>
 
-                <div id="column3">
-                    <div id="amenitieslist">
-                        <div id="amenitieslisttitle">
-                            <h3 id="feetitle">AMENITIES</h3>
-                        </div>
-                        <div id="amenitiestablecontent">
-                            <table id="amenitiestable">
-                                <tr id="amenitiestr">
-                                    <th id="alogo"> <img id="vector" src="~/img/pool.png" alt="pool"> </th>
-                                    <td id="aname"> Adult Swimming Pool With Kiddie Pool </td>
-                                </tr>
-                                <tr id="amenitiestr">
-                                    <th id="alogo"> <img id="vector" src="~/img/bed.png" alt="pool"> </th>
-                                    <td id="aname"> 2 Airconditioned Bedrooms </td>
-                                </tr>
-                                <tr id="amenitiestr">
-                                    <th id="alogo"> <img id="vector" src="~/img/bath.png" alt="pool"> </th>
-                                    <td id="aname"> 2 Toilet & Bath and 1 Outdoor Shower <br /> and Toilet </td>
-                                </tr>
-                                <tr id="amenitiestr">
-                                    <th id="alogo"> <img id="vector" src="~/img/dining.png" alt="pool"> </th>
-                                    <td id="aname"> Airconditioned Dining/ Karaoke Room </td>
-                                </tr>
-                                <tr id="amenitiestr">
-                                    <th id="alogo"> <img id="vector" src="~/img/tv.png" alt="pool"> </th>
-                                    <td id="aname"> Smart Tv with Netflix </td>
-                                </tr>
-                                <tr id="amenitiestr">
-                                    <th id="alogo"> <img id="vector" src="~/img/kitchen.png" alt="pool"> </th>
-                                    <td id="aname"> Fully Equipped Kitchen </td>
-                                </tr>
-                                <tr id="amenitiestr">
-                                    <th id="alogo"> <img id="vector" src="~/img/grill.png" alt="pool"> </th>
-                                    <td id="aname"> BBQ Griller </td>
-                                </tr>
-                                <tr id="amenitiestr">
-                                    <th id="alogo"> <img id="vector" src="~/img/park.png" alt="pool"> </th>
-                                    <td id="aname"> Big Parking Space </td>
-                                </tr>
-                                <tr id="amenitiestr">
-                                    <th id="alogo"> <img id="vector" src="~/img/mic.png" alt="pool"> </th>
-                                    <td id="aname"> Free use of Karaoke </td>
-                                </tr>
-                                <tr id="amenitiestr">
-                                    <th id="alogo"> <img id="vector" src="~/img/wifi.png" alt="pool"> </th>
-                                    <td id="aname"> Free Unlimited Wifi </td>
-                                </tr>
-                                <tr id="amenitiestr">
-                                    <th id="alogo"> <img id="vector" src="~/img/gazebo.png" alt="pool"> </th>
-                                    <td id="aname"> Gazebo For Private Events </td>
-                                </tr>
-                            </table>
+              
+                                
                         </div>
                     </div>
                 </div>
@@ -225,7 +179,7 @@
                             <h3 id="cititle">CHECK-IN</h3>
                         </div>
                         <div id="checkincontent">
-                            <h6 id="pcontent"> <input id="ciinput" placeholder="" /> </h6>
+                                <h6 id="pcontent"> <input asp-for="cIN" id="ciinput" placeholder="" /> </h6>
                         </div>
                     </div>
 
@@ -234,7 +188,7 @@
                             <h3 id="cotitle">CHECK-OUT</h3>
                         </div>
                         <div id="checkoutcontent">
-                            <h6 id="pcontent"> <input id="coinput" placeholder="" /> </h6>
+                                <h6 id="pcontent"> <input asp-for="cOUT" id="coinput" placeholder="" /> </h6>
                         </div>
                     </div>
 
@@ -244,7 +198,7 @@
                         </div>
                         <div id="paymentcontent">
                             <h6 id="pcontent">
-                                <input id="payinput" placeholder="" />
+                                    <input asp-for="payment" id="payinput" placeholder="" />
                             </h6>
                         </div>
                     </div>
@@ -256,14 +210,14 @@
                         </div>
                         <div id="maximumcapacitycontent">
                             <h5 id="ptitle"> REGULAR ACCOMODATION </h5>
-                            <input id="rainput" placeholder="" />
+                                <input asp-for="mc1" id="rainput" placeholder="" />
                             @* <ul id="listmc">
                                 <li>Rates are good for 15 persons. but we can accommodate a maximum of 20 persons for an overnight/22-hour stay.</li>
                                 <li>**Additional of 300/head in Excess of 15 pax.</li>
                             </ul> *@
 
                             <h5 id="ptitle"> ACCOMODATION with PARTY/EVENTS </h5>
-                            <input id="apeinput" placeholder="" />
+                                <input asp-for="mc2" id="apeinput" placeholder="" />
                             @* <ul id="listmc">
                                 <li>ADDITIONAL CHARGE OF P 3,000</li>
                                 <li>Maximum of 50 pax DURING THE EVENT ONLY.</li>
@@ -279,7 +233,7 @@
                             <h3 id="cleanlinesstitle">CLEANLINESS</h3>
                         </div>
                         <div id="cleanlinesscontent">
-                            <h6 id="pcontent"> <input id="cleanlinessinput" placeholder="" /></h6>
+                                <h6 id="pcontent"> <input asp-for="clean" id="cleanlinessinput" placeholder="" /></h6>
                         </div>
                     </div>
 
@@ -291,7 +245,7 @@
                         </div>
                         <div id="sleepingcapacitycontent">
                             <h6 id="pcontent">
-                               <input id="sleepingcapinput" placeholder="" />
+                                    <input asp-for="sc1" id="sleepingcapinput" placeholder="" />
                             </h6>
                         </div>
                     </div>
@@ -302,7 +256,7 @@
                         </div>
                         <div id="noisecontent">
                             <h6 id="pcontent">
-                               <input id="noiseinput" placeholder="" />
+                                    <input asp-for="noise" id="noiseinput" placeholder="" />
                             </h6>
                         </div>
                     </div>
@@ -310,7 +264,7 @@
                     <div id="smoking">
                         <div id="nosmokingcontent">
                             <h6 id="pcontent"> STRICTLY NO SMOKING INSIDE THE HOUSE! </h6>
-                            <h6 id="pcontent"> PENALTY: <input id="ocinput" placeholder="" /> </h6>
+                                <h6 id="pcontent"> PENALTY: <input asp-for="penalty" id="ocinput" placeholder="" /> </h6>
                         </div>
                     </div>
 
@@ -319,12 +273,16 @@
                             <h3 id="wtitle">WARNING</h3>
                         </div>
                         <div id="warningcontent">
-                            <h6 id="pcontent"> <input id="warninginput" placeholder="" /> </h6>
+                                <h6 id="pcontent"> <input asp-for="warning" id="warninginput" placeholder="" /> </h6>
                         </div>
                     </div>
 
                 </div>
+                    
             </div>
         </div>
     </div>
+
+        
+</form>
 </section>

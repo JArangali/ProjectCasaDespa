@@ -8,7 +8,9 @@ namespace CasaDespaDraft.Data
         public string? Firstname { get; set; }
         public string? Lastname { get; set; }
         public string? Address { get; set; }
+        public string? Sex { get; set; }
         public string? Question { get; set; }
         public string? Answer { get; set; }
+        public byte[]? ProfilePicture { get; set; }
     }
 }

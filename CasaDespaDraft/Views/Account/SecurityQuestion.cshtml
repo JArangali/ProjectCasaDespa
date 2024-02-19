@@ -1,30 +1,34 @@
 ﻿@{
     ViewData["Title"] = "Forgot Password || Security Question";
 }
+@using CasaDespaDraft.ViewModels
+@using CasaDespaDraft.Data;
+@model SecurityQuestionViewModel    
 
-<!-- Security Question Section -->
 <section id="sq">
     <div id="backbuttondiv">
         <button id="fpbackbutton"> <a id="fpabackbutton" asp-area="" asp-controller="Account" asp-action="ForgotPassword" class="getstarted"> <i class="material-icons">chevron_left</i> </a> </button>
     </div>
-    <form>
+    <form asp-action="SecurityQuestion" asp-controller="Account" method="post">
         <div id="sqform">
-            
-                <div id="sqtitle">
-                    <div id="sqtitle1">
+
+            <div id="sqtitle">
+                <div id="sqtitle1">
                     <img id="sqlogoimg" src="~/img/sqlogo.png" alt="sqlogo"><h2 id="sqheading"> SECURITY QUESTION </h2>
-                    </div>  
                 </div>
-            
-            
+            </div>
+
+
             <div id="sqformcontent">
                 <div id="sqinputfields">
-                    <h4 id="sqtext">-- SECURITY QUESTION --</h4>
-                    <input type="text" id="sqanswerinput" placeholder="Please Provide Answer">
+                    <input asp-for="answer" type="hidden" />
+                    <h4 id="sqtext">-- @Model.question -- @Model.answer --</h4>
+                    <input asp-for="fanswer" type="text" id="sqanswerinput" placeholder="Please Provide Answer">
+                    <span asp-validation-for="fanswer" class="text-danger"></span>
                 </div>
             </div>
             <div id="sqbuttonscontainer">
-                <button id="sqnextbutton"><a id="nexttext" asp-area="" asp-controller="Account" asp-action=""> NEXT </a> </button>
+                <button type="submit" id="nextbutton">NEXT</button>
             </div>
         </div>
     </form>

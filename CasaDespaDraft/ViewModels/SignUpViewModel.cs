@@ -28,6 +28,9 @@ namespace CasaDespaDraft.ViewModels
         [Required(ErrorMessage = "Address is required")]
         public string? address { get; set; }
 
+        
+        public string? sex { get; set; }
+
         [Display(Name = "Security Question")]
         [Required(ErrorMessage = "Security Question is required")]
         public string? question { get; set; }
@@ -35,6 +38,10 @@ namespace CasaDespaDraft.ViewModels
         [Display(Name = "Answer")]
         [Required(ErrorMessage = "Security Question answer is required")]
         public string? answer { get; set; }
+
+        [DataType(DataType.Upload)]
+        [RegularExpression(@"^.*\.(jpg|jpeg|png)$", ErrorMessage = "Only JPG, JPEG, and PNG files are allowed.")]
+        public byte[]? profilePicture { get; set; }
 
 
     }

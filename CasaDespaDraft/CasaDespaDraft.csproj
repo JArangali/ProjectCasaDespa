@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Home.cs" />
     <Compile Remove="ViewModels\FAQsViewModel.cs" />
+    <Compile Remove="ViewModels\SecurityQuestion.cs" />
   </ItemGroup>
 
   <ItemGroup>

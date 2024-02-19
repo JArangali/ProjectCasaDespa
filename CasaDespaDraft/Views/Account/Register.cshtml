@@ -8,7 +8,7 @@
 
 
 <section id="register">
-    <form asp-action="Register" asp-controller="Account">
+    <form asp-action="Register" asp-controller="Account" enctype="multipart/form-data">
         <div id="registerform">
             <div id="registertitle">
                 <h2 id="registerheading"> REGISTER </h2>
@@ -24,9 +24,10 @@
                     }
 
                     <table>
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        
 
                         <tr>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <td id="regtd"><h4 id="firstname">FIRST NAME:    </h4></td>
                             <td id="regtdinput">
                                 <input asp-for="firstName" id="firstnameinput" placeholder="">
@@ -51,20 +52,24 @@
                         </tr>
 
                         <tr>
-                            <td id="regtd"><h4 id="gender">GENDER:</h4></td>
-                            <td id="regtdinput">
-                                <input type="radio" id="male" name="gender" value="male">
-                                <label for=""><h6>MALE</h6></label>
-                                <input type="radio" id="female" name="gender" value="female">
-                                <label for=""><h6>FEMALE</h6></label>
-                            </td>
+                            @Html.ValidationMessageFor(model => model.sex, "", new { @class = "text-danger"})
+                        </tr>
+
+                        <tr>  
+                            <td id="regtd"><h4 id="gender">Sex:</h4></td>  
+                            <td id="regtdinput">    
+                            <input asp-for="sex" type="radio" id="male" name="sex" value="Male">    
+                            <label for="male"><h6>MALE</h6></label>        
+                            <input asp-for="sex" type="radio" id="female" name="sex" value="Female">    
+                            <label for="female"><h6>FEMALE</h6></label>  </td> </tr>
                         </tr>
 
                         <tr>
                             <td id="regtd"><h4 id="profilepic">UPLOAD PICTURE:</h4></td>
                             <td id="picturetddinput">
-                                <input type="file" id="file" aria-label="File browser example">
-                                <span class="file-custom"></span>
+                                <input asp-for="profilePicture" type="file" id="file" accept=".png,.jpg,.jpeg" placeholder="">
+
+                                @Html.ValidationMessageFor(model => model.profilePicture, "", new { @class = "text-danger"})
                             </td>
                         </tr>
 
@@ -104,7 +109,7 @@
             </div>
 
             <div id="registerbuttonscontainer">
-                <button id="cancelbutton"> <a asp-area="" asp-controller="Account" asp-action="Login" class="getstarted"> CANCEL </a> </button>
+                <button id="cancelbutton"> <a type="button" asp-area="" asp-controller="Account" asp-action="Login" class="getstarted"> CANCEL </a> </button>
                 <!-- Submit button -->
                 <button type="button" id="registerbutton">REGISTER</button>
             </div>

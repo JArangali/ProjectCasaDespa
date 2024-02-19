@@ -12,7 +12,7 @@ namespace CasaDespaDraft.ViewModels
         public int imageId { get; set; }
 
         [DataType(DataType.Upload)]
-        [RegularExpression(@"^.*\.(jpg|jpeg|png)$", ErrorMessage = "Only JPG, JPEG, and PNG files are allowed.")]
+        [FileExtensions(Extensions = "jpg,jpeg,png", ErrorMessage = "Only JPG, JPEG, and PNG files are allowed.")]
         public byte[]? image { get; set; }
 
         [Required]
