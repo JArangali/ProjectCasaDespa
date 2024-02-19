@@ -20,7 +20,7 @@
                         <div id="GalleryFilter_Container">
                             <center>
                                     <h2 id="GalleryEdit_heading"> UPLOAD IMAGE </h2>
-                                    <input type="file" asp-for="image" id="Galleryfile" aria-label="File browser example">
+                                    <input type="file" asp-for="image" id="Galleryfile" accept=".png,.jpg,.jpeg" aria-label="File browser example">
                                     @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger"})
                                     <input id="GalleryEdit_Label" asp-for="imageName" placeholder="Label your Image!">
                                     <input type="hidden" asp-for="imageId" />

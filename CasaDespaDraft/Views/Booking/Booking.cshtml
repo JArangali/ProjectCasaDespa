@@ -1,6 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Booking Page";
 }
+
+@model Booking;
+
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
@@ -129,8 +132,15 @@
         }
 
     .fc-day, .fc-day-number {
-        border-color: transparent !important;
+        border-color: transparent;
     }
+
+        .fc-day.clicked-day {
+            background-color: #ffbdbd !important
+            border-color: #ffbdbd;
+        }
+
+
 
     .fc-left {
         background-color: transparent;
@@ -198,29 +208,28 @@
     <div id="bookform" class="bookcontainer">
         <h1>BOOK NOW!</h1>
 
-        <form action="#" method="post">
+        <form asp-action="Booking" asp-controller="Booking" method="post">
+            
+
             <div>
                 <label for="fullName">Full Name:</label>
-                <input type="text" id="fullName" name="fullName" required><br>
+                <input asp-for="fullName" type="text" id="fullName" name="fullName" required><br>
             </div>
 
             <div>
                 <label for="contactNumber">Contact Number:</label>
-                <input type="tel" id="contactNumber" name="contactNumber" required><br>
+                <input asp-for="contactNumber" type="tel" id="contactNumber" name="contactNumber" required><br>
             </div>
 
             <div>
                 <label for="messengerLink">Messenger Link:</label>
-                <input type="text" id="messengerLink" name="messengerLink" required><br>
+                <input asp-for="messengerLink" type="text" id="messengerLink" name="messengerLink" placeholder="Facebook Profile link also accepted." required><br>
             </div>
 
             <div>
                 <label for="package" style="margin-top:auto;margin-bottom:auto;">Package:</label>
                 <div class="packagecontainer">
-                    <input type="text" value="Select One:" disabled>
-                    <input type="text" value="Day Tour" readonly>
-                    <input type="text" value="Night Tour" readonly>
-                    <input type="text" value="22 hours" readonly>
+                    <select asp-for="package" asp-items="@Html.GetEnumSelectList(typeof(Package))" class="form-control" ></select>
                 </div>
 
 
@@ -229,11 +238,16 @@
 
             <div>
                 <label for="numberOfPax">Number of PAX:</label>
-                <input type="number" id="numberOfPax" name="numberOfPax" required><br>
+                <input type="number" id="numberOfPax" asp-for="pax" required placeholder="Number of people attending"><br>
             </div>
 
             <div>
-                <input type="submit" value="Book">
+                <label for="numberOfPax">Date to Book:</label>
+                <input asp-for="date" type="text" id="selectedDate" readonly placeholder="Click a day on the calendar">
+            </div>
+
+            <div>
+                <input type="submit" value="Book" >
 
             </div>
         </form>
@@ -253,6 +267,7 @@
             </div>
 
         </div>
+        
     </div>
 </section>
 
@@ -265,25 +280,32 @@
                 center: 'title',
                 right: 'next'
             },
-            dayNamesShort: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'], // Use short abbreviations for days
+            dayNamesShort: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
             eventAfterAllRender: function (view) {
                 // Apply styles after the calendar has rendered
-                $('.fc-day-header').css('font-size', '24px'); // Set your desired font size
-                $('.fc-day').css('font-size', '24px'); // Set your desired font size for the date cells
+                $('.fc-day-header').css('font-size', '24px');
+                $('.fc-day').css('font-size', '24px');
                 $('.fc-day-number').css({
-                    'font-size': '24px', // Set your desired font size for the day number
-                    'text-align': 'center', // Center the day number
+                    'font-size': '24px',
+                    'text-align': 'center',
                     'float': 'none',
-                    // Set float to 'none' to make it not float
                 });
-                //$('.fc-day-top, .fc-day-content, .fc-day-bg, .fc-event, .fc-highlight').css('display', 'none'); // Hide other elements
+                //$('.fc-day-top, .fc-day-content, .fc-day-bg, .fc-event, .fc-highlight').css('display', 'none');
                 $('.fc-today').css({
-                    'background-color': 'transparent',
                     'border': 'none',
                     'color': 'inherit'
-                }); // Remove today styles
+                });
+            },
+            dayClick: function (date, jsEvent, view) {
+                // Remove previously clicked day's indicator
+                $('.fc-day').removeClass('clicked-day');
 
+                // Get the clicked date and set it to the input field
+                var clickedDate = date.format();
+                $('#selectedDate').val(clickedDate);
 
+                // Add indicator to the clicked day
+                $(jsEvent.target).closest('.fc-day').addClass('clicked-day');
             },
             // Your other calendar options and events will go here
         });
