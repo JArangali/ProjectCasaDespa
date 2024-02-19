@@ -27,14 +27,82 @@ namespace CasaDespaDraft.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(_dbData.infos);
         }
 
-        public IActionResult IndexEdit()
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public IActionResult IndexEdit(int id)
         {
-            return View();
+            //Search for recipe whose id matches the given id
+            Homepage? infos = _dbData.infos.FirstOrDefault(rec => rec.Id == id);
+
+            if (infos != null)//was a recipe found?
+                return View(infos);
+
+            return NotFound();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> IndexEdit(Homepage infosChanges)
+        {
+            if (ModelState.IsValid)
+            {
+                Homepage? infos = _dbData.infos.FirstOrDefault(rec => rec.Id == infosChanges.Id);
+
+                if (infos != null)
+                {
+                    infos.wd22hrs = infosChanges.wd22hrs;
+                    infos.wdMornhrs = infosChanges.wdMornhrs;
+                    infos.wdNythrs = infosChanges.wdNythrs;
+
+                    infos.we22hrs = infosChanges.we22hrs;
+                    infos.weMornhrs = infosChanges.weMornhrs;
+                    infos.weNythrs = infosChanges.weNythrs;
+
+                    infos.af1 = infosChanges.af1;
+                    infos.af2 = infosChanges.af2;
+                    infos.af3 = infosChanges.af3;
+                    infos.af4 = infosChanges.af4;
+                    infos.af5 = infosChanges.af5;
+
+                    infos.sd1 = infosChanges.sd1;
+                    infos.c1 = infosChanges.c1;
+                    infos.c2 = infosChanges.c2;
+                    infos.oc1 = infosChanges.oc1;
+
+                    infos.cIN = infosChanges.cIN;
+                    infos.cOUT = infosChanges.cOUT;
+                    infos.payment = infosChanges.payment;
+
+                    infos.mc1 = infosChanges.mc1;
+                    infos.mc2 = infosChanges.mc2;
+                    infos.clean = infosChanges.clean;
+                    infos.sc1 = infosChanges.sc1;
+                    infos.noise = infosChanges.noise;
+                    infos.penalty = infosChanges.penalty;
+                    infos.warning = infosChanges.warning;
+               
+
+                    _dbData.Entry(infos).State = EntityState.Modified;
+                    await _dbData.SaveChangesAsync();
+
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            else
+            {
+                return View("Index", infosChanges);
+            }
+        }
+
+
+
+        [Authorize(Roles = "Admin")]
         public IActionResult EditHome() { 
             return View();
         }
@@ -45,6 +113,7 @@ namespace CasaDespaDraft.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult GalleryEdit()
         {
             var galleryViewModel = new GalleryViewModel
@@ -110,19 +179,21 @@ namespace CasaDespaDraft.Controllers
         {
             return View(_dbData.FAQs);
         }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult FAQsEdit()
         {
             return View(_dbData.FAQs);
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult FAQsADD_Page()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> FAQsADD_Page(FAQs newFAQ)
         {
             if (!ModelState.IsValid)
@@ -138,6 +209,7 @@ namespace CasaDespaDraft.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult FAQsEDIT_Page(int id)
         {
             //Search for recipe whose id matches the given id
@@ -193,30 +265,24 @@ namespace CasaDespaDraft.Controllers
             return Json(new { success = false });
         }
 
-        public IActionResult Dashboard_BR()
-        {
-            return View();
-        }
-
-        public IActionResult Dashboard_BT()
-        {
-            return View();
-        }
-
-        public IActionResult Dashboard_AR()
-        {
-            return View();
-        }
-
-        public IActionResult Dashboard_AB()
-        {
-            return View();
-        }
-
         public IActionResult Profile()
         {
+            var user = _userManager.GetUserAsync(User).Result;
+            if (user == null)
+            {
+                // Handle user not found
+                return RedirectToAction("Index"); // Redirect to another action or handle appropriately
+            }
 
-            return View();
+            var createdBookings = _dbData.Bookings.Where(r => r.userId == user.Id).ToList();
+
+
+            var viewModel = new ProfileViewModel
+            {
+                CreatedBookings = createdBookings,
+            };
+
+            return View(viewModel);
         }
 
         public IActionResult ProfileP()
