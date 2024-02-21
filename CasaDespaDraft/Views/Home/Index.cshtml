@@ -15,7 +15,8 @@
             {
             @if (User.IsInRole("Admin"))
             {
-                        <button type="button" id="edithomebutton"><a asp-action="IndexEdit" id="edithomebutton" asp-area="" asp-controller="Home" asp-route-Id="@homepage.Id">EDIT</a></button>
+                    //<button type="button" id="edithomebutton"><a asp-action="IndexEdit" id="edithomebutton" asp-area="" asp-controller="Home" asp-route-Id="@homepage.Id">EDIT</a></button>
+                    <input type="button" id="edithomebutton" value="EDIT" onclick="location.href='@Url.Action("IndexEdit", "Home", new { area = "", id = homepage.Id })'" />
             }
             }
         </div>
@@ -29,9 +30,35 @@
 <section id="menu">
     <div id="buttonmenucontainer">
         <div id="btndiv">
-            <button id="remindersbtn" type="button" href="#importantreminders"><a href="#importantreminders" id="aimportantreminders"> IMPORTANT REMINDERS </a></button>
-            <button id="ratesbtn" type="button" href="#rates"><a href="#rates" id="arates">RATES</a></button>
-            <button id="otherbtn" type="button" href="#amenities"><a href="#amenities" id="aamenities">AMENITIES AND OTHER RULES</a></button>
+            @*<button id="remindersbtn" type="button" href="#importantreminders"><a href="#importantreminders" id="aimportantreminders"> IMPORTANT REMINDERS </a></button>
+             <button id="ratesbtn" type="button" href="#rates"><a href="#rates" id="arates">RATES</a></button>
+            <button id="otherbtn" type="button" href="#amenities"><a href="#amenities" id="aamenities">AMENITIES AND OTHER RULES</a></button> *@
+
+            <input type="button" id="remindersbtn" value="IMPORTANT REMINDERS" onclick="scrollToDiv('importantreminders')" />
+            <input type="button" id="ratesbtn" value="RATES" onclick="scrollToDiv('rates')" />
+            <input type="button" id="otherbtn" value="AMENITIES AND OTHER RULES" onclick="scrollToDiv('amenities')" />
+
+            <script>
+                function scrollToDiv(divId) {
+                    var div = document.getElementById(divId);
+                    if (div) {
+                        div.scrollIntoView();
+                    }
+                }
+            </script>
+
+            <script>
+                function scrollToDiv(divId) {
+                    var div = document.getElementById(divId);
+                    if (div) {
+                        div.scrollIntoView();
+                    }
+                }
+            </script>
+
+            @* <input type="button" id="remindersbtn" value="IMPORTANT REMINDERS" onclick="location.href='@Url.Action("#importantreminders")'" />
+            <input type="button" id="ratesbtn" value="RATES" onclick="location.href='@Url.Action("Index", "Home", new { area = "", id = "rates" })'" />
+            <input type="button" id="otherbtn" value="AMENITIES AND OTHER RULES" onclick="location.href='@Url.Action("Index", "Home", new { area = "", id = "amenities" })'" /> *@
         </div>
     </div>
 </section>
