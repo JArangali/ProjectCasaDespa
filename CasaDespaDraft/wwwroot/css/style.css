@@ -28,6 +28,11 @@ a {
         color: dimgray;
     }
 
+    a:not([href]):not([tabindex]) {
+        color: none;
+        text-decoration: none;
+    }
+
 h1 {
     font-family: 'Spectral', serif;
     font-weight: bold;
@@ -4471,6 +4476,38 @@ feetitle {
     color: #F5D8B3;
 }
 
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tablinks {
+    margin: 0 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: #F5D8B3;
+    cursor: pointer;
+}
+
+    .tablinks:hover {
+        background-color: #C5A485;
+        color: black;
+    }
+
+.tabcontent {
+    display: none;
+    padding: 20px;
+    width: 97%;
+    text-align: center;
+    font-size: 15px;
+}
+
+    .tabcontent:first-child {
+        display: block;
+    }
 
 /*--------------------------------------------------------------
 # PROFILE 
@@ -5118,3 +5155,5 @@ fsbuttondiv {
     background-color: #ffbdbd;
     border-color: #ffbdbd;
 }
+
+

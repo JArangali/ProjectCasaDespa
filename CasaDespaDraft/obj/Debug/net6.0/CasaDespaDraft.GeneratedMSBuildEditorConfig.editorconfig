@@ -9,131 +9,133 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CasaDespaDraft
 build_property.RootNamespace = CasaDespaDraft
-build_property.ProjectDir = C:\Users\lourd\source\repos\ProjectCasaDespa\ProjectCasaDespa\CasaDespaDraft\
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.ProjectDir = /Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\lourd\source\repos\ProjectCasaDespa\ProjectCasaDespa\CasaDespaDraft
+build_property.MSBuildProjectDirectory = /Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Account/AdminCode.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBZG1pbkNvZGUuY3NodG1s
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Account/AdminCode.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9BZG1pbkNvZGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Account/ForgotPassword.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Gb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Account/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Account/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Account/ResetPassword.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Account/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Account/SecurityQuestion.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTZWN1cml0eVF1ZXN0aW9uLmNzaHRtbA==
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Account/SecurityQuestion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9TZWN1cml0eVF1ZXN0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Admin/Dashboard_AB.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkX0FCLmNzaHRtbA==
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Admin/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Admin/Dashboard_AR.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkX0FSLmNzaHRtbA==
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Admin/Dashboard_AB.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRGFzaGJvYXJkX0FCLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Admin/Dashboard_BR.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkX0JSLmNzaHRtbA==
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Admin/Dashboard_AR.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRGFzaGJvYXJkX0FSLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Admin/Dashboard_BT.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkX0JULmNzaHRtbA==
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Admin/Dashboard_BR.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRGFzaGJvYXJkX0JSLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Booking/Booking.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xCb29raW5nLmNzaHRtbA==
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Admin/Dashboard_BT.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRGFzaGJvYXJkX0JULmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Home/FAQs.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGQVFzLmNzaHRtbA==
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Booking/Booking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQm9va2luZy9Cb29raW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Home/FAQsADD_Page.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGQVFzQUREX1BhZ2UuY3NodG1s
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/FAQs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9GQVFzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Home/FAQsEdit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGQVFzRWRpdC5jc2h0bWw=
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/FAQsADD_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9GQVFzQUREX1BhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Home/FAQsEDIT_Page.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGQVFzRURJVF9QYWdlLmNzaHRtbA==
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/FAQsEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9GQVFzRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Home/Gallery - Copy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHYWxsZXJ5IC0gQ29weS5jc2h0bWw=
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/FAQsEDIT_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9GQVFzRURJVF9QYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Home/Gallery.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHYWxsZXJ5LmNzaHRtbA==
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/Gallery - Copy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9HYWxsZXJ5IC0gQ29weS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Home/GalleryEdit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHYWxsZXJ5RWRpdC5jc2h0bWw=
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/Gallery.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9HYWxsZXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/GalleryEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9HYWxsZXJ5RWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Home/IndexEdit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleEVkaXQuY3NodG1s
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/IndexEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Home/Profile.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9maWxlLmNzaHRtbA==
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Home/ProfileA.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9maWxlQS5jc2h0bWw=
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Home/ProfileP.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9maWxlUC5jc2h0bWw=
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/ProfileA.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcm9maWxlQS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Home/Receipt.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWNlaXB0LmNzaHRtbA==
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/ProfileP.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcm9maWxlUC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Home/Receipt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9SZWNlaXB0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lourd/source/repos/ProjectCasaDespa/ProjectCasaDespa/CasaDespaDraft/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-sp62g3uuzs
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-kljqv1891x

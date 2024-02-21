@@ -9,8 +9,7 @@ builder.Services.AddControllersWithViews();
 
 //DbContext
 builder.Services.AddDbContext<AppDbContext>(
-   options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-    );
+    options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
@@ -36,7 +35,6 @@ app.UseAuthentication();
 
 var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<AppDbContext>();
 context.Database.EnsureCreated();
-//context.Database.EnsureDeleted();
 
 app.UseRouting();
 
