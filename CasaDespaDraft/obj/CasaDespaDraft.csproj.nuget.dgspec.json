@@ -1,27 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lourd\\source\\repos\\ProjectCasaDespa\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj": {}
+    "/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/CasaDespaDraft.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lourd\\source\\repos\\ProjectCasaDespa\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj": {
+    "/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/CasaDespaDraft.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lourd\\source\\repos\\ProjectCasaDespa\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj",
+        "projectUniqueName": "/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/CasaDespaDraft.csproj",
         "projectName": "CasaDespaDraft",
-        "projectPath": "C:\\Users\\lourd\\source\\repos\\ProjectCasaDespa\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj",
-        "packagesPath": "C:\\Users\\lourd\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lourd\\source\\repos\\ProjectCasaDespa\\ProjectCasaDespa\\CasaDespaDraft\\obj\\",
+        "projectPath": "/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/CasaDespaDraft.csproj",
+        "packagesPath": "/Users/jarangali/.nuget/packages/",
+        "outputPath": "/Users/jarangali/Documents/GitHub/ProjectCasaDespa/CasaDespaDraft/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lourd\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/jarangali/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "/usr/local/share/dotnet/library-packs": {},
+          "/usr/local/share/dotnet/sdk/7.0.313/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -61,6 +61,10 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[7.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[7.0.13, )"
             }
           },
           "imports": [
@@ -82,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     }

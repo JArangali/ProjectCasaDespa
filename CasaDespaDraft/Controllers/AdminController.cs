@@ -26,6 +26,12 @@ namespace CasaDespaDraft.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
         public IActionResult Dashboard_BR()
         {
             return View();
