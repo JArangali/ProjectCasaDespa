@@ -2333,6 +2333,19 @@ section {
     background-color: #e8cfa9;
 }
 
+#logoutbtn {
+    width: 100px;
+    height: 35px;
+    margin-top: 30px;
+    margin: 25px;
+    margin-right: 50px;
+    font-size: 15px;
+    background: #F0D9B7;
+    border-radius: 4px;
+    font-weight: 400;
+    color: black;
+}
+
 #logiinpassinput {
     width: 400px;
     padding: 12px;
@@ -3037,6 +3050,7 @@ FAQS_Edit {
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 70px;
+    font-size: 15px;
 }
 
 #FAQSADD_Container_Title {
@@ -3057,6 +3071,7 @@ FAQS_Edit {
     padding-top: 10px;
     padding-bottom: 32px;
     margin-left: 30px;
+    font-size: 15px;
 }
 
 #FAQSADD_Cancel {
@@ -3069,8 +3084,8 @@ FAQS_Edit {
     border-radius: 40px;
     padding-top: 10px;
     padding-bottom: 32px;
+    font-size: 15px;
 }
-
 
 /*--------------------------------------------------------------
 # GALLERY EDIT
@@ -3259,7 +3274,8 @@ margin-bottom:30px;
     border-radius: 40px;
     padding-top: 10px;
     padding-bottom: 32px;
-    margin-top:30px
+    margin-top:30px;
+    font-size:15px;
 }
 
 #GalleryEdit_Cancel {
@@ -3272,6 +3288,7 @@ margin-bottom:30px;
     border-radius: 40px;
     padding-top: 10px;
     padding-bottom: 32px;
+    font-size: 15px;
 }
 
 
@@ -3464,7 +3481,7 @@ td {
 #amenitiesdiv {
     background: rgba(0, 0, 0, .8);
     width: 90%;
-    height: 800px;
+    height: 838px;
     align-self: center;
     text-align: center;
     margin: 50px;
@@ -3580,7 +3597,7 @@ td {
     background: #EBCDA8;
     transition: 0.3s;
     width: 100%;
-    height: 110%;
+    height: 122%;
 }
 
 #additionalfeestitle {
