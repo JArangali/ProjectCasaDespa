@@ -54,7 +54,7 @@
                                 <td>@booking.date</td>
                                 <td>@booking.package</td>
                                 <td><a class="nav-button" asp-action="DashboardRequestPayment" asp-route-id="@booking.bookingId" >REQUEST PAYMENT</a></td>
-                                <td><a class="nav-button">X</a></td>
+                                <td><a class="nav-button" asp-action="DashboardBookingDecline" asp-route-id="@booking.bookingId">X</a></td>
                             </tr>
                         }
 
@@ -91,7 +91,7 @@
                                 <td><a class="nav-button">CHECK</a></td>
                                 <td><a class="nav-button">REQUEST</a></td>
                                 <td><a class="nav-button" asp-action="DashboardAcceptedBooking" asp-route-id="@booking.bookingId">/</a></td>
-                                <td><a class="nav-button">X</a></td>
+                                <td><a class="nav-button" asp-action="DashboardBookingCancelled" asp-route-id="@booking.bookingId">X</a></td>
                             </tr>
                         }
                     </tbody>
@@ -111,7 +111,7 @@
                             <th><div class="table-container2">PACKAGE</div></th>
                             <th><div class="table-container2">EDIT</div></th>
                             <th><div class="table-container2">DONE</div></th>
-                            <th><div class="table-container2">CANCELLED</div></th>
+                            <th><div class="table-container2" >CANCELLED</div></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -125,7 +125,7 @@
                                 <td>@booking.package</td>
                                 <td><a class="nav-button">EDIT</a></td>
                                 <td><a class="nav-button" asp-action="DashboardArchive" asp-route-id="@booking.bookingId">DONE</a></td>
-                                <td><a class="nav-button">X</a></td>
+                                <td><a class="nav-button" asp-action="DashboardBookingCancelled" asp-route-id="@booking.bookingId">X</a></td>
                             </tr>
                         }
                     </tbody>
@@ -158,8 +158,8 @@
                                 <td>@booking.date</td>
                                 <td>@booking.package</td>
                                 <td>@booking.BStatus</td>
-                                <td><a class="Dashboard_buttons">SHOW</a></td>
-                                <td><a class="Dashboard_buttons">X</a></td>
+                                <td><a class="nav-button">SHOW</a></td>
+                                <td><a class="nav-button" asp-action="DashboardDeleteBooking" asp-route-id="@booking.bookingId">X</a></td>
                             </tr>
                         }
                     </tbody>

@@ -84,6 +84,44 @@ namespace CasaDespaDraft.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        public IActionResult DashboardBookingDecline(int id)
+        {
+            Booking? Archived = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            if (Archived == null)
+            {
+                // Handle the case where the booking is not found
+                return NotFound();
+            }
+
+            var toDecline = Archived;
+            toDecline.BStatus = "Declined";
+
+            _dbData.Bookings.Update(toDecline);
+            _dbData.SaveChanges();
+            return RedirectToAction("Dashboard", "Admin");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult DashboardBookingCancelled(int id)
+        {
+            Booking? Archived = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            if (Archived == null)
+            {
+                // Handle the case where the booking is not found
+                return NotFound();
+            }
+
+            var toCancel = Archived;
+            toCancel.BStatus = "Cancelled";
+
+            _dbData.Bookings.Update(toCancel);
+            _dbData.SaveChanges();
+            return RedirectToAction("Dashboard", "Admin");
+        }
+
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult DashboardAcceptedBooking(int id)
         {
@@ -120,6 +158,23 @@ namespace CasaDespaDraft.Controllers
 
             _dbData.Bookings.Update(toArchive);
             _dbData.SaveChanges();
+            return RedirectToAction("Dashboard", "Admin");
+        }
+
+        [HttpGet]
+        public IActionResult DashboardDeleteBooking(int id)
+        {
+            Booking? bookingToDelete = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            if (bookingToDelete == null)
+            {
+                // Handle the case where the booking is not found
+                return NotFound();
+            }
+
+            _dbData.Bookings.Remove(bookingToDelete);
+            _dbData.SaveChanges();
+
             return RedirectToAction("Dashboard", "Admin");
         }
 
