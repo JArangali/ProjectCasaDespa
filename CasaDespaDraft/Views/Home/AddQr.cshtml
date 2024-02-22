@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Add QR";
+}
+
+
+<!-- AddQr Section -->
+<section id="addqrsection">
+    <div id="backbuttondiv">
+        <input type="button" id="fpbackbutton" value="BACK" onclick="location.href='/Home/'" class="getstarted" />
+    </div>
+ 
+        <div id="addqrform">
+
+            <div id="addqrtitle">
+                <div id="addqrtitle1">
+                    <h2 id="receiptheading"> ADD QR AND PRICE </h2>
+                </div>
+            </div>
+
+
+            <div id="addqrformcontent">
+                <div id="addqrinputfields">
+                    <table>
+                        <tr>
+                            <td><h3 id="prooftitle" ">Add QR Code: </h3></td>
+                            <td><input type="file" id="file" accept=".png,.jpg,.jpeg" placeholder=""></td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr id="addqrtr">
+                            <td id="tdrname">Sample File Name</td>
+                            <td id="addqrtd">
+
+                                <button type="submit" id="ReceiptIcon" data-id="">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td><h3 id="referencetitle">Amount to Pay: </h3></td>
+                            <td><input type="text" id="refanswerinput" placeholder="Please Provide Exact Amount."></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="receiptbuttonscontainer">
+                <input type="button" id="canceladdqrbutton" value="CANCEL">
+                <input type="submit" id="submitaddqrbutton" value="SUBMIT">
+            </div>
+        </div>
+
+
+</section>

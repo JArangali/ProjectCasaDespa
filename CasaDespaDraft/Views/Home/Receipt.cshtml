@@ -1,58 +1,55 @@
 ﻿@{
-    ViewData["Title"] = "Profile Page";
+    ViewData["Title"] = "Receipt";
 }
-<style>
-     .image-selector {
-        margin-bottom: 10px;
-        position: relative; 
-    }
-    .custom-file-upload {
-        padding: 8px 12px;
-        cursor: pointer;
-        background-color: black;
-        color: #F3D6B2;
-        border-radius: 5px;
-        border: none;
-    }
 
-    #uploadedImage {
-        display: none;
-        max-width: 200px;
-        margin: 0 auto 10px; 
-    }
 
-    
-    .reference-number {
-        margin-bottom: 20px;
-        text-align: left; 
-        display: flex;
-        align-items: center;
-        color: black;
-        font-weight: bold;
-    }
-</style>
+<!-- Receipt Section -->
+<section id="receiptsection">
+    <div id="backbuttondiv">
+        <input type="button" id="fpbackbutton" value="BACK" onclick="location.href='/Home/'" class="getstarted" />
+    </div>
+        <div id="receiptform">
 
-<!-- Receipt Page -->
-<section id="rt">
-    <form>
-        <div id="rform">
-
-            <div id="rtitle">
-                <div id="rtitle1">
-                    <h2 id="rheading">RECEIPT</h2>
+            <div id="receipttitle">
+                <div id="receipttitle1">
+                    <h2 id="receiptheading"> RECEIPT </h2>
                 </div>
             </div>
 
-            <div id="rformcontent">
-                <div id="rinputfield">
-                    <h4 id="rtext">REFERENCE NUMBER</h4>
-                    <input type="text" id="ranswerinput" placeholder="">
+
+            <div id="receiptformcontent">
+                <div id="receiptinputfields">
+                    <table>
+                        <tr>
+                            <td><h3 id="prooftitle"">Proof of Payment: </h3></td>
+                            <td><input type="file" id="file" accept=".png,.jpg,.jpeg" placeholder=""></td>
+                        </tr>
+                    </table>
+
+                    <table>
+                    <tr id="receipttr">
+                        <td id="tdrname">Sample File Name</td>
+                        <td id="receipttd">
+                            <form method="delete" asp-action="" asp-controller="">
+                                <button type="submit" id="ReceiptIcon" data-id="">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td><h3 id="referencetitle">Reference Number: </h3></td>
+                            <td><input type="text" id="refanswerinput" placeholder="Please Provide Reference Numer."></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
-            <div id="sqbuttonscontainer">
-                <button id="rnextbutton"><a id="rnext" asp-area="" asp-controller="Home" asp-action="ProfileP"> CANCEL </a> </button>
-                <button id="rnextbutton"><a id="rnext" asp-area="" asp-controller="Home" asp-action="ProfileP"> SUBMIT </a> </button
+            <div id="receiptbuttonscontainer">
+                <input type="button" id="cancelreceiptbutton" value="CANCEL">
+                <input type="submit" id="submitreceiptbutton" value="SUBMIT">
             </div>
         </div>
-    </form>
 </section>

@@ -5,7 +5,7 @@
 <!-- Admin Code Section -->
 <section id="ac">
     <div id="backbuttondiv">
-        <button id="fpbackbutton"> <a id="fpabackbutton" asp-area="" asp-controller="Account" asp-action="ForgotPassword" class="getstarted"> <i class="material-icons">chevron_left</i> </a> </button>
+        <input type="button" id="fpbackbutton" value="BACK" onclick="location.href='/Account/ForgotPassword'" class="getstarted" />
     </div>
     <form>
         <div id="acform">
@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div id="acbuttonscontainer">
-                <button id="acnextbutton"><a id="acnext" asp-area="" asp-controller="Account" asp-action=""> NEXT </a> </button>
+                <input type="submit" id="acnextbutton" value="NEXT" onclick="location.href=''" />
             </div>
         </div>
     </form>
