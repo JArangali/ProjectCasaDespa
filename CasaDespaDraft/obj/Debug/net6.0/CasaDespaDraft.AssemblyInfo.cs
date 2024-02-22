@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CasaDespaDraft")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+246ff3e9dd3ff5a35f71f566fa407437a943c63d")]
 [assembly: System.Reflection.AssemblyProductAttribute("CasaDespaDraft")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CasaDespaDraft")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

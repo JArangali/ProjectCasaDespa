@@ -109,9 +109,9 @@
             </div>
 
             <div id="registerbuttonscontainer">
-                <button id="cancelbutton"> <a type="button" asp-area="" asp-controller="Account" asp-action="Login" class="getstarted"> CANCEL </a> </button>
+                <input id="cancelbutton" type="button" value="CANCEL" onclick="location.href='/Account/Login'" class="getstarted" />
                 <!-- Submit button -->
-                <button type="button" id="registerbutton">REGISTER</button>
+                <input id="registerbutton" type="button" value="REGISTER" onclick="location.href='/Account/Register'" class="getstarted" />
             </div>
         </div>
 
@@ -129,8 +129,11 @@
                     <h4 id="ppcontent">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h4>
                 </div>
                 <div>
-                    <button id="declinebutton"><span class="close" id=""> DECLINED </span></button>
-                    <button type="submit" id="acceptbutton"><span class="submit"> ACCEPT </span></button>
+                    <div>
+                        <input type="button" id="declinedbutton" class="decline" value="DECLINED" />
+                        <input type="submit" id="acceptbutton" value="ACCEPT" />
+                    </div>
+                    
                 </div>
             </div>
 
@@ -139,12 +142,7 @@
     </form>
 </section>
 
-
-
-    
-
-
-    <script>
+<script>
     // Get the modal
     var modal = document.getElementById("myModal");
 
@@ -152,7 +150,7 @@
     var btn = document.getElementById("registerbutton");
 
     // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+    var span = document.getElementsByClassName("decline")[0];
 
     // When the user clicks on the button, open the modal
     btn.onclick = function () {
@@ -170,4 +168,4 @@
             modal.style.display = "none";
         }
     }
-    </script>
+</script>

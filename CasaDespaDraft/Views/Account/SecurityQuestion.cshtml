@@ -7,7 +7,7 @@
 
 <section id="sq">
     <div id="backbuttondiv">
-        <button id="fpbackbutton"> <a id="fpabackbutton" asp-area="" asp-controller="Account" asp-action="ForgotPassword" class="getstarted"> <i class="material-icons">chevron_left</i> </a> </button>
+        <input type="button" id="fpbackbutton" value="BACK" onclick="location.href='/Account/ForgotPassword'" class="getstarted" />
     </div>
     <form asp-action="SecurityQuestion" asp-controller="Account" method="post">
         <div id="sqform">
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div id="sqbuttonscontainer">
-                <button type="submit" id="nextbutton">NEXT</button>
+                <input type="button" id="sqnextbutton" value="NEXT" onclick="location.href='/Account/[action]'" class="getstarted" />
             </div>
         </div>
     </form>

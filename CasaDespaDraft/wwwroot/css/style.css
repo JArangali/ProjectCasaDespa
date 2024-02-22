@@ -2331,6 +2331,7 @@ section {
     background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
     box-sizing: border-box;
     background-color: #e8cfa9;
+    font-size: 17px;
 }
 
 #logoutbtn {
@@ -2359,6 +2360,7 @@ section {
     background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#fff,#fff) left bottom/100% 2px no-repeat;
     box-sizing: border-box;
     background-color: #e8cfa9;
+    font-size: 17px;
 }
 
 #loginbutton {
@@ -2480,11 +2482,13 @@ section {
     width: 300px;
     height: 100px;
     font-weight: bold;
+    font-size: 17px;
 }
 
 #addresstddinput {
     width: 600px;
     height: 100px;
+    font-size: 17px;
 }
 
 #firstnameinput {
@@ -2499,6 +2503,7 @@ section {
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 40px;
+    font-size: 17px;
 }
 
 #lastnameinput {
@@ -2513,6 +2518,7 @@ section {
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 40px;
+    font-size: 17px;
 }
 
 #addressinput {
@@ -2527,6 +2533,7 @@ section {
     border-width: 1px;
     box-sizing: border-box;
     background-color: #F5D8B3;
+    font-size: 17px;
 }
 
 #securityquestion {
@@ -2546,6 +2553,7 @@ section {
     border-width: 1px;
     box-sizing: border-box;
     background-color: #F5D8B3;
+    font-size: 17px;
 }
 
 #securityanswerinput {
@@ -2561,6 +2569,7 @@ section {
     border-width: 1px;
     box-sizing: border-box;
     background-color: #F5D8B3;
+    font-size: 17px;
 }
 
 #tabledivemailpass {
@@ -2580,6 +2589,7 @@ section {
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 40px;
+    font-size: 17px;
 }
 
 #registerpasswordinput {
@@ -2594,6 +2604,7 @@ section {
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 40px;
+    font-size: 17px;
 }
 
 #emailtd {
@@ -2720,16 +2731,20 @@ input[type=radio]:checked {
 #acceptbutton {
     border-radius: 20px;
     background-color: black;
-    color:#EBCDA8;
+    color: #EBCDA8;
     border-width: 2px;
     border-color: black;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
-#declinebutton {
+#declinedbutton {
     border-radius: 20px;
     background-color: #EBCDA8;
     border-width: 2px;
     border-color: black;
+    padding:10px;
+    margin-bottom:10px;
 }
 
 /* The Modal (background) */
@@ -2758,7 +2773,6 @@ input[type=radio]:checked {
 /* The Close Button */
 .close {
     color: black;
-    float: right;
     font-size: 10px;
     font-weight: bold;
     height: auto;
@@ -3317,6 +3331,7 @@ margin-bottom:30px;
     text-align: left;
     padding: 40px;
     padding-left: 130px;
+    font-size: 17px;
 }
 
 #forgotpassword {
@@ -3370,6 +3385,7 @@ margin-bottom:30px;
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 40px;
+    font-size: 17px;
 }
 
 #nextbutton {
@@ -4121,6 +4137,7 @@ feetitle {
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 40px;
+    font-size: 15px;
 }
 
 #sqnextbutton {
@@ -4239,6 +4256,7 @@ feetitle {
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 40px;
+    font-size:15px;
 }
 
 #acnextbutton {
@@ -4295,6 +4313,7 @@ feetitle {
     padding-left: 200px;
     padding-right: 200px;
     display: flex;
+    font-size: 15px;
 }
 
 #rpinputfields1 {
@@ -4304,6 +4323,7 @@ feetitle {
     padding-right: 200px;
     padding-bottom: 30px;
     display: flex;
+    font-size: 15px;
 }
 
 #rp {
@@ -4369,6 +4389,7 @@ feetitle {
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 40px;
+    font-size: 15px;
 }
 
 #rpnextbutton {
@@ -4471,6 +4492,24 @@ feetitle {
     color: #F5D8B3;
 }
 
+#dashboardtablebtn {
+    padding: 8px;
+    max-width: 200px;
+    border-radius: 20px;
+    background-color: black;
+    color: #F3D6B2;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+    #dashboardtablebtn:hover,
+    #dashboardtablebtn:active {
+        background-color: #C5A485;
+        color: black;
+    }
 
 /*--------------------------------------------------------------
 # PROFILE 
