@@ -28,32 +28,22 @@ namespace CasaDespaDraft.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Dashboard()
         {
-            return View();
+            return View(_dbData.Bookings);
         }
 
         [Authorize(Roles = "Admin")]
-        public IActionResult Dashboard_BR()
+        public async Task<IActionResult> ChangeStatus(int bookingId, BookingStatus Status)
         {
-            return View();
+            var booking = _dbData.Bookings.FirstOrDefault(r => r.bookingId == bookingId);
+            if (booking != null)
+            {
+                booking.Status = (ProfileStatus)Status;
+                await _dbData.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Dashboard"); // Or any other appropriate action
         }
 
-        [Authorize(Roles = "Admin")]
-        public IActionResult Dashboard_BT()
-        {
-            return View();
-        }
-
-        [Authorize(Roles = "Admin")]
-        public IActionResult Dashboard_AR()
-        {
-            return View();
-        }
-
-        [Authorize(Roles = "Admin")]
-        public IActionResult Dashboard_AB()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
