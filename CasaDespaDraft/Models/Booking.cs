@@ -16,11 +16,6 @@ namespace CasaDespaDraft.Models
         Done, Cancelled, Denied
     }
 
-    public enum ProfileStatus
-    {
-        Requests, Pending_Payment, Archive
-    }
-
     public class Booking
     {
         [Key]
@@ -48,7 +43,6 @@ namespace CasaDespaDraft.Models
         [Required]
         public string? date { get; set; }
 
-        public ProfileStatus Status { get; set; } = ProfileStatus.Requests;
-
+        public string? BStatus { get; set; }
     }
 }

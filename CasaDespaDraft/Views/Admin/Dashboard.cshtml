@@ -1,6 +1,11 @@
-﻿@{
+﻿﻿@{
     ViewData["Title"] = "Dashboard";
 }
+
+@using Microsoft.AspNetCore.Identity;
+@using CasaDespaDraft.Data;
+@using CasaDespaDraft.ViewModels
+@model AccountViewModel
 
 <!-- Welcome Section -->
 <section id="welcome">
@@ -15,226 +20,155 @@
 </section>
 <!-- End Welcome Section -->
 <!-- Dashboard Section-->
-    <div class="main-container">
-        <div class="right-container">
+<div class="main-container">
+    <div class="right-container">
 
-            <div class="tabs">
-                <button class="tablinks" onclick="openTab(event, 'Transactions')">Booking Transactions</button>
-                <button class="tablinks" onclick="openTab(event, 'BRequests')">Booking Requests</button>
-                <button class="tablinks" onclick="openTab(event, 'ARequest')">Accepted Requests</button>
-                <button class="tablinks" onclick="openTab(event, 'Archived')">Archived Bookings</button>
+        <div class="tabs">
+            <button class="tablinks" onclick="openTab(event, 'BRequests')">Booking Requests</button>
+            <button class="tablinks" onclick="openTab(event, 'Transactions')">Booking Transactions</button>
+            <button class="tablinks" onclick="openTab(event, 'ARequest')">Accepted Requests</button>
+            <button class="tablinks" onclick="openTab(event, 'Archived')">Archived Bookings</button>
+        </div>
+
+        <div id="BRequests" class="tabcontent">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <td><div class="table-container2">FULL NAME:</div></td>
+                            <th><div class="table-container2">CONTACT NUMBER:</br></div></th>
+                            <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
+                            <th><div class="table-container2">DATE</div></th>
+                            <th><div class="table-container2">PACKAGE</div></th>
+                            <th><div class="table-container2">DOWNPAYMENT</div></th>
+                            <th><div class="table-container2">DECLINED</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var booking in Model.Bookings)
+                        {
+                            <tr>
+                                <td>@booking.fullName</td>
+                                <td>@booking.contactNumber</td>
+                                <td>@booking.pax</td>
+                                <td>@booking.date</td>
+                                <td>@booking.package</td>
+                                <td><a class="nav-button" asp-action="DashboardRequestPayment" asp-route-id="@booking.bookingId" >REQUEST PAYMENT</a></td>
+                                <td><a class="nav-button" asp-action="DashboardBookingDecline" asp-route-id="@booking.bookingId">X</a></td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
             </div>
+        </div>
 
-            <div id="Transactions" class="tabcontent">
-                <div class="table-container">
-                    <table>
-                        <thead>
+        <div id="Transactions" class="tabcontent">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <td><div class="table-container2">FULL NAME:</div></td>
+                            <th><div class="table-container2">CONTACT NUMBER:</br></div></th>
+                            <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
+                            <th><div class="table-container2">DATE</div></th>
+                            <th><div class="table-container2">PACKAGE</div></th>
+                            <th><div class="table-container2">PAYMENT</div></th>
+                            <th><div class="table-container2">REQUEST PAYMENT</div></th>
+                            <th><div class="table-container2">CONFIRM</div></th>
+                            <th><div class="table-container2">CANCEL</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var booking in Model.Requested)
+                        {
                             <tr>
-                                <td><div class="table-container2">FULL NAME:</div></td>
-                                <th><div class="table-container2">CONTACT NUMBER:</br></div></th>
-                                <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
-                                <th><div class="table-container2">DATE</div></th>
-                                <th><div class="table-container2">PACKAGE</div></th>
-                                <th><div class="table-container2">PAYMENT</div></th>
-                                <th><div class="table-container2">REQUEST PAYMENT</div></th>
-                                <th><div class="table-container2">CONFIRM</div></th>
-                                <th><div class="table-container2">CANCEL</div></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><div class="table-container1">JOHN DOE REFFER</div></td>
-                                <td>09652439187</td>
-                                <td>8</td>
-                                <td>12/23/23</td>
-                                <td>22 HOURS</td>
+                                <td>@booking.fullName</td>
+                                <td>@booking.contactNumber</td>
+                                <td>@booking.pax</td>
+                                <td>@booking.date</td>
+                                <td>@booking.package</td>
                                 <td><a class="nav-button">CHECK</a></td>
                                 <td><a class="nav-button">REQUEST</a></td>
-                                <td><a class="nav-button">/</a></td>
-                                <td><a class="nav-button">X</a></td>
+                                <td><a class="nav-button" asp-action="DashboardAcceptedBooking" asp-route-id="@booking.bookingId">/</a></td>
+                                <td><a class="nav-button" asp-action="DashboardBookingCancelled" asp-route-id="@booking.bookingId">X</a></td>
                             </tr>
-                            <tr>
-                                <td><div class="table-container1">JOHN DOE REFFER</div></td>
-                                <td>09163826374</td>
-                                <td>2</td>
-                                <td>12/23/23</td>
-                                <td>DAY</td>
-                                <td><a class="nav-button">CHECK</a></td>
-                                <td><a class="nav-button">REQUEST</a></td>
-                                <td><a class="nav-button">/</a></td>
-                                <td><a class="nav-button">X</a></td>
-                            </tr>
-                            <tr>
-                                <td><div class="table-container1">HAROLD LIBRA</div></td>
-                                <td>09148574639</td>
-                                <td>6</td>
-                                <td>12/01/23</td>
-                                <td>NIGHT</td>
-                                <td><a class="nav-button">CHECK</a></td>
-                                <td><a class="nav-button">REQUEST</a></td>
-                                <td><a class="nav-button">/</a></td>
-                                <td><a class="nav-button">X</a></td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-
-            <div id="BRequests" class="tabcontent">
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <td><div class="table-container2">FULL NAME:</div></td>
-                                <th><div class="table-container2">CONTACT NUMBER:</br></div></th>
-                                <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
-                                <th><div class="table-container2">DATE</div></th>
-                                <th><div class="table-container2">PACKAGE</div></th>
-                                <th><div class="table-container2">DOWNPAYMENT</div></th>
-                                <th><div class="table-container2">DECLINED</div></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><div class="table-container1">JOHN DOE REFFER</div></td>
-                                <td>09652439187</td>
-                                <td>8</td>
-                                <td>12/23/23</td>
-                                <td>22 HOURS</td>
-                                <td><a class="nav-button">REQUEST PAYMENT</a></td>
-                                <td><a class="nav-button">X</a></td>
-                            </tr>
-                            <tr>
-                                <td><div class="table-container1">JOHN DOE REFFER</div></td>
-                                <td>09163826374</td>
-                                <td>2</td>
-                                <td>12/23/23</td>
-                                <td>DAY</td>
-                                <td><a class="nav-button">REQUEST PAYMENT</a></td>
-                                <td><a class="nav-button">X</a></td>
-                            </tr>
-                            <tr>
-                                <td><div class="table-container1">HAROLD LIBRA</div></td>
-                                <td>09148574639</td>
-                                <td>6</td>
-                                <td>12/01/23</td>
-                                <td>NIGHT</td>
-                                <td><a class="nav-button">REQUEST PAYMENT</a></td>
-                                <td><a class="nav-button">X</a></td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-
-                <div id="ARequest" class="tabcontent">
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td><div class="table-container2">FULL NAME:</div></td>
-                                    <th><div class="table-container2">CONTACT NUMBER:</br></div></th>
-                                    <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
-                                    <th><div class="table-container2">DATE</div></th>
-                                    <th><div class="table-container2">PACKAGE</div></th>
-                                    <th><div class="table-container2">EDIT</div></th>
-                                    <th><div class="table-container2">DONE</div></th>
-                                    <th><div class="table-container2">CANCELLED</div></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><div class="table-container1">JOHN DOE REFFER</div></td>
-                                    <td>09652439187</td>
-                                    <td>8</td>
-                                    <td>12/23/23</td>
-                                    <td>22 HOURS</td>
-                                    <td><a class="nav-button">EDIT</a></td>
-                                    <td><a class="nav-button">DONE</a></td>
-                                    <td><a class="nav-button">X</a></td>
-                                </tr>
-                                <tr>
-                                    <td><div class="table-container1">JOHN DOE REFFER</div></td>
-                                    <td>09163826374</td>
-                                    <td>2</td>
-                                    <td>12/23/23</td>
-                                    <td>DAY</td>
-                                    <td><a class="nav-button">EDIT</a></td>
-                                    <td><a class="nav-button">DONE</a></td>
-                                    <td><a class="nav-button">X</a></td>
-                                </tr>
-                                <tr>
-                                    <td><div class="table-container1">HAROLD LIBRA</div></td>
-                                    <td>09148574639</td>
-                                    <td>6</td>
-                                    <td>12/01/23</td>
-                                    <td>NIGHT</td>
-                                    <td><a class="nav-button">EDIT</a></td>
-                                    <td><a class="nav-button">DONE</a></td>
-                                    <td><a class="nav-button">X</a></td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="Archived" class="tabcontent">
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>FULL NAME:</td>
-                                    <th>CONTACT NUMBER:<br/></th>
-                                    <th>NUMBER<BR>OF PAX:</th>
-                                    <th>DATE</th>
-                                    <th>PACKAGE</th>
-                                    <th>STATUS</th>
-                                    <th>PAYMENT</th>
-                                    <th>DELETE</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><div class="table-container1">JOHN DOE REFFER</div></td>
-                                    <td>09652439187</td>
-                                    <td>8</td>
-                                    <td>12/23/23</td>
-                                    <td>22 HOURS</td>
-                                    <td>DONE</td>
-                                    <td><a class="Dashboard_buttons">SHOW</a></td>
-                                    <td><a class="Dashboard_buttons">X</a></td>
-                                </tr>
-                                <tr>
-                                    <td><div class="table-container1">JOHN DOE REFFER</div></td>
-                                    <td>09163826374</td>
-                                    <td>2</td>
-                                    <td>12/23/23</td>
-                                    <td>DAY</td>
-                                    <td>CANCELLED</td>
-                                    <td><a class="Dashboard_buttons">SHOW</a></td>
-                                    <td><a class="Dashboard_buttons">X</a></td>
-                                </tr>
-                                <tr>
-                                    <td><div class="table-container1">HAROLD LIBRA</div></td>
-                                    <td>09148574639</td>
-                                    <td>6</td>
-                                    <td>12/01/23</td>
-                                    <td>NIGHT</td>
-                                    <td>DENIED</td>
-                                    <td><a class="Dashboard_buttons">SHOW</a></td>
-                                    <td><a class="Dashboard_buttons">X</a></td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
+                        }
+                    </tbody>
+                </table>
             </div>
+        </div>
+
+        <div id="ARequest" class="tabcontent">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <td><div class="table-container2">FULL NAME:</div></td>
+                            <th><div class="table-container2">CONTACT NUMBER:</br></div></th>
+                            <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
+                            <th><div class="table-container2">DATE</div></th>
+                            <th><div class="table-container2">PACKAGE</div></th>
+                            <th><div class="table-container2">EDIT</div></th>
+                            <th><div class="table-container2">DONE</div></th>
+                            <th><div class="table-container2" >CANCELLED</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var booking in Model.Accepted)
+                        {
+                            <tr>
+                                <td>@booking.fullName</td>
+                                <td>@booking.contactNumber</td>
+                                <td>@booking.pax</td>
+                                <td>@booking.date</td>
+                                <td>@booking.package</td>
+                                <td><a class="nav-button">EDIT</a></td>
+                                <td><a class="nav-button" asp-action="DashboardArchive" asp-route-id="@booking.bookingId">DONE</a></td>
+                                <td><a class="nav-button" asp-action="DashboardBookingCancelled" asp-route-id="@booking.bookingId">X</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="Archived" class="tabcontent">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>FULL NAME:</td>
+                            <th>CONTACT NUMBER:<br /></th>
+                            <th>NUMBER<BR>OF PAX:</th>
+                            <th>DATE</th>
+                            <th>PACKAGE</th>
+                            <th>STATUS</th>
+                            <th>PAYMENT</th>
+                            <th>DELETE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var booking in Model.Archive)
+                        {
+                            <tr>
+                                <td>@booking.fullName</td>
+                                <td>@booking.contactNumber</td>
+                                <td>@booking.pax</td>
+                                <td>@booking.date</td>
+                                <td>@booking.package</td>
+                                <td>@booking.BStatus</td>
+                                <td><a class="nav-button">SHOW</a></td>
+                                <td><a class="nav-button" asp-action="DashboardDeleteBooking" asp-route-id="@booking.bookingId">X</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
+</div>
 
 
 <script>
@@ -254,6 +188,6 @@
 
     // Call openTab function with 'Home' tab name as an argument when the page loads
     window.onload = function () {
-        openTab(null, 'Transactions');
+        openTab(null, 'BRequests');
     };
 </script>

@@ -28,32 +28,156 @@ namespace CasaDespaDraft.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Dashboard()
         {
-            return View();
+
+            var bookings = _dbData.Bookings.Where(B => B.BStatus == "Pending").ToList();
+            var requested = _dbData.Bookings.Where(B => B.BStatus == "Requested").ToList();
+            var accepted = _dbData.Bookings.Where(B => B.BStatus == "Accepted").ToList();
+            var archive = _dbData.Bookings.Where(B => (B.BStatus == "Completed"||B.BStatus == "Cancelled" || B.BStatus == "Declined")).ToList();
+
+            var viewModel = new AccountViewModel
+            {
+                Bookings = bookings,
+                Requested = requested,
+                Accepted = accepted,
+                Archive = archive
+            };
+
+            return View(viewModel);
+
+            return View(_dbData.Bookings);
         }
 
         [Authorize(Roles = "Admin")]
-        public IActionResult Dashboard_BR()
+        public IActionResult ShowDetail(int id)
         {
-            return View();
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            Booking? bookings = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            if (bookings != null)
+                return View(bookings);
+
+            return NotFound();
         }
 
         [Authorize(Roles = "Admin")]
-        public IActionResult Dashboard_BT()
+        [HttpGet]
+        public IActionResult DashboardRequestPayment(int id)
         {
-            return View();
+            Booking? Requested = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            if (Requested == null)
+            {
+                // Handle the case where the booking is not found
+                return NotFound();
+            }
+
+            var toUpdate = Requested;
+            toUpdate.BStatus = "Requested";
+
+            _dbData.Bookings.Update(toUpdate);
+            _dbData.SaveChanges();
+            return RedirectToAction("Dashboard", "Admin");
         }
 
         [Authorize(Roles = "Admin")]
-        public IActionResult Dashboard_AR()
+        public IActionResult DashboardBookingDecline(int id)
         {
-            return View();
+            Booking? Archived = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            if (Archived == null)
+            {
+                // Handle the case where the booking is not found
+                return NotFound();
+            }
+
+            var toDecline = Archived;
+            toDecline.BStatus = "Declined";
+
+            _dbData.Bookings.Update(toDecline);
+            _dbData.SaveChanges();
+            return RedirectToAction("Dashboard", "Admin");
         }
 
         [Authorize(Roles = "Admin")]
-        public IActionResult Dashboard_AB()
+        public IActionResult DashboardBookingCancelled(int id)
         {
-            return View();
+            Booking? Archived = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            if (Archived == null)
+            {
+                // Handle the case where the booking is not found
+                return NotFound();
+            }
+
+            var toCancel = Archived;
+            toCancel.BStatus = "Cancelled";
+
+            _dbData.Bookings.Update(toCancel);
+            _dbData.SaveChanges();
+            return RedirectToAction("Dashboard", "Admin");
         }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult DashboardAcceptedBooking(int id)
+        {
+            Booking? Accepted = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            if (Accepted == null)
+            {
+                // Handle the case where the booking is not found
+                return NotFound();
+            }
+
+            var toAccept = Accepted;
+            toAccept.BStatus = "Accepted";
+
+            _dbData.Bookings.Update(toAccept);
+            _dbData.SaveChanges();
+            return RedirectToAction("Dashboard", "Admin");
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult DashboardArchive(int id)
+        {
+            Booking? Archive = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            if (Archive == null)
+            {
+                // Handle the case where the booking is not found
+                return NotFound();
+            }
+
+            var toArchive = Archive;
+            toArchive.BStatus = "Completed";
+
+            _dbData.Bookings.Update(toArchive);
+            _dbData.SaveChanges();
+            return RedirectToAction("Dashboard", "Admin");
+        }
+
+        [HttpGet]
+        public IActionResult DashboardDeleteBooking(int id)
+        {
+            Booking? bookingToDelete = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            if (bookingToDelete == null)
+            {
+                // Handle the case where the booking is not found
+                return NotFound();
+            }
+
+            _dbData.Bookings.Remove(bookingToDelete);
+            _dbData.SaveChanges();
+
+            return RedirectToAction("Dashboard", "Admin");
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

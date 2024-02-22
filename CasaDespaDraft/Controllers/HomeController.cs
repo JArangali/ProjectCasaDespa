@@ -267,6 +267,43 @@ namespace CasaDespaDraft.Controllers
 
         public IActionResult Profile()
         {
+            var bookings = _dbData.Bookings.Where(B => B.BStatus == "Pending").ToList();
+            var requested = _dbData.Bookings.Where(B => B.BStatus == "Requested").ToList();
+            var accepted = _dbData.Bookings.Where(B => B.BStatus == "Accepted").ToList();
+            var archive = _dbData.Bookings.Where(B => (B.BStatus == "Completed" || B.BStatus == "Cancelled" || B.BStatus == "Declined")).ToList();
+
+            var viewModel = new AccountViewModel
+            {
+                Bookings = bookings,
+                Requested = requested,
+                Accepted = accepted,
+                Archive = archive
+            };
+
+            return View(viewModel);
+
+            return View(_dbData.Bookings);
+        }
+
+        public IActionResult ShowDetail(int id)
+        {
+            var user = _userManager.GetUserAsync(User).Result;
+            if (user == null)
+            {
+                // Handle user not found
+                return RedirectToAction("Index"); // Redirect to another action or handle appropriately
+            }
+
+            Booking? bookings = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            if (bookings != null)
+                return View(bookings);
+
+            return NotFound();
+        }
+
+        /*public IActionResult Profile()
+        {
             var user = _userManager.GetUserAsync(User).Result;
             if (user == null)
             {
@@ -284,7 +321,7 @@ namespace CasaDespaDraft.Controllers
 
             return View(viewModel);
         }
-
+*/
         public IActionResult ProfileP()
         {
             return View();
