@@ -5,7 +5,7 @@
 @using Microsoft.AspNetCore.Identity;
 @using CasaDespaDraft.Data;
 @using CasaDespaDraft.ViewModels
-@model IEnumerable<Booking>
+@model DashboardViewModel
 
 <!-- Welcome Section -->
 <section id="welcome">
@@ -45,7 +45,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var booking in Model)
+                        @foreach (var booking in Model.Bookings)
                         {
                             <tr>
                                 <td>@booking.fullName</td>
@@ -53,7 +53,7 @@
                                 <td>@booking.pax</td>
                                 <td>@booking.date</td>
                                 <td>@booking.package</td>
-                                <td><a class="nav-button">REQUEST PAYMENT</a></td>
+                                <td><a class="nav-button" asp-action="DashboardRequestPayment" asp-route-id="@booking.bookingId" >REQUEST PAYMENT</a></td>
                                 <td><a class="nav-button">X</a></td>
                             </tr>
                         }
@@ -80,40 +80,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><div class="table-container1">JOHN DOE REFFER</div></td>
-                            <td>09652439187</td>
-                            <td>8</td>
-                            <td>12/23/23</td>
-                            <td>22 HOURS</td>
-                            <td><a class="nav-button">CHECK</a></td>
-                            <td><a class="nav-button">REQUEST</a></td>
-                            <td><a class="nav-button">/</a></td>
-                            <td><a class="nav-button">X</a></td>
-                        </tr>
-                        <tr>
-                            <td><div class="table-container1">JOHN DOE REFFER</div></td>
-                            <td>09163826374</td>
-                            <td>2</td>
-                            <td>12/23/23</td>
-                            <td>DAY</td>
-                            <td><a class="nav-button">CHECK</a></td>
-                            <td><a class="nav-button">REQUEST</a></td>
-                            <td><a class="nav-button">/</a></td>
-                            <td><a class="nav-button">X</a></td>
-                        </tr>
-                        <tr>
-                            <td><div class="table-container1">HAROLD LIBRA</div></td>
-                            <td>09148574639</td>
-                            <td>6</td>
-                            <td>12/01/23</td>
-                            <td>NIGHT</td>
-                            <td><a class="nav-button">CHECK</a></td>
-                            <td><a class="nav-button">REQUEST</a></td>
-                            <td><a class="nav-button">/</a></td>
-                            <td><a class="nav-button">X</a></td>
-                        </tr>
-
+                        @foreach (var booking in Model.Requested)
+                        {
+                            <tr>
+                                <td>@booking.fullName</td>
+                                <td>@booking.contactNumber</td>
+                                <td>@booking.pax</td>
+                                <td>@booking.date</td>
+                                <td>@booking.package</td>
+                                <td><a class="nav-button">CHECK</a></td>
+                                <td><a class="nav-button">REQUEST</a></td>
+                                <td><a class="nav-button">/</a></td>
+                                <td><a class="nav-button">X</a></td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>

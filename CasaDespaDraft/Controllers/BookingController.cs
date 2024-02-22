@@ -35,13 +35,14 @@ namespace CasaDespaDraft.Controllers
 
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            newBooking.Status = ProfileStatus.Requests;
+            var toAdd = newBooking;
+            toAdd.BStatus = "Pending";
 
             // Set the UserId of the new recipe
             newBooking.userId = userId;
 
             // Add the new recipe to the context
-            _dbData.Bookings.Add(newBooking);
+            _dbData.Bookings.Add(toAdd);
 
             // Save changes to the database
             await _dbData.SaveChangesAsync();

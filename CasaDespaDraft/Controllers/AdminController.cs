@@ -28,20 +28,79 @@ namespace CasaDespaDraft.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Dashboard()
         {
+
+            var bookings = _dbData.Bookings.Where(B => B.BStatus == "Pending").ToList();
+            var requested = _dbData.Bookings.Where(B => B.BStatus == "Requested").ToList();
+            var accepted = _dbData.Bookings.Where(B => B.BStatus == "Accepted").ToList();
+            var archive = _dbData.Bookings.Where(B => (B.BStatus == "Cancelled" || B.BStatus == "Declined")).ToList();
+
+            var viewModel = new DashboardViewModel
+            {
+                Bookings = bookings,
+                Requested = requested,
+                Accepted = accepted,
+                Archive = archive
+            };
+
+            return View(viewModel);
+
             return View(_dbData.Bookings);
         }
 
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> ChangeStatus(int bookingId, BookingStatus Status)
+        public IActionResult ShowDetail(int id)
         {
-            var booking = _dbData.Bookings.FirstOrDefault(r => r.bookingId == bookingId);
-            if (booking != null)
+            if (!User.Identity.IsAuthenticated)
             {
-                booking.Status = (ProfileStatus)Status;
-                await _dbData.SaveChangesAsync();
+                return RedirectToAction("Login", "Account");
             }
 
-            return RedirectToAction("Dashboard"); // Or any other appropriate action
+            Booking? bookings = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            if (bookings != null)
+                return View(bookings);
+
+            return NotFound();
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult DashboardRequestPayment(int id)
+        {
+            Booking? Requested = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            if (Requested == null)
+            {
+                // Handle the case where the booking is not found
+                return NotFound();
+            }
+
+            var toUpdate = Requested;
+            toUpdate.BStatus = "Requested";
+
+            _dbData.Bookings.Update(toUpdate);
+            _dbData.SaveChanges();
+            return RedirectToAction("Dashboard", "Admin");
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult DashboardAcceptedBooking(int id)
+        {
+            Booking? Accepted = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            if (Accepted == null)
+            {
+                // Handle the case where the booking is not found
+                return NotFound();
+            }
+
+            var toAccept = Accepted;
+            toAccept.BStatus = "Accepted";
+
+            _dbData.Bookings.Update(toAccept);
+            _dbData.SaveChanges();
+            return RedirectToAction("Dashboard", "Admin");
         }
 
 
