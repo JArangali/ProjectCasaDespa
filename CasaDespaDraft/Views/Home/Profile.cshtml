@@ -5,7 +5,7 @@
 @using CasaDespaDraft.Data;
 @using CasaDespaDraft.ViewModels
 @inject UserManager<User> _userManager;
-@model ProfileViewModel
+@model AccountViewModel
 
 <!-- Welcome Section -->
 <section id="welcome">
@@ -58,53 +58,152 @@
         </div>
 
         <div class="right-container">
-            <div class="button-container">
-                <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Booking Requests</button>
-                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Pending Payments</button>
-                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-pending" type="button" role="tab" aria-controls="nav-pending" aria-selected="false">Archive</button>
-                        
-                    </div>
-                </nav>
-                @* <a style="background-color: #C5A485; color: black;"  class="nav-button" asp-area="" asp-controller="Home" asp-action="Profile">REQUESTS</a>
-                <a class="nav-button" asp-area="" asp-controller="Home" asp-action="ProfileP">PENDING PAYMENTS</a>
-                <a class="nav-button" asp-area="" asp-controller="Home" asp-action="ProfileA">APPROVED</a> *@
+            <div class="tabs">
+                <button class="tablinks" onclick="openTab(event, 'BRequests')">Booking Requests</button>
+                <button class="tablinks" onclick="openTab(event, 'PBookings')">Pending Bookings</button>
+                <button class="tablinks" onclick="openTab(event, 'ABookings')">Approved Bookings</button>
+                <button class="tablinks" onclick="openTab(event, 'Archived')">Archived Bookings</button>
             </div>
 
-            <div class="table-container" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-
-                <table>
-
-                    <thead>
-                        <tr>
-                            <td><div class="table-container2">FULL NAME:</div></td>
-                            <th><div class="table-container2">CONTACT NUMBER:</br></div></th>
-                            <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
-                            <th><div class="table-container2">DATE</div></th>
-                            <th><div class="table-container2">PACKAGE</div></th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        @foreach (var booking in Model.CreatedBookings)
-                        {
+            <div id="BRequests" class="tabcontent">
+                <div class="table-container">
+                    <table>
+                        <thead>
                             <tr>
-                                <td>@booking.fullName</td>
-                                <td>@booking.contactNumber</td>
-                                <td>@booking.pax</td>
-                                <td>@booking.date</td>
-                                <td>@booking.package</td>
+                                <td><div class="table-container2">FULL NAME:</div></td>
+                                <th><div class="table-container2">NUMBER<br>OF PAX:</br></div></th>
+                                <th><div class="table-container2">DATE</div></th>
+                                <th><div class="table-container2">PACKAGE</div></th>
+                                <th><div class="table-container2">STATUS</div></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var booking in Model.Bookings)
+                            {
+                                <tr>
+                                    <td><div class="table-container1">@booking.fullName</div></td>
+                                    <td>@booking.pax</td>
+                                    <td>@booking.date</td>
+                                    <td>@booking.package</td>
+                                    <td>@booking.BStatus</td>
                                 </tr>
-                        }
-                    </tbody>
-                </table>
+                            }
 
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
-                    
+            <div id="PBookings" class="tabcontent">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td><div class="table-container2">FULL NAME:</div></td>
+                                <th><div class="table-container2">NUMBER<br>OF PAX:</br></div></th>
+                                <th><div class="table-container2">DATE</div></th>
+                                <th><div class="table-container2">PACKAGE</div></th>
+                                <th><div class="table-container2">PAYMENT</div></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var booking in Model.Requested)
+                            {
+                                <tr>
+                                    <td>@booking.fullName</td>
+                                    <td>@booking.contactNumber</td>
+                                    <td>@booking.pax</td>
+                                    <td>@booking.date</td>
+                                    <td>@booking.package</td>
+                                    <td><a class="nav-button" asp-area="" asp-controller="Home" asp-action="Receipt">SUBMIT PAYMENT</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
+            <div id="ABookings" class="tabcontent">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td><div class="table-container2">FULL NAME:</div></td>
+                                <th><div class="table-container2">CONTACT NUMBER:</br></div></th>
+                                <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
+                                <th><div class="table-container2">DATE</div></th>
+                                <th><div class="table-container2">PACKAGE</div></th>
+                                <th><div class="table-container2">CANCEL</div></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var booking in Model.Accepted)
+                            {
+                                <tr>
+                                    <td>@booking.fullName</td>
+                                    <td>@booking.contactNumber</td>
+                                    <td>@booking.pax</td>
+                                    <td>@booking.date</td>
+                                    <td>@booking.package</td>
+                                    <td><a class="nav-button" asp-action="DashboardArchive" asp-route-id="@booking.bookingId">DONE</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="Archived" class="tabcontent">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>FULL NAME:</td>
+                                <th>CONTACT NUMBER:<br /></th>
+                                <th>NUMBER<BR>OF PAX:</th>
+                                <th>DATE</th>
+                                <th>PACKAGE</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var booking in Model.Archive)
+                            {
+                                <tr>
+                                    <td>@booking.fullName</td>
+                                    <td>@booking.contactNumber</td>
+                                    <td>@booking.pax</td>
+                                    <td>@booking.date</td>
+                                    <td>@booking.package</td>
+                                    <td>@booking.BStatus</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </body>
 
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Call openTab function with 'Home' tab name as an argument when the page loads
+    window.onload = function () {
+        openTab(null, 'BRequests');
+    };
+</script>

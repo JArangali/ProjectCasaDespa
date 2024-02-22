@@ -2,7 +2,7 @@
 
 namespace CasaDespaDraft.ViewModels
 {
-    public class DashboardViewModel
+    public class AccountViewModel
     {
         public IEnumerable<Booking> Bookings { get; set; }
         public IEnumerable<Booking> Requested { get; set; }
