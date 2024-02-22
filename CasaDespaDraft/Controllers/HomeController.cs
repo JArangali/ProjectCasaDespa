@@ -337,6 +337,11 @@ namespace CasaDespaDraft.Controllers
             return View();
         }
 
+        public IActionResult AddQr()
+        {
+            return View();
+        }
+
         public IActionResult Booking()
         {
             return View();
