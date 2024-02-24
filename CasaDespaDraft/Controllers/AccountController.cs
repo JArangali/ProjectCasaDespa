@@ -284,27 +284,28 @@ namespace CasaDespaDraft.Controllers
                         }
                         ModelState.AddModelError("answer", "The Password should have a minimum of 8 characters, at least 1 Upper Case Letter, 1 Lower Case, 1 Special Character");
                     }
-
-                    // If validation succeeded, update the password hash
-                    var newPasswordHash = _userManager.PasswordHasher.HashPassword(user, model.userPassword);
-                    user.PasswordHash = newPasswordHash;
-                }
-
-                var result = await _userManager.UpdateAsync(user);
-
-                if (result.Succeeded)
-                {
-                    TempData["SuccessMessage"] = "Account Updated Successfully!";
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
+                    else
                     {
-                        ModelState.AddModelError("", error.Description);
+
+                        // If validation succeeded, update the password hash
+                        var newPasswordHash = _userManager.PasswordHasher.HashPassword(user, model.userPassword);
+                        user.PasswordHash = newPasswordHash;
+
+                        var result = await _userManager.UpdateAsync(user);
+
+                        if (result.Succeeded)
+                        {
+                            TempData["SuccessMessage"] = "Account Updated Successfully!";
+                        }
+                        else
+                        {
+                            foreach (var error in result.Errors)
+                            {
+                                ModelState.AddModelError("", error.Description);
+                            }
+                        }
                     }
                 }
-
-
             }
 
             ModelState.AddModelError("answer", "Passwords do not match");
