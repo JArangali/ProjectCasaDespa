@@ -15,7 +15,7 @@ namespace CasaDespaDraft.ViewModels
         public string answer { get; set; }
 
         public string question { get; set; }
-
+        [Required(ErrorMessage = "Answer is required.")]
         public string fanswer { get; set; }
 
     }
