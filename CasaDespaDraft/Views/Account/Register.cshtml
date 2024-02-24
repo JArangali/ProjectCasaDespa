@@ -1,4 +1,4 @@
-﻿@*
+﻿﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -24,7 +24,7 @@
                     }
 
                     <table>
-                        
+
 
                         <tr>
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -32,7 +32,7 @@
                             <td id="regtdinput">
                                 <input asp-for="firstName" id="firstnameinput" placeholder="">
                             </td>
-                            @Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger"})
+                            @Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger" })
                         </tr>
 
                         <tr>
@@ -40,7 +40,7 @@
                             <td id="regtdinput">
                                 <input asp-for="lastName" id="lastnameinput" placeholder="">
                             </td>
-                            @Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger"})
+                            @Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger" })
                         </tr>
 
                         <tr>
@@ -48,20 +48,22 @@
                             <td id="addresstddinput">
                                 <input asp-for="address" id="addressinput" placeholder="">
                             </td>
-                            @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger"})
+                            @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
                         </tr>
 
                         <tr>
-                            @Html.ValidationMessageFor(model => model.sex, "", new { @class = "text-danger"})
+                            @Html.ValidationMessageFor(model => model.sex, "", new { @class = "text-danger" })
                         </tr>
 
-                        <tr>  
-                            <td id="regtd"><h4 id="gender">Sex:</h4></td>  
-                            <td id="regtdinput">    
-                            <input asp-for="sex" type="radio" id="male" name="sex" value="Male">    
-                            <label for="male"><h6>MALE</h6></label>        
-                            <input asp-for="sex" type="radio" id="female" name="sex" value="Female">    
-                            <label for="female"><h6>FEMALE</h6></label>  </td> </tr>
+                        <tr>
+                            <td id="regtd"><h4 id="gender">Sex:</h4></td>
+                            <td id="regtdinput">
+                                <input asp-for="sex" type="radio" id="male" name="sex" value="Male">
+                                <label for="male"><h6>MALE</h6></label>
+                                <input asp-for="sex" type="radio" id="female" name="sex" value="Female">
+                                <label for="female"><h6>FEMALE</h6></label>
+                            </td>
+                        </tr>
                         </tr>
 
                         <tr>
@@ -69,7 +71,7 @@
                             <td id="picturetddinput">
                                 <input asp-for="profilePicture" type="file" id="file" accept=".png,.jpg,.jpeg" placeholder="">
 
-                                @Html.ValidationMessageFor(model => model.profilePicture, "", new { @class = "text-danger"})
+                                @Html.ValidationMessageFor(model => model.profilePicture, "", new { @class = "text-danger" })
                             </td>
                         </tr>
 
@@ -81,10 +83,10 @@
 
                         <h4 id="securityquestion">SECURITY QUESTION: </h4>
                         <input asp-for="question" id="securityquestioninput" placeholder="Provide Security Question">
-                        @Html.ValidationMessageFor(model => model.question, "", new { @class = "text-danger"})
+                        @Html.ValidationMessageFor(model => model.question, "", new { @class = "text-danger" })
 
                         <input asp-for="answer" id="securityanswerinput" placeholder="Provide Answer">
-                        @Html.ValidationMessageFor(model => model.answer, "", new { @class = "text-danger"})
+                        @Html.ValidationMessageFor(model => model.answer, "", new { @class = "text-danger" })
 
                     </div>
 
@@ -94,15 +96,23 @@
                             <td id="emailtd"><h4 id="email">EMAIL:    </h4></td>
                             <td id="emailregtdinput">
                                 <input asp-for="email" id="emailinput" placeholder="">
-                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger"})
                         </tr>
 
                         <tr>
                             <td id="passwordtd"><h4 id="registerpassword">PASSWORD:    </h4></td>
                             <td id="passregtdinput">
                                 <input asp-for="userPassword" id="registerpasswordinput" placeholder="" />
+                                <input type="hidden" asp-for="fanswer" />
                             </td>
-                            @Html.ValidationMessageFor(model => model.userPassword, "", new { @class = "text-danger"})
+                            @Html.ValidationMessageFor(model => model.userPassword, "", new { @class = "text-danger" })
+                        </tr>
+
+                        <tr>
+                            <td id="passwordtd"><h4 id="registerpassword">CONFIRM PASSWORD:    </h4></td>
+                            <td id="passregtdinput">
+                                <input asp-for="ConfirmPassword" id="registerpasswordinput" placeholder="" />
+                            </td>
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                         </tr>
                     </table>
                 </div>
@@ -114,13 +124,13 @@
             </div>
         </div>
 
-        
-        
+
+
         <div id="myModal" class="modal">
 
-            
+
             <div id="popup">
-               
+
                 <div id="popuptitle">
                     <h2 id="policyheading"> PRIVACY POLICIES </h2>
                 </div>
@@ -128,7 +138,7 @@
                     <h4 id="ppcontent">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h4>
                 </div>
                 <div>
-                    <input type="button" id="declinebutton" class="declined" value="DECLINED"> 
+                    <input type="button" id="declinebutton" class="declined" value="DECLINED">
                     <input type="submit" id="acceptbutton" value="ACCEPT">
                 </div>
             </div>
@@ -140,10 +150,10 @@
 
 
 
-    
 
 
-    <script>
+
+<script>
     // Get the modal
     var modal = document.getElementById("myModal");
 
@@ -169,4 +179,4 @@
             modal.style.display = "none";
         }
     }
-    </script>
+</script>
