@@ -15,6 +15,12 @@ namespace CasaDespaDraft.ViewModels
         [Required(ErrorMessage = "Password is required")]
         public string? userPassword { get; set; }
 
+        [Display(Name = "Confirm Password")]
+        [DataType(DataType.Password)]
+        [Compare(nameof(userPassword), ErrorMessage = "Password do not match")]
+        [Required(ErrorMessage = "You must confirm your password")]
+        public string? ConfirmPassword { get; set; }
+
         [Display(Name = "Firstname")]
         [Required(ErrorMessage = "Firstname is required")]
         public string? firstName { get; set; }
@@ -22,13 +28,13 @@ namespace CasaDespaDraft.ViewModels
         [Display(Name = "Lastname")]
         [Required(ErrorMessage = "Lastname is required")]
         public string? lastName { get; set; }
-       
+
 
         [Display(Name = "Address")]
         [Required(ErrorMessage = "Address is required")]
         public string? address { get; set; }
 
-        
+
         public string? sex { get; set; }
 
         [Display(Name = "Security Question")]
@@ -42,6 +48,8 @@ namespace CasaDespaDraft.ViewModels
         [DataType(DataType.Upload)]
         [RegularExpression(@"^.*\.(jpg|jpeg|png)$", ErrorMessage = "Only JPG, JPEG, and PNG files are allowed.")]
         public byte[]? profilePicture { get; set; }
+
+        public string? fanswer { get; set; }
 
 
     }

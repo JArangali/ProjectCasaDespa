@@ -7,6 +7,11 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using System;
+using System.Security.Cryptography;
+using System.Text;
+using Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Manage.Internal;
+using System.Net;
 
 namespace CasaDespaDraft.Controllers
 {
@@ -14,11 +19,23 @@ namespace CasaDespaDraft.Controllers
     {
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
+        private readonly IPasswordHasher<User> _passwordHasher;
 
-        public AccountController(SignInManager<User> signInManager, UserManager<User> userManager)
+        public AccountController(SignInManager<User> signInManager, UserManager<User> userManager, IPasswordHasher<User> passwordHasher)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _passwordHasher = passwordHasher;
+        }
+
+        public string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(password);
+                byte[] hash = sha256.ComputeHash(bytes);
+                return BitConverter.ToString(hash).Replace("-", "").ToLower();
+            }
         }
 
         [HttpGet]
@@ -61,7 +78,7 @@ namespace CasaDespaDraft.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(SignUpViewModel userEnteredData, IFormFile? profilePicture)
+        public async Task<IActionResult> Register(SignUpViewModel userEnteredData, IFormFile profilePicture)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +90,8 @@ namespace CasaDespaDraft.Controllers
                 newUser.Address = userEnteredData.address;
                 newUser.Sex = userEnteredData.sex;
                 newUser.Question = userEnteredData.question;
-                newUser.Answer = userEnteredData.answer;
+                newUser.Answer = HashPassword(userEnteredData.answer);
+                newUser.FAnswer = "";
 
                 if (profilePicture != null && profilePicture.Length > 0)
                 {

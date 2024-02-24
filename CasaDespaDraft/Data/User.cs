@@ -12,5 +12,6 @@ namespace CasaDespaDraft.Data
         public string? Question { get; set; }
         public string? Answer { get; set; }
         public byte[]? ProfilePicture { get; set; }
+        public string? FAnswer {  get; set; }
     }
 }
