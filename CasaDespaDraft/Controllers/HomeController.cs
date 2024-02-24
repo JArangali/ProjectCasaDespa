@@ -302,26 +302,6 @@ namespace CasaDespaDraft.Controllers
             return NotFound();
         }
 
-        /*public IActionResult Profile()
-        {
-            var user = _userManager.GetUserAsync(User).Result;
-            if (user == null)
-            {
-                // Handle user not found
-                return RedirectToAction("Index"); // Redirect to another action or handle appropriately
-            }
-
-            var createdBookings = _dbData.Bookings.Where(r => r.userId == user.Id).ToList();
-
-
-            var viewModel = new ProfileViewModel
-            {
-                CreatedBookings = createdBookings,
-            };
-
-            return View(viewModel);
-        }
-*/
         public IActionResult ProfileP()
         {
             return View();

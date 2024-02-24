@@ -3,11 +3,11 @@
 }
 @using CasaDespaDraft.ViewModels
 @using CasaDespaDraft.Data;
-@model SecurityQuestionViewModel    
+@model SecurityQuestionViewModel
 
 <section id="sq">
     <div id="backbuttondiv">
-        <input type="button" id="fpbackbutton" value="BACK" onclick="location.href='/Account/ForgoPassword'" class="getstarted" />
+        <button id="fpbackbutton"> <a id="fpabackbutton" asp-area="" asp-controller="Account" asp-action="ForgotPassword" class="getstarted"> <i class="material-icons">chevron_left</i> </a> </button>
     </div>
     <form asp-action="SecurityQuestion" asp-controller="Account" method="post">
         <div id="sqform">
@@ -20,17 +20,25 @@
 
 
             <div id="sqformcontent">
+                @if (ViewData.ModelState["answer"] != null)
+                {
+                    <div class="alert alert-danger">
+                        @Html.ValidationMessage("answer")
+                    </div>
+                }
                 <div id="sqinputfields">
-                    <input asp-for="answer" type="hidden" />
-                    <h4 id="sqtext">-- @Model.question -- @Model.answer --</h4>
+
+                    <input asp-for="answer" type="hidden" value="@Model.answer" />
+                    <input asp-for="Email" type="hidden" value="@Model.Email" />
+                    <input asp-for="question" type="hidden" value="@Model.question" />
+                    <h4 id="sqtext">-- @Model.question --</h4>
                     <input asp-for="fanswer" type="text" id="sqanswerinput" placeholder="Please Provide Answer">
                     <span asp-validation-for="fanswer" class="text-danger"></span>
                 </div>
             </div>
             <div id="sqbuttonscontainer">
-                <input type="submit" id="sqnextbutton" value="NEXT" onclick="location.href=''" />
+                <button type="submit" id="nextbutton">NEXT</button>
             </div>
         </div>
     </form>
 </section>
-
