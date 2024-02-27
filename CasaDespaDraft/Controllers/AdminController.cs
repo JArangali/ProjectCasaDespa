@@ -1,4 +1,5 @@
-﻿using CasaDespaDraft.Data;
+﻿using Azure.Core;
+using CasaDespaDraft.Data;
 using CasaDespaDraft.Models;
 using CasaDespaDraft.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Net;
 using System.Security.Claims;
 
 namespace CasaDespaDraft.Controllers
@@ -44,7 +46,6 @@ namespace CasaDespaDraft.Controllers
 
             return View(viewModel);
 
-            return View(_dbData.Bookings);
         }
 
         [Authorize(Roles = "Admin")]
@@ -97,6 +98,8 @@ namespace CasaDespaDraft.Controllers
             var toDecline = Archived;
             toDecline.BStatus = "Declined";
 
+            Archived.Status = ProfileStatus.Archive;
+
             _dbData.Bookings.Update(toDecline);
             _dbData.SaveChanges();
             return RedirectToAction("Dashboard", "Admin");
@@ -113,8 +116,16 @@ namespace CasaDespaDraft.Controllers
                 return NotFound();
             }
 
+            if (Archived == null)
+            {
+                // Handle the case where the booking is not found
+                return NotFound();
+            }
+
             var toCancel = Archived;
             toCancel.BStatus = "Cancelled";
+
+            Archived.Status = ProfileStatus.Archive;
 
             _dbData.Bookings.Update(toCancel);
             _dbData.SaveChanges();
@@ -136,6 +147,8 @@ namespace CasaDespaDraft.Controllers
             var toAccept = Accepted;
             toAccept.BStatus = "Accepted";
 
+            Accepted.Status = ProfileStatus.Approved;
+
             _dbData.Bookings.Update(toAccept);
             _dbData.SaveChanges();
             return RedirectToAction("Dashboard", "Admin");
@@ -145,16 +158,18 @@ namespace CasaDespaDraft.Controllers
         [HttpGet]
         public IActionResult DashboardArchive(int id)
         {
-            Booking? Archive = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+            Booking? Archived = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
 
-            if (Archive == null)
+            if (Archived == null)
             {
                 // Handle the case where the booking is not found
                 return NotFound();
             }
 
-            var toArchive = Archive;
+            var toArchive = Archived;
             toArchive.BStatus = "Completed";
+
+            Archived.Status = ProfileStatus.Archive;
 
             _dbData.Bookings.Update(toArchive);
             _dbData.SaveChanges();
@@ -178,6 +193,75 @@ namespace CasaDespaDraft.Controllers
             return RedirectToAction("Dashboard", "Admin");
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult AddQr(int id)
+        {
+            Booking? booking = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            var model = new Booking
+            {
+            bookingId = id,
+            userId = booking.userId,
+            fullName = booking.fullName,
+            contactNumber = booking.contactNumber,
+            messengerLink = booking.messengerLink,
+            package =   booking.package,
+            pax = booking.pax,
+            date = booking.date,
+            BStatus = booking.BStatus
+            };
+
+
+            return View(model);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> AddQR(Booking model, IFormFile QRCode)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+
+            Booking? booking = _dbData.Bookings.FirstOrDefault(st => st.bookingId == model.bookingId);
+
+            if (booking == null)
+            {
+                // Handle the case where the booking is not found
+                return NotFound();
+            }
+
+            if (QRCode != null && QRCode.Length > 0)
+            {
+                using var memoryStream = new MemoryStream();
+                await QRCode.CopyToAsync(memoryStream);
+                booking.QRCode = memoryStream.ToArray();
+            }
+
+            booking.Amount = model.Amount;
+
+            var toUpdate = booking;
+            toUpdate.BStatus = "Requested";
+
+            _dbData.Bookings.Update(toUpdate);
+
+            booking.Status = ProfileStatus.Pending_Payment;
+
+            _dbData.Entry(booking).State = EntityState.Modified;
+            _dbData.SaveChanges();
+
+            return RedirectToAction("Dashboard", "Admin");
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult CancelQR(int id)
+        {
+            return RedirectToAction("Dashboard", "Admin");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

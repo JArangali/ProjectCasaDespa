@@ -1,5 +1,6 @@
 ﻿using CasaDespaDraft.Data;
 using CasaDespaDraft.Models;
+using CasaDespaDraft.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -24,6 +25,12 @@ namespace CasaDespaDraft.Controllers
         [HttpGet]
         public IActionResult Booking()
         {
+            var user = _userManager.GetUserAsync(User).Result;
+            if (user == null)
+            {
+                // Handle user not found
+                return RedirectToAction("Login", "Account"); // Redirect to another action or handle appropriately
+            }
             return View();
         }
 
@@ -38,6 +45,8 @@ namespace CasaDespaDraft.Controllers
             var toAdd = newBooking;
             toAdd.BStatus = "Pending";
 
+            newBooking.Status = ProfileStatus.Requests;
+
             // Set the UserId of the new recipe
             newBooking.userId = userId;
 
@@ -47,6 +56,11 @@ namespace CasaDespaDraft.Controllers
             // Save changes to the database
             await _dbData.SaveChangesAsync();
             return RedirectToAction("Profile", "Home");
+        }
+
+        public IActionResult Receipt()
+        {
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

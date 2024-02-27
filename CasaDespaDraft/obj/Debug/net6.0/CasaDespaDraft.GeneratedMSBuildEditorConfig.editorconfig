@@ -20,6 +20,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBZG1pbkNvZGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Account/AdminResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBZG1pblJlc2V0UGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -40,6 +44,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTZWN1cml0eVF1ZXN0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Admin/AddQr.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkUXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Admin/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -48,8 +56,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xCb29raW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Home/AddQr.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRRci5jc2h0bWw=
+[C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Booking/Receipt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xSZWNlaXB0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Home/FAQs.cshtml]
@@ -94,18 +102,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Home/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9maWxlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Home/ProfileA.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9maWxlQS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Home/ProfileP.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9maWxlUC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Home/Receipt.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWNlaXB0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Shared/Error.cshtml]
