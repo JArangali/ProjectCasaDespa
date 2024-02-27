@@ -35,7 +35,8 @@ app.UseStaticFiles();
 app.UseAuthentication();
 
 var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<AppDbContext>();
-context.Database.EnsureCreated();
+context.Database.EnsureCreated(); 
+//context.Database.EnsureDeleted();
 
 app.UseRouting();
 

@@ -2,26 +2,38 @@
     ViewData["Title"] = "Forgot Password || Admin Code";
 }
 
+@using CasaDespaDraft.ViewModels
+@using CasaDespaDraft.Data;
+@model AdminCodeViewModel
+
 <!-- Admin Code Section -->
 <section id="ac">
     <div id="backbuttondiv">
-        <input type="button" id="fpbackbutton" value="BACK" onclick="location.href='/Account/ForgotPassword'" class="getstarted" />
+        <button id="fpbackbutton"> <a id="fpabackbutton" asp-area="" asp-controller="Account" asp-action="ForgotPassword" class="getstarted"> <i class="material-icons">chevron_left</i> </a> </button>
     </div>
-    <form>
+    <form asp-action="AdminCode" asp-controller="Account" method="post">
         <div id="acform">
             <div id="actitle">
                 <div id="actitle1">
                     <img id="sqlogoimg" src="~/img/sqlogo.png" alt="sqlogo"><h2 id="sqheading"> ADMIN CODE </h2>
                 </div>
             </div>
+            @if (ViewData.ModelState["answer"] != null)
+            {
+                <div class="alert alert-danger">
+                    @Html.ValidationMessage("answer")
+                </div>
+            }
             <div id="acformcontent">
                 <div id="acinputfields">
                     <h4 id="actext">Admin Code</h4>
-                    <input type="text" id="acanswerinput" placeholder="Please Provide Admin Code">
+                    <input asp-for="Email" type="hidden" value="@Model.Email" />
+                    @Html.ValidationMessageFor(model => model.adminCode, "", new { @class = "text-danger"})
+                    <input asp-for="adminCode" type="text" id="acanswerinput" placeholder="Please Provide Admin Code">
                 </div>
             </div>
             <div id="acbuttonscontainer">
-                <input type="submit" id="acnextbutton" value="NEXT" onclick="location.href=''" />
+                <button type="submit" id="acnextbutton"><a id="acnext"> NEXT </a> </button>
             </div>
         </div>
     </form>

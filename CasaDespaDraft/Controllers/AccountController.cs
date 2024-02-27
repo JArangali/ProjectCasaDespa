@@ -145,10 +145,10 @@ namespace CasaDespaDraft.Controllers
                 if (model.Email == "admin@example.com")
                 {
                     var email = "admin@example.com";
-                    return RedirectToAction("SecurityQuestion", new { email });
+                    return RedirectToAction("AdminCode", new { email });
 
                 }
-                if (user != null)
+                else if (user != null)
                 {
                     // For demo purposes, we will get the security question that the user set up during registration.
                     // In a real-world scenario, you would send an email to the user with a password reset link.
@@ -172,8 +172,9 @@ namespace CasaDespaDraft.Controllers
             {
                 Email = email,
                 question = securityQuestion,
-                answer = securityAnswer 
+                answer = securityAnswer
             };
+
 
             return View(model);
         }
@@ -221,12 +222,6 @@ namespace CasaDespaDraft.Controllers
             }
 
             return View(model);
-        }
-
-
-        public IActionResult AdminCode()
-        {
-            return View();
         }
 
         [HttpGet]
@@ -312,6 +307,132 @@ namespace CasaDespaDraft.Controllers
 
             return View(model);
 
+        }
+
+        [HttpGet]
+        public IActionResult AdminCode(string email)
+        {
+            var model = new AdminCodeViewModel
+            {
+                Email = email
+            };
+
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AdminCode(AdminCodeViewModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user != null)
+                {
+                    user.Email = model.Email;
+
+                    if (model.adminCode == "ADMINCODE")
+                    {
+                        var userId = user.Id;
+                        var email = user.Email;
+                        var firstname = user.Firstname;
+                        var lastname = user.Lastname;
+                        var passwordHash = user.PasswordHash;
+                        var address = user.Address;
+                        var sex = user.Sex;
+                        var fanswer = user.FAnswer;
+                        var question = user.Question;
+                        var answer = user.Answer;
+                        return RedirectToAction("AdminResetPassword", "Account", new { userId, email, firstname, lastname, address, sex, fanswer, question, answer, passwordHash });
+                    }
+                    else
+                    {
+                        // Add a ModelState error if the answer is incorrect
+                        ModelState.AddModelError("answer", "The admin code you entered is incorrect.");
+                    }
+                }
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult AdminResetPassword(int userId, string email, string firstname, string lastname, string address, string sex, string fanswer, string question, string answer, string passwordHash)
+        {
+
+            var model = new AdminResetPasswordViewModel
+            {
+                userId = userId,
+                email = email,
+                firstName = firstname,
+                lastName = lastname,
+                userPassword = passwordHash
+
+            };
+
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AdminResetPassword(AdminResetPasswordViewModel model)
+        {
+            var user = await _userManager.FindByEmailAsync(model.email);
+            user.UserName = model.email;
+            user.Firstname = model.firstName;
+            user.Lastname = model.lastName;
+            user.Email = model.email;
+
+            if (ModelState.IsValid)
+            {
+
+                //Update Password
+                if (!string.IsNullOrEmpty(model.userPassword))
+                {
+                    var passwordValidator = _userManager.PasswordValidators.FirstOrDefault();
+                    var passwordValidationResult = await passwordValidator.ValidateAsync(_userManager, user, model.userPassword);
+
+                    if (!passwordValidationResult.Succeeded)
+                    {
+                        foreach (var error in passwordValidationResult.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
+                        ModelState.AddModelError("answer", "The Password should have a minimum of 8 characters, at least 1 Upper Case Letter, 1 Lower Case, 1 Special Character");
+                    }
+                    else
+                    {
+
+                        // If validation succeeded, update the password hash
+                        var newPasswordHash = _userManager.PasswordHasher.HashPassword(user, model.userPassword);
+                        user.PasswordHash = newPasswordHash;
+
+                        var result = await _userManager.UpdateAsync(user);
+
+                        if (result.Succeeded)
+                        {
+                            TempData["SuccessMessage"] = "Account Updated Successfully!";
+                        }
+                        else
+                        {
+                            foreach (var error in result.Errors)
+                            {
+                                ModelState.AddModelError("", error.Description);
+                            }
+                        }
+                    }
+                }
+            }
+
+            ModelState.AddModelError("answer", "Passwords do not match");
+
+            return View(model);
         }
     }
 }

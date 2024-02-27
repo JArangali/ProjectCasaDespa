@@ -5,7 +5,7 @@
 @using CasaDespaDraft.Data;
 @using CasaDespaDraft.ViewModels
 @inject UserManager<User> _userManager;
-@model AccountViewModel
+@model ProfileViewModel
 
 <!-- Welcome Section -->
 <section id="welcome">
@@ -71,21 +71,21 @@
                         <thead>
                             <tr>
                                 <td><div class="table-container2">FULL NAME:</div></td>
+                                <th><div class="table-container2">CONTACT NUMBER:</br></div></th>
                                 <th><div class="table-container2">NUMBER<br>OF PAX:</br></div></th>
                                 <th><div class="table-container2">DATE</div></th>
                                 <th><div class="table-container2">PACKAGE</div></th>
-                                <th><div class="table-container2">STATUS</div></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var booking in Model.Bookings)
+                            @foreach (var booking in Model.CreatedBookings.Where(r => r.Status == ProfileStatus.Requests))
                             {
                                 <tr>
-                                    <td><div class="table-container1">@booking.fullName</div></td>
+                                    <td>@booking.fullName</td>
+                                    <td>@booking.contactNumber</td>
                                     <td>@booking.pax</td>
                                     <td>@booking.date</td>
                                     <td>@booking.package</td>
-                                    <td>@booking.BStatus</td>
                                 </tr>
                             }
 
@@ -100,6 +100,7 @@
                         <thead>
                             <tr>
                                 <td><div class="table-container2">FULL NAME:</div></td>
+                                <th><div class="table-container2">CONTACT NUMBER:</br></div></th>
                                 <th><div class="table-container2">NUMBER<br>OF PAX:</br></div></th>
                                 <th><div class="table-container2">DATE</div></th>
                                 <th><div class="table-container2">PACKAGE</div></th>
@@ -107,7 +108,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var booking in Model.Requested)
+                            @foreach (var booking in Model.CreatedBookings.Where(r => r.Status == ProfileStatus.Pending_Payment))
                             {
                                 <tr>
                                     <td>@booking.fullName</td>
@@ -133,11 +134,10 @@
                                 <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
                                 <th><div class="table-container2">DATE</div></th>
                                 <th><div class="table-container2">PACKAGE</div></th>
-                                <th><div class="table-container2">CANCEL</div></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var booking in Model.Accepted)
+                           @foreach (var booking in Model.CreatedBookings.Where(r => r.Status == ProfileStatus.Approved))
                             {
                                 <tr>
                                     <td>@booking.fullName</td>
@@ -145,7 +145,6 @@
                                     <td>@booking.pax</td>
                                     <td>@booking.date</td>
                                     <td>@booking.package</td>
-                                    <td><a class="nav-button" asp-action="DashboardArchive" asp-route-id="@booking.bookingId">DONE</a></td>
                                 </tr>
                             }
                         </tbody>
@@ -167,7 +166,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var booking in Model.Archive)
+                         @foreach (var booking in Model.CreatedBookings.Where(r => r.Status == ProfileStatus.Archive))
                             {
                                 <tr>
                                     <td>@booking.fullName</td>
