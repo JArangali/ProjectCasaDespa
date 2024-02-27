@@ -28,6 +28,11 @@ a {
         color: dimgray;
     }
 
+    a:not([href]):not([tabindex]) {
+        color: none;
+        text-decoration: none;
+    }
+
 h1 {
     font-family: 'Spectral', serif;
     font-weight: bold;
@@ -2331,6 +2336,20 @@ section {
     background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#000000,#fafafa) left bottom/100% 2px no-repeat;
     box-sizing: border-box;
     background-color: #e8cfa9;
+    font-size:15px;
+}
+
+#logoutbtn {
+    width: 100px;
+    height: 35px;
+    margin-top: 30px;
+    margin: 25px;
+    margin-right: 50px;
+    font-size: 15px;
+    background: #F0D9B7;
+    border-radius: 4px;
+    font-weight: 400;
+    color: black;
 }
 
 #logiinpassinput {
@@ -2346,6 +2365,7 @@ section {
     background: linear-gradient(90deg,#000000,#000000) left bottom/100% 2px no-repeat, linear-gradient(90deg,#fff,#fff) left bottom/100% 2px no-repeat;
     box-sizing: border-box;
     background-color: #e8cfa9;
+    font-size: 15px;
 }
 
 #loginbutton {
@@ -2472,6 +2492,7 @@ section {
 #addresstddinput {
     width: 600px;
     height: 100px;
+    font-size: 15px;
 }
 
 #firstnameinput {
@@ -2486,6 +2507,7 @@ section {
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 40px;
+    font-size: 15px;
 }
 
 #lastnameinput {
@@ -2500,6 +2522,7 @@ section {
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 40px;
+    font-size: 15px;
 }
 
 #addressinput {
@@ -2514,6 +2537,7 @@ section {
     border-width: 1px;
     box-sizing: border-box;
     background-color: #F5D8B3;
+    font-size: 15px;
 }
 
 #securityquestion {
@@ -2533,6 +2557,7 @@ section {
     border-width: 1px;
     box-sizing: border-box;
     background-color: #F5D8B3;
+    font-size: 15px;
 }
 
 #securityanswerinput {
@@ -2548,6 +2573,7 @@ section {
     border-width: 1px;
     box-sizing: border-box;
     background-color: #F5D8B3;
+    font-size: 15px;
 }
 
 #tabledivemailpass {
@@ -2567,6 +2593,7 @@ section {
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 40px;
+    font-size: 15px;
 }
 
 #registerpasswordinput {
@@ -2581,14 +2608,15 @@ section {
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 40px;
+    font-size: 15px;
 }
 
 #emailtd {
-    width: 200px;
+    width: 258px;
 }
 
 #passwordtd {
-    width: 200px;
+    width: 258px;
 }
 
 #emailregtdinput {
@@ -2707,9 +2735,11 @@ input[type=radio]:checked {
 #acceptbutton {
     border-radius: 20px;
     background-color: black;
-    color:#EBCDA8;
+    color: #EBCDA8;
     border-width: 2px;
     border-color: black;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
 #declinebutton {
@@ -2717,6 +2747,8 @@ input[type=radio]:checked {
     background-color: #EBCDA8;
     border-width: 2px;
     border-color: black;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
 /* The Modal (background) */
@@ -2743,9 +2775,8 @@ input[type=radio]:checked {
 }
 
 /* The Close Button */
-.close {
+#declined {
     color: black;
-    float: right;
     font-size: 10px;
     font-weight: bold;
     height: auto;
@@ -2754,6 +2785,8 @@ input[type=radio]:checked {
     background-color: #EBCDA8;
     border-width: 2px;
     border-color:black;
+    padding:10px;
+    margin-bottom:10px;
 }
 
     .close:hover,
@@ -3037,6 +3070,7 @@ FAQS_Edit {
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 70px;
+    font-size: 15px;
 }
 
 #FAQSADD_Container_Title {
@@ -3057,6 +3091,7 @@ FAQS_Edit {
     padding-top: 10px;
     padding-bottom: 32px;
     margin-left: 30px;
+    font-size: 15px;
 }
 
 #FAQSADD_Cancel {
@@ -3069,8 +3104,8 @@ FAQS_Edit {
     border-radius: 40px;
     padding-top: 10px;
     padding-bottom: 32px;
+    font-size: 15px;
 }
-
 
 /*--------------------------------------------------------------
 # GALLERY EDIT
@@ -3259,7 +3294,8 @@ margin-bottom:30px;
     border-radius: 40px;
     padding-top: 10px;
     padding-bottom: 32px;
-    margin-top:30px
+    margin-top:30px;
+    font-size:15px;
 }
 
 #GalleryEdit_Cancel {
@@ -3272,6 +3308,7 @@ margin-bottom:30px;
     border-radius: 40px;
     padding-top: 10px;
     padding-bottom: 32px;
+    font-size: 15px;
 }
 
 
@@ -3353,6 +3390,7 @@ margin-bottom:30px;
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 40px;
+    font-size:15px;
 }
 
 #nextbutton {
@@ -3464,7 +3502,7 @@ td {
 #amenitiesdiv {
     background: rgba(0, 0, 0, .8);
     width: 90%;
-    height: 800px;
+    height: 838px;
     align-self: center;
     text-align: center;
     margin: 50px;
@@ -3580,7 +3618,7 @@ td {
     background: #EBCDA8;
     transition: 0.3s;
     width: 100%;
-    height: 110%;
+    height: 122%;
 }
 
 #additionalfeestitle {
@@ -4104,6 +4142,7 @@ feetitle {
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 40px;
+    font-size:15px;
 }
 
 #sqnextbutton {
@@ -4222,6 +4261,7 @@ feetitle {
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 40px;
+    font-size:15px;
 }
 
 #acnextbutton {
@@ -4352,6 +4392,7 @@ feetitle {
     box-sizing: border-box;
     background-color: #F5D8B3;
     height: 40px;
+    font-size:15px;
 }
 
 #rpnextbutton {
@@ -4454,6 +4495,38 @@ feetitle {
     color: #F5D8B3;
 }
 
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tablinks {
+    margin: 0 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: #F5D8B3;
+    cursor: pointer;
+}
+
+    .tablinks:hover {
+        background-color: #C5A485;
+        color: black;
+    }
+
+.tabcontent {
+    display: none;
+    padding: 20px;
+    width: 97%;
+    text-align: center;
+    font-size: 15px;
+}
+
+    .tabcontent:first-child {
+        display: block;
+    }
 
 /*--------------------------------------------------------------
 # PROFILE 
@@ -5100,4 +5173,320 @@ fsbuttondiv {
 .clicked-day {
     background-color: #ffbdbd;
     border-color: #ffbdbd;
+}
+
+/*--------------------------------------------------------------
+# Receipt
+--------------------------------------------------------------*/
+#nexttext {
+    color: #EBCDA8;
+}
+
+#receiptinputfields {
+    padding: 40px;
+}
+
+#receiptsection {
+    align-self: center;
+    align-items: center;
+    text-align: center;
+}
+
+#receiptform {
+    margin: 30px;
+    margin-left: 250px;
+    padding: 0px;
+    width: 70%;
+    min-height: 450px;
+    border-radius: 20px;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    background-color: #EBCDA8;
+}
+
+#receipttitle {
+    color: #F0D9B7;
+    background-color: black;
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    display: flex;
+    align-self: center;
+    text-align: center;
+    width: 100%;
+}
+
+#receipttitle1 {
+    align-self: center;
+    text-align: center;
+    display: flex;
+    width: 100%;
+    margin-left: 440px;
+}
+
+#receiptformcontent {
+    display: block;
+}
+
+#receipttext {
+    font-weight: bold;
+}
+
+#receiptnextbutton {
+    width: 200px;
+    height: auto;
+    padding: 10px;
+    color: #F0D9B7;
+    border-radius: 20px;
+    background-color: black;
+}
+
+#fpabackbutton {
+    text-decoration: none;
+    color: #F0D9B7;
+}
+
+    #fpabackbutton:hover {
+        text-decoration: none;
+        color: #a89577;
+    }
+
+#receiptheading {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#receipttr {
+    border: 2px solid;
+    border-color: black;
+    text-align: left;
+    width:5000px;
+}
+
+#receipttd {
+    width: 50px;
+    height: 20px;
+}
+
+#ReceiptIcon {
+    border-radius: 40px;
+    background-color: black;
+    color: #F5D8B3;
+    font-size: 20px;
+    padding: 5px 10px;
+}
+
+#tdrname {
+    width: 1000px;
+    font-size:15px;
+    margin-left:10px;
+}
+
+#refanswerinput {
+    width: 760px;
+    padding: 12px;
+    border: solid;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 10px;
+    border-width: 1px;
+    box-sizing: border-box;
+    background-color: #F5D8B3;
+    height: 40px;
+    font-size: 15px;
+    margin-top:20px;
+}
+
+#referencetitle {
+    margin-top:25px;
+    font-weight:bold;
+}
+
+#prooftitle {
+    font-weight: bold;
+}
+
+#submitreceiptbutton {
+    border-radius: 20px;
+    background-color: black;
+    color: #EBCDA8;
+    border-width: 2px;
+    border-color: black;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+#cancelreceiptbutton {
+    border-radius: 20px;
+    background-color: #EBCDA8;
+    border-width: 2px;
+    border-color: black;
+    padding: 10px;
+    margin-bottom: 10px;
+    width:200px;
+}
+
+/*--------------------------------------------------------------
+# Add Qr
+--------------------------------------------------------------*/
+#nexttext {
+    color: #EBCDA8;
+}
+
+#addqrinputfields {
+    padding: 40px;
+}
+
+#addqrsection {
+    align-self: center;
+    align-items: center;
+    text-align: center;
+}
+
+#addqrform {
+    margin: 30px;
+    margin-left: 250px;
+    padding: 0px;
+    width: 70%;
+    min-height: 450px;
+    border-radius: 20px;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    background-color: #EBCDA8;
+}
+
+#addqrtitle {
+    color: #F0D9B7;
+    background-color: black;
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    display: flex;
+    align-self: center;
+    text-align: center;
+    width: 100%;
+}
+
+#addqrtitle1 {
+    align-self: center;
+    text-align: center;
+    display: flex;
+    width: 100%;
+    margin-left: 350px;
+}
+
+#addqrformcontent {
+    display: block;
+}
+
+#addqrtext {
+    font-weight: bold;
+}
+
+#addqrnextbutton {
+    width: 200px;
+    height: auto;
+    padding: 10px;
+    color: #F0D9B7;
+    border-radius: 20px;
+    background-color: black;
+}
+
+#fpabackbutton {
+    text-decoration: none;
+    color: #F0D9B7;
+}
+
+    #fpabackbutton:hover {
+        text-decoration: none;
+        color: #a89577;
+    }
+
+#addqrheading {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#addqrtr {
+    border: 2px solid;
+    border-color: black;
+    text-align: left;
+    width: 5000px;
+}
+
+#addqrtd {
+    width: 50px;
+    height: 20px;
+}
+
+#ReceiptIcon {
+    border-radius: 40px;
+    background-color: black;
+    color: #F5D8B3;
+    font-size: 20px;
+    padding: 5px 10px;
+}
+
+#tdrname {
+    width: 1000px;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+#refanswerinput {
+    width: 760px;
+    padding: 12px;
+    border: solid;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 10px;
+    border-width: 1px;
+    box-sizing: border-box;
+    background-color: #F5D8B3;
+    height: 40px;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+#referencetitle {
+    margin-top: 25px;
+    font-weight: bold;
+}
+
+#prooftitle {
+    font-weight: bold;
+}
+
+#submitaddqrbutton {
+    border-radius: 20px;
+    background-color: black;
+    color: #EBCDA8;
+    border-width: 2px;
+    border-color: black;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+#canceladdqrbutton {
+    border-radius: 20px;
+    background-color: #EBCDA8;
+    border-width: 2px;
+    border-color: black;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 200px;
 }

@@ -76,12 +76,11 @@
 
                     </ul>
 
-                    <i class="bi bi-list mobile-nav-toggle"></i>
+                    @* <i class="bi bi-list mobile-nav-toggle"></i> *@
                 </nav>
 
                 <!-- .navbar -->
-
-                <a class="book-a-table-btn scrollto" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                <input type="button" id="logoutbtn" value="Logout" onclick="location.href='@Url.Action("Logout", "Account")'" />
             }
             else if (!User.IsInRole("Admin"))
             {
@@ -112,13 +111,13 @@
                         <li><a asp-area="" asp-controller="Home" asp-action="FAQs">FAQs</a></li>
                         <li><a asp-area="" asp-controller="Booking" asp-action="Booking">Booking</a></li>
 
-                        <li><a asp-area="" asp-controller="Admin" asp-action="Dashboard_BR">Dashboard</a></li>
+                        <li><a asp-area="" asp-controller="Admin" asp-action="Dashboard">Dashboard</a></li>
 
                     </ul>
 
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav>
-                <a class="book-a-table-btn scrollto" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                <input type="button" id="logoutbtn" value="Logout" onclick="location.href='@Url.Action("Logout", "Account")'" />
             }
             <!-- .navbar -->
         </div>

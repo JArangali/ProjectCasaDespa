@@ -11,14 +11,9 @@ namespace CasaDespaDraft.Models
         Day_Tour, Night_Tour, Twenty_Two_Hours
     }
 
-    public enum BookingStatus
-    {
-        Done, Cancelled, Denied
-    }
-
     public enum ProfileStatus
     {
-        Requests, Pending_Payment, Archive
+        Requests, Pending_Payment, Approved, Archive
     }
 
     public class Booking
@@ -48,7 +43,19 @@ namespace CasaDespaDraft.Models
         [Required]
         public string? date { get; set; }
 
-        public ProfileStatus Status { get; set; } = ProfileStatus.Requests;
+        [DataType(DataType.Upload)]
+        [RegularExpression(@"^.*\.(jpg|jpeg|png)$", ErrorMessage = "Only JPG, JPEG, and PNG files are allowed.")]
+        [FileExtensions(Extensions = "jpg,jpeg,png", ErrorMessage = "Only JPG, JPEG, and PNG files are allowed.")]
+        public byte[]? image { get; set; }
 
+        public string? Amount { get; set; }
+
+        public byte[]? QRCode { get; set; }
+
+        public string? Refnum { get; set; }
+
+        public string? BStatus { get; set; }
+
+        public ProfileStatus Status { get; set; } = ProfileStatus.Requests;
     }
 }

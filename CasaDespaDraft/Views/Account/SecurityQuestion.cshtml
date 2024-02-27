@@ -3,7 +3,7 @@
 }
 @using CasaDespaDraft.ViewModels
 @using CasaDespaDraft.Data;
-@model SecurityQuestionViewModel    
+@model SecurityQuestionViewModel
 
 <section id="sq">
     <div id="backbuttondiv">
@@ -20,9 +20,18 @@
 
 
             <div id="sqformcontent">
+                @if (ViewData.ModelState["answer"] != null)
+                {
+                    <div class="alert alert-danger">
+                        @Html.ValidationMessage("answer")
+                    </div>
+                }
                 <div id="sqinputfields">
-                    <input asp-for="answer" type="hidden" />
-                    <h4 id="sqtext">-- @Model.question -- @Model.answer --</h4>
+
+                    <input asp-for="answer" type="hidden" value="@Model.answer" />
+                    <input asp-for="Email" type="hidden" value="@Model.Email" />
+                    <input asp-for="question" type="hidden" value="@Model.question" />
+                    <h4 id="sqtext">-- @Model.question --</h4>
                     <input asp-for="fanswer" type="text" id="sqanswerinput" placeholder="Please Provide Answer">
                     <span asp-validation-for="fanswer" class="text-danger"></span>
                 </div>
@@ -33,4 +42,3 @@
         </div>
     </form>
 </section>
-

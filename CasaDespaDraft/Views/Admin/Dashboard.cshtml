@@ -1,0 +1,193 @@
+﻿﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+@using Microsoft.AspNetCore.Identity;
+@using CasaDespaDraft.Data;
+@using CasaDespaDraft.ViewModels
+@model AccountViewModel
+
+<!-- Welcome Section -->
+<section id="welcome">
+    <div id="welcomecontainer">
+        <div id="welcomediv1">
+            <h1 id="welcometextDashboard">DASHBOARD</h1>
+        </div>
+        <div id="welcomediv2">
+            <img id="blkbiglogo" src="~/img/logo/blklogo.png" alt="casadespa">
+        </div>
+    </div>
+</section>
+<!-- End Welcome Section -->
+<!-- Dashboard Section-->
+<div class="main-container">
+    <div class="right-container">
+
+        <div class="tabs">
+            <button class="tablinks" onclick="openTab(event, 'BRequests')">Booking Requests</button>
+            <button class="tablinks" onclick="openTab(event, 'Transactions')">Booking Transactions</button>
+            <button class="tablinks" onclick="openTab(event, 'ARequest')">Accepted Requests</button>
+            <button class="tablinks" onclick="openTab(event, 'Archived')">Archived Bookings</button>
+        </div>
+
+        <div id="BRequests" class="tabcontent">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <td><div class="table-container2">FULL NAME:</div></td>
+                            <th><div class="table-container2">CONTACT NUMBER:<br/></div></th>
+                            <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
+                            <th><div class="table-container2">DATE</div></th>
+                            <th><div class="table-container2">PACKAGE</div></th>
+                            <th><div class="table-container2">DOWNPAYMENT</div></th>
+                            <th><div class="table-container2">DECLINED</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var booking in Model.Bookings)
+                        {
+                            <tr>
+                                <td>@booking.fullName</td>
+                                <td>@booking.contactNumber</td>
+                                <td>@booking.pax</td>
+                                <td>@booking.date</td>
+                                <td>@booking.package</td>
+                                <td><a class="nav-button" asp-action="AddQr" asp-controller="Admin" asp-route-id="@booking.bookingId">REQUEST PAYMENT</a></td>
+                                <td><a class="nav-button" asp-action="DashboardBookingDecline" asp-route-id="@booking.bookingId">X</a></td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="Transactions" class="tabcontent">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <td><div class="table-container2">FULL NAME:</div></td>
+                            <th><div class="table-container2">CONTACT NUMBER:<br/></div></th>
+                            <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
+                            <th><div class="table-container2">DATE</div></th>
+                            <th><div class="table-container2">PACKAGE</div></th>
+                            <th><div class="table-container2">PAYMENT</div></th>
+                            <th><div class="table-container2">REQUEST PAYMENT</div></th>
+                            <th><div class="table-container2">CONFIRM</div></th>
+                            <th><div class="table-container2">CANCEL</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var booking in Model.Requested)
+                        {
+                            <tr>
+                                <td>@booking.fullName</td>
+                                <td>@booking.contactNumber</td>
+                                <td>@booking.pax</td>
+                                <td>@booking.date</td>
+                                <td>@booking.package</td>
+                                <td><a class="nav-button">CHECK</a></td>
+                                <td><a class="nav-button" asp-action="AddQr" asp-controller="Admin" asp-route-id="@booking.bookingId">REQUEST</a></td>
+                                <td><a class="nav-button" asp-action="DashboardAcceptedBooking" asp-route-id="@booking.bookingId">/</a></td>
+                                <td><a class="nav-button" asp-action="DashboardBookingCancelled" asp-route-id="@booking.bookingId">X</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="ARequest" class="tabcontent">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <td><div class="table-container2">FULL NAME:</div></td>
+                            <th><div class="table-container2">CONTACT NUMBER:<br/></div></th>
+                            <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
+                            <th><div class="table-container2">DATE</div></th>
+                            <th><div class="table-container2">PACKAGE</div></th>
+                            <th><div class="table-container2">EDIT</div></th>
+                            <th><div class="table-container2">DONE</div></th>
+                            <th><div class="table-container2" >CANCELLED</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var booking in Model.Accepted)
+                        {
+                            <tr>
+                                <td>@booking.fullName</td>
+                                <td>@booking.contactNumber</td>
+                                <td>@booking.pax</td>
+                                <td>@booking.date</td>
+                                <td>@booking.package</td>
+                                <td><a class="nav-button">EDIT</a></td>
+                                <td><a class="nav-button" asp-action="DashboardArchive" asp-route-id="@booking.bookingId">DONE</a></td>
+                                <td><a class="nav-button" asp-action="DashboardBookingCancelled" asp-route-id="@booking.bookingId">X</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="Archived" class="tabcontent">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>FULL NAME:</td>
+                            <th>CONTACT NUMBER:<br /></th>
+                            <th>NUMBER<br/>OF PAX:</th>
+                            <th>DATE</th>
+                            <th>PACKAGE</th>
+                            <th>STATUS</th>
+                            <th>PAYMENT</th>
+                            <th>DELETE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var booking in Model.Archive)
+                        {
+                            <tr>
+                                <td>@booking.fullName</td>
+                                <td>@booking.contactNumber</td>
+                                <td>@booking.pax</td>
+                                <td>@booking.date</td>
+                                <td>@booking.package</td>
+                                <td>@booking.BStatus</td>
+                                <td><a class="nav-button">SHOW</a></td>
+                                <td><a class="nav-button" asp-action="DashboardDeleteBooking" asp-route-id="@booking.bookingId">X</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Call openTab function with 'Home' tab name as an argument when the page loads
+    window.onload = function () {
+        openTab(null, 'BRequests');
+    };
+</script>
