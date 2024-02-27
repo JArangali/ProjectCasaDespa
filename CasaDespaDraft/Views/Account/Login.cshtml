@@ -22,14 +22,14 @@
                     <!-- Email input -->
                     <div id="usernamediv">
                     <span id="loginusername">USERNAME:    </span>
-                    <input asp-for="UserName" id="logiinuserinput" placeholder="Enter Username" />
+                    <input asp-for="UserName" id="logiinuserinput" placeholder="Enter Username" required/>
                         @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger"})
                     </div>
 
                     <!-- Password input -->
                     <div id="passworddiv">
-                    <span id="loginpassword">PASSWORD:    </span> 
-                        <input asp-for="Password" id="logiinpassinput" placeholder="Enter Password" />
+                    <span id="loginpassword">PASSWORD:    </span>
+                    <input asp-for="Password" id="logiinpassinput" placeholder="Enter Password" required/>
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger"})
                     </div>
 
