@@ -1,8 +1,11 @@
 ﻿using CasaDespaDraft.Data;
 using CasaDespaDraft.Models;
 using CasaDespaDraft.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Security.Claims;
 using System.Xml.Linq;
@@ -58,9 +61,67 @@ namespace CasaDespaDraft.Controllers
             return RedirectToAction("Profile", "Home");
         }
 
-        public IActionResult Receipt()
+        [HttpGet]
+        public IActionResult Receipt(int id)
         {
-            return View();
+            Booking? booking = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+                
+            var model = new Booking
+                {
+                    bookingId = id,
+                    userId = booking.userId,
+                    fullName = booking.fullName,
+                    contactNumber = booking.contactNumber,
+                    messengerLink = booking.messengerLink,
+                    package = booking.package,
+                    pax = booking.pax,
+                    date = booking.date,
+                    BStatus = booking.BStatus,
+                    Amount = booking.Amount,
+                    QRCode = booking.QRCode,
+                };
+
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Receipt(Booking model, IFormFile image)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+
+            Booking? booking = _dbData.Bookings.FirstOrDefault(st => st.bookingId == model.bookingId);
+
+            if (booking == null)
+            {
+                // Handle the case where the booking is not found
+                return NotFound();
+            }
+
+            if (image != null && image.Length > 0)
+            {
+                using var memoryStream = new MemoryStream();
+                await image.CopyToAsync(memoryStream);
+                booking.image = memoryStream.ToArray();
+            }
+
+            booking.Refnum = model.Refnum;
+
+            var toUpdate = booking;
+            toUpdate.BStatus = "Requested";
+
+            _dbData.Bookings.Update(toUpdate);
+
+            booking.Status = ProfileStatus.Pending_Payment;
+
+            _dbData.Entry(booking).State = EntityState.Modified;
+            _dbData.SaveChanges();
+
+            return RedirectToAction("Profile", "Home");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

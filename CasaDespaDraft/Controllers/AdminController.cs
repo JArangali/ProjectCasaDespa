@@ -45,7 +45,6 @@ namespace CasaDespaDraft.Controllers
             };
 
             return View(viewModel);
-
         }
 
         [Authorize(Roles = "Admin")]
@@ -57,6 +56,7 @@ namespace CasaDespaDraft.Controllers
             }
 
             Booking? bookings = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
 
             if (bookings != null)
                 return View(bookings);
@@ -254,6 +254,20 @@ namespace CasaDespaDraft.Controllers
             _dbData.SaveChanges();
 
             return RedirectToAction("Dashboard", "Admin");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult ShowReceipt(int id)
+        {
+            Booking? booking = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            var image = booking.image;
+            if (image == null)
+            {
+                return RedirectToAction("Dasboard", "Admin");
+            }
+
+            return View(booking);
         }
 
         [Authorize(Roles = "Admin")]

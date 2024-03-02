@@ -116,7 +116,7 @@
                                     <td>@booking.pax</td>
                                     <td>@booking.date</td>
                                     <td>@booking.package</td>
-                                    <td><a class="nav-button" asp-area="" asp-controller="Home" asp-action="Receipt">SUBMIT PAYMENT</a></td>
+                                    <td><a class="nav-button" asp-action="Receipt" asp-controller="Booking" asp-route-id="@booking.bookingId">SUBMIT PAYMENT</a></td>
                                 </tr>
                             }
                         </tbody>

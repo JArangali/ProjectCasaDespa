@@ -30,6 +30,14 @@
             <button class="tablinks" onclick="openTab(event, 'Archived')">Archived Bookings</button>
         </div>
 
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert alert-danger">
+                @* @ViewBag.ErrorMessage *@
+                helooo
+            </div>
+        }
+        
         <div id="BRequests" class="tabcontent">
             <div class="table-container">
                 <table>
@@ -64,6 +72,12 @@
         </div>
 
         <div id="Transactions" class="tabcontent">
+            @if (ViewData.ModelState["answer"] != null)
+            {
+                <div class="alert alert-danger">
+                    @Html.ValidationMessage("answer")
+                </div>
+            }
             <div class="table-container">
                 <table>
                     <thead>
@@ -74,12 +88,11 @@
                             <th><div class="table-container2">DATE</div></th>
                             <th><div class="table-container2">PACKAGE</div></th>
                             <th><div class="table-container2">PAYMENT</div></th>
-                            <th><div class="table-container2">REQUEST PAYMENT</div></th>
-                            <th><div class="table-container2">CONFIRM</div></th>
                             <th><div class="table-container2">CANCEL</div></th>
                         </tr>
                     </thead>
                     <tbody>
+
                         @foreach (var booking in Model.Requested)
                         {
                             <tr>
@@ -88,9 +101,7 @@
                                 <td>@booking.pax</td>
                                 <td>@booking.date</td>
                                 <td>@booking.package</td>
-                                <td><a class="nav-button">CHECK</a></td>
-                                <td><a class="nav-button" asp-action="AddQr" asp-controller="Admin" asp-route-id="@booking.bookingId">REQUEST</a></td>
-                                <td><a class="nav-button" asp-action="DashboardAcceptedBooking" asp-route-id="@booking.bookingId">/</a></td>
+                                <td><a class="nav-button" asp-action="ShowReceipt" asp-controller="Admin" asp-route-id="@booking.bookingId">CHECK</a></td>
                                 <td><a class="nav-button" asp-action="DashboardBookingCancelled" asp-route-id="@booking.bookingId">X</a></td>
                             </tr>
                         }
@@ -185,9 +196,4 @@
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
     }
-
-    // Call openTab function with 'Home' tab name as an argument when the page loads
-    window.onload = function () {
-        openTab(null, 'BRequests');
-    };
 </script>

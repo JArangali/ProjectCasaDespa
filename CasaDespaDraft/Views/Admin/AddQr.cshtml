@@ -35,15 +35,16 @@
                                 <input type="hidden" asp-for="date" value="@Model.date" />
                                 <input type="hidden" asp-for="BStatus" value="@Model.BStatus" />
 
-                            <input type="file" asp-for="QRCode" id="file" accept=".png,.jpg,.jpeg" aria-label="File browser example" required>
-                            @Html.ValidationMessageFor(model => model.QRCode, "", new { @class = "text-danger"})
                         </td>
                         </tr>
                     </table>
 
                     <table>
                         <tr id="addqrtr">
-                            <td id="tdrname">Sample File Name</td>
+                            <td id="tdrname">
+                                <input type="file" asp-for="QRCode" id="file" accept=".png,.jpg,.jpeg" aria-label="File browser example" required>
+                                @Html.ValidationMessageFor(model => model.QRCode, "", new { @class = "text-danger"})
+                            </td>
                             <td id="addqrtd">
 
                                 <button type="submit" id="ReceiptIcon" data-id="">
@@ -56,7 +57,7 @@
 
                     <table>
                         <tr>
-                            <td><h3 id="referencetitle">Amount to Pay: @Model.bookingId</h3></td>
+                            <td><h3 id="referencetitle">Amount to Pay: </h3></td>
                             <td><input type="number" id="refanswerinput" asp-for="Amount" required placeholder="Please Provide The Amount."></td>
                             
                             <br>
@@ -65,7 +66,6 @@
                 </div>
             </div>
             <div id="receiptbuttonscontainer">
-                <td><a id="canceladdqrbutton" asp-action="CancelQR" asp-controller="Admin">CANCEL</a></td>
                 <td><button type="submit" id="submitaddqrbutton" >SUBMIT</button></td>
 
 @*                 <td><a id="canceladdqrbutton" asp-action="CancelQR" asp-route-id="@Model.userId">CANCEL</a></td>
