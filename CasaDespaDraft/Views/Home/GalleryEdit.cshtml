@@ -16,26 +16,26 @@
             <div id="GalleryEdit_content">
                 <div id="GalleryEdit_Container_Content">
                     <form asp-action="GalleryEdit" asp-controller="Home" method="post" enctype="multipart/form-data">
-                    <div id="GalleryAdd_File">
-                        <div id="GalleryFilter_Container">
-                            <center>
+                        <div id="GalleryAdd_File">
+                            <div id="GalleryFilter_Container">
+                                <center>
                                     <h2 id="GalleryEdit_heading"> UPLOAD IMAGE </h2>
                                     <input type="file" asp-for="image" id="Galleryfile" accept=".png,.jpg,.jpeg" aria-label="File browser example">
                                     @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger"})
                                     <input id="GalleryEdit_Label" asp-for="imageName" placeholder="Label your Image!">
                                     <input type="hidden" asp-for="imageId" />
-                            
-                            <div id="GalleryFilter_ContainerMain">
-                                <label for="filters" id="GalleryFilter">Choose a filter:</label>
 
-                                    <select asp-for="filter" asp-items="@Html.GetEnumSelectList(typeof(Filter))" class="form-control" id="GalleryEditFilter_Label"></select>
-                            </div>
+                                    <div id="GalleryFilter_ContainerMain">
+                                        <label for="filters" id="GalleryFilter">Choose a filter:</label>
+
+                                        <select asp-for="filter" asp-items="@Html.GetEnumSelectList(typeof(Filter))" class="form-control" id="GalleryEditFilter_Label"></select>
+                                    </div>
                                 </center>
-                        </div>
-                        <center>
+                            </div>
+                            <center>
                                 <input type="submit" id="GalleryEdit_Save" value="UPLOAD" />
-                        </center>
-                    </div>
+                            </center>
+                        </div>
                     </form>
 
                     <table id="GalleryEdit_Table">
@@ -48,14 +48,12 @@
                             <tr id="GalleryEdit_tr">
                                 <td>@gallery.imageName</td>
                                 <td id="GalleryEdit_td">
-                                    <form method="delete" asp-action="Gallery_Delete" asp-controller="Home">
-                                        <button type="submit" id="GalleryEdit_Icon" data-id="@gallery.imageId">
-                                            <i class="fa fa-trash-o"></i>
-                                        </button>
-                                    </form>
+                                    @* <form method="delete" asp-action="Gallery_Delete" asp-controller="Home"> *@
+                                    <a asp-action="GalleryDELETE_Page" asp-controller="Home" asp-route-Id="@gallery.imageId" id="GalleryEdit_Icon"><i class="fa fa-trash-o"></i></a>
+                                    @* </form> *@
                                 </td>
                             </tr>
-                            
+
                         }
 
                     </table>
@@ -66,7 +64,7 @@
                 <div id="GalleryEdit_Container_Title">
                     <center>
                         <input type="button" onclick="@("window.location.href='" + @Url.Action("Gallery", "Home") + "'");" id="GalleryEdit_Cancel" value="Go Back" />
-                        
+
                     </center>
                 </div>
             </div>

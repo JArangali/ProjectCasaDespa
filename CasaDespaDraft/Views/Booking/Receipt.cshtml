@@ -1,14 +1,14 @@
 ﻿@{
     ViewData["Title"] = "Receipt";
 }
-
+@model Booking;
 
 <!-- Receipt Section -->
 <section id="receiptsection">
     <div id="backbuttondiv">
-        <input type="button" id="fpbackbutton" value="BACK" onclick="location.href='/Home/'" class="getstarted" />
+        <input type="button" id="fpbackbutton" value="BACK" onclick="location.href='/Home/Profile'" class="getstarted" />
     </div>
-
+                <form asp-action="Receipt" asp-controller="Booking" method="post" enctype="multipart/form-data"> 
         <div id="receiptform">
 
             <div id="receipttitle">
@@ -22,28 +22,37 @@
                 <div id="receiptinputfields">
                     <table>
                         <tr>
-                            <td><h3 id="prooftitle">Proof of Payment: </h3></td>
-                            <td><input type="file" id="file" accept=".png,.jpg,.jpeg" placeholder=""></td>
+
+                            <td>
+                                <img src="data:image/jpg;base64,@Convert.ToBase64String(@Model.QRCode)" alt="Receipt" class="img-fluid">
+
+                            </td>
+                            <input type="hidden" asp-for="bookingId" value="@Model.bookingId" />
+                            <input type="hidden" asp-for="userId" value="@Model.userId" />
+                            <input type="hidden" asp-for="fullName" value="@Model.fullName" />
+                            <input type="hidden" asp-for="contactNumber" value="@Model.contactNumber" />
+                            <input type="hidden" asp-for="messengerLink" value="@Model.messengerLink" />
+                            <input type="hidden" asp-for="package" value="@Model.package" />
+                            <input type="hidden" asp-for="pax" value="@Model.pax" />
+                            <input type="hidden" asp-for="date" value="@Model.date" />
+                            <input type="hidden" asp-for="BStatus" value="@Model.BStatus" />
                         </tr>
                     </table>
 
                     <table>
                     <tr id="receipttr">
-                        <td id="tdrname">Sample File Name</td>
-                        <td id="receipttd">
-                            <form method="delete" asp-action="" asp-controller="">
-                                <button type="submit" id="ReceiptIcon" data-id="">
-                                    <i class="fa fa-trash-o"></i>
-                                </button>
-                            </form>
-                        </td>
+                            <td><h3 id="prooftitle">Proof of Payment: </h3></td>
+                            <td id="tdrname">
+                                <input type="file" asp-for="image" id="file" accept=".png,.jpg,.jpeg" aria-label="File browser example" required>
+                                @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger"})
+                            </td>
                     </tr>
                     </table>
 
                     <table>
                         <tr>
                             <td><h3 id="referencetitle">Reference Number: </h3></td>
-                            <td><input type="text" id="refanswerinput" placeholder="Please Provide Reference Numer."></td>
+                            <td><input type="number" id="refanswerinput" asp-for="Refnum" required placeholder="Please Provide Reference Numer."></td>
                         </tr>
                     </table>
                 </div>
@@ -53,4 +62,5 @@
                 <input type="submit" id="submitreceiptbutton" value="SUBMIT">
             </div>
         </div>
+        </form>
 </section>

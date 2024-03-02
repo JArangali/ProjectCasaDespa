@@ -52,6 +52,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Admin/EditBooking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdEJvb2tpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Admin/ShowReceipt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd1JlY2VpcHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Admin/ShowReceipt_Archive.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd1JlY2VpcHRfQXJjaGl2ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Booking/Booking.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xCb29raW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -76,12 +88,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGQVFzRURJVF9QYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Home/Gallery - Copy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHYWxsZXJ5IC0gQ29weS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Home/Gallery.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHYWxsZXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Home/GalleryDELETE_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHYWxsZXJ5REVMRVRFX1BhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Home/GalleryEdit.cshtml]

@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = " Show Receipt";
+}
+@model Booking;
+
+<!-- Receipt Section -->
+<section id="receiptsection">
+    <div id="backbuttondiv">
+        <input type="button" id="fpbackbutton" value="BACK" onclick="location.href='/Admin/Dashboard'" class="getstarted" />
+    </div>
+                <form asp-action="ShowReceipt" asp-controller="Home" method="post" enctype="multipart/form-data"> 
+        <div id="receiptform">
+
+            <div id="receipttitle">
+                <div id="receipttitle1">
+                    <h2 id="receiptheading"> RECEIPT </h2>
+                </div>
+            </div>
+
+
+            <div id="receiptformcontent">
+                <div id="receiptinputfields">
+                    <table>
+                    <tr id="receipttr">
+                            <td><h3 id="prooftitle">Proof of Payment: </h3></td>
+                            <td>
+                                <img src="data:image/jpg;base64,@Convert.ToBase64String(@Model.image)" alt="Receipt" class="img-fluid">
+                            </td>
+                    </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td><h3 id="referencetitle">Reference Number: </h3></td>
+                            <td>@Model.Refnum</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="receiptbuttonscontainer">
+                <td><a id="cancelreceiptbutton" asp-action="AddQr" asp-controller="Admin" asp-route-id="@Model.bookingId">REQUEST</a></td>
+                <td><a id="submitreceiptbutton" asp-action="DashboardAcceptedBooking" asp-route-id="@Model.bookingId">CORNFIRM</a></td>
+            </div>
+        </div>
+        </form>
+</section>

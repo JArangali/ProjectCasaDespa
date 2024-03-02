@@ -29,9 +29,10 @@
             <button class="tablinks" onclick="openTab(event, 'ARequest')">Accepted Requests</button>
             <button class="tablinks" onclick="openTab(event, 'Archived')">Archived Bookings</button>
         </div>
-
+        
         <div id="BRequests" class="tabcontent">
             <div class="table-container">
+                <h5 id="table-header">Booking Requests</h5>
                 <table>
                     <thead>
                         <tr>
@@ -64,7 +65,14 @@
         </div>
 
         <div id="Transactions" class="tabcontent">
+            @if (ViewData.ModelState["answer"] != null)
+            {
+                <div class="alert alert-danger">
+                    @Html.ValidationMessage("answer")
+                </div>
+            }
             <div class="table-container">
+                <h5 id="table-header">Booking Transactions</h5>
                 <table>
                     <thead>
                         <tr>
@@ -74,12 +82,11 @@
                             <th><div class="table-container2">DATE</div></th>
                             <th><div class="table-container2">PACKAGE</div></th>
                             <th><div class="table-container2">PAYMENT</div></th>
-                            <th><div class="table-container2">REQUEST PAYMENT</div></th>
-                            <th><div class="table-container2">CONFIRM</div></th>
                             <th><div class="table-container2">CANCEL</div></th>
                         </tr>
                     </thead>
                     <tbody>
+
                         @foreach (var booking in Model.Requested)
                         {
                             <tr>
@@ -88,9 +95,7 @@
                                 <td>@booking.pax</td>
                                 <td>@booking.date</td>
                                 <td>@booking.package</td>
-                                <td><a class="nav-button">CHECK</a></td>
-                                <td><a class="nav-button" asp-action="AddQr" asp-controller="Admin" asp-route-id="@booking.bookingId">REQUEST</a></td>
-                                <td><a class="nav-button" asp-action="DashboardAcceptedBooking" asp-route-id="@booking.bookingId">/</a></td>
+                                <td><a class="nav-button" asp-action="ShowReceipt" asp-controller="Admin" asp-route-id="@booking.bookingId">CHECK</a></td>
                                 <td><a class="nav-button" asp-action="DashboardBookingCancelled" asp-route-id="@booking.bookingId">X</a></td>
                             </tr>
                         }
@@ -101,6 +106,7 @@
 
         <div id="ARequest" class="tabcontent">
             <div class="table-container">
+                <h5 id="table-header">Accepted Requests</h5>
                 <table>
                     <thead>
                         <tr>
@@ -123,7 +129,7 @@
                                 <td>@booking.pax</td>
                                 <td>@booking.date</td>
                                 <td>@booking.package</td>
-                                <td><a class="nav-button">EDIT</a></td>
+                                <td><a class="nav-button" asp-action="EditBooking" asp-route-id="@booking.bookingId">EDIT</a></td>
                                 <td><a class="nav-button" asp-action="DashboardArchive" asp-route-id="@booking.bookingId">DONE</a></td>
                                 <td><a class="nav-button" asp-action="DashboardBookingCancelled" asp-route-id="@booking.bookingId">X</a></td>
                             </tr>
@@ -135,6 +141,7 @@
 
         <div id="Archived" class="tabcontent">
             <div class="table-container">
+                <h5 id="table-header">Archived Bookings</h5>
                 <table>
                     <thead>
                         <tr>
@@ -158,7 +165,7 @@
                                 <td>@booking.date</td>
                                 <td>@booking.package</td>
                                 <td>@booking.BStatus</td>
-                                <td><a class="nav-button">SHOW</a></td>
+                                <td><a class="nav-button" asp-action="ShowReceipt_Archive" asp-controller="Admin" asp-route-id="@booking.bookingId">CHECK</a></td>
                                 <td><a class="nav-button" asp-action="DashboardDeleteBooking" asp-route-id="@booking.bookingId">X</a></td>
                             </tr>
                         }
