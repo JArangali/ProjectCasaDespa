@@ -160,20 +160,30 @@ namespace CasaDespaDraft.Controllers
             return RedirectToAction("GalleryEdit");
         }
 
-        [HttpDelete]
+        [HttpGet]
         public IActionResult Gallery_Delete(int id)
         {
-            Gallery? gallery = _dbData.Gallery.Find(id);
-
-            if (gallery != null)
+            Gallery? gallery = _dbData.Gallery.FirstOrDefault(rec => rec.imageId == id);
+            if (gallery == null)
             {
-                _dbData.Gallery.Remove(gallery);
-                _dbData.SaveChangesAsync();
-                return Json(new { success = true });
+                // Handle the case where the booking is not found
+                return NotFound();
             }
 
-            return Json(new { success = false });
+            _dbData.Gallery.Remove(gallery);
+            _dbData.SaveChanges();
+
+            return RedirectToAction("GalleryEdit", "Home");
         }
+
+        [HttpGet]
+        public IActionResult GalleryDELETE_Page(int id)
+        {
+            Gallery? gallery = _dbData.Gallery.FirstOrDefault(rec => rec.imageId == id);
+
+            return View(gallery);
+        }
+
 
         public IActionResult FAQs()
         {
