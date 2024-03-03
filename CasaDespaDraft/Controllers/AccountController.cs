@@ -30,10 +30,10 @@ namespace CasaDespaDraft.Controllers
 
         public string HashPassword(string password)
         {
-            using (SHA256 sha256 = SHA256.Create())
+            using (MD5 md5 = MD5.Create())
             {
                 byte[] bytes = Encoding.UTF8.GetBytes(password);
-                byte[] hash = sha256.ComputeHash(bytes);
+                byte[] hash = md5.ComputeHash(bytes);
                 return BitConverter.ToString(hash).Replace("-", "").ToLower();
             }
         }
@@ -159,7 +159,12 @@ namespace CasaDespaDraft.Controllers
 
                     return RedirectToAction("SecurityQuestion", new { email, securityQuestion, securityAnswer });
                 }
+
             }
+
+            // Add a ModelState error if the answer is incorrect
+            ModelState.AddModelError("answer", "Account not found.");
+
 
             return View(model);
         }
@@ -192,7 +197,11 @@ namespace CasaDespaDraft.Controllers
                 {
                     user.Email = model.Email;
                     user.Answer = model.answer;
-                    user.FAnswer = HashPassword(model.fanswer);
+                    using (var sha256 = SHA256.Create())
+                    {
+                        byte[] hashedFAnswer = sha256.ComputeHash(Encoding.UTF8.GetBytes(model.fanswer.ToUpperInvariant()));
+                        user.FAnswer = Convert.ToBase64String(hashedFAnswer);
+                    }
 
                     if (user.FAnswer == user.Answer)
                     {
@@ -335,7 +344,7 @@ namespace CasaDespaDraft.Controllers
                 {
                     user.Email = model.Email;
 
-                    if (model.adminCode == "ADMINCODE")
+                    if (model.adminCode.Equals("Despabiladeras", StringComparison.OrdinalIgnoreCase))
                     {
                         var userId = user.Id;
                         var email = user.Email;

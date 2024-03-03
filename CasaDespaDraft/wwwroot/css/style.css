@@ -4646,6 +4646,7 @@ feetitle {
     width: 97%;
     margin-top: 0px;
     text-align: center;
+    min-height: 504px;
 }
 
 .table-container1 {

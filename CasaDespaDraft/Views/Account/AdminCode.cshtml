@@ -15,7 +15,7 @@
         <div id="acform">
             <div id="actitle">
                 <div id="actitle1">
-                    <img id="sqlogoimg" src="~/img/sqlogo.png" alt="sqlogo"><h2 id="sqheading"> ADMIN CODE </h2>
+                    <img id="sqlogoimg" src="~/img/sqlogo.png" alt="sqlogo"><h2 id="sqheading"> ADMIN SECURITY QUESTION </h2>
                 </div>
             </div>
             @if (ViewData.ModelState["answer"] != null)
@@ -26,9 +26,11 @@
             }
             <div id="acformcontent">
                 <div id="acinputfields">
-                    <h4 id="actext">Admin Code</h4>
+                    <h4 id="actext"></h4>
                     <input asp-for="Email" type="hidden" value="@Model.Email" />
                     @Html.ValidationMessageFor(model => model.adminCode, "", new { @class = "text-danger"})
+                    <h4 id="sqtext">-- What is your surname? --</h4>
+
                     <input asp-for="adminCode" type="text" id="acanswerinput" placeholder="Please Provide Admin Code">
                 </div>
             </div>
