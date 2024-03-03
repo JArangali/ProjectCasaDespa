@@ -1,4 +1,4 @@
-﻿﻿@{
+﻿@{
     ViewData["Title"] = "Dashboard";
 }
 
@@ -29,15 +29,17 @@
             <button class="tablinks" onclick="openTab(event, 'ARequest')">Accepted Requests</button>
             <button class="tablinks" onclick="openTab(event, 'Archived')">Archived Bookings</button>
         </div>
-        
+
         <div id="BRequests" class="tabcontent">
             <div class="table-container">
                 <h2 id="table-header">Booking Requests</h2>
                 <table>
                     <thead>
                         <tr>
+                            <td><div class="table-container2">BOOKING ID:</div></td>
                             <td><div class="table-container2">FULL NAME:</div></td>
-                            <th><div class="table-container2">CONTACT NUMBER:<br/></div></th>
+                            <th><div class="table-container2">CONTACT NUMBER:<br /></div></th>
+                            <th><div class="table-container2">MESSENGER LINK:<br /></div></th>
                             <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
                             <th><div class="table-container2">DATE</div></th>
                             <th><div class="table-container2">PACKAGE</div></th>
@@ -49,8 +51,10 @@
                         @foreach (var booking in Model.Bookings)
                         {
                             <tr>
+                                <td>@booking.bookingId</td>
                                 <td>@booking.fullName</td>
                                 <td>@booking.contactNumber</td>
+                                <td>@booking.messengerLink</td>
                                 <td>@booking.pax</td>
                                 <td>@booking.date</td>
                                 <td>@booking.package</td>
@@ -76,8 +80,10 @@
                 <table>
                     <thead>
                         <tr>
+                            <td><div class="table-container2">BOOKING ID:</div></td>
                             <td><div class="table-container2">FULL NAME:</div></td>
-                            <th><div class="table-container2">CONTACT NUMBER:<br/></div></th>
+                            <th><div class="table-container2">CONTACT NUMBER:<br /></div></th>
+                            <th><div class="table-container2">MESSENGER LINK:<br /></div></th>
                             <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
                             <th><div class="table-container2">DATE</div></th>
                             <th><div class="table-container2">PACKAGE</div></th>
@@ -90,8 +96,10 @@
                         @foreach (var booking in Model.Requested)
                         {
                             <tr>
+                                <td>@booking.bookingId</td>
                                 <td>@booking.fullName</td>
                                 <td>@booking.contactNumber</td>
+                                <td>@booking.messengerLink</td>
                                 <td>@booking.pax</td>
                                 <td>@booking.date</td>
                                 <td>@booking.package</td>
@@ -110,22 +118,26 @@
                 <table>
                     <thead>
                         <tr>
+                            <td><div class="table-container2">BOOKING ID:</div></td>
                             <td><div class="table-container2">FULL NAME:</div></td>
-                            <th><div class="table-container2">CONTACT NUMBER:<br/></div></th>
+                            <th><div class="table-container2">CONTACT NUMBER:<br /></div></th>
+                            <th><div class="table-container2">MESSENGER LINK:<br /></div></th>
                             <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
                             <th><div class="table-container2">DATE</div></th>
                             <th><div class="table-container2">PACKAGE</div></th>
                             <th><div class="table-container2">EDIT</div></th>
                             <th><div class="table-container2">DONE</div></th>
-                            <th><div class="table-container2" >CANCELLED</div></th>
+                            <th><div class="table-container2">CANCELLED</div></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var booking in Model.Accepted)
                         {
                             <tr>
+                                <td>@booking.bookingId</td>
                                 <td>@booking.fullName</td>
                                 <td>@booking.contactNumber</td>
+                                <td>@booking.messengerLink</td>
                                 <td>@booking.pax</td>
                                 <td>@booking.date</td>
                                 <td>@booking.package</td>
@@ -145,9 +157,11 @@
                 <table>
                     <thead>
                         <tr>
+                            <td>BOOKING ID:</td>
                             <td>FULL NAME:</td>
                             <th>CONTACT NUMBER:<br /></th>
-                            <th>NUMBER<br/>OF PAX:</th>
+                            <th>MESSENGER LINK:<br /></th>
+                            <th>NUMBER<br />OF PAX:</th>
                             <th>DATE</th>
                             <th>PACKAGE</th>
                             <th>STATUS</th>
@@ -159,8 +173,10 @@
                         @foreach (var booking in Model.Archive)
                         {
                             <tr>
+                                <td>@booking.bookingId</td>
                                 <td>@booking.fullName</td>
                                 <td>@booking.contactNumber</td>
+                                <td>@booking.messengerLink</td>
                                 <td>@booking.pax</td>
                                 <td>@booking.date</td>
                                 <td>@booking.package</td>

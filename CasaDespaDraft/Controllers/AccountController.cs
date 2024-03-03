@@ -90,7 +90,11 @@ namespace CasaDespaDraft.Controllers
                 newUser.Address = userEnteredData.address;
                 newUser.Sex = userEnteredData.sex;
                 newUser.Question = userEnteredData.question;
-                newUser.Answer = HashPassword(userEnteredData.answer);
+                using (var sha256 = SHA256.Create())
+                {
+                    byte[] hashedAnswer = sha256.ComputeHash(Encoding.UTF8.GetBytes(userEnteredData.answer.ToUpperInvariant()));
+                    newUser.Answer = Convert.ToBase64String(hashedAnswer);
+                }
                 newUser.FAnswer = "";
 
                 if (profilePicture != null && profilePicture.Length > 0)

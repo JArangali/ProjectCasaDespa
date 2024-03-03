@@ -4,6 +4,7 @@ using CasaDespaDraft.Models;
 using CasaDespaDraft.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -17,14 +18,16 @@ namespace CasaDespaDraft.Controllers
 
         private readonly AppDbContext _dbData;
         private readonly UserManager<User> _userManager;
+        private readonly IEmailSender _emailSender;
 
         private readonly ILogger<HomeController> _logger;
 
-        public AdminController(ILogger<HomeController> logger, AppDbContext dbData, UserManager<User> userManager)
+        public AdminController(ILogger<HomeController> logger, AppDbContext dbData, UserManager<User> userManager, IEmailSender emailSender)
         {
             _logger = logger;
             _dbData = dbData;
             _userManager = userManager;
+            _emailSender = emailSender;
         }
 
         [Authorize(Roles = "Admin")]
@@ -34,7 +37,7 @@ namespace CasaDespaDraft.Controllers
             var bookings = _dbData.Bookings.Where(B => B.BStatus == "Pending").ToList();
             var requested = _dbData.Bookings.Where(B => B.BStatus == "Requested").ToList();
             var accepted = _dbData.Bookings.Where(B => B.BStatus == "Accepted").ToList();
-            var archive = _dbData.Bookings.Where(B => (B.BStatus == "Completed"||B.BStatus == "Cancelled" || B.BStatus == "Declined")).ToList();
+            var archive = _dbData.Bookings.Where(B => (B.BStatus == "Completed" || B.BStatus == "Cancelled" || B.BStatus == "Declined")).ToList();
 
             var viewModel = new AccountViewModel
             {
@@ -85,7 +88,7 @@ namespace CasaDespaDraft.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public IActionResult DashboardBookingDecline(int id)
+        public async Task<IActionResult> DashboardBookingDecline(int id)
         {
             Booking? Archived = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
 
@@ -100,13 +103,22 @@ namespace CasaDespaDraft.Controllers
 
             Archived.Status = ProfileStatus.Archive;
 
+            var user = await _userManager.FindByIdAsync(Archived.userId);
+            var email = user.Email;
+
+            var customer = email;
+            var subjects = $"DECLINED BOOKING REQUEST";
+            var messages = $"Casa Despa has declined your booking request under the name of {Archived.fullName}";
+
+            await _emailSender.SendEmailAsync(customer, subjects, messages);
+
             _dbData.Bookings.Update(toDecline);
             _dbData.SaveChanges();
             return RedirectToAction("Dashboard", "Admin");
         }
 
         [Authorize(Roles = "Admin")]
-        public IActionResult DashboardBookingCancelled(int id)
+        public async Task<IActionResult> DashboardBookingCancelled(int id)
         {
             Booking? Archived = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
 
@@ -127,14 +139,22 @@ namespace CasaDespaDraft.Controllers
 
             Archived.Status = ProfileStatus.Archive;
 
+            var user = await _userManager.FindByIdAsync(Archived.userId);
+            var email = user.Email;
+
+            var customer = email;
+            var subjects = $"CANCELLED BOOKING TRANSACTION";
+            var messages = $"Casa Despa has cancelled your booking under the name of {Archived.fullName}";
+
+            await _emailSender.SendEmailAsync(customer, subjects, messages);
+
             _dbData.Bookings.Update(toCancel);
             _dbData.SaveChanges();
             return RedirectToAction("Dashboard", "Admin");
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpGet]
-        public IActionResult DashboardAcceptedBooking(int id)
+        public async Task<IActionResult> DashboardAcceptedBooking(int id)
         {
             Booking? Accepted = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
 
@@ -149,14 +169,22 @@ namespace CasaDespaDraft.Controllers
 
             Accepted.Status = ProfileStatus.Approved;
 
+            var user = await _userManager.FindByIdAsync(Accepted.userId);
+            var email = user.Email;
+
+            var customer = email;
+            var subjects = $"APPROVED BOOKING";
+            var messages = $"Casa Despa has reviewed and approved your booking request under the name of {Accepted.fullName}";
+
+            await _emailSender.SendEmailAsync(customer, subjects, messages);
+
             _dbData.Bookings.Update(toAccept);
             _dbData.SaveChanges();
             return RedirectToAction("Dashboard", "Admin");
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpGet]
-        public IActionResult DashboardArchive(int id)
+        public async Task<IActionResult> DashboardArchive(int id)
         {
             Booking? Archived = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
 
@@ -170,6 +198,15 @@ namespace CasaDespaDraft.Controllers
             toArchive.BStatus = "Completed";
 
             Archived.Status = ProfileStatus.Archive;
+
+            var user = await _userManager.FindByIdAsync(Archived.userId);
+            var email = user.Email;
+
+            var customer = email;
+            var subjects = $"BOOKING DONE";
+            var messages = $"Thank you for visiting CASA DESPA!";
+
+            await _emailSender.SendEmailAsync(customer, subjects, messages);
 
             _dbData.Bookings.Update(toArchive);
             _dbData.SaveChanges();
@@ -201,15 +238,15 @@ namespace CasaDespaDraft.Controllers
 
             var model = new Booking
             {
-            bookingId = id,
-            userId = booking.userId,
-            fullName = booking.fullName,
-            contactNumber = booking.contactNumber,
-            messengerLink = booking.messengerLink,
-            package =   booking.package,
-            pax = booking.pax,
-            date = booking.date,
-            BStatus = booking.BStatus
+                bookingId = id,
+                userId = booking.userId,
+                fullName = booking.fullName,
+                contactNumber = booking.contactNumber,
+                messengerLink = booking.messengerLink,
+                package = booking.package,
+                pax = booking.pax,
+                date = booking.date,
+                BStatus = booking.BStatus
             };
 
 
@@ -250,6 +287,15 @@ namespace CasaDespaDraft.Controllers
 
             booking.Status = ProfileStatus.Pending_Payment;
 
+            var user = await _userManager.FindByIdAsync(booking.userId);
+            var email = user.Email;
+
+            var customer = email;
+            var subjects = $"Request for Down Payment";
+            var messages = $"Casa Despa is requesting for the down payment for booking request under the name of {booking.fullName}";
+
+            await _emailSender.SendEmailAsync(customer, subjects, messages);
+
             _dbData.Entry(booking).State = EntityState.Modified;
             _dbData.SaveChanges();
 
@@ -264,7 +310,7 @@ namespace CasaDespaDraft.Controllers
             var image = booking.image;
             if (image == null)
             {
-                return RedirectToAction("Dasboard", "Admin");
+                return RedirectToAction("Dashboard", "Admin");
             }
 
             return View(booking);
@@ -274,7 +320,7 @@ namespace CasaDespaDraft.Controllers
         public IActionResult ShowReceipt_Archive(int id)
         {
             Booking? booking = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
-               
+
             var image = booking.image;
             if (image == null)
             {
@@ -295,7 +341,7 @@ namespace CasaDespaDraft.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public IActionResult EditBooking(Booking model, int id)
+        public async Task<IActionResult> EditBooking(Booking model, int id)
         {
             Booking? booking = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
 
@@ -305,6 +351,15 @@ namespace CasaDespaDraft.Controllers
             booking.package = model.package;
             booking.pax = model.pax;
             booking.date = model.date;
+
+            var user = await _userManager.FindByIdAsync(booking.userId);
+            var email = user.Email;
+
+            var customer = email;
+            var subjects = $"UPDATED BOOKING DETAILS";
+            var messages = $"Casa Despa has updated your booking under the name of {booking.fullName} based on your inquiry.";
+
+            await _emailSender.SendEmailAsync(customer, subjects, messages);
 
             _dbData.Bookings.Update(booking);
             _dbData.SaveChanges();
