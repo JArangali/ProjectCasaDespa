@@ -4508,6 +4508,9 @@ feetitle {
     border-radius: 5px;
     background-color: black;
     color: #F5D8B3;
+    width: 247px;
+    height: 40px;
+    font-size: medium;
     cursor: pointer;
 }
 
