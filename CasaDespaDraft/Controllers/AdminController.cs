@@ -45,7 +45,6 @@ namespace CasaDespaDraft.Controllers
             };
 
             return View(viewModel);
-
         }
 
         [Authorize(Roles = "Admin")]
@@ -57,6 +56,7 @@ namespace CasaDespaDraft.Controllers
             }
 
             Booking? bookings = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
 
             if (bookings != null)
                 return View(bookings);
@@ -255,6 +255,62 @@ namespace CasaDespaDraft.Controllers
 
             return RedirectToAction("Dashboard", "Admin");
         }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult ShowReceipt(int id)
+        {
+            Booking? booking = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            var image = booking.image;
+            if (image == null)
+            {
+                return RedirectToAction("Dasboard", "Admin");
+            }
+
+            return View(booking);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult ShowReceipt_Archive(int id)
+        {
+            Booking? booking = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+               
+            var image = booking.image;
+            if (image == null)
+            {
+                return RedirectToAction("Dasboard", "Admin");
+            }
+
+            return View(booking);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult EditBooking(int id)
+        {
+            Booking? booking = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            return View(booking);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public IActionResult EditBooking(Booking model, int id)
+        {
+            Booking? booking = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            booking.fullName = model.fullName;
+            booking.contactNumber = model.contactNumber;
+            booking.messengerLink = model.messengerLink;
+            booking.package = model.package;
+            booking.pax = model.pax;
+            booking.date = model.date;
+
+            _dbData.Bookings.Update(booking);
+            _dbData.SaveChanges();
+            return RedirectToAction("Dashboard", "Admin");
+        }
+
 
         [Authorize(Roles = "Admin")]
         [HttpGet]

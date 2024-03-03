@@ -1,0 +1,49 @@
+﻿@using CasaDespaDraft.ViewModels
+@using CasaDespaDraft.Data
+@using System.Security.Claims
+@model Gallery;
+
+<section id="GalleryEdit">
+    <center>
+        <div id="GalleryEdit_form">
+            <div id="GalleryEdit_title">
+                <h2 id="GalleryEdit_heading"> EDIT GALLERY PAGE </h2>
+            </div>
+            <div id="GalleryEdit_content">
+                <div id="GalleryEdit_Container_Content">
+                    <table id="GalleryEdit_Table">
+                        <tr>
+                            <td><h2 id="GalleryEdit_heading"> Are You Sure You Want to Delete? </h2></td>
+                        </tr>
+                        <tr id="GalleryEdit_tr1">
+                            <td>
+                                <input type="hidden" asp-for="imageId" />
+                                <img src="data:image/jpg;base64,@Convert.ToBase64String(@Model.image)" alt="@Model.imageName" class="img-fluid" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="GalleryEdit_Container_Title">
+                    <center>
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="button" onclick="@("window.location.href='" + @Url.Action("GalleryEdit", "Home") + "'");" id="GalleryEdit_Cancel" value="Go Back" />
+                                </td>
+                                <td>
+                                    <form asp-route-id="@Model.imageId" method="get" asp-action="Gallery_Delete" asp-controller="Home">
+                                        <button type="submit" id="GalleryEdit_Icon">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </center>
+                </div>
+            </div>
+        </div>
+    </center>
+</section>

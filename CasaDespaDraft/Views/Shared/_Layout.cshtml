@@ -64,7 +64,7 @@
 
             @if (User.Identity.IsAuthenticated && (!User.IsInRole("Admin")))
             {
-                <a href="index.html" class="logo me-auto"><img id="navbarlogo" src="~/img/logo/navbarlogo.png" alt="" class="img-fluid"></a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="logo me-auto"><img id="navbarlogo" src="~/img/logo/navbarlogo.png" alt="" class="img-fluid"></a>
 
                 <nav id="navbar" class="navbar">
                     <ul>
@@ -85,7 +85,7 @@
             else if (!User.IsInRole("Admin"))
             {
 
-                <a href="index.html" class="logo me-auto"><img id="navbarlogo" src="~/img/logo/navbarlogo.png" alt="" class="img-fluid"></a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="logo me-auto"><img id="navbarlogo" src="~/img/logo/navbarlogo.png" alt="" class="img-fluid"></a>
 
                 <nav id="navbar" class="navbar">
                     <ul>
@@ -102,7 +102,7 @@
             }
             else if (User.IsInRole("Admin"))
             {
-                <a href="index.html" class="logo me-auto"><img id="navbarlogo" src="~/img/logo/navbarlogo.png" alt="" class="img-fluid"></a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="logo me-auto"><img id="navbarlogo" src="~/img/logo/navbarlogo.png" alt="" class="img-fluid"></a>
 
                 <nav id="navbar" class="navbar">
                     <ul>
@@ -123,7 +123,7 @@
         </div>
 
     </header><!-- End Header -->
-    
+
     <div>
         <main role="main" class="pb-3">
             @RenderBody()

@@ -4518,7 +4518,7 @@ feetitle {
 
 .tabcontent {
     display: none;
-    padding: 20px;
+    padding: 0px 20px 20px 20px;
     width: 97%;
     text-align: center;
     font-size: 15px;
@@ -4528,10 +4528,12 @@ feetitle {
         display: block;
     }
 
+#table-header{
+    margin-bottom: 20px;
+}
 /*--------------------------------------------------------------
 # PROFILE 
 --------------------------------------------------------------*/
-
 .main-container {
     background-color: #C5A485;
     padding: 40px;
@@ -4553,6 +4555,7 @@ feetitle {
 .right-container {
     flex: 3;
     background-color: #F3D6B2;
+    min-height: 30%;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -4641,8 +4644,9 @@ feetitle {
 
 .table-container {
     width: 97%;
-    margin-top: 40px;
+    margin-top: 0px;
     text-align: center;
+    min-height: 504px;
 }
 
 .table-container1 {
