@@ -3,6 +3,7 @@ using CasaDespaDraft.Models;
 using CasaDespaDraft.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
@@ -17,12 +18,14 @@ namespace CasaDespaDraft.Controllers
         private readonly ILogger<BookingController> _logger;
         private readonly AppDbContext _dbData;
         private readonly UserManager<User> _userManager;
+        private readonly IEmailSender _emailSender;
 
-        public BookingController(ILogger<BookingController> logger, AppDbContext dbData, UserManager<User> userManager)
+        public BookingController(ILogger<BookingController> logger, AppDbContext dbData, UserManager<User> userManager, IEmailSender emailSender)
         {
             _logger = logger;
             _dbData = dbData;
             _userManager = userManager;
+            _emailSender = emailSender;
         }
 
         [HttpGet]
@@ -53,8 +56,23 @@ namespace CasaDespaDraft.Controllers
             // Set the UserId of the new recipe
             newBooking.userId = userId;
 
+            var user = await _userManager.FindByIdAsync(userId);
+            var email = user.Email;
+
             // Add the new recipe to the context
             _dbData.Bookings.Add(toAdd);
+
+            var receiver = "granadaluis.lg@yahoo.com";
+            var subject = $"New Booking Request from {newBooking.fullName}";
+            var message = $"{newBooking.fullName} is trying to make a booking request with Casa Despa.";
+
+            await _emailSender.SendEmailAsync(receiver, subject, message);
+
+            var customer = email;
+            var subjects = $"You have sucessfully submitted your request to Casa Despa.";
+            var messages = $"You just submitted a booking request on Casa Despa under the name of {newBooking.fullName}";
+
+            await _emailSender.SendEmailAsync(customer, subjects, messages);
 
             // Save changes to the database
             await _dbData.SaveChangesAsync();
