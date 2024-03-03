@@ -264,6 +264,55 @@ h6 {
         visibility: visible;
     }
 
+#notifications {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0 10px 30px;
+    font-family: 'Spectral', serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #F0D9B7;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+#Navpopup {
+    z-index: 1000;
+    width: 403px;
+    max-height: 60%;
+    margin: 30px;
+    margin-top: 90px;
+    margin-left: 80px;
+    padding: 0px;
+    border-radius: 20px;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    background-color: #EBCDA8;
+    text-align: center;
+    position: fixed;
+    top: 38px;
+    right: 0;
+    transform: perspective(10px);
+}
+
+#Notifcontainer {
+    padding: 10px;
+    overflow-y: scroll;
+    max-height: 410px;
+}
+
+#Notifcontent {
+    padding: 5px;
+    border: solid 1px;
+}
+
+
 @media (max-width: 1366px) {
     .navbar .dropdown .dropdown ul {
         left: -90%;
