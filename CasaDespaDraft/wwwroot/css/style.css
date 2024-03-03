@@ -5546,3 +5546,21 @@ fsbuttondiv {
     margin-bottom: 10px;
     width: 200px;
 }
+
+#greeting {
+    font-size: 20px;
+    padding-top: 33px;
+    color: bisque;
+    width: 212px;
+    display: flex;
+    float: right;
+}
+
+#greetings {
+    font-size: 20px;
+    padding-top: 25px;
+    color: bisque;
+    width: 212px;
+    display: flex;
+    float: right;
+}
