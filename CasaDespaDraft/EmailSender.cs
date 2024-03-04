@@ -14,7 +14,8 @@ namespace CasaDespaDraft
             var client = new SmtpClient("smtp-mail.outlook.com", 587)
             {
                 EnableSsl = true,
-                Credentials = new NetworkCredential(mail, pw)
+                Credentials = new NetworkCredential(mail, pw),
+                Timeout = 50000 // Set timeout to 20 seconds
             };
 
             return client.SendMailAsync(
