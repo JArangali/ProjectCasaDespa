@@ -6,6 +6,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CasaDespaDraft.Models
 {
+    public class CustomUrlAttribute : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            Uri uri;
+            if (Uri.TryCreate(value as string, UriKind.Absolute, out uri))
+            {
+                if (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps || uri.Scheme == Uri.UriSchemeFtp)
+                {
+                    return ValidationResult.Success;
+                }
+            }
+            return new ValidationResult("Please include 'https://' or 'http://' or 'ftp://' at the beginning of your link.");
+        }
+    }
+
     public enum Package
     {
         Day_Tour, Night_Tour, Twenty_Two_Hours
@@ -31,13 +47,14 @@ namespace CasaDespaDraft.Models
         [RegularExpression("[0-9]{11}", ErrorMessage = "Please follow Phone Number format 09**-***-****!")]
         public string? contactNumber { get; set; }
 
-        [Url]
+        [CustomUrl]
         [Required(ErrorMessage = "Messenger Link is needed.")]
         public string? messengerLink { get; set; }
 
         [Required(ErrorMessage = "Please choose your preferred package.")]
         public Package package { get; set; }
         [Required(ErrorMessage = "Please enter the number of people attending.")]
+        [Range(1, 50, ErrorMessage = "The number of people attending must range from 1-50. Regular(1-20) & Party(1-50)")]
         public int? pax { get; set; }
 
         [Required]
@@ -57,5 +74,8 @@ namespace CasaDespaDraft.Models
         public string? BStatus { get; set; }
 
         public ProfileStatus Status { get; set; } = ProfileStatus.Requests;
+
+        [Required(ErrorMessage = "Please pick an accomodation.")]
+        public string? accomodation { get; set; }
     }
 }

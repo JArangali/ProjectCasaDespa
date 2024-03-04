@@ -37,46 +37,69 @@ namespace CasaDespaDraft.Controllers
                 // Handle user not found
                 return RedirectToAction("Login", "Account"); // Redirect to another action or handle appropriately
             }
+
+            if (user.Email == "admin@example.com")
+            {
+                // Handle user not found
+                return RedirectToAction("Index", "Home"); // Redirect to another action or handle appropriately
+            }
+
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Booking(Booking newBooking)
         {
-            if (!ModelState.IsValid)
-                return View();
 
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (ModelState.IsValid)
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var toAdd = newBooking;
-            toAdd.BStatus = "Pending";
+                var toAdd = newBooking;
+                toAdd.BStatus = "Pending";
 
-            newBooking.Status = ProfileStatus.Requests;
+                newBooking.Status = ProfileStatus.Requests;
 
-            // Set the UserId of the new recipe
-            newBooking.userId = userId;
+                // Set the UserId of the new recipe
+                newBooking.userId = userId;
 
-            var user = await _userManager.FindByIdAsync(userId);
-            var email = user.Email;
+                var accomodation = newBooking.accomodation;
+                var pax = newBooking.pax;
+                if (accomodation == "REGULAR" && pax >= 21)
+                {
+                    ModelState.AddModelError("answer", "Number of Pax exceeds the limit of the chosen accomodation.");
+                    return View(newBooking);
+                }
 
-            // Add the new recipe to the context
-            _dbData.Bookings.Add(toAdd);
+                if (accomodation == "PARTY" && pax >= 51)
+                {
+                    ModelState.AddModelError("answer", "Number of Pax exceeds the limit of the chosen accomodation.");
+                    return View(newBooking);
+                }
 
-            var receiver = "alyssamarierromen@gmail.com";
-            var subject = $"New Booking Request from {newBooking.fullName}";
-            var message = $"{newBooking.fullName} is trying to make a booking request with Casa Despa.";
+                var user = await _userManager.FindByIdAsync(userId);
+                var email = user.Email;
 
-            await _emailSender.SendEmailAsync(receiver, subject, message);
+                // Add the new recipe to the context
+                _dbData.Bookings.Add(toAdd);
 
-            var customer = email;
-            var subjects = $"You have sucessfully submitted your request to Casa Despa.";
-            var messages = $"You just submitted a booking request on Casa Despa under the name of {newBooking.fullName}";
+                var receiver = "granadaluisss@gmail.com";
+                var subject = $"New Booking Request from {newBooking.fullName}";
+                var message = $"{newBooking.fullName} is trying to make a booking request with Casa Despa.";
 
-            await _emailSender.SendEmailAsync(customer, subjects, messages);
+                await _emailSender.SendEmailAsync(receiver, subject, message);
 
-            // Save changes to the database
-            await _dbData.SaveChangesAsync();
-            return RedirectToAction("Profile", "Home");
+                var customer = email;
+                var subjects = $"You have sucessfully submitted your request to Casa Despa.";
+                var messages = $"You just submitted a booking request on Casa Despa under the name of {newBooking.fullName}";
+
+                await _emailSender.SendEmailAsync(customer, subjects, messages);
+
+                // Save changes to the database
+                await _dbData.SaveChangesAsync();
+                return RedirectToAction("Profile", "Home");
+            }
+            return View(newBooking);
         }
 
         [HttpGet]
