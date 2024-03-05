@@ -42,7 +42,7 @@
                         <tr>
                             <td><h2 id="GalleryEdit_heading"> UPLOADED IMAGES </h2></td>
                         </tr>
-                        @foreach (var gallery in Model.Galleries)
+                        @foreach (var gallery in Model.Galleries.Where(r => r.imageId != 1))
                         {
 
                             <tr id="GalleryEdit_tr">

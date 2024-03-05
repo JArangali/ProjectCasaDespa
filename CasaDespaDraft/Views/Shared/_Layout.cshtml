@@ -73,7 +73,7 @@
                         <li><a asp-area="" asp-controller="Home" asp-action="FAQs">FAQs</a></li>
                         <li><a asp-area="" asp-controller="Booking" asp-action="Booking">Booking</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="Profile">Profile</a></li>
-                        <li><a id="notifications">Notificatiornzzx</a></li>
+                        @* <li><a id="notifications">Notificatiornzzx</a></li> *@
 
                     </ul>
 
@@ -81,7 +81,7 @@
                 </nav>
 
                 <!-- .navbar -->
-                <h6 id="greeting">Welcome, @User.Identity.Name.Split('@').First()!</h6>
+                <h6 id="greetings">Welcome, @User.Identity.Name.Split('@').First()!</h6>
                 <input type="button" id="logoutbtn" value="Logout" onclick="location.href='@Url.Action("Logout", "Account")'" />
             }
             else if (!User.IsInRole("Admin"))
@@ -111,7 +111,6 @@
                         <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="Gallery">Gallery</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="FAQs">FAQs</a></li>
-                        <li><a asp-area="" asp-controller="Booking" asp-action="Booking">Booking</a></li>
                         <li><a asp-area="" asp-controller="Admin" asp-action="Dashboard">Dashboard</a></li>
 
 
@@ -233,8 +232,8 @@
     <!-- Template Main JS File -->
     <script src="~/js/main.js"></script>
 
-    <script>
-        // Get the modal
+    @* <script>
+        // Get the modal    
         var modal = document.getElementById("navModal");
 
         // Get the button that opens the modal
@@ -259,7 +258,7 @@
                 modal.style.display = "none";
             }
         }
-    </script>
+    </script> *@
 
 </body>
 

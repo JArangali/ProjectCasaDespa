@@ -22,11 +22,15 @@ namespace CasaDespaDraft.Models
         public byte[]? image { get; set; }
 
         [Required]
-        public String imageName{ get; set; }
+        public string imageName{ get; set; }
 
         [Required]
         public Filter filter { get; set; } = Filter.Pool;
 
         public string? filterChoice { get; set; }
+
+        [Url]
+        public string? video { get; set; }
+
     }
 }

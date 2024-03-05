@@ -10125,19 +10125,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\linde\\.nuget\\packages\\": {}
+    "C:\\Users\\luiis\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\linde\\Documents\\School\\3rd year\\2nd Sem\\ProjectCasaDespa\\GITHUB\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj",
+      "projectUniqueName": "C:\\Users\\luiis\\Documents\\GitHub\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj",
       "projectName": "CasaDespaDraft",
-      "projectPath": "C:\\Users\\linde\\Documents\\School\\3rd year\\2nd Sem\\ProjectCasaDespa\\GITHUB\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj",
-      "packagesPath": "C:\\Users\\linde\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\linde\\Documents\\School\\3rd year\\2nd Sem\\ProjectCasaDespa\\GITHUB\\ProjectCasaDespa\\CasaDespaDraft\\obj\\",
+      "projectPath": "C:\\Users\\luiis\\Documents\\GitHub\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj",
+      "packagesPath": "C:\\Users\\luiis\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\luiis\\Documents\\GitHub\\ProjectCasaDespa\\CasaDespaDraft\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\linde\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\luiis\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

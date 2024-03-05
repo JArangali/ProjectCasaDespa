@@ -43,6 +43,7 @@
                             <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
                             <th><div class="table-container2">DATE</div></th>
                             <th><div class="table-container2">PACKAGE</div></th>
+                            <th><div class="table-container2">ACCOMODATION</div></th>
                             <th><div class="table-container2">DOWNPAYMENT</div></th>
                             <th><div class="table-container2">DECLINED</div></th>
                         </tr>
@@ -58,6 +59,7 @@
                                 <td>@booking.pax</td>
                                 <td>@booking.date</td>
                                 <td>@booking.package</td>
+                                <td>@booking.accomodation</td>
                                 <td><a class="nav-button" asp-action="AddQr" asp-controller="Admin" asp-route-id="@booking.bookingId">REQUEST PAYMENT</a></td>
                                 <td><a class="nav-button" asp-action="DashboardBookingDecline" asp-route-id="@booking.bookingId">X</a></td>
                             </tr>
@@ -87,6 +89,7 @@
                             <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
                             <th><div class="table-container2">DATE</div></th>
                             <th><div class="table-container2">PACKAGE</div></th>
+                            <th><div class="table-container2">ACCOMODATION</div></th>
                             <th><div class="table-container2">PAYMENT</div></th>
                             <th><div class="table-container2">CANCEL</div></th>
                         </tr>
@@ -103,6 +106,7 @@
                                 <td>@booking.pax</td>
                                 <td>@booking.date</td>
                                 <td>@booking.package</td>
+                                <td>@booking.accomodation</td>
                                 <td><a class="nav-button" asp-action="ShowReceipt" asp-controller="Admin" asp-route-id="@booking.bookingId">CHECK</a></td>
                                 <td><a class="nav-button" asp-action="DashboardBookingCancelled" asp-route-id="@booking.bookingId">X</a></td>
                             </tr>
@@ -125,6 +129,7 @@
                             <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
                             <th><div class="table-container2">DATE</div></th>
                             <th><div class="table-container2">PACKAGE</div></th>
+                            <th><div class="table-container2">ACCOMODATION</div></th>
                             <th><div class="table-container2">EDIT</div></th>
                             <th><div class="table-container2">DONE</div></th>
                             <th><div class="table-container2">CANCELLED</div></th>
@@ -141,6 +146,7 @@
                                 <td>@booking.pax</td>
                                 <td>@booking.date</td>
                                 <td>@booking.package</td>
+                                <td>@booking.accomodation</td>
                                 <td><a class="nav-button" asp-action="EditBooking" asp-route-id="@booking.bookingId">EDIT</a></td>
                                 <td><a class="nav-button" asp-action="DashboardArchive" asp-route-id="@booking.bookingId">DONE</a></td>
                                 <td><a class="nav-button" asp-action="DashboardBookingCancelled" asp-route-id="@booking.bookingId">X</a></td>
@@ -164,6 +170,7 @@
                             <th>NUMBER<br />OF PAX:</th>
                             <th>DATE</th>
                             <th>PACKAGE</th>
+                            <th>ACCOMODATION</th>
                             <th>STATUS</th>
                             <th>PAYMENT</th>
                             <th>DELETE</th>
@@ -180,6 +187,7 @@
                                 <td>@booking.pax</td>
                                 <td>@booking.date</td>
                                 <td>@booking.package</td>
+                                <td>@booking.accomodation</td>
                                 <td>@booking.BStatus</td>
                                 <td><a class="nav-button" asp-action="ShowReceipt_Archive" asp-controller="Admin" asp-route-id="@booking.bookingId">CHECK</a></td>
                                 <td><a class="nav-button" asp-action="DashboardDeleteBooking" asp-route-id="@booking.bookingId">X</a></td>
