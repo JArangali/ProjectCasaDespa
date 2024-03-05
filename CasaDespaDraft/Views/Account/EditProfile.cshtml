@@ -9,13 +9,12 @@
 
 <section id="register">
     <form asp-action="EditProfile" asp-controller="Account" enctype="multipart/form-data">
-        <div id="registerform">
-            <div id="registertitle">
-                <h2 id="registerheading"> REGISTER </h2>
+        <center>
+        <div id="profileeditform">
+            <div id="profileedittitle">
+                <h2 id="registerheading"> Edit Profile </h2>
             </div>
             <div id="formcontent">
-                <div id="column1formcontent">
-
                     @if (TempData["SuccessMessage"] != null)
                     {
                         <div class="alert alert-success" role="alert">
@@ -84,12 +83,11 @@
                     </table>
                 </div>
             </div>
-
+        </center>
             <div id="registerbuttonscontainer">
                 <input type="button" id="cancelbutton" value="CANCEL" onclick="location.href='/Account/Login'" class="getstarted" />
                 <input type="submit" id="registerbutton" value="SAVE" />
             </div>
-        </div>
     </form>
 </section>
 

@@ -4797,6 +4797,32 @@ feetitle {
         color: black;
     }
 
+#profileeditform {
+    margin: 30px;
+    margin-top: 90px;
+    margin-left: 80px;
+    padding: 0px;
+    width: 50%;
+    height: 550px;
+    border-radius: 20px;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    background-color: #EBCDA8;
+}
+
+#profileedittitle {
+    color: #F0D9B7;
+    background-color: black;
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    margin-bottom:20px
+}
+
 /*--------------------------------------------------------------
 # Index Edit Section
 --------------------------------------------------------------*/
