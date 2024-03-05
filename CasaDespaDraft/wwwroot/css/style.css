@@ -4693,11 +4693,13 @@ feetitle {
 .info-item {
     margin-bottom: 10px;
     color: #595959;
+    font-size:25px;
 }
 
 .info-item1 {
     margin-bottom: 10px;
     font-weight: bold;
+    font-size: 20px;
 }
 
 .update-button {
@@ -4713,6 +4715,8 @@ feetitle {
     text-decoration: none;
     font-weight: bold;
     font-size: 14px;
+    z-index:400;
+
 }
 
     .update-button:hover,
@@ -4792,6 +4796,32 @@ feetitle {
         background-color: #C5A485;
         color: black;
     }
+
+#profileeditform {
+    margin: 30px;
+    margin-top: 90px;
+    margin-left: 80px;
+    padding: 0px;
+    width: 50%;
+    height: 550px;
+    border-radius: 20px;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    background-color: #EBCDA8;
+}
+
+#profileedittitle {
+    color: #F0D9B7;
+    background-color: black;
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    margin-bottom:20px
+}
 
 /*--------------------------------------------------------------
 # Index Edit Section
