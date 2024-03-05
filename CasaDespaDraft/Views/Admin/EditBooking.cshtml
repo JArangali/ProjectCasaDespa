@@ -29,17 +29,17 @@
     }
 
 
-    #bookform form {
+    #bookform {
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
 
-        #bookform form div {
-            display: flex;
-            justify-content: space-around;
-            padding: 25px;
-        }
+    #bookform {
+        display: flex;
+        justify-content: normal;
+        padding: 25px;
+    }
 
     #booking h1 {
         background-color: black;
@@ -50,32 +50,12 @@
         border-radius: 25px;
     }
 
-    #booking input {
-        background-color: transparent;
-        border-radius: 25px;
-        padding: 5px;
-        width: 70%;
-        border: 1px solid black;
-        font-size: 25px;
-        min-height: 38px;
-    }
-
-        #booking input[type="submit"] {
-            background-color: black;
-            color: #f1d9b6;
-            text-transform: uppercase;
-            font-weight: 900;
-            width: 300px;
-            padding: 10px;
-        }
-
     #booking .packagecontainer {
         display: flex;
         flex-direction: column;
         width: 70%;
         justify-content: space-around;
         padding: 0px;
-        border: 1px solid black;
         border-radius: 12%;
     }
 
@@ -101,13 +81,8 @@
                 margin-bottom: 2px;
             }
 
-    #booking input[type="submit"]:hover {
-        color: dimgray;
-    }
-
-
     #booking #bookform form div label {
-        width: 30%;
+        width: 70%;
         font-size: 24px;
         text-transform: uppercase;
         font-weight: 900;
@@ -186,6 +161,217 @@
             background-color: #c3ab7d; /* Change the color for the third h2 */
         }
 
+    #packages {
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        padding: 0 1em 0 0;
+        margin: 0;
+        width: 147%;
+        font-family: inherit;
+        font-size: inherit;
+        cursor: inherit;
+        line-height: inherit;
+        padding: 20px;
+        height: auto;
+        background-color: initial;
+        color: black;
+        font-size: 18px;
+        border: 1px solid black;
+        border-radius: 20px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        text-indent: 0.01px;
+        text-overflow: '';
+    }
+
+
+    /*Modal CSS*/
+    #myModalT {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 105%;
+        z-index: 1000;
+        background-color: rgba(0, 0, 0, 0.5);
+        font-size: 15px;
+        box-shadow: 0 0 3px black;
+    }
+
+    #tpopup {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 80%;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+    }
+
+    #tpopuptitle {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    #tpolicycontent {
+        text-align: center;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+        #tpolicycontent h4 {
+            line-height: 1.5;
+            flex: 1;
+        }
+
+    #tppcontent {
+        color: #333;
+        max-height: 380px;
+        max-width: 100%;
+        overflow-y: scroll;
+        width: 100%;
+        text-align: left;
+        padding-left: 85px;
+        padding-right: 85px;
+        padding-bottom: 85px;
+        /* Style the scrollbar track */
+        :: -webkit-scrollbar-track
+
+    {
+        background-color: #f5f5f5;
+        border-radius: 10px;
+    }
+    /* Style the scrollbar thumb */
+    ::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        border-radius: 10px;
+    }
+        /* Style the scrollbar thumb on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #aaa;
+        }
+    /* Style the scrollbar Corner */
+    ::-webkit-scrollbar-corner {
+        background-color: transparent;
+    }
+
+    }
+
+
+
+    #headingtc {
+        font-size: 12px;
+    }
+
+    #buttondivmodal {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    #bookingtable {
+        width: 100%;
+    }
+
+    #booklabeltd {
+        width: 50%;
+        font-size: 25px;
+    }
+
+    #bookrow {
+        margin-top: 10px;
+    }
+
+    #btndivtt {
+        width: 100%;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    #booktablediv {
+        margin-top: 20px;
+    }
+
+    #BookButton {
+        width: 436px;
+        height: 64px;
+        padding: 10px;
+        color: #F0D9B7;
+        border-radius: 20px;
+        background-color: black;
+        font-size: 30px;
+        padding: 6px;
+    }
+
+    #inputtextfieldbr {
+        background-color: transparent;
+        border-radius: 25px;
+        padding: 5px;
+        width: 100%;
+        height: 70px;
+        border: 1px solid black;
+        font-size: 25px;
+        min-height: 38px;
+    }
+
+    .inputtextfieldbr {
+        background-color: transparent;
+        border-radius: 25px;
+        padding: 5px;
+        width: 100%;
+        height: 70px;
+        border: 1px solid black;
+        font-size: 25px;
+        min-height: 38px;
+    }
+
+    #selectedDate {
+        background-color: transparent;
+        border-radius: 25px;
+        padding: 5px;
+        width: 100%;
+        height: 70px;
+        border: 1px solid black;
+        font-size: 25px;
+        min-height: 38px;
+    }
+
+    #tdeclinebutton {
+        padding: 10px;
+        width: 130px;
+        color: black;
+        border-radius: 20px;
+        background-color: #F5D8B3;
+    }
+
+    #tacceptbutton {
+        padding: 10px;
+        width: 130px;
+        color: #F0D9B7;
+        border-radius: 20px;
+        background-color: black;
+    }
+
+    #notediv {
+        padding: 20px;
+        background-color: #F9F4D6;
+        border-radius: 10px;
+        margin-top: 20px;
+        box-shadow: 0 0 5px gray;
+        border: 1px solid #967940;
+        color: #967940;
+    }
+
+    #notett {
+        margin-left: 10px;
+    }
 </style>
 
 <!-- Welcome Section -->
@@ -209,45 +395,60 @@
         <h1>BOOK NOW!</h1>
 
         <form asp-action="EditBooking" asp-controller="Admin" method="post">
-            
 
-            <div>
-                <label for="fullName">Full Name:</label>
-                <input asp-for="fullName" type="text" id="fullName" name="fullName" value="@Model.fullName" asp-route-id="@Model.bookingId" required><br>
+
+            <div id="booktablediv">
+                <table id="bookingtable">
+                    <tr id="bookrow">
+                        <td id="booklabeltd"><label for="fullName">Full Name:</label></td>
+                        <td><input asp-for="fullName" id="inputtextfieldbr" type="text" id="fullName" name="fullName" value="@Model.fullName"><br></td>
+
+                    </tr>
+                    <tr id="bookrow">
+                        <td id="booklabeltd"><label for="contactNumber">Contact Number:</label></td>
+                        <td><input asp-for="contactNumber" id="inputtextfieldbr" type="tel" id="contactNumber" name="contactNumber" value="@Model.contactNumber"></td>
+
+                    </tr>
+                    <tr id="bookrow">
+                        <td id="booklabeltd"><label for="messengerLink">Messenger Link:</label></td>
+                        <td><input asp-for="messengerLink" type="text" id="inputtextfieldbr" id="messengerLink" name="messengerLink" placeholder="Include 'http://', 'https://', 'ftp://'." value="@Model.messengerLink"><br></td>
+
+                    <tr id="bookrow">
+                        <td id="booklabeltd"><label for="package" style="margin-top:auto;margin-bottom:auto;">Package:</label></td>
+                        <td>
+                            <div class="packagecontainer">
+                                <select id="packages" asp-for="package" asp-items="@Html.GetEnumSelectList(typeof(Package))" class="form-control" value="@Model.package"></select>
+
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td id="regtd"><h4 id="gender">ACCOMODATION:</h4></td>
+                        <td id="regtdinput">
+                            <input asp-for="accomodation" type="radio" id="male" name="accomodation" value="REGULAR">
+                            <label for="regular"><h6>REGULAR <br />(Pax Range: 1-20)</h6></label><br />
+                            <input asp-for="accomodation" type="radio" id="female" name="accomodation" value="PARTY">
+                            <label for="party"><h6>PARTY <br />(Pax Range: 21-50)</h6></label>
+                        </td>
+                    </tr>
+
+                    <tr id="bookrow">
+                        <td id="booklabeltd"><label for="numberOfPax">Number of PAX:</label></td>
+                        <td><input type="number" id="numberOfPax" class="inputtextfieldbr" asp-for="pax" placeholder="Number of people attending" value="@Model.pax"><br></td>
+                    </tr>
+
+
+                    <tr id="bookrow">
+                        <td id="booklabeltd"><label for="numberOfPax">Date to Book:</label></td>
+                        <td><input asp-for="date" type="text" id="selectedDate" readonly placeholder="Click a day on the calendar" value="@Model.date"></td>
+                    </tr>
+
+                </table>
             </div>
 
-            <div>
-                <label for="contactNumber">Contact Number:</label>
-                <input asp-for="contactNumber" type="tel" id="contactNumber" name="contactNumber" value="@Model.contactNumber" required><br>
-            </div>
-
-            <div>
-                <label for="messengerLink">Messenger Link:</label>
-                <input asp-for="messengerLink" type="text" id="messengerLink" name="messengerLink" value="@Model.messengerLink" required><br>
-            </div>
-
-            <div>
-                <label for="package" style="margin-top:auto;margin-bottom:auto;">Package:</label>
-                <div class="packagecontainer">
-                    <select asp-for="package" asp-items="@Html.GetEnumSelectList(typeof(Package))" class="form-control"></select>
-                </div>
-
-
-            </div>
-            <br>
-
-            <div>
-                <label for="numberOfPax">Number of PAX:</label>
-                <input type="number" id="numberOfPax" asp-for="pax" required value="@Model.pax"><br>
-            </div>
-
-            <div>
-                <label for="numberOfPax">Date to Book:</label>
-                <input asp-for="date" type="text" id="selectedDate" readonly value="@Model.date">
-            </div>
-
-            <div>
-                <input type="submit" value="Save" >
+            <div id="btndivtt">
+                <input type="submit" value="Save" id="BookButton">
             </div>
         </form>
     </div>

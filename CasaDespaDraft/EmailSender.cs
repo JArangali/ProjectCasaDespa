@@ -8,10 +8,10 @@ namespace CasaDespaDraft
     {
         public Task SendEmailAsync(string email, string subject, string message)
         {
-            var mail = "thecasadespa@outlook.com";
-            var pw = "casadespaofficial789";
+            var mail = "jasperlindell.arangali.cics@ust.edu.ph";
+            var pw = "2021148164JA!";
 
-            var client = new SmtpClient("smtp-mail.outlook.com", 587)
+            var client = new SmtpClient("smtp.gmail.com", 587)
             {
                 EnableSsl = true,
                 Credentials = new NetworkCredential(mail, pw),

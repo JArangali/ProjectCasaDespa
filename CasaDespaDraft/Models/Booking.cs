@@ -76,5 +76,7 @@ namespace CasaDespaDraft.Models
 
         [Required(ErrorMessage = "Please pick an accomodation.")]
         public string? accomodation { get; set; }
+
+        public string? Remarks { get; set; }
     }
 }
