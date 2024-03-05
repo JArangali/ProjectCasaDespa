@@ -197,6 +197,7 @@
         z-index: 1000;
         background-color: rgba(0, 0, 0, 0.5);
         font-size: 15px;
+        box-shadow: 0 0 3px black;
     }
 
     #tpopup {
@@ -356,8 +357,23 @@
         color: #F0D9B7;
         border-radius: 20px;
         background-color: black;
+
     }
 
+    #notediv{
+        padding:20px;
+        background-color: #F9F4D6;
+        border-radius: 10px;
+        margin-top:20px;
+        box-shadow: 0 0 5px gray;
+        border: 1px solid #967940;
+        color: #967940;
+    }
+
+    #notett{
+    margin-left:10px;
+
+    }
 </style>
 
 <!-- Welcome Section -->
@@ -501,6 +517,19 @@
 
                             <li><strong>Warning: If any of our rules and regulations are violated, we can charge extra fees or terminate your stay in our resort.</strong></li>
 
+                            <div id="notediv">
+                                <span class="glyphicon glyphicon-warning-sign"><strong> NOTE: </strong></span>
+                                
+                                <ul>
+                                    <li><strong>Submission of a request may take up to at least a minute.</strong></li>
+                                    <li>
+                                        <strong>
+                                            Casa Despa's email notifications may be filtered into your spam folder. Please ensure to check your spam folder regularly for any communications from us.
+                                        </strong>
+                                    </li>
+                                </ul>
+                            </div>
+                            
                         </div>
                         <div id="buttondivmodal">
                             <input type="button" id="tdeclinebutton" class="declined" value="DECLINED">
