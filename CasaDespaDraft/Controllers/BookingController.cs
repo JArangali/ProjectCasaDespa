@@ -63,18 +63,32 @@ namespace CasaDespaDraft.Controllers
                 // Set the UserId of the new recipe
                 newBooking.userId = userId;
 
-                var accomodation = newBooking.accomodation;
-                var pax = newBooking.pax;
-                if (accomodation == "REGULAR" && pax >= 21)
+                if (newBooking.accomodation == "REGULAR")
                 {
-                    ModelState.AddModelError("answer", "Number of Pax exceeds the limit of the chosen accomodation.");
-                    return View(newBooking);
+                    if (newBooking.pax >= 21)
+                    {
+                        ModelState.AddModelError("answer", "The number of Pax for regular accomodations must range from 1-20.");
+                        return View(newBooking);
+                    }
                 }
 
-                if (accomodation == "PARTY" && pax >= 51)
+                if (newBooking.accomodation == "PARTY")
                 {
-                    ModelState.AddModelError("answer", "Number of Pax exceeds the limit of the chosen accomodation.");
-                    return View(newBooking);
+                    if (newBooking.package != Package.Twenty_Two_Hours)
+                    {
+                        ModelState.AddModelError("answer", "Party Accomodations are only available for TWENTY-TWO HOURS booking packages.");
+                        return View(newBooking);
+                    }
+                    if (newBooking.pax >= 51)
+                    {
+                        ModelState.AddModelError("answer", "The number of Pax for party accomodations must range from 21-50.");
+                        return View(newBooking);
+                    }
+                    else if (newBooking.pax <= 20)
+                    {
+                        ModelState.AddModelError("answer", "The number of Pax for party accomodations must range from 21-50.");
+                        return View(newBooking);
+                    }
                 }
 
                 var user = await _userManager.FindByIdAsync(userId);

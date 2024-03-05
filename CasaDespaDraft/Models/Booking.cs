@@ -24,7 +24,7 @@ namespace CasaDespaDraft.Models
 
     public enum Package
     {
-        Day_Tour, Night_Tour, Twenty_Two_Hours
+        Day_Tour, Night_Tour, Twenty_Two_Hours  
     }
 
     public enum ProfileStatus
@@ -54,7 +54,6 @@ namespace CasaDespaDraft.Models
         [Required(ErrorMessage = "Please choose your preferred package.")]
         public Package package { get; set; }
         [Required(ErrorMessage = "Please enter the number of people attending.")]
-        [Range(1, 50, ErrorMessage = "The number of people attending must range from 1-50. Regular(1-20) & Party(1-50)")]
         public int? pax { get; set; }
 
         [Required]
