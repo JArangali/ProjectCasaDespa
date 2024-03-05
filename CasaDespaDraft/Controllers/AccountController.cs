@@ -447,5 +447,92 @@ namespace CasaDespaDraft.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> EditProfile()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user != null)
+            {
+                var profileData = new SignUpViewModel
+                {
+                    firstName = user.Firstname,
+                    lastName = user.Lastname,
+                    address = user.Address,
+                    sex = user.Sex,
+                    question = user.Question,
+                    answer = user.Answer,
+                    profilePicture = user.ProfilePicture,
+                    fanswer = user.FAnswer,
+                    email = user.Email,
+                    userPassword =  user.PasswordHash,
+                    ConfirmPassword = user.PasswordHash
+                };
+
+                return View(profileData);
+            }
+
+            return NotFound();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditProfile(SignUpViewModel updatedProfile, IFormFile? profilePicture)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+
+                //Update User Profile
+                if (user != null)
+                {
+                    user.Firstname = updatedProfile.firstName;
+                    user.Lastname = updatedProfile.lastName;
+                    user.Address = updatedProfile.address;
+                    user.Sex = updatedProfile.sex;
+                    user.ProfilePicture = updatedProfile.profilePicture;
+                    user.Answer = updatedProfile.answer;
+                    user.Question = updatedProfile.question;
+                    user.FAnswer = updatedProfile.fanswer;
+                    user.Email = updatedProfile.email;
+
+                    if (profilePicture != null && profilePicture.Length > 0)
+                    {
+                        using var memoryStream = new MemoryStream();
+                        await profilePicture.CopyToAsync(memoryStream);
+                        user.ProfilePicture = memoryStream.ToArray();
+                    }
+                    else
+                    {
+                        user.ProfilePicture = null;
+                    }
+
+
+                    var result = await _userManager.UpdateAsync(user);
+
+                    if (result.Succeeded)
+                    {
+                        TempData["SuccessMessage"] = "Account Updated Successfully!";
+
+                        return RedirectToAction("Profile", "Home");
+                    }
+                    else
+                    {
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
+                    }
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+
+            // If ModelState is not valid, return to the view with the current data
+            return View(updatedProfile);
+        }
+
     }
 }
