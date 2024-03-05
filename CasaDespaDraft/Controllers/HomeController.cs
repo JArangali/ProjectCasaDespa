@@ -82,7 +82,7 @@ namespace CasaDespaDraft.Controllers
                     infos.noise = infosChanges.noise;
                     infos.penalty = infosChanges.penalty;
                     infos.warning = infosChanges.warning;
-               
+
 
                     _dbData.Entry(infos).State = EntityState.Modified;
                     await _dbData.SaveChangesAsync();
@@ -103,7 +103,7 @@ namespace CasaDespaDraft.Controllers
 
 
         [Authorize(Roles = "Admin")]
-        public IActionResult EditHome() { 
+        public IActionResult EditHome() {
             return View();
         }
 
@@ -184,9 +184,45 @@ namespace CasaDespaDraft.Controllers
             return View(gallery);
         }
 
-        public IActionResult GalleryVideoEdit()
+        [HttpGet]
+        public IActionResult GalleryVideoEdit(int id)
         {
-            return View();
+            Gallery? gallery = _dbData.Gallery.FirstOrDefault(rec => rec.imageId == id);
+
+            id = 1;
+
+            return View(gallery);
+        }
+            
+        
+
+        [HttpPost]
+        public async Task<IActionResult> GalleryVideoEdit(Gallery model)
+        {
+            Gallery? gallery = _dbData.Gallery.FirstOrDefault(rec => rec.imageId == model.imageId);
+
+            model.imageId = 1;
+
+            gallery.video = model.video;
+
+            _dbData.Gallery.Update(gallery);
+            _dbData.SaveChanges();
+            return RedirectToAction("Gallery", "Home");
+        }
+
+        public static string ConvertToEmbedUrl(string url)
+        {
+            if (string.IsNullOrEmpty(url))
+            {
+                return string.Empty;
+            }
+
+            // Extract the video ID from the URL
+            var videoId = new Uri(url).GetComponents(UriComponents.Query, UriFormat.Unescaped).Split('=')[1];
+
+            // Convert the video URL to an embed URL
+            var video = $"https://www.youtube.com/embed/{videoId}";
+            return video;
         }
 
         public IActionResult FAQs()
