@@ -36,6 +36,8 @@
                             <input type="hidden" asp-for="pax" value="@Model.pax" />
                             <input type="hidden" asp-for="date" value="@Model.date" />
                             <input type="hidden" asp-for="BStatus" value="@Model.BStatus" />
+                            <input type="hidden" asp-for="accomodation" value="@Model.accomodation" />
+                            <input type="hidden" asp-for="Remarks" value="@Model.Remarks" />
                         </tr>
                     </table>
 
@@ -53,6 +55,9 @@
                         <tr>
                             <td><h3 id="referencetitle">Reference Number: </h3></td>
                             <td><input type="number" id="refanswerinput" asp-for="Refnum" required placeholder="Please Provide Reference Numer."></td>
+                        </tr>
+                        <tr>
+                            <td><h3 id="referencetitle">Remarks from Admin:         @Model.Remarks</h3></td>
                         </tr>
                     </table>
                 </div>

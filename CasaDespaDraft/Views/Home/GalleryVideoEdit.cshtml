@@ -22,6 +22,12 @@
                 </center>
             </div>
             <div id="acformcontent">
+                @if (ViewData.ModelState["video"] != null)
+                {
+                    <div class="alert alert-danger">
+                        @Html.ValidationMessage("video")
+                    </div>
+                }
                 <div id="acinputfields">
                     <h4 id="videolinktext">Video Link:</h4>
                     <input asp-for="video" type="text" id="videolinkinput" name="video" placeholder="Add your youtube link video" required><br>

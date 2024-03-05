@@ -193,36 +193,56 @@ namespace CasaDespaDraft.Controllers
 
             return View(gallery);
         }
-            
-        
+
+
 
         [HttpPost]
         public async Task<IActionResult> GalleryVideoEdit(Gallery model)
         {
+            model.imageId = 1;
             Gallery? gallery = _dbData.Gallery.FirstOrDefault(rec => rec.imageId == model.imageId);
 
-            model.imageId = 1;
+            var (embedUrl, isValid) = ConvertToEmbedUrl(model.video);
 
-            gallery.video = model.video;
+            if (!isValid)
+            {
+                ModelState.AddModelError("video", "Please use a valid YouTube URL in the format of 'https://www.youtube.com/watch?v=VIDEO_ID' or 'https://youtu.be/VIDEO_ID'.");
+                return View(model);
+            }
+
+            gallery.video = embedUrl;
 
             _dbData.Gallery.Update(gallery);
             _dbData.SaveChanges();
             return RedirectToAction("Gallery", "Home");
         }
 
-        public static string ConvertToEmbedUrl(string url)
+        public static (string, bool) ConvertToEmbedUrl(string url)
         {
             if (string.IsNullOrEmpty(url))
             {
-                return string.Empty;
+                return (string.Empty, true);
             }
 
-            // Extract the video ID from the URL
-            var videoId = new Uri(url).GetComponents(UriComponents.Query, UriFormat.Unescaped).Split('=')[1];
+            bool isValid = false;
+            string video = string.Empty;
 
-            // Convert the video URL to an embed URL
-            var video = $"https://www.youtube.com/embed/{videoId}";
-            return video;
+            // Check if the URL is a "watch" URL
+            if (url.StartsWith("https://www.youtube.com/watch?v=", StringComparison.OrdinalIgnoreCase))
+            {
+                var videoId = new Uri(url).GetComponents(UriComponents.Query, UriFormat.Unescaped).Split('=')[1];
+                video = $"https://www.youtube.com/embed/{videoId}";
+                isValid = true;
+            }
+            // Check if the URL is a "youtu.be" URL
+            else if (url.StartsWith("https://youtu.be/", StringComparison.OrdinalIgnoreCase))
+            {
+                var videoId = new Uri(url).AbsolutePath.Split('/')[1];
+                video = $"https://www.youtube.com/embed/{videoId}";
+                isValid = true;
+            }
+
+            return (video, isValid);
         }
 
         public IActionResult FAQs()

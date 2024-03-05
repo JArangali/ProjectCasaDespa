@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "Rerequest payment";
+}
+@model Booking;
+
+
+<!-- AddQr Section -->
+<section id="addqrsection">
+    <div id="backbuttondiv">
+        <input type="button" id="fpbackbutton" value="BACK" onclick="location.href='/Admin/Dashboard'" class="getstarted" />
+    </div>
+
+            <form asp-action="Rerequest" asp-controller="Admin" method="post" enctype="multipart/form-data"> 
+        <div id="addqrform">
+
+            <div id="addqrtitle">
+                <div id="addqrtitle1">
+                    <h2 id="receiptheading"> ADD QR AND PRICE </h2>
+                </div>
+            </div>
+
+            <div id="addqrformcontent">
+                <div id="addqrinputfields">
+                    <table>
+                        <tr>
+                            <td><h3 id="prooftitle">Add QR Code: </h3></td>
+                            <td>
+                                <input type="hidden" asp-for="bookingId" value="@Model.bookingId"/>
+                                <input type="hidden" asp-for="userId" value="@Model.userId" />
+                                <input type="hidden" asp-for="fullName" value="@Model.fullName" />
+                                <input type="hidden" asp-for="contactNumber" value="@Model.contactNumber" />
+                                <input type="hidden" asp-for="messengerLink" value="@Model.messengerLink" />
+                                <input type="hidden" asp-for="package" value="@Model.package" />
+                                <input type="hidden" asp-for="accomodation" value="@Model.accomodation" />
+                                <input type="hidden" asp-for="pax" value="@Model.pax" />
+                                <input type="hidden" asp-for="date" value="@Model.date" />
+                                <input type="hidden" asp-for="BStatus" value="@Model.BStatus" />
+
+                                
+
+                        </td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr id="addqrtr">
+                            <td id="tdrname">
+                                <input type="file" asp-for="QRCode" id="file" accept=".png,.jpg,.jpeg" aria-label="File browser example" required>
+                                @Html.ValidationMessageFor(model => model.QRCode, "", new { @class = "text-danger"})
+                            </td>
+                            <td id="addqrtd">
+
+                                <button type="submit" id="ReceiptIcon" data-id="">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td><h3 id="referencetitle">Amount to Pay: </h3></td>
+                            <td><input type="number" id="refanswerinput" asp-for="Amount" required placeholder="Please Provide The Amount."></td>\
+                        </tr>
+                        <tr>
+                            <td><h3 id="referencetitle">Remarks: </h3></td>
+                            <td><input type="text" id="refanswerinput" asp-for="Remarks" placeholder="Please Add Reason to Re-requesting of Payment" required/></td>
+                            <br>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="receiptbuttonscontainer">
+                <td><button type="submit" id="submitaddqrbutton" >SUBMIT</button></td>
+
+@*                 <td><a id="canceladdqrbutton" asp-action="CancelQR" asp-route-id="@Model.userId">CANCEL</a></td>
+                <td><a id="submitaddqrbutton" asp-action="SubmitQR" asp-route-id="@Model.userId">SUBMIT</a></td> *@
+            </div>
+        </div>
+        </form>
+
+
+</section>
+
+<script>
+    $(document).ready(function () {
+        $("form").on("submit", function (event) {
+            var fileInput = $("#file");
+            var fileName = fileInput.val();
+            var fileExtension = fileName.split(".").pop().toLowerCase();
+
+            if ($.inArray(fileExtension, ["png", "jpg", "jpeg"]) === -1) {
+                alert("Only PNG, JPG, and JPEG files are allowed.");
+                event.preventDefault();
+            }
+        });
+    });
+
+    $(document).ready(function () {
+
+        $('#file').on('change', function () {
+            var fileSize = this.files[0].size; // in bytes
+            if (fileSize > 2048576) { // 2MB in bytes
+                alert('File size exceeds 2MB. Please select a smaller file.');
+                this.value = ''; // clear the file input field
+            }
+        });
+    });
+</script>

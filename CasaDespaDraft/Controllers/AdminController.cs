@@ -246,7 +246,8 @@ namespace CasaDespaDraft.Controllers
                 package = booking.package,
                 pax = booking.pax,
                 date = booking.date,
-                BStatus = booking.BStatus
+                BStatus = booking.BStatus,
+                accomodation = booking.accomodation
             };
 
 
@@ -280,6 +281,8 @@ namespace CasaDespaDraft.Controllers
 
             booking.Amount = model.Amount;
 
+            booking.Remarks = "Please Pay the Downpayment Shown Below";
+
             var toUpdate = booking;
             toUpdate.BStatus = "Requested";
 
@@ -293,6 +296,81 @@ namespace CasaDespaDraft.Controllers
             var customer = email;
             var subjects = $"Request for Down Payment";
             var messages = $"Casa Despa is requesting for the down payment for booking request under the name of {booking.fullName}";
+
+            await _emailSender.SendEmailAsync(customer, subjects, messages);
+
+            _dbData.Entry(booking).State = EntityState.Modified;
+            _dbData.SaveChanges();
+
+            return RedirectToAction("Dashboard", "Admin");
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult Rerequest(int id)
+        {
+            Booking? booking = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
+
+            var model = new Booking
+            {
+                bookingId = id,
+                userId = booking.userId,
+                fullName = booking.fullName,
+                contactNumber = booking.contactNumber,
+                messengerLink = booking.messengerLink,
+                package = booking.package,
+                pax = booking.pax,
+                date = booking.date,
+                BStatus = booking.BStatus,
+                accomodation = booking.accomodation
+            };
+
+
+            return View(model);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> Rerequest(Booking model, IFormFile QRCode)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+
+            Booking? booking = _dbData.Bookings.FirstOrDefault(st => st.bookingId == model.bookingId);
+
+            if (booking == null)
+            {
+                // Handle the case where the booking is not found
+                return NotFound();
+            }
+
+            if (QRCode != null && QRCode.Length > 0)
+            {
+                using var memoryStream = new MemoryStream();
+                await QRCode.CopyToAsync(memoryStream);
+                booking.QRCode = memoryStream.ToArray();
+            }
+
+            booking.Amount = model.Amount;
+
+            booking.Remarks = model.Remarks;
+
+            var toUpdate = booking;
+            toUpdate.BStatus = "Requested";
+
+            _dbData.Bookings.Update(toUpdate);
+
+            booking.Status = ProfileStatus.Pending_Payment;
+
+            var user = await _userManager.FindByIdAsync(booking.userId);
+            var email = user.Email;
+
+            var customer = email;
+            var subjects = $"Rerequest for Down Payment";
+            var messages = $"Casa Despa is Rerequesting for the down payment for booking request under the name of {booking.fullName}";
 
             await _emailSender.SendEmailAsync(customer, subjects, messages);
 

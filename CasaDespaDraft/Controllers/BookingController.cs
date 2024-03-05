@@ -133,6 +133,8 @@ namespace CasaDespaDraft.Controllers
                 date = booking.date,
                 BStatus = booking.BStatus,
                 Amount = booking.Amount,
+                accomodation = booking.accomodation,
+                Remarks = booking.Remarks,
                 QRCode = booking.QRCode,
             };
 
