@@ -8,13 +8,14 @@ namespace CasaDespaDraft
     {
         public Task SendEmailAsync(string email, string subject, string message)
         {
-            var mail = "luisenrico.granada.cics@ust.edu.ph";
-            var pw = "2002Luisenrico";
+            var mail = "thecasadespa@outlook.com";
+            var pw = "casadespaofficial789";
 
-            var client = new SmtpClient("smtp.gmail.com", 587)
+            var client = new SmtpClient("smtp-mail.outlook.com", 587)
             {
                 EnableSsl = true,
-                Credentials = new NetworkCredential(mail, pw)
+                Credentials = new NetworkCredential(mail, pw),
+                Timeout = 50000 // Set timeout to 20 seconds
             };
 
             return client.SendMailAsync(

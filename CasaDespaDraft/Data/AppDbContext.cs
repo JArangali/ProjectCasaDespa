@@ -97,15 +97,17 @@ public class AppDbContext : IdentityDbContext<User>
 
             );;
 
-        /*        modelBuilder.Entity<Gallery>().HasData(
-                    new Gallery()
-                    {
-                        imageId = 1,
-                        image = "~/img/portfolio/Entertainment-1.jpg",
-                        filter = Filter.Pool
-                    }
 
-                    );*/
+        modelBuilder.Entity<Gallery>().HasData(
+            new Gallery()
+            {
+                imageId = 1,
+                imageName = "",
+                filter = Filter.Entertainment,
+                video = "https://www.youtube.com/embed/haf67eKF0uo"
+            }
+
+            ); ;
 
     }
 }

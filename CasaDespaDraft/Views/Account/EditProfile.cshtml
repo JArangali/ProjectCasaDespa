@@ -1,0 +1,118 @@
+﻿﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using CasaDespaDraft.ViewModels
+@model SignUpViewModel
+
+
+<section id="register">
+    <form asp-action="EditProfile" asp-controller="Account" enctype="multipart/form-data">
+        <center>
+        <div id="profileeditform">
+            <div id="profileedittitle">
+                <h2 id="registerheading"> Edit Profile </h2>
+            </div>
+            <div id="formcontent">
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success" role="alert">
+                            @TempData["SuccessMessage"]
+                        </div>
+                    }
+
+                    <table>
+
+
+                        <tr>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <td id="regtd"><h4 id="firstname">FIRST NAME:    </h4></td>
+                            <td id="regtdinput">
+                                <input asp-for="firstName" id="firstnameinput" value="@Model.firstName">
+                            </td>
+                            @Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger" })
+                        </tr>
+
+                        <tr>
+                            <td id="regtd"><h4 id="lastname">LAST NAME:    </h4></td>
+                            <td id="regtdinput">
+                                <input asp-for="lastName" id="lastnameinput" value="@Model.lastName">
+                            </td>
+                            @Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger" })
+                        </tr>
+
+                        <tr>
+                            <td id="addresstd"><h4 id="address">ADDRESS:    </h4></td>
+                            <td id="addresstddinput">
+                                <input asp-for="address" id="addressinput" value="@Model.address">
+                            </td>
+                            @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                        </tr>
+
+                        <tr>
+                            @Html.ValidationMessageFor(model => model.sex, "", new { @class = "text-danger" })
+                        </tr>
+
+                        <tr>
+                            <td id="regtd"><h4 id="gender">Sex:</h4></td>
+                            <td id="regtdinput">
+                                <input asp-for="sex" type="radio" id="male" name="sex" value="Male">
+                                <label for="male"><h6>MALE</h6></label>
+                                <input asp-for="sex" type="radio" id="female" name="sex" value="Female">
+                                <label for="female"><h6>FEMALE</h6></label>
+                            </td>
+                        </tr>
+                        </tr>
+
+                        <tr>
+                            <td id="regtd"><h4 id="profilepic">UPLOAD PICTURE:</h4></td>
+                            <td id="picturetddinput">
+                                <input asp-for="profilePicture" type="file" id="file" accept=".png,.jpg,.jpeg" value="@Model.profilePicture">
+
+                                @Html.ValidationMessageFor(model => model.profilePicture, "", new { @class = "text-danger" })
+                            </td>
+                        </tr>
+                        <input type="hidden" asp-for="answer" value="@Model.answer" />
+                        <input type="hidden" asp-for="question" value="@Model.question" />
+                        <input type="hidden" asp-for="fanswer" value="@Model.fanswer" />
+                        <input type="hidden" asp-for="email" value="@Model.email" />
+                        <input type="hidden" asp-for="userId" value="@Model.userId" />
+                        <input type="hidden" asp-for="userPassword" value="@Model.userPassword" />
+                        <input type="hidden" asp-for="ConfirmPassword" value="@Model.ConfirmPassword" />
+                    </table>
+                </div>
+            </div>
+        </center>
+            <div id="registerbuttonscontainer">
+                <input type="button" id="cancelbutton" value="CANCEL" onclick="location.href='/Account/Login'" class="getstarted" />
+                <input type="submit" id="registerbutton" value="SAVE" />
+            </div>
+    </form>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $("#Register").on("submit", function (event) {
+            var fileInput = $("#file");
+            var fileName = fileInput.val();
+            var fileExtension = fileName.split(".").pop().toLowerCase();
+
+            if ($.inArray(fileExtension, ["png", "jpg", "jpeg"]) === -1) {
+                alert("Only PNG, JPG, and JPEG files are allowed.");
+                event.preventDefault();
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        $('#file').on('change', function () {
+            var fileSize = this.files[0].size; // in bytes
+            if (fileSize > 2048576) { // 2MB in bytes
+                alert('File size exceeds 2MB. Please select a smaller file.');
+                this.value = ''; // clear the file input field
+            }
+        });
+    });
+
+</script>

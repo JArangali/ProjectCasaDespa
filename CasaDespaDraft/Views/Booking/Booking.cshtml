@@ -29,17 +29,17 @@
     }
 
 
-    #bookform form {
+    #bookform {
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
 
-        #bookform form div {
-            display: flex;
-            justify-content: space-around;
-            padding: 25px;
-        }
+    #bookform {
+        display: flex;
+        justify-content: normal;
+        padding: 25px;
+    }
 
     #booking h1 {
         background-color: black;
@@ -50,32 +50,12 @@
         border-radius: 25px;
     }
 
-    #booking input {
-        background-color: transparent;
-        border-radius: 25px;
-        padding: 5px;
-        width: 70%;
-        border: 1px solid black;
-        font-size: 25px;
-        min-height: 38px;
-    }
-
-        #booking input[type="submit"] {
-            background-color: black;
-            color: #f1d9b6;
-            text-transform: uppercase;
-            font-weight: 900;
-            width: 300px;
-            padding: 10px;
-        }
-
     #booking .packagecontainer {
         display: flex;
         flex-direction: column;
         width: 70%;
         justify-content: space-around;
         padding: 0px;
-        border: 1px solid black;
         border-radius: 12%;
     }
 
@@ -101,13 +81,8 @@
                 margin-bottom: 2px;
             }
 
-    #booking input[type="submit"]:hover {
-        color: dimgray;
-    }
-
-
     #booking #bookform form div label {
-        width: 30%;
+        width: 70%;
         font-size: 24px;
         text-transform: uppercase;
         font-weight: 900;
@@ -186,6 +161,219 @@
             background-color: #c3ab7d; /* Change the color for the third h2 */
         }
 
+    #packages {
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        padding: 0 1em 0 0;
+        margin: 0;
+        width: 147%;
+        font-family: inherit;
+        font-size: inherit;
+        cursor: inherit;
+        line-height: inherit;
+        padding: 20px;
+        height: auto;
+        background-color: initial;
+        color: black;
+        font-size: 18px;
+        border: 1px solid black;
+        border-radius: 20px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        text-indent: 0.01px;
+        text-overflow: '';
+    }
+
+
+    /*Modal CSS*/
+    #myModalT {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 105%;
+        z-index: 1000;
+        background-color: rgba(0, 0, 0, 0.5);
+        font-size: 15px;
+        box-shadow: 0 0 3px black;
+    }
+
+    #tpopup {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 80%;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+    }
+
+    #tpopuptitle {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    #tpolicycontent {
+        text-align: center;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+        #tpolicycontent h4 {
+            line-height: 1.5;
+            flex: 1;
+        }
+
+    #tppcontent {
+        color: #333;
+        max-height: 380px;
+        max-width: 100%;
+        overflow-y: scroll;
+        width: 100%;
+        text-align: left;
+        padding-left: 85px;
+        padding-right: 85px;
+        padding-bottom: 85px;
+        /* Style the scrollbar track */
+        :: -webkit-scrollbar-track
+
+    {
+        background-color: #f5f5f5;
+        border-radius: 10px;
+    }
+    /* Style the scrollbar thumb */
+    ::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        border-radius: 10px;
+    }
+        /* Style the scrollbar thumb on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #aaa;
+        }
+    /* Style the scrollbar Corner */
+    ::-webkit-scrollbar-corner {
+        background-color: transparent;
+    }
+
+    }
+
+
+
+    #headingtc {
+        font-size: 12px;
+    }
+
+    #buttondivmodal {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    #bookingtable {
+        width: 100%;
+    }
+
+    #booklabeltd {
+        width: 50%;
+        font-size: 25px;
+    }
+
+    #bookrow {
+        margin-top: 10px;
+    }
+
+    #btndivtt {
+        width: 100%;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    #booktablediv {
+        margin-top: 20px;
+    }
+
+    #BookButton {
+        width: 436px;
+        height: 64px;
+        padding: 10px;
+        color: #F0D9B7;
+        border-radius: 20px;
+        background-color: black;
+        font-size: 30px;
+        padding: 6px;
+    }
+
+    #inputtextfieldbr {
+        background-color: transparent;
+        border-radius: 25px;
+        padding: 5px;
+        width: 100%;
+        height: 70px;
+        border: 1px solid black;
+        font-size: 25px;
+        min-height: 38px;
+    }
+
+    .inputtextfieldbr {
+        background-color: transparent;
+        border-radius: 25px;
+        padding: 5px;
+        width: 100%;
+        height: 70px;
+        border: 1px solid black;
+        font-size: 25px;
+        min-height: 38px;
+    }
+
+    #selectedDate {
+        background-color: transparent;
+        border-radius: 25px;
+        padding: 5px;
+        width: 100%;
+        height: 70px;
+        border: 1px solid black;
+        font-size: 25px;
+        min-height: 38px;
+    }
+
+    #tdeclinebutton {
+        padding: 10px;
+        width: 130px;
+        color: black;
+        border-radius: 20px;
+        background-color: #F5D8B3;
+    }
+
+    #tacceptbutton {
+        padding: 10px;
+        width: 130px;
+        color: #F0D9B7;
+        border-radius: 20px;
+        background-color: black;
+
+    }
+
+    #notediv{
+        padding:20px;
+        background-color: #F9F4D6;
+        border-radius: 10px;
+        margin-top:20px;
+        box-shadow: 0 0 5px gray;
+        border: 1px solid #967940;
+        color: #967940;
+    }
+
+    #notett{
+    margin-left:10px;
+
+    }
 </style>
 
 <!-- Welcome Section -->
@@ -209,46 +397,148 @@
         <h1>BOOK NOW!</h1>
 
         <form asp-action="Booking" asp-controller="Booking" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
             
 
-            <div>
-                <label for="fullName">Full Name:</label>
-                <input asp-for="fullName" type="text" id="fullName" name="fullName" required><br>
+            <div id="booktablediv">
+                <table id="bookingtable">
+                    <tr id="bookrow">
+                        <td id="booklabeltd"><label for="fullName">Full Name:</label></td>
+                        <td><input asp-for="fullName" id="inputtextfieldbr" type="text" id="fullName" name="fullName"><br></td>
+
+                    </tr>
+                    <tr id="bookrow">
+                        <td id="booklabeltd"><label for="contactNumber">Contact Number:</label></td>
+                        <td><input asp-for="contactNumber" id="inputtextfieldbr" type="tel" id="contactNumber" name="contactNumber"></td>
+
+                    </tr>
+                    <tr id="bookrow">
+                        <td id="booklabeltd"><label for="messengerLink">Messenger Link:</label></td>
+                        <td><input asp-for="messengerLink" type="text" id="inputtextfieldbr" id="messengerLink" name="messengerLink" placeholder="Include 'http://', 'https://', 'ftp://'."><br></td>
+                        
+                    <tr id="bookrow">
+                        <td id="booklabeltd"><label for="package" style="margin-top:auto;margin-bottom:auto;">Package:</label></td>
+                        <td>
+                            <div class="packagecontainer">
+                                <select id="packages" asp-for="package" asp-items="@Html.GetEnumSelectList(typeof(Package))" class="form-control"></select>
+
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td id="regtd"><h4 id="gender">ACCOMODATION:</h4></td>
+                        <td id="regtdinput">
+                            <input asp-for="accomodation" type="radio" id="male" name="accomodation" value="REGULAR">
+                            <label for="regular"><h6>REGULAR <br />(Pax Range: 1-20)</h6></label><br/>
+                            <input asp-for="accomodation" type="radio" id="female" name="accomodation" value="PARTY">
+                            <label for="party"><h6>PARTY <br />(Pax Range: 21-50)</h6></label>
+                        </td>
+                    </tr>
+
+                    <tr id="bookrow">
+                        <td id="booklabeltd"><label for="numberOfPax">Number of PAX:</label></td>
+                        <td><input type="number" id="numberOfPax" class="inputtextfieldbr" asp-for="pax" placeholder="Number of people attending"><br></td>
+                    </tr>
+
+
+                    <tr id="bookrow">
+                        <td id="booklabeltd"><label for="numberOfPax">Date to Book:</label></td>
+                        <td><input asp-for="date" type="text" id="selectedDate" readonly placeholder="Click a day on the calendar"></td>
+                    </tr>
+
+                </table>
             </div>
 
-            <div>
-                <label for="contactNumber">Contact Number:</label>
-                <input asp-for="contactNumber" type="tel" id="contactNumber" name="contactNumber" required><br>
+            <div id="btndivtt">
+                <input type="button" value="Book" id="BookButton">
             </div>
 
-            <div>
-                <label for="messengerLink">Messenger Link:</label>
-                <input asp-for="messengerLink" type="text" id="messengerLink" name="messengerLink" placeholder="Facebook Profile link also accepted." required><br>
-            </div>
 
-            <div>
-                <label for="package" style="margin-top:auto;margin-bottom:auto;">Package:</label>
-                <div class="packagecontainer">
-                    <select asp-for="package" asp-items="@Html.GetEnumSelectList(typeof(Package))" class="form-control" ></select>
+            <div id="myModalT" class="modal">
+                <div id="tpopup">
+                    <div id="tpopuptitle">
+                        <h2>TERMS AND CONDITIONS</h2>
+                    </div>
+                    <div id="tpolicycontent">
+                        <div id="tppcontent">
+                            <ul>
+                                <li>
+                                    <strong>Regular Accommodations:</strong>
+                                    <ul>
+                                        <li>Suitable for 15 persons. But can accommodate 20 persons for a 22-hour stay.</li>
+                                        <li>Additional 300/head over 15 pax.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Accommodation with parties/events:</strong></li>
+                                <ul>
+                                    <li>Additional P3000</li>
+                                    <li>Maximum of 50 pax DURING THE EVENT ONLY.</li>
+                                    <li>Party Hours: 2 pm - 10 pm.</li>
+                                    <li>STRICTLY AFTER 10 PM, A MAXIMUM OF 20 PAX CAN STAY IN THE VILLA.</li>
+                                    <li>ALL GATES SHALL BE CLOSED BY 10 PM for security purposes.</li>
+                                </ul>
+
+                                <li><strong>Sleeping Capacity:</strong></li>
+                                <ul>
+                                    <li>We have five (5) available beds; Each bed can accommodate about 2-3 persons for 15 persons.</li>
+                                    <li>We also have EXTRA MATTRESSES FOR RENT.</li>
+                                </ul>
+
+                                <li><strong>Noise:</strong></li>
+                                <ul>
+                                    <li>We hope you have lots of laughter & fun times during your stay! However, we'd appreciate it if you're mindful & keep the noise to a minimum during nighttime.</li>
+                                </ul>
+
+                                <li><strong>Cleanliness:</strong></li>
+                                <ul>
+                                    <li>Please treat our house with the same respect as you would your own home. We've put a lot of effort in making this into a lovely space to be enjoyed by our guests. Kindly maintain a good level of cleanliness throughout your stay.</li>
+                                    <li>DAMAGED/MISSING ITEMS & STAINED MATTRESSES SHALL BE CHARGED TO GUESTS.</li>
+                                </ul>
+
+                                <li><strong>Check-In & Check-Out:</strong></li>
+                                <ul>
+                                    <li>Check-In: Standard check-In time for a 22-hour stay is 2pm.</li>
+                                    <li>Check-Out: You may check out anytime before noon. But, if you wish to extend your stay, kindly notify us 24 hours prior.</li>
+                                </ul>
+
+                                <li><strong>Payment:</strong></li>
+                                <ul>
+                                    <li>30% downpayment is required to secure your booking. DOWNPAYMENT IS STRICTLY NON-REFUNDABLE, The remaining balance shall be paid on-site or through our payment channel.</li>
+                                </ul>
+
+                                <li><strong>No Smoking:</strong></li>
+                                <ul>
+                                    <li>STRICTLY NO SMOKING INSIDE THE HOUSE!</li>
+                                    <li>PENALTY: P3000</li>
+                                </ul>
+                            </ul>
+
+                            <li><strong>Warning: If any of our rules and regulations are violated, we can charge extra fees or terminate your stay in our resort.</strong></li>
+
+                            <div id="notediv">
+                                <span class="glyphicon glyphicon-warning-sign"><strong> NOTE: </strong></span>
+                                
+                                <ul>
+                                    <li><strong>Submission of a request may take up to at least a minute.</strong></li>
+                                    <li>
+                                        <strong>
+                                            Casa Despa's email notifications may be filtered into your spam folder. Please ensure to check your spam folder regularly for any communications from us.
+                                        </strong>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                        <div id="buttondivmodal">
+                            <input type="button" id="tdeclinebutton" class="declined" value="DECLINED">
+                            <input type="submit" id="tacceptbutton" value="ACCEPT">
+                        </div>
+                    </div>
                 </div>
-
-
-            </div>
-            <br>
-
-            <div>
-                <label for="numberOfPax">Number of PAX:</label>
-                <input type="number" id="numberOfPax" asp-for="pax" required placeholder="Number of people attending"><br>
             </div>
 
-            <div>
-                <label for="numberOfPax">Date to Book:</label>
-                <input asp-for="date" type="text" id="selectedDate" readonly placeholder="Click a day on the calendar">
-            </div>
-
-            <div>
-                <input type="submit" value="Book" >
-            </div>
         </form>
     </div>
 
@@ -266,7 +556,7 @@
             </div>
 
         </div>
-        
+
     </div>
 </section>
 
@@ -309,5 +599,32 @@
             // Your other calendar options and events will go here
         });
     });
+
+
+    // Get the modal
+    var modal = document.getElementById("myModalT");
+
+    // Get the button that opens the modal
+    var bton = document.getElementById("BookButton");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("declined")[0];
+
+    // When the user clicks on the button, open the modal
+    bton.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 
 </script>

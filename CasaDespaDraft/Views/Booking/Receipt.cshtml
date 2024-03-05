@@ -36,6 +36,8 @@
                             <input type="hidden" asp-for="pax" value="@Model.pax" />
                             <input type="hidden" asp-for="date" value="@Model.date" />
                             <input type="hidden" asp-for="BStatus" value="@Model.BStatus" />
+                            <input type="hidden" asp-for="accomodation" value="@Model.accomodation" />
+                            <input type="hidden" asp-for="Remarks" value="@Model.Remarks" />
                         </tr>
                     </table>
 
@@ -54,6 +56,9 @@
                             <td><h3 id="referencetitle">Reference Number: </h3></td>
                             <td><input type="number" id="refanswerinput" asp-for="Refnum" required placeholder="Please Provide Reference Numer."></td>
                         </tr>
+                        <tr>
+                            <td><h3 id="referencetitle">Remarks from Admin:         @Model.Remarks</h3></td>
+                        </tr>
                     </table>
                 </div>
             </div>
@@ -64,3 +69,29 @@
         </div>
         </form>
 </section>
+
+<script>
+    $(document).ready(function () {
+        $("file").on("submit", function (event) {
+            var fileInput = $("#file");
+            var fileName = fileInput.val();
+            var fileExtension = fileName.split(".").pop().toLowerCase();
+
+            if ($.inArray(fileExtension, ["png", "jpg", "jpeg"]) === -1) {
+                alert("Only PNG, JPG, and JPEG files are allowed.");
+                event.preventDefault();
+            }
+        });
+    });
+
+    $(document).ready(function () {
+
+        $('#file').on('change', function () {
+            var fileSize = this.files[0].size; // in bytes
+            if (fileSize > 2048576) { // 2MB in bytes
+                alert('File size exceeds 2MB. Please select a smaller file.');
+                this.value = ''; // clear the file input field
+            }
+        });
+    });
+</script>

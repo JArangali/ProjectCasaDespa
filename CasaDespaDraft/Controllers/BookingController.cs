@@ -37,67 +37,106 @@ namespace CasaDespaDraft.Controllers
                 // Handle user not found
                 return RedirectToAction("Login", "Account"); // Redirect to another action or handle appropriately
             }
+
+            if (user.Email == "admin@example.com")
+            {
+                // Handle user not found
+                return RedirectToAction("Index", "Home"); // Redirect to another action or handle appropriately
+            }
+
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Booking(Booking newBooking)
         {
-            if (!ModelState.IsValid)
-                return View();
 
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (ModelState.IsValid)
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var toAdd = newBooking;
-            toAdd.BStatus = "Pending";
+                var toAdd = newBooking;
+                toAdd.BStatus = "Pending";
 
-            newBooking.Status = ProfileStatus.Requests;
+                newBooking.Status = ProfileStatus.Requests;
 
-            // Set the UserId of the new recipe
-            newBooking.userId = userId;
+                // Set the UserId of the new recipe
+                newBooking.userId = userId;
 
-            var user = await _userManager.FindByIdAsync(userId);
-            var email = user.Email;
+                if (newBooking.accomodation == "REGULAR")
+                {
+                    if (newBooking.pax >= 21)
+                    {
+                        ModelState.AddModelError("answer", "The number of Pax for regular accomodations must range from 1-20.");
+                        return View(newBooking);
+                    }
+                }
 
-            // Add the new recipe to the context
-            _dbData.Bookings.Add(toAdd);
+                if (newBooking.accomodation == "PARTY")
+                {
+                    if (newBooking.package != Package.Twenty_Two_Hours)
+                    {
+                        ModelState.AddModelError("answer", "Party Accomodations are only available for TWENTY-TWO HOURS booking packages.");
+                        return View(newBooking);
+                    }
+                    if (newBooking.pax >= 51)
+                    {
+                        ModelState.AddModelError("answer", "The number of Pax for party accomodations must range from 21-50.");
+                        return View(newBooking);
+                    }
+                    else if (newBooking.pax <= 20)
+                    {
+                        ModelState.AddModelError("answer", "The number of Pax for party accomodations must range from 21-50.");
+                        return View(newBooking);
+                    }
+                }
 
-            var receiver = "granadaluis.lg@yahoo.com";
-            var subject = $"New Booking Request from {newBooking.fullName}";
-            var message = $"{newBooking.fullName} is trying to make a booking request with Casa Despa.";
+                var user = await _userManager.FindByIdAsync(userId);
+                var email = user.Email;
 
-            await _emailSender.SendEmailAsync(receiver, subject, message);
+                // Add the new recipe to the context
+                _dbData.Bookings.Add(toAdd);
 
-            var customer = email;
-            var subjects = $"You have sucessfully submitted your request to Casa Despa.";
-            var messages = $"You just submitted a booking request on Casa Despa under the name of {newBooking.fullName}";
+                var receiver = "granadaluisss@gmail.com";
+                var subject = $"New Booking Request from {newBooking.fullName}";
+                var message = $"{newBooking.fullName} is trying to make a booking request with Casa Despa.";
 
-            await _emailSender.SendEmailAsync(customer, subjects, messages);
+                await _emailSender.SendEmailAsync(receiver, subject, message);
 
-            // Save changes to the database
-            await _dbData.SaveChangesAsync();
-            return RedirectToAction("Profile", "Home");
+                var customer = email;
+                var subjects = $"You have sucessfully submitted your request to Casa Despa.";
+                var messages = $"You just submitted a booking request on Casa Despa under the name of {newBooking.fullName}";
+
+                await _emailSender.SendEmailAsync(customer, subjects, messages);
+
+                // Save changes to the database
+                await _dbData.SaveChangesAsync();
+                return RedirectToAction("Profile", "Home");
+            }
+            return View(newBooking);
         }
 
         [HttpGet]
         public IActionResult Receipt(int id)
         {
             Booking? booking = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
-                
+
             var model = new Booking
-                {
-                    bookingId = id,
-                    userId = booking.userId,
-                    fullName = booking.fullName,
-                    contactNumber = booking.contactNumber,
-                    messengerLink = booking.messengerLink,
-                    package = booking.package,
-                    pax = booking.pax,
-                    date = booking.date,
-                    BStatus = booking.BStatus,
-                    Amount = booking.Amount,
-                    QRCode = booking.QRCode,
-                };
+            {
+                bookingId = id,
+                userId = booking.userId,
+                fullName = booking.fullName,
+                contactNumber = booking.contactNumber,
+                messengerLink = booking.messengerLink,
+                package = booking.package,
+                pax = booking.pax,
+                date = booking.date,
+                BStatus = booking.BStatus,
+                Amount = booking.Amount,
+                accomodation = booking.accomodation,
+                Remarks = booking.Remarks,
+                QRCode = booking.QRCode,
+            };
 
 
             return View(model);
@@ -135,6 +174,21 @@ namespace CasaDespaDraft.Controllers
             _dbData.Bookings.Update(toUpdate);
 
             booking.Status = ProfileStatus.Pending_Payment;
+
+            var receiver = "alyssamarierromen@gmail.com";
+            var subject = $"SUBMITTED PROOF OF DOWN PAYMENT";
+            var message = $"{booking.fullName} has submitted their proof of down payment.";
+
+            await _emailSender.SendEmailAsync(receiver, subject, message);
+
+            var user = await _userManager.FindByIdAsync(booking.userId);
+            var email = user.Email;
+
+            var customer = email;
+            var subjects = $"CONFIRMATION EMAIL FOR UPLOADED PROOF OF PAYMENT";
+            var messages = $"You have submitted your proof of down payment to Casa Despa. Please wait for the Casa Despa administrators to check your payment.";
+
+            await _emailSender.SendEmailAsync(customer, subjects, messages);
 
             _dbData.Entry(booking).State = EntityState.Modified;
             _dbData.SaveChanges();

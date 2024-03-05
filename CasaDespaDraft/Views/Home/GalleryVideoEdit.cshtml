@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Gallery - Video Edit";
+}
+
+@model Gallery
+
+<!-- Video Edit Section -->
+<section id="ac">
+    <div id="backbuttondiv">
+        <button id="fpbackbutton"> <a id="fpabackbutton" asp-area="" asp-controller="Home" asp-action="Gallery" class="getstarted"> <i class="material-icons">chevron_left</i> </a> </button>
+    </div>
+    <form asp-action="GalleryVideoEdit" asp-controller="Home" method="post">
+        <input type="hidden" asp-for="imageId" value="1" />
+        <div id="acform">
+            <div id="actitle">
+                <center>
+                    <div id="actitle1">
+                        <center>
+                            <h2 id="sqheading"> EDIT GALLERY VIDEO </h2>
+                        </center>
+                    </div>
+                </center>
+            </div>
+            <div id="acformcontent">
+                @if (ViewData.ModelState["video"] != null)
+                {
+                    <div class="alert alert-danger">
+                        @Html.ValidationMessage("video")
+                    </div>
+                }
+                <div id="acinputfields">
+                    <h4 id="videolinktext">Video Link:</h4>
+                    <input asp-for="video" type="text" id="videolinkinput" name="video" placeholder="Add your youtube link video" required><br>
+                </div>
+            </div>
+            <div id="acbuttonscontainer">
+                <button type="submit" id="acnextbutton"><a id="acnext"> EDIT </a> </button>
+            </div>
+        </div>
+    </form>
+</section>

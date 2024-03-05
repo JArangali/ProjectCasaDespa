@@ -24,6 +24,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBZG1pblJlc2V0UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Account/EditProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFZGl0UHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -54,6 +58,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Admin/EditBooking.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdEJvb2tpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Admin/Rerequest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVyZXF1ZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Admin/ShowReceipt.cshtml]
@@ -98,6 +106,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Home/GalleryEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHYWxsZXJ5RWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Home/GalleryVideoEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHYWxsZXJ5VmlkZW9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/linde/Documents/School/3rd year/2nd Sem/ProjectCasaDespa/GITHUB/ProjectCasaDespa/CasaDespaDraft/Views/Home/Index.cshtml]

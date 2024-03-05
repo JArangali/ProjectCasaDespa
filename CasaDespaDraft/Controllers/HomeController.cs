@@ -82,7 +82,7 @@ namespace CasaDespaDraft.Controllers
                     infos.noise = infosChanges.noise;
                     infos.penalty = infosChanges.penalty;
                     infos.warning = infosChanges.warning;
-               
+
 
                     _dbData.Entry(infos).State = EntityState.Modified;
                     await _dbData.SaveChangesAsync();
@@ -103,7 +103,7 @@ namespace CasaDespaDraft.Controllers
 
 
         [Authorize(Roles = "Admin")]
-        public IActionResult EditHome() { 
+        public IActionResult EditHome() {
             return View();
         }
 
@@ -184,6 +184,66 @@ namespace CasaDespaDraft.Controllers
             return View(gallery);
         }
 
+        [HttpGet]
+        public IActionResult GalleryVideoEdit(int id)
+        {
+            Gallery? gallery = _dbData.Gallery.FirstOrDefault(rec => rec.imageId == id);
+
+            id = 1;
+
+            return View(gallery);
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> GalleryVideoEdit(Gallery model)
+        {
+            model.imageId = 1;
+            Gallery? gallery = _dbData.Gallery.FirstOrDefault(rec => rec.imageId == model.imageId);
+
+            var (embedUrl, isValid) = ConvertToEmbedUrl(model.video);
+
+            if (!isValid)
+            {
+                ModelState.AddModelError("video", "Please use a valid YouTube URL in the format of 'https://www.youtube.com/watch?v=VIDEO_ID' or 'https://youtu.be/VIDEO_ID'.");
+                return View(model);
+            }
+
+            gallery.video = embedUrl;
+
+            _dbData.Gallery.Update(gallery);
+            _dbData.SaveChanges();
+            return RedirectToAction("Gallery", "Home");
+        }
+
+        public static (string, bool) ConvertToEmbedUrl(string url)
+        {
+            if (string.IsNullOrEmpty(url))
+            {
+                return (string.Empty, true);
+            }
+
+            bool isValid = false;
+            string video = string.Empty;
+
+            // Check if the URL is a "watch" URL
+            if (url.StartsWith("https://www.youtube.com/watch?v=", StringComparison.OrdinalIgnoreCase))
+            {
+                var videoId = new Uri(url).GetComponents(UriComponents.Query, UriFormat.Unescaped).Split('=')[1];
+                video = $"https://www.youtube.com/embed/{videoId}";
+                isValid = true;
+            }
+            // Check if the URL is a "youtu.be" URL
+            else if (url.StartsWith("https://youtu.be/", StringComparison.OrdinalIgnoreCase))
+            {
+                var videoId = new Uri(url).AbsolutePath.Split('/')[1];
+                video = $"https://www.youtube.com/embed/{videoId}";
+                isValid = true;
+            }
+
+            return (video, isValid);
+        }
 
         public IActionResult FAQs()
         {

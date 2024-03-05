@@ -264,6 +264,55 @@ h6 {
         visibility: visible;
     }
 
+#notifications {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0 10px 30px;
+    font-family: 'Spectral', serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #F0D9B7;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+#Navpopup {
+    z-index: 1000;
+    width: 403px;
+    max-height: 60%;
+    margin: 30px;
+    margin-top: 90px;
+    margin-left: 80px;
+    padding: 0px;
+    border-radius: 20px;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    background-color: #EBCDA8;
+    text-align: center;
+    position: fixed;
+    top: 38px;
+    right: 0;
+    transform: perspective(10px);
+}
+
+#Notifcontainer {
+    padding: 10px;
+    overflow-y: scroll;
+    max-height: 410px;
+}
+
+#Notifcontent {
+    padding: 5px;
+    border: solid 1px;
+}
+
+
 @media (max-width: 1366px) {
     .navbar .dropdown .dropdown ul {
         left: -90%;
@@ -2890,6 +2939,44 @@ FAQS_Edit {
     margin-left: 30px;
 }
 
+#GalleryVid_Edit_Button {
+    background-color: black;
+    color: #F5D8B3;
+    width: 195px;
+    height: 35px;
+    border-radius: 40px;
+    padding-top: 15px;
+    padding-bottom: 32px;
+    margin-left: 30px;
+    margin-top: 10px;
+    border: 1px solid;
+    border-color: #F5D8B3;
+}
+
+    #GalleryVid_Edit_Button:hover {
+        background-color: #141313;
+        color: #F5D8B;
+        width: 195px;
+        height: 35px;
+        border-radius: 40px;
+        padding-top: 15px;
+        padding-bottom: 32px;
+        margin-left: 30px;
+        margin-top: 10px;
+        box-shadow: 50px;
+        border: 1px solid;
+        border-color: #F5D8B3;
+    }
+
+#videoframe {
+    box-shadow: 0 0 3px black;
+    margin-top:20px;
+}
+
+#videolinktext {
+    font-weight: bold;
+    margin-left:30px;
+}
 /*--------------------------------------------------------------
 # FAQS EDIT
 --------------------------------------------------------------*/
@@ -3110,6 +3197,21 @@ FAQS_Edit {
 /*--------------------------------------------------------------
 # GALLERY EDIT
 --------------------------------------------------------------*/
+#videolinkinput {
+    width: 93%;
+    padding: 12px;
+    border: solid;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 10px;
+    border-width: 1px;
+    box-sizing: border-box;
+    background-color: #F5D8B3;
+    height: 50px;
+    margin-left: 30px;
+    font-size: 15px;
+}
 #GalleryEdit {
     align-self: center;
     align-content: center;
@@ -4167,7 +4269,6 @@ feetitle {
 #sqheading {
     text-align: center;
     margin-top: 10px;
-    margin-right:10px;
 }
 
 #fpasswordnext {
@@ -4508,6 +4609,9 @@ feetitle {
     border-radius: 5px;
     background-color: black;
     color: #F5D8B3;
+    width: 247px;
+    height: 40px;
+    font-size: medium;
     cursor: pointer;
 }
 
@@ -4589,11 +4693,13 @@ feetitle {
 .info-item {
     margin-bottom: 10px;
     color: #595959;
+    font-size:25px;
 }
 
 .info-item1 {
     margin-bottom: 10px;
     font-weight: bold;
+    font-size: 20px;
 }
 
 .update-button {
@@ -4609,6 +4715,8 @@ feetitle {
     text-decoration: none;
     font-weight: bold;
     font-size: 14px;
+    z-index:400;
+
 }
 
     .update-button:hover,
@@ -4688,6 +4796,32 @@ feetitle {
         background-color: #C5A485;
         color: black;
     }
+
+#profileeditform {
+    margin: 30px;
+    margin-top: 90px;
+    margin-left: 80px;
+    padding: 0px;
+    width: 50%;
+    height: 550px;
+    border-radius: 20px;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    background-color: #EBCDA8;
+}
+
+#profileedittitle {
+    color: #F0D9B7;
+    background-color: black;
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    margin-bottom:20px
+}
 
 /*--------------------------------------------------------------
 # Index Edit Section
@@ -5493,4 +5627,22 @@ fsbuttondiv {
     padding: 10px;
     margin-bottom: 10px;
     width: 200px;
+}
+
+#greeting {
+    font-size: 17px;
+    padding-top: 33px;
+    color: bisque;
+    width: 212px;
+    display: flex;
+    float: right;
+}
+
+#greetings {
+    font-size: 20px;
+    padding-top: 25px;
+    color: bisque;
+    width: 212px;
+    display: flex;
+    float: right;
 }

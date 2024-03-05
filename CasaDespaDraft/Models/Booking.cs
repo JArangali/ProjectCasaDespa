@@ -6,9 +6,25 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CasaDespaDraft.Models
 {
+    public class CustomUrlAttribute : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            Uri uri;
+            if (Uri.TryCreate(value as string, UriKind.Absolute, out uri))
+            {
+                if (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps || uri.Scheme == Uri.UriSchemeFtp)
+                {
+                    return ValidationResult.Success;
+                }
+            }
+            return new ValidationResult("Please include 'https://' or 'http://' or 'ftp://' at the beginning of your link.");
+        }
+    }
+
     public enum Package
     {
-        Day_Tour, Night_Tour, Twenty_Two_Hours
+        Day_Tour, Night_Tour, Twenty_Two_Hours  
     }
 
     public enum ProfileStatus
@@ -31,7 +47,7 @@ namespace CasaDespaDraft.Models
         [RegularExpression("[0-9]{11}", ErrorMessage = "Please follow Phone Number format 09**-***-****!")]
         public string? contactNumber { get; set; }
 
-        [Url]
+        [CustomUrl]
         [Required(ErrorMessage = "Messenger Link is needed.")]
         public string? messengerLink { get; set; }
 
@@ -57,5 +73,10 @@ namespace CasaDespaDraft.Models
         public string? BStatus { get; set; }
 
         public ProfileStatus Status { get; set; } = ProfileStatus.Requests;
+
+        [Required(ErrorMessage = "Please pick an accomodation.")]
+        public string? accomodation { get; set; }
+
+        public string? Remarks { get; set; }
     }
 }

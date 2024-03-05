@@ -53,7 +53,7 @@
                     <p class="info-item"><strong>ADDRESS</strong></p>
                     <p class="info-item1">@_userManager.GetUserAsync(User).Result.Address</p>
                 </div>
-                <a href="#" class="update-button">UPDATE INFO</a>
+                <a class="update-button" asp-action="EditProfile" asp-controller="Account">UPDATE INFO</a>
             </div>
         </div>
 
@@ -76,6 +76,7 @@
                                 <th><div class="table-container2">NUMBER<br>OF PAX:<br/></div></th>
                                 <th><div class="table-container2">DATE</div></th>
                                 <th><div class="table-container2">PACKAGE</div></th>
+                                <th><div class="table-container2">ACCOMODATION</div></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -87,6 +88,7 @@
                                     <td>@booking.pax</td>
                                     <td>@booking.date</td>
                                     <td>@booking.package</td>
+                                    <td>@booking.accomodation</td>
                                 </tr>
                             }
 
@@ -106,6 +108,7 @@
                                 <th><div class="table-container2">NUMBER<br>OF PAX:<br/></div></th>
                                 <th><div class="table-container2">DATE</div></th>
                                 <th><div class="table-container2">PACKAGE</div></th>
+                                <th><div class="table-container2">ACCOMODATION</div></th>
                                 <th><div class="table-container2">PAYMENT</div></th>
                             </tr>
                         </thead>
@@ -118,6 +121,7 @@
                                     <td>@booking.pax</td>
                                     <td>@booking.date</td>
                                     <td>@booking.package</td>
+                                    <td>@booking.accomodation</td>
                                     <td><a class="nav-button" asp-action="Receipt" asp-controller="Booking" asp-route-id="@booking.bookingId">SUBMIT PAYMENT</a></td>
                                 </tr>
                             }
@@ -137,6 +141,7 @@
                                 <th><div class="table-container2">NUMBER<BR>OF PAX:</div></th>
                                 <th><div class="table-container2">DATE</div></th>
                                 <th><div class="table-container2">PACKAGE</div></th>
+                                <th><div class="table-container2">ACCOMODATION</div></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -148,6 +153,8 @@
                                     <td>@booking.pax</td>
                                     <td>@booking.date</td>
                                     <td>@booking.package</td>
+                                    <td>@booking.accomodation</td>
+
                                 </tr>
                             }
                         </tbody>
@@ -166,6 +173,7 @@
                                 <th>NUMBER<BR>OF PAX:</th>
                                 <th>DATE</th>
                                 <th>PACKAGE</th>
+                                <th>ACCOMODATION</th>
                                 <th>STATUS</th>
                             </tr>
                         </thead>
@@ -178,7 +186,10 @@
                                     <td>@booking.pax</td>
                                     <td>@booking.date</td>
                                     <td>@booking.package</td>
+                                    <td>@booking.accomodation</td>
+
                                     <td>@booking.BStatus</td>
+
                                 </tr>
                             }
                         </tbody>
