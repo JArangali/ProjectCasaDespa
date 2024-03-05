@@ -184,6 +184,10 @@ namespace CasaDespaDraft.Controllers
             return View(gallery);
         }
 
+        public IActionResult GalleryVideoEdit()
+        {
+            return View();
+        }
 
         public IActionResult FAQs()
         {
