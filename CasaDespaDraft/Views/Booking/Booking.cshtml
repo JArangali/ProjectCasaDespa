@@ -361,13 +361,14 @@
     }
 
     #notediv{
-        padding:20px;
+        padding: 10px;
         background-color: #F9F4D6;
         border-radius: 10px;
-        margin-top:20px;
+        margin-top: 0px;
         box-shadow: 0 0 5px gray;
         border: 1px solid #967940;
         color: #967940;
+        margin-bottom: 25px
     }
 
     #notett{
@@ -463,6 +464,19 @@
                     </div>
                     <div id="tpolicycontent">
                         <div id="tppcontent">
+                            <div id="notediv">
+                                <span class="glyphicon glyphicon-warning-sign"><strong> NOTE: </strong></span>
+
+                                <ul>
+                                    <li><strong>Submission of a request may take up to at least a minute.</strong></li>
+                                    <li>
+                                        <strong>
+                                            Casa Despa's email notifications may be filtered into your spam folder. Please ensure to check your spam folder regularly for any communications from us.
+                                        </strong>
+                                    </li>
+                                </ul>
+                            </div>
+
                             <ul>
                                 <li>
                                     <strong>Regular Accommodations:</strong>
@@ -517,18 +531,6 @@
 
                             <li><strong>Warning: If any of our rules and regulations are violated, we can charge extra fees or terminate your stay in our resort.</strong></li>
 
-                            <div id="notediv">
-                                <span class="glyphicon glyphicon-warning-sign"><strong> NOTE: </strong></span>
-                                
-                                <ul>
-                                    <li><strong>Submission of a request may take up to at least a minute.</strong></li>
-                                    <li>
-                                        <strong>
-                                            Casa Despa's email notifications may be filtered into your spam folder. Please ensure to check your spam folder regularly for any communications from us.
-                                        </strong>
-                                    </li>
-                                </ul>
-                            </div>
                             
                         </div>
                         <div id="buttondivmodal">
@@ -602,7 +604,7 @@
 
 
     // Get the modal
-    var modal = document.getElementById("myModalT");
+    var modalb = document.getElementById("myModalT");
 
     // Get the button that opens the modal
     var bton = document.getElementById("BookButton");
@@ -612,18 +614,18 @@
 
     // When the user clicks on the button, open the modal
     bton.onclick = function () {
-        modal.style.display = "block";
+        modalb.style.display = "block";
     }
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
-        modal.style.display = "none";
+        modalb.style.display = "none";
     }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        if (event.target == modalb) {
+            modalb.style.display = "none";
         }
     }
 

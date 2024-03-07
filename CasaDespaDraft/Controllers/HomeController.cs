@@ -30,6 +30,20 @@ namespace CasaDespaDraft.Controllers
             return View(_dbData.infos);
         }
 
+        public IActionResult Notifications()
+        {
+
+
+                var notifications = _dbData.Notifications.ToList();
+
+
+                if (notifications == null)
+                {
+                    return NotFound();
+                }
+                return View(notifications);
+        }
+
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public IActionResult IndexEdit(int id)
