@@ -73,7 +73,7 @@
                         <li><a asp-area="" asp-controller="Home" asp-action="FAQs">FAQs</a></li>
                         <li><a asp-area="" asp-controller="Booking" asp-action="Booking">Booking</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="Profile">Profile</a></li>
-                        @* <li><a id="notifications">Notificatiornzzx</a></li> *@
+                        <li><a id="notifications" asp-area="" asp-controller="Home" asp-action="Notifications">Notification</a></li>
 
                     </ul>
 
@@ -95,6 +95,7 @@
                         <li><a asp-area="" asp-controller="Home" asp-action="Gallery">Gallery</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="FAQs">FAQs</a></li>
                         <li><a asp-area="" asp-controller="Booking" asp-action="Booking">Booking</a></li>
+                        @* <li><a id="notifications" asp-area="" asp-controller="Home" asp-action="Notifications">Notification</a></li> *@
 
                         <li><a asp-area="" asp-controller="Account" asp-action="Login" class="getstarted">Login/SignUp</a></li>
                     </ul>
@@ -112,6 +113,7 @@
                         <li><a asp-area="" asp-controller="Home" asp-action="Gallery">Gallery</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="FAQs">FAQs</a></li>
                         <li><a asp-area="" asp-controller="Admin" asp-action="Dashboard">Dashboard</a></li>
+                        <li><a id="notifications" asp-area="" asp-controller="Home" asp-action="Notifications">Notification</a></li>
 
 
                     </ul>
@@ -130,83 +132,6 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-
-        <div id="navModal" class="modal">
-
-
-            <div id="Navpopup">
-
-                <div id="popuptitle">
-                    <h2 id="policyheading"> Notifications </h2>
-                </div>
-                <div id="Notifcontainer">
-                <div id="Notifcontent">
-                            <h4 id="ppcontent">
-                                Your Booking has been Accepted
-                            </h4>
-                            <p>March 3, 2023 9:03pm</p>
-                </div>
-                    <div id="Notifcontent">
-                        <h4 id="ppcontent">
-                            Your Booking has been Accepted
-                        </h4>
-                        <p>March 3, 2023 9:03pm</p>
-                    </div>
-                    <div id="Notifcontent">
-                        <h4 id="ppcontent">
-                            Your Booking has been Accepted
-                        </h4>
-                        <p>March 3, 2023 9:03pm</p>
-                    </div>
-                    <div id="Notifcontent">
-                        <h4 id="ppcontent">
-                            Your Booking has been Accepted
-                        </h4>
-                        <p>March 3, 2023 9:03pm</p>
-                    </div>
-                    <div id="Notifcontent">
-                        <h4 id="ppcontent">
-                            Your Booking has been Accepted
-                        </h4>
-                        <p>March 3, 2023 9:03pm</p>
-                    </div>
-                    <div id="Notifcontent">
-                        <h4 id="ppcontent">
-                            Your Booking has been Accepted
-                        </h4>
-                        <p>March 3, 2023 9:03pm</p>
-                    </div>
-                    <div id="Notifcontent">
-                        <h4 id="ppcontent">
-                            Your Booking has been Accepted
-                        </h4>
-                        <p>March 3, 2023 9:03pm</p>
-                    </div>
-                    <div id="Notifcontent">
-                        <h4 id="ppcontent">
-                            Your Booking has been Accepted
-                        </h4>
-                        <p>March 3, 2023 9:03pm</p>
-                    </div>
-                    <div id="Notifcontent">
-                        <h4 id="ppcontent">
-                            Your Booking has been Accepted
-                        </h4>
-                        <p>March 3, 2023 9:03pm</p>
-                    </div>
-                    <div id="Notifcontent">
-                        <h4 id="ppcontent">
-                            Your Booking has been Accepted
-                        </h4>
-                        <p>March 3, 2023 9:03pm</p>
-                    </div>
-                </div>
-                <div>
-                    <input type="button" class="declined" id="acceptbutton" value="Back">
-                </div>
-            </div>
-
-        </div>
     </div>
 
     <!-- ======= Footer ======= -->
@@ -234,7 +159,7 @@
 
     @* <script>
         // Get the modal    
-        var modal = document.getElementById("navModal");
+        var modala = document.getElementById("navModal");
 
         // Get the button that opens the modal
         var btn = document.getElementById("notifications");
@@ -244,17 +169,17 @@
 
         // When the user clicks on the button, open the modal
         btn.onclick = function () {
-            modal.style.display = "flex";
+            modala.style.display = "flex";
         }
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
-            modal.style.display = "none";
+            modala.style.display = "none";
         }
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
-            if (event.target == modal) {
+            if (event.target == modala) {
                 modal.style.display = "none";
             }
         }

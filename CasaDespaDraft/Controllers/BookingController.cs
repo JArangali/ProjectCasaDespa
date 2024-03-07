@@ -11,6 +11,8 @@ using System.Diagnostics;
 using System.Security.Claims;
 using System.Xml.Linq;
 
+
+
 namespace CasaDespaDraft.Controllers
 {
     public class BookingController : Controller
@@ -46,6 +48,52 @@ namespace CasaDespaDraft.Controllers
 
             return View();
         }
+
+
+        public async Task<IActionResult> Notification()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            string adminEmail = "admin@example.com";
+            var adminUser = await _userManager.FindByEmailAsync(adminEmail);
+
+            if (user.Email == adminEmail)
+            {
+                return View("AdminNotification");
+            }
+            else
+            {
+                return View("Notification");
+            }
+        }
+
+        /*public IActionResult Notification()
+        {
+            var user = _userManager.GetUserAsync(User);
+            string adminEmail = "admin@example.com";
+            var adminUser = _userManager.FindByEmailAsync(adminEmail).Result;
+
+            if (user.Result.Email == adminEmail)
+            {
+                IEnumerable<AdminNotification> notification = _dbData.AdminNotification;
+                NotificationViewModel viewModels = new NotificationViewModel
+                {
+                    AdminNotifications = notification
+                };
+
+                return View(viewModels);
+            }
+            else
+            {
+                // Show the regular notifications
+                IEnumerable<Notification> notifications = _dbData.Notifications;
+                NotificationViewModel viewModel = new NotificationViewModel
+                {
+                    Notifications = notifications
+                };
+
+                return View(viewModel);
+            }
+        }*/
 
         [HttpPost]
         public async Task<IActionResult> Booking(Booking newBooking)
@@ -97,7 +145,7 @@ namespace CasaDespaDraft.Controllers
                 // Add the new recipe to the context
                 _dbData.Bookings.Add(toAdd);
 
-                var receiver = "granadaluisss@gmail.com";
+                var receiver = "lourdesashley.santos.cics@ust.edu.ph";
                 var subject = $"New Booking Request from {newBooking.fullName}";
                 var message = $"{newBooking.fullName} is trying to make a booking request with Casa Despa.";
 
@@ -109,9 +157,33 @@ namespace CasaDespaDraft.Controllers
 
                 await _emailSender.SendEmailAsync(customer, subjects, messages);
 
+                //NOTIFICATION
+                    //ADMIN
+                    var notification = new AdminNotification
+                    {
+                        User = await _userManager.FindByEmailAsync("admin@example.com"),
+                        RecipientEmail = receiver,
+                        Subject = subject,
+                        Message = message
+                    };
+                    await _emailSender.SendNotificationAsync(notification);
+                
+                    //CUSTOMER
+                    // Create a new Notification instance
+                    var notifications = new Notification
+                    {
+                        User = await _userManager.FindByIdAsync(userId),
+                        RecipientEmail = customer,
+                        Subject = subjects,
+                        Message = messages
+                    };
+                    // Send the notification
+                    await _emailSender.SendNotificationAsync(notifications);
+
+
                 // Save changes to the database
                 await _dbData.SaveChangesAsync();
-                return RedirectToAction("Profile", "Home");
+                return RedirectToAction("Profile", "Home", Notification);
             }
             return View(newBooking);
         }
@@ -175,11 +247,14 @@ namespace CasaDespaDraft.Controllers
 
             booking.Status = ProfileStatus.Pending_Payment;
 
-            var receiver = "alyssamarierromen@gmail.com";
+            var receiver = "lourdesashley.santos.cics@ust.edu.ph";
             var subject = $"SUBMITTED PROOF OF DOWN PAYMENT";
             var message = $"{booking.fullName} has submitted their proof of down payment.";
 
             await _emailSender.SendEmailAsync(receiver, subject, message);
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var users = await _userManager.FindByIdAsync(userId);
 
             var user = await _userManager.FindByIdAsync(booking.userId);
             var email = user.Email;
@@ -190,10 +265,38 @@ namespace CasaDespaDraft.Controllers
 
             await _emailSender.SendEmailAsync(customer, subjects, messages);
 
+            //NOTIFICATION
+            /*var currentUser = await _userManager.GetUserAsync(User);
+            var adminUser = await _userManager.FindByEmailAsync("admin@example.com");
+*/
+           
+                var notifications = new AdminNotification
+                {
+                    User = await _userManager.FindByEmailAsync("admin@example.com"),
+                    RecipientEmail = receiver,
+                    Subject = subject,
+                    Message = message
+                };
+                await _emailSender.SendNotificationAsync(notifications);
+            
+                // Create a new Notification instance
+                var notification = new Notification
+                {
+                    User = await _userManager.FindByIdAsync(booking.userId),
+                    RecipientEmail = customer,
+                    Subject = subjects,
+                    Message = messages
+                };
+                /*var userss = await _userManager.FindByIdAsync(notification.UserId);*/
+
+                // Send the notification
+                await _emailSender.SendNotificationAsync(notification);
+            
+
             _dbData.Entry(booking).State = EntityState.Modified;
             _dbData.SaveChanges();
 
-            return RedirectToAction("Profile", "Home");
+            return RedirectToAction("Profile", "Home", Notification);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
