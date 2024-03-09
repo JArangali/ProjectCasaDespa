@@ -12,7 +12,9 @@ public class AppDbContext : IdentityDbContext<User>
     public DbSet<Booking> Bookings { get; set; }
     public DbSet<Homepage> infos { get; set; }
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-    
+    public DbSet<Notification> Notifications { get; set; }
+    public DbSet<AdminNotification> AdminNotification { get; set; }
+
     //Data Seeding
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

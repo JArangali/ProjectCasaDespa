@@ -87,6 +87,62 @@ namespace CasaDespaDraft.Controllers
             return RedirectToAction("Dashboard", "Admin");
         }
 
+        public async Task<IActionResult> Notification()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            string adminEmail = "admin@example.com";
+            var adminUser = await _userManager.FindByEmailAsync(adminEmail);
+
+            if (user.Email == adminEmail)
+            {
+                return View("AdminNotification");
+            }
+            else
+            {
+                return View("Notification");
+            }
+        }
+
+        /*public async Task<IActionResult> Notification()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            string adminEmail = "admin@example.com";
+            var adminUser = await _userManager.FindByEmailAsync(adminEmail);
+
+            if (user.Email == adminEmail)
+            {
+                IEnumerable<AdminNotification> notification = _dbData.AdminNotification;
+                NotificationViewModel viewModels = new NotificationViewModel
+                {
+                    AdminNotifications = notification
+                };
+
+                return View(viewModels);
+            }
+            else
+            {
+                // Show the regular notifications
+                IEnumerable<Notification> notifications = _dbData.Notifications;
+                NotificationViewModel viewModel = new NotificationViewModel
+                {
+                    Notifications = notifications
+                };
+
+                return View(viewModel);
+            }
+        }*/
+
+        /*public IActionResult Notification()
+        {
+            IEnumerable<Notification> notifications = _dbData.Notifications;
+            NotificationViewModel viewModel = new NotificationViewModel
+            {
+                Notifications = notifications
+            };
+            return View(viewModel);
+        }*/
+
+
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DashboardBookingDecline(int id)
         {
@@ -112,9 +168,21 @@ namespace CasaDespaDraft.Controllers
 
             await _emailSender.SendEmailAsync(customer, subjects, messages);
 
+            // Create a new Notification instance
+            var notification = new Notification
+            {
+                User = await _userManager.FindByIdAsync(Archived.userId),
+                RecipientEmail = customer,
+                Subject = subjects,
+                Message = messages
+            };
+
+            // Send the notification
+            await _emailSender.SendNotificationAsync(notification);
+
             _dbData.Bookings.Update(toDecline);
             _dbData.SaveChanges();
-            return RedirectToAction("Dashboard", "Admin");
+            return RedirectToAction("Dashboard", "Admin", Notification);
         }
 
         [Authorize(Roles = "Admin")]
@@ -148,9 +216,22 @@ namespace CasaDespaDraft.Controllers
 
             await _emailSender.SendEmailAsync(customer, subjects, messages);
 
+            // Create a new Notification instance
+            var notification = new Notification
+            {
+                User = await _userManager.FindByIdAsync(Archived.userId),
+                RecipientEmail = customer,
+                Subject = subjects,
+                Message = messages
+            };
+            /*var users = await _userManager.FindByIdAsync(notification.UserId);*/
+
+            // Send the notification
+            await _emailSender.SendNotificationAsync(notification);
+
             _dbData.Bookings.Update(toCancel);
             _dbData.SaveChanges();
-            return RedirectToAction("Dashboard", "Admin");
+            return RedirectToAction("Dashboard", "Admin", Notification);
         }
 
         [Authorize(Roles = "Admin")]
@@ -178,9 +259,22 @@ namespace CasaDespaDraft.Controllers
 
             await _emailSender.SendEmailAsync(customer, subjects, messages);
 
+            // Create a new Notification instance
+            var notification = new Notification
+            {
+                User = await _userManager.FindByIdAsync(Accepted.userId),
+                RecipientEmail = customer,
+                Subject = subjects,
+                Message = messages
+            };
+            /*var users = await _userManager.FindByIdAsync(notification.UserId);*/
+
+            // Send the notification
+            await _emailSender.SendNotificationAsync(notification);
+
             _dbData.Bookings.Update(toAccept);
             _dbData.SaveChanges();
-            return RedirectToAction("Dashboard", "Admin");
+            return RedirectToAction("Dashboard", "Admin", Notification);
         }
 
         [Authorize(Roles = "Admin")]
@@ -208,9 +302,22 @@ namespace CasaDespaDraft.Controllers
 
             await _emailSender.SendEmailAsync(customer, subjects, messages);
 
+            // Create a new Notification instance
+            var notification = new Notification
+            {
+                User = await _userManager.FindByIdAsync(Archived.userId),
+                RecipientEmail = customer,
+                Subject = subjects,
+                Message = messages
+            };
+            /*var users = await _userManager.FindByIdAsync(notification.UserId);*/
+
+            // Send the notification
+            await _emailSender.SendNotificationAsync(notification);
+
             _dbData.Bookings.Update(toArchive);
             _dbData.SaveChanges();
-            return RedirectToAction("Dashboard", "Admin");
+            return RedirectToAction("Dashboard", "Admin", Notification);
         }
 
         [HttpGet]
@@ -249,7 +356,6 @@ namespace CasaDespaDraft.Controllers
                 BStatus = booking.BStatus,
                 accomodation = booking.accomodation
             };
-
 
             return View(model);
         }
@@ -299,10 +405,23 @@ namespace CasaDespaDraft.Controllers
 
             await _emailSender.SendEmailAsync(customer, subjects, messages);
 
+            // Create a new Notification instance
+            var notification = new Notification
+            {
+                User = await _userManager.FindByIdAsync(booking.userId),
+                RecipientEmail = customer,
+                Subject = subjects,
+                Message = messages
+            };
+            /*var users = await _userManager.FindByIdAsync(notification.UserId);*/
+
+            // Send the notification
+            await _emailSender.SendNotificationAsync(notification);
+
             _dbData.Entry(booking).State = EntityState.Modified;
             _dbData.SaveChanges();
 
-            return RedirectToAction("Dashboard", "Admin");
+            return RedirectToAction("Dashboard", "Admin", Notification);
         }
 
         [Authorize(Roles = "Admin")]
@@ -374,10 +493,23 @@ namespace CasaDespaDraft.Controllers
 
             await _emailSender.SendEmailAsync(customer, subjects, messages);
 
+            // Create a new Notification instance
+            var notification = new Notification
+            {
+                User = await _userManager.FindByIdAsync(booking.userId),
+                RecipientEmail = customer,
+                Subject = subjects,
+                Message = messages
+            };
+            /*var users = await _userManager.FindByIdAsync(notification.UserId);*/
+
+            // Send the notification
+            await _emailSender.SendNotificationAsync(notification);
+
             _dbData.Entry(booking).State = EntityState.Modified;
             _dbData.SaveChanges();
 
-            return RedirectToAction("Dashboard", "Admin");
+            return RedirectToAction("Dashboard", "Admin", Notification);
         }
 
         [Authorize(Roles = "Admin")]
@@ -439,9 +571,22 @@ namespace CasaDespaDraft.Controllers
 
             await _emailSender.SendEmailAsync(customer, subjects, messages);
 
+            // Create a new Notification instance
+            var notification = new Notification
+            {
+                User = await _userManager.FindByIdAsync(booking.userId),
+                RecipientEmail = customer,
+                Subject = subjects,
+                Message = messages
+            };
+            /*var users = await _userManager.FindByIdAsync(notification.UserId);*/
+
+            // Send the notification
+            await _emailSender.SendNotificationAsync(notification);
+
             _dbData.Bookings.Update(booking);
             _dbData.SaveChanges();
-            return RedirectToAction("Dashboard", "Admin");
+            return RedirectToAction("Dashboard", "Admin", Notification);
         }
 
 

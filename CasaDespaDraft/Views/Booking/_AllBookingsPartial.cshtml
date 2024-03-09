@@ -1,0 +1,10 @@
+﻿@model List<CasaDespaDraft.Models.Booking>
+
+<!-- Render the list of bookings -->
+@foreach (var booking in Model)
+{
+    <div>
+        <p class="Package">@booking.package</p>
+        <p class="Dates">@booking.date</p>
+    </div>
+}
