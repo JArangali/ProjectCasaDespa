@@ -189,6 +189,23 @@ namespace CasaDespaDraft.Controllers
         }
 
         [HttpGet]
+        public IActionResult AllBooking()
+        {
+            var user = _userManager.GetUserAsync(User).Result;
+            if (user == null)
+            {
+                // Handle user not found
+                return RedirectToAction("Login", "Account"); // Redirect to another action or handle appropriately
+            }
+
+            // Assuming _dbData is your database context with a DbSet<Bookings>
+            var allBookings = _dbData.Bookings.ToList();
+
+            // Pass the list of bookings to the partial view
+            return PartialView("_AllBookingsPartial", allBookings);
+        }
+
+        [HttpGet]
         public IActionResult Receipt(int id)
         {
             Booking? booking = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
