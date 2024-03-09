@@ -361,18 +361,46 @@
     }
 
     #notediv{
-        padding:20px;
+        padding: 10px;
         background-color: #F9F4D6;
         border-radius: 10px;
-        margin-top:20px;
+        margin-top: 0px;
         box-shadow: 0 0 5px gray;
         border: 1px solid #967940;
         color: #967940;
+        margin-bottom: 25px
     }
 
     #notett{
     margin-left:10px;
 
+    }
+
+    .Night_Tour {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #c3ab7d;
+        display: inline-block;
+        margin-right: 5px !important;
+    }
+
+    .Day_Tour {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #6b2c0e;
+        display: inline-block;
+        margin-right: 5px !important;
+    }
+
+    .Twenty_Two_Hours {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #243719;
+        display: inline-block;
+        margin-right: 5px !important;
     }
 </style>
 
@@ -463,6 +491,19 @@
                     </div>
                     <div id="tpolicycontent">
                         <div id="tppcontent">
+                            <div id="notediv">
+                                <span class="glyphicon glyphicon-warning-sign"><strong> NOTE: </strong></span>
+
+                                <ul>
+                                    <li><strong>Submission of a request may take up to at least a minute.</strong></li>
+                                    <li>
+                                        <strong>
+                                            Casa Despa's email notifications may be filtered into your spam folder. Please ensure to check your spam folder regularly for any communications from us.
+                                        </strong>
+                                    </li>
+                                </ul>
+                            </div>
+
                             <ul>
                                 <li>
                                     <strong>Regular Accommodations:</strong>
@@ -517,18 +558,6 @@
 
                             <li><strong>Warning: If any of our rules and regulations are violated, we can charge extra fees or terminate your stay in our resort.</strong></li>
 
-                            <div id="notediv">
-                                <span class="glyphicon glyphicon-warning-sign"><strong> NOTE: </strong></span>
-                                
-                                <ul>
-                                    <li><strong>Submission of a request may take up to at least a minute.</strong></li>
-                                    <li>
-                                        <strong>
-                                            Casa Despa's email notifications may be filtered into your spam folder. Please ensure to check your spam folder regularly for any communications from us.
-                                        </strong>
-                                    </li>
-                                </ul>
-                            </div>
                             
                         </div>
                         <div id="buttondivmodal">
@@ -560,45 +589,106 @@
     </div>
 </section>
 
+<div id="allBookingsContainer" style="display: none;">
+    hidden
+</div>
+
 <!-- Your FullCalendar initialization script -->
 <script>
     $(document).ready(function () {
-        $('#calendar').fullCalendar({
-            header: {
-                left: 'prev',
-                center: 'title',
-                right: 'next'
-            },
-            dayNamesShort: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
-            eventAfterAllRender: function (view) {
-                // Apply styles after the calendar has rendered
-                $('.fc-day-header').css('font-size', '24px');
-                $('.fc-day').css('font-size', '24px');
-                $('.fc-day-number').css({
-                    'font-size': '24px',
-                    'text-align': 'center',
-                    'float': 'none',
-                });
-                //$('.fc-day-top, .fc-day-content, .fc-day-bg, .fc-event, .fc-highlight').css('display', 'none');
-                $('.fc-today').css({
-                    'border': 'none',
-                    'color': 'inherit'
-                });
-            },
-            dayClick: function (date, jsEvent, view) {
-                // Remove previously clicked day's indicator
-                $('.fc-day').removeClass('clicked-day');
 
-                // Get the clicked date and set it to the input field
-                var clickedDate = date.format();
-                $('#selectedDate').val(clickedDate);
+        // Make an Ajax request to the AllBooking action
+        $.ajax({
+            url: '@Url.Action("AllBooking", "Booking")',
+            type: 'GET',
+            success: function (data) {
+                // Replace the content of the container with the received HTML
+                $('#allBookingsContainer').html(data);
 
-                // Add indicator to the clicked day
-                $(jsEvent.target).closest('.fc-day').addClass('clicked-day');
+
+
+                $('#calendar').fullCalendar({
+                    header: {
+                        left: 'prev',
+                        center: 'title',
+                        right: 'next'
+                    },
+                    dayNamesShort: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+                    eventAfterAllRender: function (view) {
+                        // Apply styles after the calendar has rendered
+                        applyCustomStyles();
+                    },
+                    viewRender: function (view, element) {
+                        // Apply styles when the view changes (e.g., when switching months)
+                        applyCustomStyles();
+                        // Create a new block element
+                        var contentArray = []; // An array to store combined content of .Dates and its nearest .Package sibling
+
+                        $('.Dates').each(function () {
+                            var datesContent = $(this).html(); // Get the HTML content of .Dates element
+                            var packageContent = $(this).siblings('.Package').html(); // Get the HTML content of nearest .Package sibling
+
+                            var combinedContent = {
+                                Dates: datesContent,
+                                Package: packageContent
+                            };
+
+                            contentArray.push(combinedContent); // Push the combined content to the array
+                        });
+
+                        for (var i = 0; i < contentArray.length; i++) {
+                            var datesValue = contentArray[i].Dates;
+                            var packageValue = contentArray[i].Package;
+
+                            // Select the element with the specified date and add a div with classname equal to the value of packageValue after it
+                            $('.fc-day-top[data-date="' + datesValue + '"] .fc-day-number').after('<div class="' + packageValue + '"></div>');
+                        }
+
+                    },
+                    dayClick: function (date, jsEvent, view) {
+                        // Remove previously clicked day's indicator
+                        $('.fc-day').removeClass('clicked-day');
+
+                        // Get the clicked date and set it to the input field
+                        var clickedDate = date.format();
+                        $('#selectedDate').val(clickedDate);
+
+                        // Add indicator to the clicked day
+                        $(jsEvent.target).closest('.fc-day').addClass('clicked-day');
+                    },
+                    // Your other calendar options and events will go here
+                });
+
+                // Function to apply custom styles
+                function applyCustomStyles() {
+                    $('.fc-day-header').css('font-size', '24px');
+                    $('.fc-day').css('font-size', '24px');
+                    $('.fc-day-number').css({
+                        'font-size': '24px',
+                        'text-align': 'center',
+                        'float': 'none',
+                        'display': 'block',
+                    });
+                    //$('.fc-day-top, .fc-day-content, .fc-day-bg, .fc-event, .fc-highlight').css('display', 'none');
+                    $('.fc-today').css({
+                        'border': 'none',
+                        'color': 'inherit'
+                    });
+
+
+                }
+
+
+
+
             },
-            // Your other calendar options and events will go here
+            error: function (error) {
+                console.error('Error fetching all bookings.', error);
+            }
         });
+
     });
+
 
 
     // Get the modal
@@ -626,5 +716,6 @@
             modal.style.display = "none";
         }
     }
+
 
 </script>

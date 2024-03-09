@@ -1,0 +1,46 @@
+﻿@using CasaDespaDraft.ViewModels
+@using CasaDespaDraft.Data
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<User> _userManager;
+@model IEnumerable<Notification>
+@{
+    ViewData["Title"] = "Notifications";
+    var currentUser = await _userManager.GetUserAsync(User);
+    var notificationsForCurrentUser = Model.Where(n => n.userId == currentUser.Id).ToList();
+}
+
+<!-- Notification Section -->
+<section id="ac">
+    <div id="backbuttondiv">
+        <button id="fpbackbutton"> <a id="fpabackbutton" asp-area="" asp-controller="Home" asp-action="Home" class="getstarted"> <i class="material-icons">chevron_left</i> </a> </button>
+    </div>
+    <div id="acform">
+        <div id="actitle">
+            <div id="actitle1">
+                <h2 id="sqheading"> NOTIFICATIONS </h2>
+            </div>
+            <div>
+            </div>
+        </div>
+
+        <div id="Notifcontainer">
+            @if (notificationsForCurrentUser.Any())
+            {
+
+                @foreach (var notification in notificationsForCurrentUser.OrderByDescending(n => n.SentDate))
+                {
+                    <div id="Notifcontainer2">
+                        <h5 id="ppcontenth5">@notification.Subject</h5>
+                        <p id="ppcontent">@notification.Message</p>
+                        <p id="ppcontent">@notification.SentDate.ToShortDateString()</p>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No notifications found for the current user.</p>
+            }
+        </div>
+    </div>
+</section>

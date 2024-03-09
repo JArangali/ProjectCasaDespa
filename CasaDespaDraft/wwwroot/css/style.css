@@ -303,8 +303,22 @@ h6 {
 
 #Notifcontainer {
     padding: 10px;
-    overflow-y: scroll;
-    max-height: 410px;
+    padding-top: 0px;
+    max-height: 257px;
+    margin-left: 6px;
+    margin-right: 10px;
+    margin-top: 5px;
+    overflow-y:scroll;
+}
+
+
+#Notifcontainer2 {
+    padding: 15px;
+    background-color: blanchedalmond;
+    margin-top: 5px;
+    width: 100%;
+    border-radius: 8px;
+    text-align: left;
 }
 
 #Notifcontent {
@@ -312,6 +326,9 @@ h6 {
     border: solid 1px;
 }
 
+#ppcontenth5 {
+    font-weight:10px;
+}
 
 @media (max-width: 1366px) {
     .navbar .dropdown .dropdown ul {
@@ -463,6 +480,11 @@ h6 {
     height: 600px;
 }
 
+.logo me-auto {
+    font-size: 17px;
+    width: 212px;
+    display:
+}
 /*--------------------------------------------------------------
 # Button Menu Section
 --------------------------------------------------------------*/
