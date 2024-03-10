@@ -95,9 +95,35 @@ namespace CasaDespaDraft.Controllers
             }
         }*/
 
+
+
         [HttpPost]
         public async Task<IActionResult> Booking(Booking newBooking)
         {
+            bool IsDayDateBooked(List<DayDates> bookings)
+            {
+                return bookings.Any(b => b.dayDate == newBooking.date);
+            }
+
+            bool IsNightInDateBooked(List<NightInDates> bookings)
+            {
+                return bookings.Any(b => b.nightInDate == newBooking.date);
+            }
+
+            bool IsNightOutDateBooked(List<NightOutDates> bookings)
+            {
+                return bookings.Any(b => b.nightOutDate == newBooking.date);
+            }
+
+            bool IsTTInDateBooked(List<TTInDates> bookings)
+            {
+                return bookings.Any(b => b.ttInDate == newBooking.date);
+            }
+
+            bool IsTTOutDateBooked(List<TTOutDates> bookings)
+            {
+                return bookings.Any(b => b.ttOutDate == newBooking.date);
+            }
 
             if (ModelState.IsValid)
             {
@@ -139,46 +165,98 @@ namespace CasaDespaDraft.Controllers
                     }
                 }
 
+                if (newBooking.package == Package.Day_Tour)
+                {
+                    if (IsDayDateBooked(_dbData.DayDates.ToList()))
+                    {
+                        if (IsTTInDateBooked(_dbData.TTInDates.ToList()))
+                        {
+                            if (IsTTOutDateBooked(_dbData.TTOutDates.ToList()))
+                            {
+                                ModelState.AddModelError("Date", "Sorry, booked customers are set to check out at 2pm on the chosen date.");
+                                return View(newBooking);
+                            }
+                            ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Twenty-Two Hour Tour.");
+                            return View(newBooking);
+                        }
+                        ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Day Tour.");
+                        return View(newBooking);
+                    }
+                }
+
+                if (newBooking.package == Package.Night_Tour)
+                {
+                    if (IsNightInDateBooked(_dbData.NightInDates.ToList()))
+                    {
+                        if (IsTTInDateBooked(_dbData.TTInDates.ToList()))
+                        { 
+                            ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Twenty-Two Hour Tour.");
+                            return View(newBooking);
+                        }
+                        ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Night Tour.");
+                        return View(newBooking);
+                    }
+                }
+
+                if (newBooking.package == Package.Twenty_Two_Hours)
+                {
+                    if (IsDayDateBooked(_dbData.DayDates.ToList()))
+                    {
+                        if (IsTTInDateBooked(_dbData.TTInDates.ToList()))
+                        {
+                            if (IsNightInDateBooked(_dbData.NightInDates.ToList()))
+                            {
+                                ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Night Tour.");
+                                return View(newBooking);
+                            }
+                            ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Twenty-Two Hour Tour.");
+                            return View(newBooking);
+                        }
+                        ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Day Tour.");
+                        return View(newBooking);
+                    }
+                }
+
                 var user = await _userManager.FindByIdAsync(userId);
                 var email = user.Email;
 
                 // Add the new recipe to the context
                 _dbData.Bookings.Add(toAdd);
 
-                var receiver = "lourdesashley.santos.cics@ust.edu.ph";
-                var subject = $"New Booking Request from {newBooking.fullName}";
-                var message = $"{newBooking.fullName} is trying to make a booking request with Casa Despa.";
+                var receiver = "granadaluisss@gmail.com";
+                var subject = $"New Booking Request Received - {newBooking.fullName} - Booking ID: {newBooking.bookingId}";
+                var message = $"Dear Admin\n\nA new booking request has been submitted by {newBooking.fullName} with Booking ID: {newBooking.bookingId}. Please view the details.\n\nThank you. \n\nCasa Despa";
 
                 await _emailSender.SendEmailAsync(receiver, subject, message);
 
                 var customer = email;
-                var subjects = $"You have sucessfully submitted your request to Casa Despa.";
-                var messages = $"You just submitted a booking request on Casa Despa under the name of {newBooking.fullName}";
+                var subjects = $"Booking Request to Casa Despa";
+                var messages = $"Dear {newBooking.fullName}\n\nYou have successfully submitted your booking request to Casa Despa!\nBooking Package : {newBooking.package}\nRequested Date: {newBooking.date}\n\nThank you\nCasa Despa";
 
                 await _emailSender.SendEmailAsync(customer, subjects, messages);
 
                 //NOTIFICATION
-                    //ADMIN
-                    var notification = new AdminNotification
-                    {
-                        User = await _userManager.FindByEmailAsync("admin@example.com"),
-                        RecipientEmail = receiver,
-                        Subject = subject,
-                        Message = message
-                    };
-                    await _emailSender.SendNotificationAsync(notification);
-                
-                    //CUSTOMER
-                    // Create a new Notification instance
-                    var notifications = new Notification
-                    {
-                        User = await _userManager.FindByIdAsync(userId),
-                        RecipientEmail = customer,
-                        Subject = subjects,
-                        Message = messages
-                    };
-                    // Send the notification
-                    await _emailSender.SendNotificationAsync(notifications);
+                //ADMIN
+                var notification = new AdminNotification
+                {
+                    User = await _userManager.FindByEmailAsync("admin@example.com"),
+                    RecipientEmail = receiver,
+                    Subject = subject,
+                    Message = message
+                };
+                await _emailSender.SendNotificationAsync(notification);
+
+                //CUSTOMER
+                // Create a new Notification instance
+                var notifications = new Notification
+                {
+                    User = await _userManager.FindByIdAsync(userId),
+                    RecipientEmail = customer,
+                    Subject = subjects,
+                    Message = messages
+                };
+                // Send the notification
+                await _emailSender.SendNotificationAsync(notifications);
 
 
                 // Save changes to the database
@@ -189,7 +267,7 @@ namespace CasaDespaDraft.Controllers
         }
 
         [HttpGet]
-        public IActionResult AllBooking()
+        public IActionResult AllBooking(string bStatus)
         {
             var user = _userManager.GetUserAsync(User).Result;
             if (user == null)
@@ -199,7 +277,9 @@ namespace CasaDespaDraft.Controllers
             }
 
             // Assuming _dbData is your database context with a DbSet<Bookings>
-            var allBookings = _dbData.Bookings.ToList();
+            var allBookings = _dbData.Bookings
+                .Where(b => b.Status == ProfileStatus.Approved && b.BStatus == bStatus)
+                .ToList();
 
             // Pass the list of bookings to the partial view
             return PartialView("_AllBookingsPartial", allBookings);
@@ -264,9 +344,9 @@ namespace CasaDespaDraft.Controllers
 
             booking.Status = ProfileStatus.Pending_Payment;
 
-            var receiver = "lourdesashley.santos.cics@ust.edu.ph";
-            var subject = $"SUBMITTED PROOF OF DOWN PAYMENT";
-            var message = $"{booking.fullName} has submitted their proof of down payment.";
+            var receiver = "granadaluisss@gmail.com";
+            var subject = $"Proof of payment received - {booking.fullName} - Booking ID: {booking.bookingId}";
+            var message = $"Dear Admin\n\n{booking.fullName} has submitted their proof of payment for Booking ID: {booking.bookingId}. Please verify and proceed with the next steps accordingly.\n\nThank you\n\tCasa Despa";
 
             await _emailSender.SendEmailAsync(receiver, subject, message);
 
@@ -277,8 +357,8 @@ namespace CasaDespaDraft.Controllers
             var email = user.Email;
 
             var customer = email;
-            var subjects = $"CONFIRMATION EMAIL FOR UPLOADED PROOF OF PAYMENT";
-            var messages = $"You have submitted your proof of down payment to Casa Despa. Please wait for the Casa Despa administrators to check your payment.";
+            var subjects = $"Proof of Down Payment Received - Booking ID: {booking.bookingId}\r\n";
+            var messages = $"Dear {booking.fullName}\n\nYour proof of payment for Booking ID : {booking.bookingId} has been successfully received. Our team will review and process it accordingly.\n\nThank you\nCasa Despa";
 
             await _emailSender.SendEmailAsync(customer, subjects, messages);
 

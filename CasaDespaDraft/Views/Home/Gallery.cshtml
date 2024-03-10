@@ -33,7 +33,10 @@
         <center><iframe id="videoframe" width="1300" height="577" src="@Gallery.video" title="CASA DESPA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </center>
     }
+    @if (User.IsInRole("Admin"))
+            {
     <center><a asp-area="" asp-controller="Home" asp-action="GalleryVideoEdit"><div id="GalleryVid_Edit_Button"><p>EDIT VIDEO</p></div></a></center>
+            }
 </section>
 
 
