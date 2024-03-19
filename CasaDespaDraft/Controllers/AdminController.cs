@@ -163,8 +163,8 @@ namespace CasaDespaDraft.Controllers
             var email = user.Email;
 
             var customer = email;
-            var subjects = $"DECLINED BOOKING REQUEST";
-            var messages = $"Casa Despa has declined your booking request under the name of {Archived.fullName}";
+            var subjects = $"Booking Request Declined - Booking ID: {Archived.bookingId}";
+            var messages = $"Dear {Archived.fullName}\n\nWe regret to inform you that your booking request with Booking ID: {Archived.bookingId} has been declined. If you have any questions or concerns, please feel free to contact us.\n\nThank you\nCasa Despa";
 
             await _emailSender.SendEmailAsync(customer, subjects, messages);
 
@@ -211,8 +211,8 @@ namespace CasaDespaDraft.Controllers
             var email = user.Email;
 
             var customer = email;
-            var subjects = $"CANCELLED BOOKING TRANSACTION";
-            var messages = $"Casa Despa has cancelled your booking under the name of {Archived.fullName}";
+            var subjects = $"Booking Canceled - Booking ID: {Archived.bookingId}";
+            var messages = $"Dear {Archived.fullName}\n\nWe regret to inform you that your booking with Booking ID: {Archived.bookingId} has been canceled. If you have any questions or concerns, please contact us.\n\nThank you\nCasa Despa";
 
             await _emailSender.SendEmailAsync(customer, subjects, messages);
 
@@ -235,8 +235,9 @@ namespace CasaDespaDraft.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> DashboardAcceptedBooking(int id)
+        public async Task<IActionResult> DashboardAcceptedBooking(int id, DayDates newDayDate, NightInDates newNightInDate, NightOutDates newNightOutDate, TTInDates newTTInDate, TTOutDates newTTOutDate)
         {
+
             Booking? Accepted = _dbData.Bookings.FirstOrDefault(st => st.bookingId == id);
 
             if (Accepted == null)
@@ -254,8 +255,8 @@ namespace CasaDespaDraft.Controllers
             var email = user.Email;
 
             var customer = email;
-            var subjects = $"APPROVED BOOKING";
-            var messages = $"Casa Despa has reviewed and approved your booking request under the name of {Accepted.fullName}";
+            var subjects = $"Booking Approved - Booking ID: {Accepted.bookingId}";
+            var messages = $"Dear {Accepted.fullName}\n\nWe have received and verified your proof of down payment for Booking ID: {Accepted.bookingId}. Your booking is now confirmed.\n\nThank you\nCasa Despa";
 
             await _emailSender.SendEmailAsync(customer, subjects, messages);
 
@@ -267,6 +268,52 @@ namespace CasaDespaDraft.Controllers
                 Subject = subjects,
                 Message = messages
             };
+
+            if (Accepted.package == Package.Day_Tour) 
+            {
+                newDayDate = new DayDates
+                {
+                    dayDate = Accepted.date
+                };
+                _dbData.DayDates.Add(newDayDate);
+            }
+
+            if (Accepted.package == Package.Night_Tour)
+            {
+                DateTime bookingDate = DateTime.Parse(Accepted.date);
+
+                newNightInDate = new NightInDates
+                {
+                    nightInDate = Accepted.date
+                };
+                _dbData.NightInDates.Add(newNightInDate);
+
+                var nextDayDate = bookingDate.AddDays(1).ToString("yyyy-MM-dd");
+                newNightOutDate = new NightOutDates
+                {
+                    nightOutDate = nextDayDate
+                };
+                _dbData.NightOutDates.Add(newNightOutDate);
+            }
+
+            if (Accepted.package == Package.Twenty_Two_Hours)
+            {
+                DateTime bookingDate = DateTime.Parse(Accepted.date);
+
+                newTTInDate = new TTInDates
+                {
+                    ttInDate = Accepted.date
+                };
+                _dbData.TTInDates.Add(newTTInDate);
+
+                var nextDayDate = bookingDate.AddDays(1).ToString("yyyy-MM-dd");
+                newTTOutDate = new TTOutDates
+                {
+                    ttOutDate = nextDayDate
+                };
+                _dbData.TTOutDates.Add(newTTOutDate);
+            }
+
             /*var users = await _userManager.FindByIdAsync(notification.UserId);*/
 
             // Send the notification
@@ -297,8 +344,9 @@ namespace CasaDespaDraft.Controllers
             var email = user.Email;
 
             var customer = email;
-            var subjects = $"BOOKING DONE";
-            var messages = $"Thank you for visiting CASA DESPA!";
+            var subjects = $"Booking Done - Booking ID: {Archived.bookingId}";
+            var messages = $"Dear {Archived.fullName}\n\nThank you for choosing Casa Despa! Your booking with Booking ID: {Archived.bookingId} has been completed. We look forward for your next visit.\n\nThank you\nCasa Despa";
+
 
             await _emailSender.SendEmailAsync(customer, subjects, messages);
 
@@ -400,8 +448,8 @@ namespace CasaDespaDraft.Controllers
             var email = user.Email;
 
             var customer = email;
-            var subjects = $"Request for Down Payment";
-            var messages = $"Casa Despa is requesting for the down payment for booking request under the name of {booking.fullName}";
+            var subjects = $"Down Payment Request for Booking - Booking ID : {booking.bookingId}";
+            var messages = $"Dear {booking.fullName}\n\nOur team is requesting the down payment for your booking with Booking ID: {booking.bookingId}. Kindly proceed with the payment at your earliest convenience to secure your booking. Failure to do so may result in the cancellation of your booking.\n\nThank you\nCasa Despa";
 
             await _emailSender.SendEmailAsync(customer, subjects, messages);
 
@@ -566,8 +614,8 @@ namespace CasaDespaDraft.Controllers
             var email = user.Email;
 
             var customer = email;
-            var subjects = $"UPDATED BOOKING DETAILS";
-            var messages = $"Casa Despa has updated your booking under the name of {booking.fullName} based on your inquiry.";
+            var subjects = $"Booking Details Updated - Booking ID:{booking.bookingId}";
+            var messages = $"Dear {booking.fullName}\n\nYour request changes to the booking details for Booking ID: {booking.bookingId} has been processed. Please review the updated information, and let us know if you have any further requests.\n\nThank you\nCasa Despa";
 
             await _emailSender.SendEmailAsync(customer, subjects, messages);
 

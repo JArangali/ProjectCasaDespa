@@ -601,6 +601,7 @@
         $.ajax({
             url: '@Url.Action("AllBooking", "Booking")',
             type: 'GET',
+            data: { bStatus: 'Accepted' },
             success: function (data) {
                 // Replace the content of the container with the received HTML
                 $('#allBookingsContainer').html(data);

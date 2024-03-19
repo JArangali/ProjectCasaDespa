@@ -14,6 +14,12 @@ public class AppDbContext : IdentityDbContext<User>
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
     public DbSet<Notification> Notifications { get; set; }
     public DbSet<AdminNotification> AdminNotification { get; set; }
+    public DbSet<DayDates> DayDates { get; set; }
+    public DbSet<NightInDates> NightInDates { get; set; }
+    public DbSet<NightOutDates> NightOutDates { get; set; }
+    public DbSet<TTInDates> TTInDates { get; set; }
+    public DbSet<TTOutDates> TTOutDates { get; set; }
+
 
     //Data Seeding
     protected override void OnModelCreating(ModelBuilder modelBuilder)

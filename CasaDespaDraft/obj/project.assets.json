@@ -10125,19 +10125,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lourd\\.nuget\\packages\\": {}
+    "C:\\Users\\luiis\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lourd\\source\\repos\\ProjectCasaDespa\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj",
+      "projectUniqueName": "C:\\Users\\luiis\\Documents\\GitHub\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj",
       "projectName": "CasaDespaDraft",
-      "projectPath": "C:\\Users\\lourd\\source\\repos\\ProjectCasaDespa\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj",
-      "packagesPath": "C:\\Users\\lourd\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lourd\\source\\repos\\ProjectCasaDespa\\ProjectCasaDespa\\CasaDespaDraft\\obj\\",
+      "projectPath": "C:\\Users\\luiis\\Documents\\GitHub\\ProjectCasaDespa\\CasaDespaDraft\\CasaDespaDraft.csproj",
+      "packagesPath": "C:\\Users\\luiis\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\luiis\\Documents\\GitHub\\ProjectCasaDespa\\CasaDespaDraft\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\lourd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\luiis\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10209,7 +10209,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
