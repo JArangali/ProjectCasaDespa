@@ -25,16 +25,31 @@
         <div id="Notifcontainer">
             @foreach (var notification in Model.OrderByDescending(n => n.SentDate))
             {
-                <div id="Notifcontainer2">
-                    <h5 id="ppcontenth5">@notification.Subject</h5>
-                    <p id="ppcontent">@notification.Message</p>
-                    <p id="ppcontent">@notification.SentDate.ToShortDateString()</p>
-                </div>
+                @if (notification.IsRead)
+                {
+                    <div id="Notifcontainer2">
+                        <h5 id="ppcontenth5">@notification.Subject</h5>
+                        <p id="ppcontent">@notification.Message</p>
+                        <p id="ppcontent">@notification.SentDate.ToShortDateString()</p>
+                    </div>
+                }
+                else
+                {
+                    <div id="Notifcontainer2" class="new-notification" >
+                        <h5 id="ppcontenth5">@notification.Subject</h5>
+                        <p id="ppcontent">@notification.Message</p>
+                        <p id="ppcontent">@notification.SentDate.ToShortDateString()</p>
+                    </div>
+                }
             }
-            @* else
-            {
-                <p>No notifications found for the current user.</p>
-            } *@
         </div>
     </div>
 </section>
+
+<style>
+    #Notifcontainer2.new-notification {
+        background-color: #fce6ac;
+        color: #452500;
+        font-weight: bold;
+    }
+</style>

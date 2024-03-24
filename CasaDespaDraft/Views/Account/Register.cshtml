@@ -25,14 +25,20 @@
 
                     <table>
 
-
+                        <tr>
+                            <td>@Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger" })</td>
+                        </tr>
                         <tr>
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <td id="regtd"><h4 id="firstname">FIRST NAME:    </h4></td>
                             <td id="regtdinput">
                                 <input asp-for="firstName" id="firstnameinput" placeholder="">
                             </td>
-                            @Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger" })
+
+                        </tr>
+
+                        <tr>
+                            <td>@Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger" })</td>
                         </tr>
 
                         <tr>
@@ -40,7 +46,11 @@
                             <td id="regtdinput">
                                 <input asp-for="lastName" id="lastnameinput" placeholder="">
                             </td>
-                            @Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger" })
+          
+                        </tr>
+
+                        <tr>
+                            <td>@Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })</td>
                         </tr>
 
                         <tr>
@@ -48,7 +58,7 @@
                             <td id="addresstddinput">
                                 <input asp-for="address" id="addressinput" placeholder="">
                             </td>
-                            @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                            
                         </tr>
 
                         <tr>
@@ -64,14 +74,14 @@
                                 <label for="female"><h6>FEMALE</h6></label>
                             </td>
                         </tr>
-                        </tr>
+                        
 
                         <tr>
                             <td id="regtd"><h4 id="profilepic">UPLOAD PICTURE:</h4></td>
                             <td id="picturetddinput">
                                 <input asp-for="profilePicture" type="file" id="file" accept=".png,.jpg,.jpeg" placeholder="">
 
-                                @Html.ValidationMessageFor(model => model.profilePicture, "", new { @class = "text-danger" })
+  
                             </td>
                         </tr>
 
@@ -80,17 +90,20 @@
 
                 <div id="column2formcontent">
                     <div id="securityquestionsdiv">
-
+                        @Html.ValidationMessageFor(model => model.question, "", new { @class = "text-danger" })
                         <h4 id="securityquestion">SECURITY QUESTION: </h4>
                         <input asp-for="question" id="securityquestioninput" placeholder="Provide Security Question">
-                        @Html.ValidationMessageFor(model => model.question, "", new { @class = "text-danger" })
-
-                        <input asp-for="answer" id="securityanswerinput" placeholder="Provide Answer">
+                        
                         @Html.ValidationMessageFor(model => model.answer, "", new { @class = "text-danger" })
+                        <input asp-for="answer" id="securityanswerinput" placeholder="Provide Answer">
 
                     </div>
 
                     <table id="tabledivemailpass">
+
+                        <tr>
+                            <td>@Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })</td>
+                        </tr>
 
                         <tr>
                             <td id="emailtd"><h4 id="email">EMAIL:    </h4></td>
@@ -99,20 +112,25 @@
                         </tr>
 
                         <tr>
+                            <td>@Html.ValidationMessageFor(model => model.userPassword, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
                             <td id="passwordtd"><h4 id="registerpassword">PASSWORD:    </h4></td>
                             <td id="passregtdinput">
                                 <input asp-for="userPassword" id="registerpasswordinput" placeholder="" />
                                 <input type="hidden" asp-for="fanswer" />
                             </td>
-                            @Html.ValidationMessageFor(model => model.userPassword, "", new { @class = "text-danger" })
                         </tr>
 
+                        <tr>
+                            <td>@Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })</td>
+                        </tr>
                         <tr>
                             <td id="passwordtd"><h4 id="registerpassword">CONFIRM PASSWORD:    </h4></td>
                             <td id="passregtdinput">
                                 <input asp-for="ConfirmPassword" id="registerpasswordinput" placeholder="" />
                             </td>
-                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                            
                         </tr>
                     </table>
                 </div>

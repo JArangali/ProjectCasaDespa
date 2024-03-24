@@ -73,7 +73,7 @@
                         <li><a asp-area="" asp-controller="Home" asp-action="FAQs">FAQs</a></li>
                         <li><a asp-area="" asp-controller="Booking" asp-action="Booking">Booking</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="Profile">Profile</a></li>
-                        <li><a id="notifications" asp-area="" asp-controller="Home" asp-action="Notifications">Notification</a></li>
+                        <li><a id="notifications" asp-area="" asp-controller="Home" asp-action="Notifications"><i class="fa-solid fa-bell"></i><span id="unreadNotificationCount">0</span></a></li>
 
                     </ul>
 
@@ -113,7 +113,7 @@
                         <li><a asp-area="" asp-controller="Home" asp-action="Gallery">Gallery</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="FAQs">FAQs</a></li>
                         <li><a asp-area="" asp-controller="Admin" asp-action="Dashboard">Dashboard</a></li>
-                        <li><a id="notifications" asp-area="" asp-controller="Home" asp-action="Notifications">Notification</a></li>
+                        <li><a id="notifications" asp-area="" asp-controller="Home" asp-action="Notifications"><i class="fa-solid fa-bell"></i><span id="unreadNotificationCount">0</span></a></li>
 
 
                     </ul>
@@ -157,33 +157,81 @@
     <!-- Template Main JS File -->
     <script src="~/js/main.js"></script>
 
-    @* <script>
-        // Get the modal    
-        var modala = document.getElementById("navModal");
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("notifications");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("declined")[0];
-
-        // When the user clicks on the button, open the modal
-        btn.onclick = function () {
-            modala.style.display = "flex";
+    <script>
+        function fetchUnreadNotificationCount() {
+            $.ajax({
+                type: 'GET',
+                url: '/Home/GetUnreadNotificationCount',
+                success: function (response) {
+                    $('#unreadNotificationCount').text(response.unreadNotifications);
+                    if (response.unreadNotifications > 0) {
+                        $('#unreadNotificationCount').show();
+                    } else {
+                        $('#unreadNotificationCount').hide();
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
         }
 
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modala.style.display = "none";
+        // Fetch unread notification count on page load
+        $(document).ready(function () {
+            fetchUnreadNotificationCount();
+        });
+
+        // Fetch unread notification count every minute
+        window.setInterval(fetchUnreadNotificationCount, 60000);
+
+        // Mark Notifications as read
+        $("#notifications").on('click', function () {
+            $.ajax({
+                type: 'GET',
+                url: '/Home/MarkNotificationsAsRead',
+                success: function (response) {
+                    // Update the notification badgecount
+                    fetchUnreadNotificationCount();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+        });
+    </script>
+
+    <style>
+        #Notifcontainer2.new-notification {
+            background-color: #fce6ac;
+            color: #452500;
+            font-weight: bold;
         }
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modala) {
-                modal.style.display = "none";
-            }
+        #unreadNotificationCount {
+            height: 15px;
+            width: 15px;
+            background-color: red;
+            border-radius: 50%;
+            display: inline-block;
+            color: white;
+            text-align: center;
+            font-size: 11px;
         }
-    </script> *@
+
+        .fa-bell:before {
+            content: "\f0f3";
+            font-size: 16px;
+        }
+
+        /* Only display #unreadNotificationCount if the count is greater than 0 */
+        #unreadNotificationCount.hidden {
+            display: none;
+        }
+
+        #unreadNotificationCount.visible {
+            display: inline-block;
+        }
+    </style>
 
 </body>
 

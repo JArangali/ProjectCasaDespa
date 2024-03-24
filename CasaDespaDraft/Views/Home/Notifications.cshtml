@@ -27,14 +27,24 @@
         <div id="Notifcontainer">
             @if (notificationsForCurrentUser.Any())
             {
-
                 @foreach (var notification in notificationsForCurrentUser.OrderByDescending(n => n.SentDate))
                 {
-                    <div id="Notifcontainer2">
-                        <h5 id="ppcontenth5">@notification.Subject</h5>
-                        <p id="ppcontent">@notification.Message</p>
-                        <p id="ppcontent">@notification.SentDate.ToShortDateString()</p>
-                    </div>
+                    @if (notification.IsRead)
+                    {
+                        <div id="Notifcontainer2" class="Notifcontainer2">
+                            <h5 class="ppcontenth5">@notification.Subject</h5>
+                            <p class="ppcontent">@notification.Message</p>
+                            <p class="ppcontent">@notification.SentDate.ToShortDateString()</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div id="Notifcontainer2" class="new-notification">
+                            <h5 class="ppcontenth5">@notification.Subject</h5>
+                            <p class="ppcontent">@notification.Message</p>
+                            <p class="ppcontent">@notification.SentDate.ToShortDateString()</p>
+                        </div>
+                    }
                 }
             }
             else
@@ -44,3 +54,12 @@
         </div>
     </div>
 </section>
+
+<style>
+    Notifcontainer2.new-notification {
+        background-color: #fce6ac;
+        color: #452500;
+        font-weight: bold;
+    }
+</style>
+

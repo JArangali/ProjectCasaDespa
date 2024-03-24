@@ -275,6 +275,7 @@ h6 {
     color: #F0D9B7;
     white-space: nowrap;
     transition: 0.3s;
+    margin-top: 10px;
 }
 
 #Navpopup {
@@ -2488,7 +2489,7 @@ section {
     margin-left: 80px;
     padding: 0px;
     width: 90%;
-    height: 550px;
+    height: 650px;
     border-radius: 20px;
     align-self: center;
     align-content: center;
@@ -2506,6 +2507,7 @@ section {
     padding: 10px;
     border-radius: 15px;
     font-weight: bold;
+    margin-top: 170px;
 }
 
 #formcontent {
@@ -2527,8 +2529,9 @@ section {
 
 #registerbuttonscontainer {
     padding: 20px;
-    height: 50px;
+    min-height: 220px;
     margin-bottom: 50px;
+    margin-top: 50px;
 }
 
 #securityquestionsdiv {
@@ -3048,6 +3051,7 @@ FAQS_Edit {
     padding: 10px;
     border-radius: 15px;
     font-weight: bold;
+
 }
 
 #FAQSEdit_Table {

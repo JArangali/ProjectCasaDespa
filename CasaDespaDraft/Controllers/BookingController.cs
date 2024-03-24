@@ -95,7 +95,24 @@ namespace CasaDespaDraft.Controllers
             }
         }*/
 
+        public IActionResult GetUnreadNotificationCount()
+        {
+            var userId = _userManager.GetUserId(User);
+            var unreadNotifications = _dbData.Notifications.Where(n => n.userId == userId && !n.IsRead).Count();
+            return Json(new { unreadNotifications });
+        }
 
+        public IActionResult MarkNotificationsAsRead()
+        {
+            var userId = _userManager.GetUserId(User);
+            var notifications = _dbData.Notifications.Where(n => n.userId == userId).ToList();
+            foreach (var notification in notifications)
+            {
+                notification.IsRead = true;
+            }
+            _dbData.SaveChanges();
+            return Json(new { success = true });
+        }
 
         [HttpPost]
         public async Task<IActionResult> Booking(Booking newBooking)
