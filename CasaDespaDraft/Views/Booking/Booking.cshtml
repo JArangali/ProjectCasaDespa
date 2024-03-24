@@ -357,10 +357,9 @@
         color: #F0D9B7;
         border-radius: 20px;
         background-color: black;
-
     }
 
-    #notediv{
+    #notediv {
         padding: 10px;
         background-color: #F9F4D6;
         border-radius: 10px;
@@ -371,9 +370,8 @@
         margin-bottom: 25px
     }
 
-    #notett{
-    margin-left:10px;
-
+    #notett {
+        margin-left: 10px;
     }
 
     .Night_Tour {
@@ -425,26 +423,42 @@
         <h1>BOOK NOW!</h1>
 
         <form asp-action="Booking" asp-controller="Booking" method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
+            @* <div asp-validation-summary="All" class="text-danger"></div> *@
 
-            
+
 
             <div id="booktablediv">
                 <table id="bookingtable">
+                    <tr>
+                        <td>@Html.ValidationMessageFor(model => model.fullName, "", new { @class = "text-danger" })</td>
+                    </tr>
                     <tr id="bookrow">
+
                         <td id="booklabeltd"><label for="fullName">Full Name:</label></td>
                         <td><input asp-for="fullName" id="inputtextfieldbr" type="text" id="fullName" name="fullName"><br></td>
 
+                    </tr>
+
+                    <tr>
+                        <td>@Html.ValidationMessageFor(model => model.contactNumber, "", new { @class = "text-danger" })</td>
                     </tr>
                     <tr id="bookrow">
                         <td id="booklabeltd"><label for="contactNumber">Contact Number:</label></td>
                         <td><input asp-for="contactNumber" id="inputtextfieldbr" type="tel" id="contactNumber" name="contactNumber"></td>
 
                     </tr>
+
+                    <tr>
+                        <td>@Html.ValidationMessageFor(model => model.messengerLink, "", new { @class = "text-danger" })</td>
+                    </tr>
                     <tr id="bookrow">
                         <td id="booklabeltd"><label for="messengerLink">Messenger Link:</label></td>
                         <td><input asp-for="messengerLink" type="text" id="inputtextfieldbr" id="messengerLink" name="messengerLink" placeholder="Include 'http://', 'https://', 'ftp://'."><br></td>
-                        
+
+
+                    <tr>
+                        <td>@Html.ValidationMessageFor(model => model.package, "", new { @class = "text-danger" })</td>
+                    </tr>
                     <tr id="bookrow">
                         <td id="booklabeltd"><label for="package" style="margin-top:auto;margin-bottom:auto;">Package:</label></td>
                         <td>
@@ -455,22 +469,34 @@
                         </td>
                     </tr>
 
+
                     <tr>
-                        <td id="regtd"><h4 id="gender">ACCOMODATION:</h4></td>
+                        <td>@Html.ValidationMessageFor(model => model.accomodation, "", new { @class = "text-danger" })</td>
+                    </tr>
+                    <tr>
+                        <td id="regtd">
+                            <h4 id="gender">ACCOMODATION:</h4>
+                        </td>
                         <td id="regtdinput">
                             <input asp-for="accomodation" type="radio" id="male" name="accomodation" value="REGULAR">
-                            <label for="regular"><h6>REGULAR <br />(Pax Range: 1-20)</h6></label><br/>
+                            <label for="regular"><h6>REGULAR <br />(Pax Range: 1-20)</h6></label><br />
                             <input asp-for="accomodation" type="radio" id="female" name="accomodation" value="PARTY">
                             <label for="party"><h6>PARTY <br />(Pax Range: 21-50)</h6></label>
                         </td>
                     </tr>
 
+
+                    <tr>
+                        <td>@Html.ValidationMessageFor(model => model.pax, "", new { @class = "text-danger" })</td>
+                    </tr>
                     <tr id="bookrow">
                         <td id="booklabeltd"><label for="numberOfPax">Number of PAX:</label></td>
                         <td><input type="number" id="numberOfPax" class="inputtextfieldbr" asp-for="pax" placeholder="Number of people attending"><br></td>
                     </tr>
 
-
+                    <tr>
+                        <td>@Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })</td>
+                    </tr>
                     <tr id="bookrow">
                         <td id="booklabeltd"><label for="numberOfPax">Date to Book:</label></td>
                         <td><input asp-for="date" type="text" id="selectedDate" readonly placeholder="Click a day on the calendar"></td>
@@ -558,7 +584,7 @@
 
                             <li><strong>Warning: If any of our rules and regulations are violated, we can charge extra fees or terminate your stay in our resort.</strong></li>
 
-                            
+
                         </div>
                         <div id="buttondivmodal">
                             <input type="button" id="tdeclinebutton" class="declined" value="DECLINED">

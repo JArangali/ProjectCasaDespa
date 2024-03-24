@@ -60,12 +60,18 @@
 
                     <table>
                         <tr>
+                            @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                        </tr>
+                        <tr>
                             <td><h3 id="referencetitle">Amount to Pay: </h3></td>
                             <td><input type="number" id="refanswerinput" asp-for="Amount" required placeholder="Please Provide The Amount."></td>\
                         </tr>
                         <tr>
+                            @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+                        </tr>
+                        <tr>
                             <td><h3 id="referencetitle">Remarks: </h3></td>
-                            <td><input type="text" id="refanswerinput" asp-for="Remarks" placeholder="Please Add Reason to Re-requesting of Payment" required/></td>
+                            <td><input type="text" id="refanswerinput" asp-for="Remarks" placeholder="Please Add Reason to Re-requesting of Payment" required /></td>
                             <br>
                         </tr>
                     </table>

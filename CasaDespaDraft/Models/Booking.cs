@@ -24,7 +24,7 @@ namespace CasaDespaDraft.Models
 
     public enum Package
     {
-        Day_Tour, Night_Tour, Twenty_Two_Hours  
+        Day_Tour, Night_Tour, Twenty_Two_Hours
     }
 
     public enum ProfileStatus

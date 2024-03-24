@@ -14,6 +14,7 @@ namespace CasaDespaDraft.Models
         public string Message { get; set; }
         public DateTime SentDate { get; set; }
         public string RecipientEmail { get; set; }
+        public bool IsRead { get; set; }
 
         public string userId { get; set; }
     }

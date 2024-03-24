@@ -15,6 +15,7 @@ public class Notification
     public DateTime SentDate { get; set; }
     public string RecipientEmail { get; set; }
 
+    public bool IsRead { get; set; } 
     public string userId { get; set; }
 
 

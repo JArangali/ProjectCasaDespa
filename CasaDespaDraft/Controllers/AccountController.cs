@@ -78,7 +78,7 @@ namespace CasaDespaDraft.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(SignUpViewModel userEnteredData, IFormFile profilePicture)
+        public async Task<IActionResult> Register(SignUpViewModel userEnteredData)
         {
             if (ModelState.IsValid)
             {
@@ -97,31 +97,29 @@ namespace CasaDespaDraft.Controllers
                 }
                 newUser.FAnswer = "";
 
-                if (profilePicture != null && profilePicture.Length > 0)
-                {
-                    using var memoryStream = new MemoryStream();
-                    await profilePicture.CopyToAsync(memoryStream);
-                    newUser.ProfilePicture = memoryStream.ToArray();
-                }
-                else
-                {
-                    newUser.ProfilePicture = null; // Set recipeImage to null if no image provided
-                }
+                var userId = await _userManager.CreateAsync(newUser, userEnteredData.userPassword);
 
-
-                var result = await _userManager.CreateAsync(newUser, userEnteredData.userPassword);
-                if (result.Succeeded)
+                if (userId.Succeeded)
                 {
                     TempData["SuccessMessage"] = "Registration successful!, You may now Login";
+
+                    // Set the user's profile picture to null if the user didn't provide one
+                    if (newUser.ProfilePicture == null)
+                    {
+                        newUser.ProfilePicture = Array.Empty<byte>();
+                        await _userManager.UpdateAsync(newUser);
+                    }
+
                     return RedirectToAction("Register", "Account");
                 }
                 else
                 {
-                    foreach (var error in result.Errors)
+                    foreach (var error in userId.Errors)
                     {
                         ModelState.AddModelError("", error.Description);
                     }
                 }
+
             }
             return View(userEnteredData);
         }
@@ -466,7 +464,7 @@ namespace CasaDespaDraft.Controllers
                     profilePicture = user.ProfilePicture,
                     fanswer = user.FAnswer,
                     email = user.Email,
-                    userPassword =  user.PasswordHash,
+                    userPassword = user.PasswordHash,
                     ConfirmPassword = user.PasswordHash
                 };
 

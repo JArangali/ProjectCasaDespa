@@ -18,8 +18,8 @@ namespace CasaDespaDraft
 
         public Task SendEmailAsync(string email, string subject, string message)
         {
-            var mail = "luisenrico.granada.cics@ust.edu.ph";
-            var pw = "2002Luisenrico";
+            var mail = "lourdesashley.santos.cics@ust.edu.ph";
+            var pw = "yahjgab0904";
 
             var client = new SmtpClient("smtp.gmail.com", 587)
             {

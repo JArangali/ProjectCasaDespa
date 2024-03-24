@@ -44,7 +44,6 @@ namespace CasaDespaDraft.ViewModels
         [Display(Name = "Answer")]
         [Required(ErrorMessage = "Security Question answer is required")]
         public string? answer { get; set; }
-
         [DataType(DataType.Upload)]
         [RegularExpression(@"^.*\.(jpg|jpeg|png)$", ErrorMessage = "Only JPG, JPEG, and PNG files are allowed.")]
         public byte[]? profilePicture { get; set; }
