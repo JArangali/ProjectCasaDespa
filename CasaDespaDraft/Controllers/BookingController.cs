@@ -186,17 +186,17 @@ namespace CasaDespaDraft.Controllers
                 {
                     if (IsDayDateBooked(_dbData.DayDates.ToList()))
                     {
-                        if (IsTTInDateBooked(_dbData.TTInDates.ToList()))
-                        {
-                            if (IsTTOutDateBooked(_dbData.TTOutDates.ToList()))
-                            {
-                                ModelState.AddModelError("Date", "Sorry, booked customers are set to check out at 2pm on the chosen date.");
-                                return View(newBooking);
-                            }
-                            ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Twenty-Two Hour Tour.");
-                            return View(newBooking);
-                        }
                         ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Day Tour.");
+                        return View(newBooking);
+                    }
+                    else if (IsTTInDateBooked(_dbData.TTInDates.ToList()))
+                    {
+                        ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Twenty-Two Hour Tour.");
+                        return View(newBooking);
+                    }
+                    else if (IsTTOutDateBooked(_dbData.TTOutDates.ToList()))
+                    {
+                        ModelState.AddModelError("Date", "Sorry, booked customers are set to check out at 2pm on the chosen date.");
                         return View(newBooking);
                     }
                 }
@@ -205,12 +205,12 @@ namespace CasaDespaDraft.Controllers
                 {
                     if (IsNightInDateBooked(_dbData.NightInDates.ToList()))
                     {
-                        if (IsTTInDateBooked(_dbData.TTInDates.ToList()))
-                        { 
-                            ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Twenty-Two Hour Tour.");
-                            return View(newBooking);
-                        }
                         ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Night Tour.");
+                        return View(newBooking);
+                    }
+                    else if (IsTTInDateBooked(_dbData.TTInDates.ToList()))
+                    {
+                        ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Twenty-Two Hour Tour.");
                         return View(newBooking);
                     }
                 }
@@ -218,18 +218,19 @@ namespace CasaDespaDraft.Controllers
                 if (newBooking.package == Package.Twenty_Two_Hours)
                 {
                     if (IsDayDateBooked(_dbData.DayDates.ToList()))
-                    {
-                        if (IsTTInDateBooked(_dbData.TTInDates.ToList()))
-                        {
-                            if (IsNightInDateBooked(_dbData.NightInDates.ToList()))
-                            {
-                                ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Night Tour.");
-                                return View(newBooking);
-                            }
-                            ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Twenty-Two Hour Tour.");
-                            return View(newBooking);
-                        }
+                    { 
                         ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Day Tour.");
+                        return View(newBooking);
+                    }
+                    else if (IsTTInDateBooked(_dbData.TTInDates.ToList()))
+                    {
+                        
+                        ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Twenty-Two Hour Tour.");
+                        return View(newBooking);
+                    }
+                    else if (IsNightInDateBooked(_dbData.NightInDates.ToList()))
+                    {
+                        ModelState.AddModelError("Date", "Sorry, the chosen date is already booked for a Night Tour.");
                         return View(newBooking);
                     }
                 }
@@ -237,12 +238,14 @@ namespace CasaDespaDraft.Controllers
                 var user = await _userManager.FindByIdAsync(userId);
                 var email = user.Email;
 
+                newBooking.allowed = true;
+
                 // Add the new recipe to the context
                 _dbData.Bookings.Add(toAdd);
 
                 var receiver = "granadaluisss@gmail.com";
-                var subject = $"New Booking Request Received - {newBooking.fullName} - Booking ID: {newBooking.bookingId}";
-                var message = $"Dear Admin\n\nA new booking request has been submitted by {newBooking.fullName} with Booking ID: {newBooking.bookingId}. Please view the details.\n\nThank you. \n\nCasa Despa";
+                var subject = $"New Booking Request Received - {newBooking.fullName} - Booking Date: {newBooking.date}";
+                var message = $"Dear Admin\n\nA new booking request has been submitted by {newBooking.fullName} for the date {newBooking.date}. Please view the details.\n\nThank you. \n\nCasa Despa";
 
                 await _emailSender.SendEmailAsync(receiver, subject, message);
 
@@ -250,8 +253,8 @@ namespace CasaDespaDraft.Controllers
                 var subjects = $"Booking Request to Casa Despa";
                 var messages = $"Dear {newBooking.fullName}\n\nYou have successfully submitted your booking request to Casa Despa!\nBooking Package : {newBooking.package}\nRequested Date: {newBooking.date}\n\nThank you\nCasa Despa";
 
-                await _emailSender.SendEmailAsync(customer, subjects, messages);
-
+/*                await _emailSender.SendEmailAsync(customer, subjects, messages);
+*/
                 //NOTIFICATION
                 //ADMIN
                 var notification = new AdminNotification
@@ -374,10 +377,10 @@ namespace CasaDespaDraft.Controllers
             var email = user.Email;
 
             var customer = email;
-            var subjects = $"Proof of Down Payment Received - Booking ID: {booking.bookingId}\r\n";
+            var subjects = $"Proof of Down Payment Received - Booking ID: {booking.bookingId}";
             var messages = $"Dear {booking.fullName}\n\nYour proof of payment for Booking ID : {booking.bookingId} has been successfully received. Our team will review and process it accordingly.\n\nThank you\nCasa Despa";
 
-            await _emailSender.SendEmailAsync(customer, subjects, messages);
+            /*await _emailSender.SendEmailAsync(customer, subjects, messages);*/
 
             //NOTIFICATION
             /*var currentUser = await _userManager.GetUserAsync(User);

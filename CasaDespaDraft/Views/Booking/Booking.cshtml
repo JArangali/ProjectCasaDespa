@@ -422,9 +422,8 @@
     <div id="bookform" class="bookcontainer">
         <h1>BOOK NOW!</h1>
 
-        <form asp-action="Booking" asp-controller="Booking" method="post">
-            @* <div asp-validation-summary="All" class="text-danger"></div> *@
-
+        <form asp-action="Booking" asp-controller="Booking" method="post" id="bookingForm">
+            <div asp-validation-summary="All" class="text-danger"></div> 
 
 
             <div id="booktablediv">
@@ -495,6 +494,7 @@
                     </tr>
 
                     <tr>
+                        <td><span asp-validation-for="date" class="text-danger"></span></td>
                         <td>@Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })</td>
                     </tr>
                     <tr id="bookrow">
@@ -622,6 +622,7 @@
 <!-- Your FullCalendar initialization script -->
 <script>
     $(document).ready(function () {
+        var today = new Date();
 
         // Make an Ajax request to the AllBooking action
         $.ajax({
@@ -632,8 +633,7 @@
                 // Replace the content of the container with the received HTML
                 $('#allBookingsContainer').html(data);
 
-
-
+                // Initiate the FullCalendar
                 $('#calendar').fullCalendar({
                     header: {
                         left: 'prev',
@@ -673,11 +673,16 @@
 
                     },
                     dayClick: function (date, jsEvent, view) {
+                        var clickedDate = date.format();
+                        if (Date.parse(clickedDate) < Date.parse(today)) {
+                            alert("You cannot select a date before or the same as today.");
+                            return false;
+                        }
+
                         // Remove previously clicked day's indicator
                         $('.fc-day').removeClass('clicked-day');
 
                         // Get the clicked date and set it to the input field
-                        var clickedDate = date.format();
                         $('#selectedDate').val(clickedDate);
 
                         // Add indicator to the clicked day
@@ -696,17 +701,13 @@
                         'float': 'none',
                         'display': 'block',
                     });
-                    //$('.fc-day-top, .fc-day-content, .fc-day-bg, .fc-event, .fc-highlight').css('display', 'none');
+                    //$('.fc-day-top, .fc-day-content, .fc-day-bg, .fc-event, .fc-highlight').css('display','none');
                     $('.fc-today').css({
                         'border': 'none',
                         'color': 'inherit'
                     });
 
-
                 }
-
-
-
 
             },
             error: function (error) {
@@ -714,35 +715,39 @@
             }
         });
 
-    });
+        // Add the keydown event listener
+        $('#bookingForm').keypress(function (event) {
+            if (event.which === 13) {
+                event.preventDefault();
+                $('#BookButton').click();
+            }
+        });
 
+        // Get the modal
+        var modal = document.getElementById("myModalT");
 
+        // Get the button that opens the modal
+        var bton = document.getElementById("BookButton");
 
-    // Get the modal
-    var modal = document.getElementById("myModalT");
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("declined")[0];
 
-    // Get the button that opens the modal
-    var bton = document.getElementById("BookButton");
+        // When the user clicks on the button, open the modal
+        bton.onclick = function () {
+            modal.style.display = "block";
+        };
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("declined")[0];
-
-    // When the user clicks on the button, open the modal
-    bton.onclick = function () {
-        modal.style.display = "block";
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
             modal.style.display = "none";
-        }
-    }
+        };
 
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
 
+    });
 </script>

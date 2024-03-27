@@ -17,7 +17,12 @@
                 </div>
             </div>
 
-
+            @if (ViewData.ModelState["Date"] != null)
+            {
+                <div class="alert alert-danger">
+                    @Html.ValidationMessage("Date")
+                </div>
+            }
             <div id="receiptformcontent">
                 <div id="receiptinputfields">
                     <table>

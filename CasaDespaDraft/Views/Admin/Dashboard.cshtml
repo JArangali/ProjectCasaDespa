@@ -23,12 +23,21 @@
 <div class="main-container">
     <div class="right-container">
 
+        
+
         <div class="tabs">
             <button class="tablinks" onclick="openTab(event, 'BRequests')">Booking Requests</button>
             <button class="tablinks" onclick="openTab(event, 'Transactions')">Booking Transactions</button>
             <button class="tablinks" onclick="openTab(event, 'ARequest')">Accepted Requests</button>
             <button class="tablinks" onclick="openTab(event, 'Archived')">Archived Bookings</button>
         </div>
+
+        @if (ViewData.ModelState["errorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                Date is no longer available due to a previously approved booking.
+            </div>
+        }
 
         <div id="BRequests" class="tabcontent">
             <div class="table-container">
@@ -60,7 +69,15 @@
                                 <td>@booking.date</td>
                                 <td>@booking.package</td>
                                 <td>@booking.accomodation</td>
-                                <td><a class="nav-button" asp-action="AddQr" asp-controller="Admin" asp-route-id="@booking.bookingId">REQUEST PAYMENT</a></td>
+
+                                @if (booking.allowed)
+                                {
+                                    <td><a class="nav-button" asp-action="AddQr" asp-controller="Admin" asp-route-id="@booking.bookingId">REQUEST PAYMENT</a></td>
+                                }
+                                else
+                                {
+                                    <td>NO LONGER AVAILABLE</td>
+                                }
                                 <td><a class="nav-button" asp-action="DashboardBookingDecline" asp-route-id="@booking.bookingId">X</a></td>
                             </tr>
                         }
@@ -71,12 +88,7 @@
         </div>
 
         <div id="Transactions" class="tabcontent">
-            @if (ViewData.ModelState["answer"] != null)
-            {
-                <div class="alert alert-danger">
-                    @Html.ValidationMessage("answer")
-                </div>
-            }
+            
             <div class="table-container">
                 <h2 id="table-header">Booking Transactions</h2>
                 <table>
@@ -107,7 +119,14 @@
                                 <td>@booking.date</td>
                                 <td>@booking.package</td>
                                 <td>@booking.accomodation</td>
-                                <td><a class="nav-button" asp-action="ShowReceipt" asp-controller="Admin" asp-route-id="@booking.bookingId">CHECK</a></td>
+                                    @if (@booking.image != null)
+                                    {
+                                        <td><a class="nav-button" asp-action="ShowReceipt" asp-controller="Admin" asp-route-id="@booking.bookingId">CHECK</a></td>
+                                    }
+                                    else
+                                    {
+                                    <td>NOT YET SUBMITTED</td>
+                                    }
                                 <td><a class="nav-button" asp-action="DashboardBookingCancelled" asp-route-id="@booking.bookingId">X</a></td>
                             </tr>
                         }
@@ -172,7 +191,7 @@
                             <th>PACKAGE</th>
                             <th>ACCOMODATION</th>
                             <th>STATUS</th>
-                            <th>PAYMENT</th>
+                            <th>DOWN PAYMENT</th>
                             <th>DELETE</th>
                         </tr>
                     </thead>
@@ -200,7 +219,6 @@
 
     </div>
 </div>
-
 
 <script>
     function openTab(evt, tabName) {

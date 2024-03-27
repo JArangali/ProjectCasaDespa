@@ -7,8 +7,11 @@
 @model SignUpViewModel
 
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 <section id="register">
-    <form asp-action="Register" asp-controller="Account" enctype="multipart/form-data">
+    <form asp-action="Register" asp-controller="Account" enctype="multipart/form-data" id="registerForm">
         <div id="registerform">
             <div id="registertitle">
                 <h2 id="registerheading"> REGISTER </h2>
@@ -171,6 +174,8 @@
     </form>
 </section>
 
+
+
 <script>
     // Get the modal
     var modal = document.getElementById("myModal");
@@ -199,6 +204,13 @@
     }
 
     $(document).ready(function () {
+        $("#registerForm").on("keydown", function (event) {
+            if (event.key === "Enter") {
+                $("#registerbutton").click();
+                event.preventDefault();
+            }
+        });
+
         $("#Register").on("submit", function (event) {
             var fileInput = $("#file");
             var fileName = fileInput.val();
