@@ -78,5 +78,7 @@ namespace CasaDespaDraft.Models
         public string? accomodation { get; set; }
 
         public string? Remarks { get; set; }
+
+        public bool allowed { get; set; }
     }
 }

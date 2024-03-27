@@ -33,11 +33,105 @@ namespace CasaDespaDraft.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Dashboard()
         {
-
             var bookings = _dbData.Bookings.Where(B => B.BStatus == "Pending").ToList();
             var requested = _dbData.Bookings.Where(B => B.BStatus == "Requested").ToList();
             var accepted = _dbData.Bookings.Where(B => B.BStatus == "Accepted").ToList();
             var archive = _dbData.Bookings.Where(B => (B.BStatus == "Completed" || B.BStatus == "Cancelled" || B.BStatus == "Declined")).ToList();
+
+            foreach (var bookingItem in bookings)
+            {
+                bool IsDayDateBooked(List<DayDates> booking)
+                {
+                    return booking.Any(b => b.dayDate == bookingItem.date);
+                }
+
+                bool IsNightInDateBooked(List<NightInDates> booking)
+                {
+                    return booking.Any(b => b.nightInDate == bookingItem.date);
+                }
+
+                bool IsNightOutDateBooked(List<NightOutDates> booking)
+                {
+                    return booking.Any(b => b.nightOutDate == bookingItem.date);
+                }
+
+                bool IsTTInDateBooked(List<TTInDates> booking)
+                {
+                    return booking.Any(b => b.ttInDate == bookingItem.date);
+                }
+
+                bool IsTTOutDateBooked(List<TTOutDates> booking)
+                {
+                    return booking.Any(b => b.ttOutDate == bookingItem.date);
+                }
+
+                bool IsDateInThePastOrToday(DateTime bookingDate)
+                {
+                    DateTime currentDate = DateTime.Now.Date;
+                    return bookingDate < currentDate;
+                }
+
+                if (IsDateInThePastOrToday(DateTime.Parse(bookingItem.date)))
+                {
+                    bookingItem.allowed = false;
+                }
+
+                if (bookingItem.package == Package.Day_Tour)
+                {
+                    if (IsDayDateBooked(_dbData.DayDates.ToList()))
+                    {
+                        bookingItem.allowed = false;
+                    }
+                    else if (IsTTInDateBooked(_dbData.TTInDates.ToList()))
+                    {
+                        bookingItem.allowed = false;
+                    }
+                    else if (IsTTOutDateBooked(_dbData.TTOutDates.ToList()))
+                    {
+                        bookingItem.allowed = false;
+                    }
+                    else
+                    {
+                        bookingItem.allowed = true;
+                    }
+                }
+
+                if (bookingItem.package == Package.Night_Tour)
+                {
+                    if (IsNightInDateBooked(_dbData.NightInDates.ToList()))
+                    {
+                        bookingItem.allowed = false;
+                    }
+                    else if (IsTTInDateBooked(_dbData.TTInDates.ToList()))
+                    {
+                        bookingItem.allowed = false;
+                    }
+                    else
+                    {
+                        bookingItem.allowed = true;
+                    }
+                }
+
+                if (bookingItem.package == Package.Twenty_Two_Hours)
+                {
+                    if (IsDayDateBooked(_dbData.DayDates.ToList()))
+                    {
+                        bookingItem.allowed = false;
+                    }
+                    else if (IsTTInDateBooked(_dbData.TTInDates.ToList()))
+                    {
+                        bookingItem.allowed = false;
+                    }
+                    else if (IsNightInDateBooked(_dbData.NightInDates.ToList()))
+                    {
+                        bookingItem.allowed = false;
+                    }
+                    else
+                    {
+                        bookingItem.allowed = true;
+                    }
+                }
+            }
 
             var viewModel = new AccountViewModel
             {
@@ -247,6 +341,47 @@ namespace CasaDespaDraft.Controllers
             // Send the notification
             await _emailSender.SendNotificationAsync(notification);
 
+            if (Archived.package == Package.Day_Tour)
+            {
+                var dayDateToRemove = _dbData.DayDates.FirstOrDefault(dd => dd.dayDate == Archived.date);
+                if (dayDateToRemove != null)
+                {
+                    _dbData.DayDates.Remove(dayDateToRemove);
+                }
+            }
+
+            if (Archived.package == Package.Night_Tour)
+            {
+                var nightInDateToRemove = _dbData.NightInDates.FirstOrDefault(ni => ni.nightInDate == Archived.date);
+                if (nightInDateToRemove != null)
+                {
+                    _dbData.NightInDates.Remove(nightInDateToRemove);
+                }
+
+                var nextDayDate = DateTime.Parse(Archived.date).AddDays(1).ToString("yyyy-MM-dd");
+                var nightOutDateToRemove = _dbData.NightOutDates.FirstOrDefault(no => no.nightOutDate == nextDayDate);
+                if (nightOutDateToRemove != null)
+                {
+                    _dbData.NightOutDates.Remove(nightOutDateToRemove);
+                }
+            }
+
+            if (Archived.package == Package.Twenty_Two_Hours)
+            {
+                var ttInDateToRemove = _dbData.TTInDates.FirstOrDefault(ti => ti.ttInDate == Archived.date);
+                if (ttInDateToRemove != null)
+                {
+                    _dbData.TTInDates.Remove(ttInDateToRemove);
+                }
+
+                var nextDayDate = DateTime.Parse(Archived.date).AddDays(1).ToString("yyyy-MM-dd");
+                var ttOutDateToRemove = _dbData.TTOutDates.FirstOrDefault(to => to.ttOutDate == nextDayDate);
+                if (ttOutDateToRemove != null)
+                {
+                    _dbData.TTOutDates.Remove(ttOutDateToRemove);
+                }
+            }
+
             _dbData.Bookings.Update(toCancel);
             _dbData.SaveChanges();
             return RedirectToAction("Dashboard", "Admin", Notification);
@@ -263,6 +398,86 @@ namespace CasaDespaDraft.Controllers
                 // Handle the case where the booking is not found
                 return NotFound();
             }
+
+            bool IsDayDateBooked(List<DayDates> bookings)
+            {
+                return bookings.Any(b => b.dayDate == Accepted.date);
+            }
+
+            bool IsNightInDateBooked(List<NightInDates> bookings)
+            {
+                return bookings.Any(b => b.nightInDate == Accepted.date);
+            }
+
+            bool IsNightOutDateBooked(List<NightOutDates> bookings)
+            {
+                return bookings.Any(b => b.nightOutDate == Accepted.date);
+            }
+
+            bool IsTTInDateBooked(List<TTInDates> bookings)
+            {
+                return bookings.Any(b => b.ttInDate == Accepted.date);
+            }
+
+            bool IsTTOutDateBooked(List<TTOutDates> bookings)
+            {
+                return bookings.Any(b => b.ttOutDate == Accepted.date);
+            }
+
+            /*if (Accepted.package == Package.Day_Tour)
+            {
+                if (IsDayDateBooked(_dbData.DayDates.ToList()))
+                {
+                    ModelState.AddModelError("Date", "Sorry, this request is no longer available due to a previously approved request.");
+                    return View(Accepted);
+                }
+                else if (IsTTInDateBooked(_dbData.TTInDates.ToList()))
+                {
+                    ModelState.AddModelError("Date", "Sorry, this request is no longer available due to a previously approved request.");
+                    return View(Accepted);
+                }
+                else if (IsTTOutDateBooked(_dbData.TTOutDates.ToList()))
+                {
+                    ModelState.AddModelError("Date", "Sorry, this request is no longer available due to a previously approved request.");
+                    return View(Accepted);
+                }
+            }
+
+            if (Accepted.package == Package.Night_Tour)
+            {
+                if (IsNightInDateBooked(_dbData.NightInDates.ToList()))
+                {
+                    ModelState.AddModelError("Date", "Sorry, this request is no longer available due to a previously approved request.");
+                    return View(Accepted);
+                }
+                else if (IsTTInDateBooked(_dbData.TTInDates.ToList()))
+                {
+                    ModelState.AddModelError("Date", "Sorry, this request is no longer available due to a previously approved request.");
+                    return View(Accepted);
+                }
+            }
+
+            if (Accepted.package == Package.Twenty_Two_Hours)
+            {
+                if (IsDayDateBooked(_dbData.DayDates.ToList()))
+                {
+                    ModelState.AddModelError("Date", "Sorry, this request is no longer available due to a previously approved request.");
+                    return View(Accepted);
+                }
+                else if (IsTTInDateBooked(_dbData.TTInDates.ToList()))
+                {
+
+                    ModelState.AddModelError("Date", "Sorry, this request is no longer available due to a previously approved request.");
+                    return View(Accepted);
+                }
+                else if (IsNightInDateBooked(_dbData.NightInDates.ToList()))
+                {
+                    ModelState.AddModelError("Date", "Sorry, this request is no longer available due to a previously approved request.");
+                    return View(Accepted);
+                }
+            }*/
+
+            
 
             var toAccept = Accepted;
             toAccept.BStatus = "Accepted";
@@ -543,6 +758,8 @@ namespace CasaDespaDraft.Controllers
 
             booking.Remarks = model.Remarks;
 
+            booking.image = null;
+
             var toUpdate = booking;
             toUpdate.BStatus = "Requested";
 
@@ -586,7 +803,8 @@ namespace CasaDespaDraft.Controllers
             var image = booking.image;
             if (image == null)
             {
-                return RedirectToAction("Dashboard", "Admin");
+                ModelState.AddModelError("answer", "Sorry, the customer has yet to upload their proof of down payment.");
+                return RedirectToAction("Dashboard", "Admin", new { booking });
             }
 
             return View(booking);

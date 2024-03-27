@@ -122,7 +122,14 @@
                                     <td>@booking.date</td>
                                     <td>@booking.package</td>
                                     <td>@booking.accomodation</td>
-                                    <td><a class="nav-button" asp-action="Receipt" asp-controller="Booking" asp-route-id="@booking.bookingId">SUBMIT PAYMENT</a></td>
+                                    @if (@booking.image == null)
+                                    {
+                                        <td><a class="nav-button" asp-action="Receipt" asp-controller="Booking" asp-route-id="@booking.bookingId">SUBMIT PAYMENT</a></td>
+                                    }
+                                    @if (@booking.image != null)
+                                    {
+                                        <td>SUBMITTED</td>
+                                    }
                                 </tr>
                             }
                         </tbody>
